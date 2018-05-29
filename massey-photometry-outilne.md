@@ -9,7 +9,10 @@ note: Based on Massey and Davis, A User's Guide to Stellar CCD Photometry with I
 ## Fixing your headers
 
 ### Correcting the exposure time
-### COmputing the effective airmass
+
+
+
+### Computing the effective airmass
 
 # Standard Star Photometry and Reduction
 

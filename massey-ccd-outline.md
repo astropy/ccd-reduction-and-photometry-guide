@@ -32,7 +32,7 @@ Need to read this...
 
 In my experience, and with electrically cooled CCDs (let alone ones in a cryo tank) the dark current is small *except* for some hot pixels. See the notebook I wrote looking at darks and how linear pixels are.
 
-## Combining Glat-Field Exposures
+## Combining Flat-Field Exposures
 
 Yikes....stay away from technique and hope we actually have some decent flats.
 
