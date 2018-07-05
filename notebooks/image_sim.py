@@ -268,15 +268,12 @@ def add_donuts(image, number=20):
     for center, diam, amplitude in zip(centers[1:],
                                        diameters[1:],
                                        amplitudes[1:]):
-        print('On number', idx, center, diam, amplitude)
         idx += 1
         donut_model = make_one_donut(center, diameter=diam,
                                       amplitude=amplitude)
         donut_im += donut_model(x, y)
-    print('DOne with loop')
-    # donut_model /= Const2D(number)
+
     donut_im /= number
-    #donut_model(500, 500)
 
     return donut_im
 
@@ -319,9 +316,6 @@ def sensitivity_variations(image, vignetting=True, dust=True):
 
     if dust:
         dust_im = add_donuts(image, number=40)
-        print('Did the model, finding image', len(x))
-        # dust_im = dust_model(x, y)
-        print('evaluated model')
         dust_im = dust_im / dust_im.max()
         sensitivity *= dust_im
 
