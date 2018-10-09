@@ -20,4 +20,4 @@ dependencies:
 - dask
 - wcsaxes
 - ginga
-
+- photutils
