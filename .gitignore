@@ -1,2 +1,5 @@
+notebooks/__pycache__
+resources
+.nbgrader.log
 .ipynb_checkpoints
 __pycache__
