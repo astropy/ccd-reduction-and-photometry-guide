@@ -3,3 +3,6 @@ resources
 .nbgrader.log
 .ipynb_checkpoints
 __pycache__
+notebooks/foo
+notebooks/python_imred_data
+notebooks/reduced
