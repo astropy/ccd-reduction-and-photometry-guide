@@ -83,8 +83,15 @@ def dark_current(image, current, exposure_time, gain=1.0, hot_pixels=False):
         Length of the simulated exposure, in seconds.
     gain : float, optional
         Gain of the camera, in units of electrons/ADU.
-    strength : float, optional
-        Pixel count in the cosmic rays.
+    hot_pixels : bool, optional
+        If ``True``, add hot pixels to the image.
+
+    Returns
+    -------
+
+    numpy array
+        An array the same shape and dtype as the input containing dark counts
+        in units of ADU.
     """
 
     # dark current for every pixel; we'll modify the current for some pixels if
@@ -112,6 +119,7 @@ def dark_current(image, current, exposure_time, gain=1.0, hot_pixels=False):
         hot_current = 10000 * current
 
         dark_im[[hot_y, hot_x]] = hot_current * exposure_time / gain
+
     return dark_im
 
 
