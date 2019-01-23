@@ -10,7 +10,7 @@ dependencies:
 - ipython
 - jupyter
 - ipywidgets
-- scipy
+- scipy >=1
 - nose
 - mock
 - funcsigs
