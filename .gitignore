@@ -6,3 +6,5 @@ __pycache__
 notebooks/foo
 notebooks/python_imred_data
 notebooks/reduced
+notebooks/converted
+notebooks/path
