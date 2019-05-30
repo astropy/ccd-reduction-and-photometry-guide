@@ -1,7 +1,7 @@
 from pathlib import Path
 from argparse import ArgumentParser
 
-input_nb_pattern = r'0[01].*.ipynb'
+input_nb_pattern = r'0[0123].*.ipynb'
 
 p = Path('.')
 (p / 'converted').mkdir(exist_ok=True)
