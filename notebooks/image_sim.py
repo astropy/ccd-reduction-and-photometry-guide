@@ -144,7 +144,7 @@ def sky_background(image, sky_counts, gain=1):
     return sky_im
 
 
-def stars(image, number, max_counts=10000, gain=1):
+def stars(image, number, max_counts=10000, gain=1, fwhm=4):
     """
     Add some stars to the image.
     """
@@ -156,8 +156,8 @@ def stars(image, number, max_counts=10000, gain=1):
     y_max, x_max = image.shape
     xmean_range = [0.1 * x_max, 0.9 * x_max]
     ymean_range = [0.1 * y_max, 0.9 * y_max]
-    xstddev_range = [4, 4]
-    ystddev_range = [4, 4]
+    xstddev_range = [fwhm, fwhm]
+    ystddev_range = [fwhm, fwhm]
     params = dict([('amplitude', flux_range),
                    ('x_mean', xmean_range),
                    ('y_mean', ymean_range),
