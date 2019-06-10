@@ -14,7 +14,7 @@ input_notebooks = p.glob(input_nb_pattern)
 #later...
 
 # for conv in $to_convert
-# jupyter nbconvert --to notebook --execute $conv
+#   jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1 $conv
 # end
 
 # Fix names
