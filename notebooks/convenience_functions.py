@@ -86,7 +86,7 @@ def show_image(image,
         # the colorbar the same height as the image, but they do....unless the image
         # is wider than it is tall. Sticking with this for now anyway...
         # Thanks: https://stackoverflow.com/a/26720422/3486425
-        fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04, format='%2.0f')
+        fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
         # In case someone in the future wants to improve this:
         # https://joseph-long.com/writing/colorbars/
         # https://stackoverflow.com/a/33505522/3486425
