@@ -54,11 +54,13 @@ def show_image(image,
 
     ratio = input_ratio or ratio
 
+    reduced_data = block_reduce(image, ratio)
+
     if not is_mask:
         # Divide by the square of the ratio to keep the flux the same in the
         # reduced image. We do *not* want to do this for images which are
         # masks, since their values should be zero or one.
-        reduced_data = block_reduce(image, ratio) / ratio**2
+         reduced_data = reduced_data / ratio**2
 
     # Of course, now that we have downsampled, the axis limits are changed to
     # match the smaller image size. Setting the extent will do the trick to
