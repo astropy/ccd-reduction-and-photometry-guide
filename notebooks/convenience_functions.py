@@ -1,5 +1,5 @@
 from astropy import visualization as aviz
-from astropy.nddata.utils import block_reduce
+from astropy.nddata.utils import block_reduce, Cutout2D
 from matplotlib import pyplot as plt
 
 
@@ -118,15 +118,22 @@ def image_snippet(image, center, width=50, axis=None, fig=None, is_mask=False):
     fig : matplotlib.Figure, optional
         Figure on which the image should be displayed.
 
-    is_misk : bool, optional
+    is_mask : bool, optional
         Set to ``True`` if the image is a mask, i.e. all values are
         either zero or one.
+
+    pad_black : bool, optional
+        If ``True``, pad edges of the image with zeros to fill out width
+        if the slice is near the edge.
     """
-    x_slice = slice(max(center[1] - width // 2, 0), center[1] + width // 2)
-    y_slice = slice(max(center[0] - width // 2, 0), center[0] + width // 2)
-    sub_image = image[x_slice, y_slice]
-    show_image(sub_image, cmap='gray', ax=axis, fig=fig,
-               show_colorbar=False, show_ticks=False, is_mask=is_mask)
+    if pad_black:
+        sub_image = Cutout2D(image, center, width, mode='partial', fill_value=0)
+    else:
+        # Return a smaller subimage if extent goes out side image
+        sub_image = Cutout2D(image, center, width, mode='trim')
+    show_image(sub_image.data, cmap='gray', ax=axis, fig=fig,
+               show_colorbar=False, show_ticks=False, is_mask=is_mask,
+               **kwargs)
 
 
 def _mid(sl):
