@@ -54,9 +54,11 @@ def show_image(image,
 
     ratio = input_ratio or ratio
 
-    # Divide by the square of the ratio to keep the flux the same in the
-    # reduced image
-    reduced_data = block_reduce(image, ratio) / ratio**2
+    if not is_mask:
+        # Divide by the square of the ratio to keep the flux the same in the
+        # reduced image. We do *not* want to do this for images which are
+        # masks, since their values should be zero or one.
+        reduced_data = block_reduce(image, ratio) / ratio**2
 
     # Of course, now that we have downsampled, the axis limits are changed to
     # match the smaller image size. Setting the extent will do the trick to
@@ -68,12 +70,15 @@ def show_image(image,
     else:
         stretch = aviz.LinearStretch()
 
-    norm = aviz.ImageNormalize(reduced_data, interval=aviz.AsymmetricPercentileInterval(percl, percu),
-                                      stretch=stretch)
+    norm = aviz.ImageNormalize(reduced_data,
+                               interval=aviz.AsymmetricPercentileInterval(percl, percu),
+                               stretch=stretch)
 
     if is_mask:
-        # The image is a mask in which pixels are zero or one. Set the image scale
-        # limits appropriately.
+        # The image is a mask in which pixels should be zero or one.
+        # block_reduce may have changed some of the values, so reset here.
+        reduced_data = reduced_data > 0
+        # Set the image scale limits appropriately.
         scale_args = dict(vmin=0, vmax=1)
     else:
         scale_args = dict(norm=norm)
@@ -96,7 +101,8 @@ def show_image(image,
         ax.tick_params(labelbottom=False, labelleft=False, labelright=False, labeltop=False)
 
 
-def image_snippet(image, center, width=50, axis=None, fig=None, is_mask=False):
+def image_snippet(image, center, width=50, axis=None, fig=None,
+                  is_mask=False, pad_black=False, **kwargs):
     """
     Display a subsection of an image about a center.
 
