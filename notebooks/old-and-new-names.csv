@@ -35,3 +35,6 @@ old_name,new_name
 07.01-Creating-a-sky-flat.ipynb,07-01-Creating-a-sky-flat.ipynb
 07.02-Combination-with-alignment-via-WCS.ipynb,07-02-Combination-with-alignment-via-WCS.ipynb
 07.03-Combination-with-alignment-based-on-star-positions-in-the-image.ipynb,07-03-Combination-with-alignment-based-on-star-positions-in-the-image.ipynb
+03-03-Identifying-hot-pixels.ipynb,08-01-Identifying-hot-pixels.ipynb
+04-02-Creating-a-mask.ipynb,08-02-Creating-a-mask.ipynb
+06-03-incorporating-masks-into-calibrated-science-images.ipynb,08-03-incorporating-masks-into-calibrated-science-images.ipynb
