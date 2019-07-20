@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 def show_image(image,
                percl=99, percu=None, is_mask=False,
-               figsize=(6, 10),
+               figsize=(10, 10),
                cmap='viridis', log=False,
                show_colorbar=True, show_ticks=True,
                fig=None, ax=None, input_ratio=None):
@@ -31,12 +31,13 @@ def show_image(image,
         raise ValueError('Must provide both "fig" and "ax" '
                          'if you provide one of them')
     elif fig is None and ax is None:
-        fig, ax = plt.subplots(1, 1, figsize=figsize)
         if figsize is not None:
             # Rescale the fig size to match the image dimensions, roughly
             image_aspect_ratio = image.shape[0] / image.shape[1]
             figsize = (max(figsize) * image_aspect_ratio, max(figsize))
-            print(figsize)
+
+        fig, ax = plt.subplots(1, 1, figsize=figsize)
+
 
     # To preserve details we should *really* downsample correctly and
     # not rely on matplotlib to do it correctly for us (it won't).
