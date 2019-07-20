@@ -38,3 +38,6 @@ old_name,new_name
 03-03-Identifying-hot-pixels.ipynb,08-01-Identifying-hot-pixels.ipynb
 04-02-Creating-a-mask.ipynb,08-02-Creating-a-mask.ipynb
 06-03-incorporating-masks-into-calibrated-science-images.ipynb,08-03-incorporating-masks-into-calibrated-science-images.ipynb
+08-03-incorporating-masks-into-calibrated-science-images.ipynb,08-05-incorporating-masks-into-calibrated-science-images.ipynb
+08-00-Interlude-Image-masking.ipynb,08-00-Image-masking.ipynb
+06-02-Cosmic-ray-removal.ipynb,08-03-Cosmic-ray-removal.ipynb
