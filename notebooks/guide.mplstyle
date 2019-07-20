@@ -1,0 +1,10 @@
+axes.titlesize : 24
+axes.labelsize : 20
+
+xtick.labelsize : 16
+ytick.labelsize : 16
+
+legend.fontsize: xx-large
+
+figure.figsize : 10.0, 10.0
+figure.dpi : 200
