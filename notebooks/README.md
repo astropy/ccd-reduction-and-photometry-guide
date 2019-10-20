@@ -34,7 +34,7 @@ python process_for_book.py
 
 ### Replace links to notebooks with links to html
 
-**Get into the directory with the *converted* notebooks**
+**Modifies notebooks in the directory with the *converted* notebooks**
 
 ```python
 from pathlib import Path
