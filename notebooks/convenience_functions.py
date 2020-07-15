@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 def show_image(image,
                percl=99, percu=None, is_mask=False,
                figsize=(10, 10),
-               cmap='viridis', log=False,
+               cmap='viridis', log=False, clip=True,
                show_colorbar=True, show_ticks=True,
                fig=None, ax=None, input_ratio=None):
     """
@@ -75,7 +75,7 @@ def show_image(image,
 
     norm = aviz.ImageNormalize(reduced_data,
                                interval=aviz.AsymmetricPercentileInterval(percl, percu),
-                               stretch=stretch)
+                               stretch=stretch, clip=clip)
 
     if is_mask:
         # The image is a mask in which pixels should be zero or one.
