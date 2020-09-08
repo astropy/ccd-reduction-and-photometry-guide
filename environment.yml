@@ -18,6 +18,5 @@ dependencies:
 - ccdproc
 - scikit-image
 - dask
-- wcsaxes
 - ginga
 - photutils
