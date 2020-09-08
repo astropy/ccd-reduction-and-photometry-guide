@@ -7,4 +7,4 @@ The inspiration for this work is two guides and a book:
 
 ## Try out the notebooks in the cloud: click the button below
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mwcraig/ccd-reduction-and-photometry-guide/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/master)
