@@ -3,14 +3,14 @@ channels:
   - astropy
   - conda-forge
 dependencies:
-- python=3.6
+- python=3.8
 - astropy
 - astroquery
-- matplotlib<3
+- matplotlib
 - ipython
 - jupyter
 - ipywidgets
-- scipy >=1
+- scipy
 - nose
 - mock
 - funcsigs
