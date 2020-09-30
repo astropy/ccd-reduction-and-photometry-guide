@@ -8,20 +8,20 @@
 title                       : CCD Data Reduction Guide  # The title of the book. Will be placed in the left navbar.
 author                      : Matthew Craig  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
-logo                        : "content/images/logo/logo.png"  # A path to the book logo
-exclude_patterns            : ["*LICENSE.md", "07-*.ipynb"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+logo                        : "book_media/images/logo/logo.png"  # A path to the book logo
+exclude_patterns            : ["*LICENSE.md", "*07-*.ipynb", ".git/*", "*/photometry/*", "*.md", "*add_style_cell.ipynb*"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
 #######################################################################################
 # Execution settings
 execute:
   execute_notebooks         : force  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""  # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
-  exclude_patterns          : ["07-*.ipynb"]  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  exclude_patterns          : ["*07-*.ipynb", "*/photometry/*", "*add_style_cell.ipynb*"]  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
 
 #######################################################################################
 # HTML-specific settings
 html:
-  favicon                   : "content/images/logo/favicon.ico"  # A path to a favicon image
+  favicon                   : "book_media/images/logo/favicon.ico"  # A path to a favicon image
   use_edit_page_button      : true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
   use_repository_button     : false  # Whether to add a link to your repository button
   use_issues_button         : true  # Whether to add an "open an issue" button
