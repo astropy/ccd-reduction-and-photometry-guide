@@ -6,7 +6,7 @@
 # Each entry has the following schema:
 #
 # - title: mytitle   # Title of chapter or section
-#   path: /myurl  # URL of section relative to the /content/ folder.
+#   path: /myurl  # URL of section relative to the /notebooks/ folder.
 #   sections:  # Contains a list of more entries that make up the chapter's sections
 #   not_numbered: true  # if the section shouldn't have a number in the sidebar
 #     (e.g. Introduction or appendices)
@@ -22,7 +22,7 @@
 # See the links below for an example.
 
 # Top-level page
-- file: content/00-00-Preface.ipynb
+- file: notebooks/00-00-Preface.ipynb
   title: Home
   numbered: true
 
@@ -37,101 +37,101 @@
 # - header: CCD Data Reduction Guide
 
 # A chapter w/ a collection of sections beneath it
-- file: content/01-00-Understanding-an-astronomical-CCD-image
+- file: notebooks/01-00-Understanding-an-astronomical-CCD-image
   title: Understanding astronomical images
   numbered: true
   expand_sections: true
   sections:
     - title: An artificial, but realistic, image
-      file: content/01-03-Construction-of-an-artificial-but-realistic-image
+      file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
       numbered: true
     - title: Non-uniform sensitivity in astronomical detectors
-      file: content/01-04-Nonuniform-sensitivity
+      file: notebooks/01-04-Nonuniform-sensitivity
       numbered: true
     - title: Calibration overview
-      file: content/01-05-Calibration-overview
+      file: notebooks/01-05-Calibration-overview
       numbered: true
     - title: Image combination
-      file: content/01-06-Image-combination
+      file: notebooks/01-06-Image-combination
       numbered: true
     - title: Overscan
-      file: content/01-08-Overscan
+      file: notebooks/01-08-Overscan
       numbered: true
     - title: Calibration choices to make
-      file: content/01-09-Calibration-choices-you-need-to-make
+      file: notebooks/01-09-Calibration-choices-you-need-to-make
       numbered: true
     - title: Reading images
-      file: content/01-11-reading-images
+      file: notebooks/01-11-reading-images
       numbered: true
 
 # A chapter w/ a collection of sections beneath it
-- file: content/02-00-Handling-overscan-trimming-and-bias-subtraction
+- file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
   title: Overscan and bias images
   numbered: true
   expand_sections: true
   sections:
     - title: Calibrating bias images
-      file: content/02-01-Calibrating-bias-images
+      file: notebooks/02-01-Calibrating-bias-images
       numbered: true
     - title: Combine bias images to make master bias
-      file: content/02-04-Combine-bias-images-to-make-master
+      file: notebooks/02-04-Combine-bias-images-to-make-master
       numbered: true
 
 # A chapter w/ a collection of sections beneath it
-- file: content/03-00-Dark-current-and-hot-pixels
+- file: notebooks/03-00-Dark-current-and-hot-pixels
   title: Dark current and dark frames
   numbered: true
   expand_sections: true
   sections:
     - title: 'Dark current: the ideal case'
-      file: content/03-01-Dark-current-The-ideal-case
+      file: notebooks/03-01-Dark-current-The-ideal-case
       numbered: true
     - title: 'Real dark current: noise and other artifacts'
-      file: content/03-02-Real-dark-current-noise-and-other-artifacts
+      file: notebooks/03-02-Real-dark-current-noise-and-other-artifacts
       numbered: true
     - title: Handling overscan and bias for dark frames
-      file: content/03-04-Handling-overscan-and-bias-for-dark-frames
+      file: notebooks/03-04-Handling-overscan-and-bias-for-dark-frames
       numbered: true
     - title: Calibrate dark images
-      file: content/03-05-Calibrate-dark-images
+      file: notebooks/03-05-Calibrate-dark-images
       numbered: true
     - title: Combine calibrated dark images for use in later reduction steps
-      file: content/03-06-Combine-darks-for-use-in-later-calibration-steps
+      file: notebooks/03-06-Combine-darks-for-use-in-later-calibration-steps
       numbered: true
 
 
-- file: content/05-00-Flat-corrections
+- file: notebooks/05-00-Flat-corrections
   title: Flat fielding
   numbered: true
   expand_sections: true
   sections:
     - title: Calibrating flat frames
-      file: content/05-03-Calibrating-the-flats
+      file: notebooks/05-03-Calibrating-the-flats
       numbered: true
     - title: Combining flat frames
-      file: content/05-04-Combining-flats
+      file: notebooks/05-04-Combining-flats
       numbered: true
 
-- file: content/06-00-Reducing-science-images
+- file: notebooks/06-00-Reducing-science-images
   title: Calibrating science images
   numbered: true
 
-- file: content/08-00-Image-masking
+- file: notebooks/08-00-Image-masking
   title: Finding and dealing with bad pixels
   numbered: true
   expand_sections: true
   sections:
     - title: Identifying hot pixels
-      file: content/08-01-Identifying-hot-pixels
+      file: notebooks/08-01-Identifying-hot-pixels
       numbered: true
     - title: Identifying bad pixels with ccdmask
-      file: content/08-02-Creating-a-mask
+      file: notebooks/08-02-Creating-a-mask
       numbered: true
     - title: Removing cosmic rays
-      file: content/08-03-Cosmic-ray-removal
+      file: notebooks/08-03-Cosmic-ray-removal
       numbered: true
     - title: Incorporating masks in science images
-      file: content/08-05-incorporating-masks-into-calibrated-science-images
+      file: notebooks/08-05-incorporating-masks-into-calibrated-science-images
       numbered: true
 
 # Divider for meta-pages and content page
