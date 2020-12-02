@@ -1,0 +1,7 @@
+exp #, object, texp, filter, comments
+1-6,bias,0,,
+14-16,flat_g,70,g,
+17-19,flat_i,7,i,
+36-40,vv124_1,300,g,conditions mostly clear, occasional cirrus
+41-45,vv124_1,300,i, cirrus possible thickening, but seeing remains ~0.9"
+
