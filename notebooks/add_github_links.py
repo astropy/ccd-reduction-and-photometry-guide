@@ -24,7 +24,7 @@ def github_magic(nb_file_for_book, original_notebook,
     # 7. Add a link after the header with text something like that below.   <--- BOTH
     #    Link is to the magical github place for making comments.
     # Done!
-    repo = get_github_repo('mwcraig', 'ccd-reduction-and-photometry-guide')
+    repo = get_github_repo('astropy', 'ccd-reduction-and-photometry-guide')
 
     base_url = \
         create_pr_for_commenting(original_notebook, repo,

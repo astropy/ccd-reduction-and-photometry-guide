@@ -9,6 +9,12 @@ from process_for_book import clean
 clean()
 ```
 
+or
+
+```shell
+python -c "from process_for_book import clean; clean()"
+```
+
 ### Generate list of notebooks to process (fish version):
 
 ```shell
@@ -66,10 +72,10 @@ set -x GITHUB_TOKEN your_token_here
 
 ```python
 from add_github_links import delete_branches_prs, get_github_repo
-repo = get_github_repo('mwcraig', 'ccd-reduction-and-photometry-guide')
+repo = get_github_repo('astropy', 'ccd-reduction-and-photometry-guide')
 # Replace the name review-8e187b6 with the actual name you want
 # to eliminate, of course.
-delete_branches_prs('review-8e187b6', repo)
+delete_branches_prs('review-8036850', repo)
 ```
 
 
@@ -88,13 +94,12 @@ cp converted/* /Users/mcraig/Documents/Research/ccd-as-book/content
 
 ```python
 from add_github_links import commentify_all_notebooks
-converted_for_book = '/Users/mcraig/Documents/Research/ccd-as-book/content'
+converted_for_book = '/Users/mattcraig/development/ccd-as-book/content/'
 path_to_original = '.'
 commentify_all_notebooks(converted_for_book,
                          path_to_original,
-                         comment_group='review-ee0cbc6')
+                         comment_group='review-8036850')
 ```
-
 
 ### Build the book markdown locally
 
@@ -104,6 +109,8 @@ jupyter-book build .
 ```
 
 ### Build/serve to check locally
+
+Make ruby not suck: `set -x CONDA_BUILD_SYSROOT /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/`
 
 ```shell
 # Change to root directory of book
