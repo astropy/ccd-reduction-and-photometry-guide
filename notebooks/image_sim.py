@@ -1,7 +1,7 @@
 
 import numpy as np
 
-from astropy.modeling.models import Gaussian2D, MexicanHat2D, Const2D
+from astropy.modeling.models import Gaussian2D, RickerWavelet2D, Const2D
 from photutils.datasets import (make_random_gaussians_table,
                                 make_gaussian_sources_image)
 from photutils.aperture import EllipticalAperture
@@ -118,7 +118,7 @@ def dark_current(image, current, exposure_time, gain=1.0, hot_pixels=False):
 
         hot_current = 10000 * current
 
-        dark_im[[hot_y, hot_x]] = hot_current * exposure_time / gain
+        dark_im[(hot_y, hot_x)] = hot_current * exposure_time / gain
 
     return dark_im
 
@@ -166,7 +166,7 @@ def stars(image, number, max_counts=10000, gain=1, fwhm=4):
                    ('theta', [0, 2 * np.pi])])
 
     sources = make_random_gaussians_table(number, params,
-                                          random_state=12345)
+                                          seed=12345)
 
     star_im = make_gaussian_sources_image(image.shape, sources)
 
@@ -216,7 +216,7 @@ def make_cosmic_rays(image, number, strength=10000):
 
 def make_one_donut(center, diameter=10, amplitude=0.25):
     sigma = diameter / 2
-    mh = MexicanHat2D(amplitude=amplitude,
+    mh = RickerWavelet2D(amplitude=amplitude,
                       x_0=center[0], y_0=center[1],
                       sigma=sigma)
     gauss = Gaussian2D(amplitude=amplitude,
