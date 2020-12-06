@@ -4,7 +4,7 @@ channels:
   - conda-forge
 dependencies:
 - python=3.8
-- astropy
+- astropy >=4
 - astroquery
 - matplotlib
 - ipython
@@ -19,4 +19,4 @@ dependencies:
 - scikit-image
 - dask
 - ginga
-- photutils
+- photutils >=1
