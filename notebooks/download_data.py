@@ -19,6 +19,10 @@ download = download_file(url, show_progress=True)
 p = Path(download)
 p.rename('combined_dark_300.000.fits.bz2')
 
+url = 'https://zenodo.org/record/4302262/files/combined_dark_exposure_1000.0.fit.bz2?download=1'
+download = download_file(url, show_progress=True)
+p = Path(download)
+p.rename('combined_dark_exposure_1000.0.fit.bz2')
 
 # Get the tarball for the smaller example
 url = 'https://zenodo.org/record/3254683/files/example-cryo-LFC.tar.bz2?download=1'
