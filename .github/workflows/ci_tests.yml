@@ -73,8 +73,10 @@ jobs:
     - name: Install base dependencies
       run: |
         python -m pip install --upgrade pip
+        python -m pip install astropy numpy cython
+        python -m pip install --no-binary :all: astroscrappy
         python -m pip install jupyter-book astroquery ccdproc photutils
-        python -m pip instsall sphinxcontrib-bibtex==1
+        python -m pip install sphinxcontrib-bibtex==1
     - name: Build book
       run: |
         jb build .
