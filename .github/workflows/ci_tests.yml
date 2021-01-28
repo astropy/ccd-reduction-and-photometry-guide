@@ -73,9 +73,8 @@ jobs:
         auto-update-conda: true
     - name: Install base dependencies
       run: |
-        conda install -c conda-forge astroquery ccdproc photutils
+        conda install -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex
         python -m pip install jupyter-book
-        python -m pip install sphinxcontrib-bibtex==1
     - name: Build book
       run: |
         jb build .
