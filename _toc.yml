@@ -10,8 +10,7 @@
 #   sections:  # Contains a list of more entries that make up the chapter's sections
 #   not_numbered: true  # if the section shouldn't have a number in the sidebar
 #     (e.g. Introduction or appendices)
-#   expand_sections: true  # if you'd like the sections of this chapter to always
-#     be expanded in the sidebar.
+#   expand_sections: true  # OPTION WAS REMOVED
 #   external: true  # Whether the URL is an external link or points to content in the book
 #
 # Below are some special values that trigger specific behavior:
@@ -40,7 +39,7 @@
 - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
   title: Understanding astronomical images
   numbered: true
-  expand_sections: true
+  # expand_sections: true
   sections:
     - title: An artificial, but realistic, image
       file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
@@ -68,7 +67,7 @@
 - file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
   title: Overscan and bias images
   numbered: true
-  expand_sections: true
+  # expand_sections: true
   sections:
     - title: Calibrating bias images
       file: notebooks/02-01-Calibrating-bias-images
@@ -81,7 +80,7 @@
 - file: notebooks/03-00-Dark-current-and-hot-pixels
   title: Dark current and dark frames
   numbered: true
-  expand_sections: true
+  # expand_sections: true
   sections:
     - title: 'Dark current: the ideal case'
       file: notebooks/03-01-Dark-current-The-ideal-case
@@ -103,7 +102,7 @@
 - file: notebooks/05-00-Flat-corrections
   title: Flat fielding
   numbered: true
-  expand_sections: true
+  # expand_sections: true
   sections:
     - title: Calibrating flat frames
       file: notebooks/05-03-Calibrating-the-flats
@@ -119,7 +118,7 @@
 - file: notebooks/08-00-Image-masking
   title: Finding and dealing with bad pixels
   numbered: true
-  expand_sections: true
+  # expand_sections: true
   sections:
     - title: Identifying hot pixels
       file: notebooks/08-01-Identifying-hot-pixels
