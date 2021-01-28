@@ -78,6 +78,11 @@ jobs:
         conda list
         conda info -e
         python -m pip install jupyter-book==0.9.1
+    - name: Download data
+      shell: bash -l {0}
+      run: |
+        cd notebooks
+        python download_data.py
     - name: Build book
       shell: bash -l {0}
       run: |
