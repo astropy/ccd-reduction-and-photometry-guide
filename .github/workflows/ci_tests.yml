@@ -78,7 +78,19 @@ jobs:
         conda list
         conda info -e
         python -m pip install jupyter-book==0.9.1
+    - name: Cache
+      id: cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          notebooks/*.fit*.bz
+          notebooks/example-cryo-LFC
+          notebooks/example-thermo-electric
+          notebooks/download_data.py
+        key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
+
     - name: Download data
+      if: steps.cache.outputs.cache-hit != 'true'
       shell: bash -l {0}
       run: |
         cd notebooks
@@ -86,7 +98,8 @@ jobs:
     - name: Build book
       shell: bash -l {0}
       run: |
-        jb build .
+        echo "Hello world"
+        # jb build .
     # This is an example of how to upload coverage to codecov
     # - name: Upload coverage to codecov
     #   if: "contains(matrix.toxenv, '-cov')"
