@@ -99,10 +99,7 @@ jobs:
     - name: Build book
       shell: bash -l {0}
       run: |
-        echo "Hello world"
-        # jb build .
-        mkdir -p _build/html
-        touch _build/html/index.html
+        jb build .
 
     - name: Upload HTML
       uses: actions/upload-artifact@v2
