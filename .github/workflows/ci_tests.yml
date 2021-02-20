@@ -95,11 +95,22 @@ jobs:
       run: |
         cd notebooks
         python download_data.py
+
     - name: Build book
       shell: bash -l {0}
       run: |
         echo "Hello world"
         # jb build .
+        mkdir -p _build/html
+        touch _build/html/index.html
+
+    - name: Upload HTML
+      uses: actions/upload-artifact@v2
+      with:
+        name: rendered-book
+        path: |
+          _build/html
+
     # This is an example of how to upload coverage to codecov
     # - name: Upload coverage to codecov
     #   if: "contains(matrix.toxenv, '-cov')"
