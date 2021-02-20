@@ -1,0 +1,74 @@
+# GitHub Actions workflow for testing and continuous integration.
+#
+# This file performs testing using tox and tox.ini to define and configure the test environments.
+
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - master  # GitHub now defaults to 'main' as the name of the primary branch. Change this as needed.
+  #  tags: # run CI if specific tags are pushed
+  pull_request:
+    # branches: # only build on PRs against 'main' if you need to further limit when CI is run.
+    #    - main
+
+jobs:
+  # Github Actions supports ubuntu, windows, and macos virtual environments:
+  # https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners
+  ci_tests:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - name: Build book
+            os: ubuntu-latest
+            python: 3.8
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v2.0.1
+      with:
+        python-version: ${{ matrix.python }}
+        auto-update-conda: true
+    - name: Install base dependencies
+      shell: bash -l {0}
+      run: |
+        conda install -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex
+        conda list
+        conda info -e
+        python -m pip install jupyter-book==0.9.1
+    - name: Cache
+      id: cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          notebooks/*.fit*.bz
+          notebooks/example-cryo-LFC
+          notebooks/example-thermo-electric
+          notebooks/download_data.py
+        key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
+
+    - name: Download data
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash -l {0}
+      run: |
+        cd notebooks
+        python download_data.py
+
+    - name: Build book
+      shell: bash -l {0}
+      run: |
+        jb build .
+
+    - name: Upload HTML
+      uses: actions/upload-artifact@v2
+      with:
+        name: rendered-book
+        path: |
+          _build/html
