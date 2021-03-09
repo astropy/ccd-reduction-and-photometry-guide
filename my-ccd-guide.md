@@ -16,7 +16,7 @@
 ## Inspect your images and make a choice about next steps
 ## Subtract overscan, if desired
 ## Trim, if needed
-## Combine bias images to make main
+## Combine bias images to make master
 
 # Dark current and hot pixels
 
