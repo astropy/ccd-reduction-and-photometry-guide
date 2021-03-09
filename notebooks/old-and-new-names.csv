@@ -10,7 +10,7 @@ old_name,new_name
 01.11-reading-images.ipynb,01-11-reading-images.ipynb
 "02.00-Handling-overscan,-trimming,-and-bias-subtraction.ipynb",02-00-Handling-overscan-trimming-and-bias-subtraction.ipynb
 02.01-Calibrating-bias-images.ipynb,02-01-Calibrating-bias-images.ipynb
-02.04-Combine-bias-images-to-make-master.ipynb,02-04-Combine-bias-images-to-make-master.ipynb
+02.04-Combine-bias-images-to-make-main.ipynb,02-04-Combine-bias-images-to-make-main.ipynb
 03.00-Dark-current-and-hot-pixels.ipynb,03-00-Dark-current-and-hot-pixels.ipynb
 03.01-Dark-current-The-ideal-case.ipynb,03-01-Dark-current-The-ideal-case.ipynb
 03.02-Real-dark-current-noise-and-other-artifacts.ipynb,03-02-Real-dark-current-noise-and-other-artifacts.ipynb

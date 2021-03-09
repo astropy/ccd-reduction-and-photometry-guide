@@ -11,4 +11,4 @@ The rendered version of the guide is [here](https://mwcraig.github.io/ccd-as-boo
 
 ## Try out the notebooks in the cloud: click the button below
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main)
