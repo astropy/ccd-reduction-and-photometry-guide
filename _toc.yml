@@ -72,8 +72,8 @@
     - title: Calibrating bias images
       file: notebooks/02-01-Calibrating-bias-images
       numbered: true
-    - title: Combine bias images to make main bias
-      file: notebooks/02-04-Combine-bias-images-to-make-main
+    - title: Combine bias images to make master bias
+      file: notebooks/02-04-Combine-bias-images-to-make-master
       numbered: true
 
 # A chapter w/ a collection of sections beneath it
