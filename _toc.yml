@@ -123,6 +123,10 @@
 - file: notebooks/06-00-Reducing-science-images
   title: Calibrating science images
   numbered: true
+  sections:
+    - title: Two calibration examples
+      file: notebooks/06-03-science-images-calibration-examples
+      numbered: true
 
 - file: notebooks/08-00-Image-masking
   title: Finding and dealing with bad pixels
