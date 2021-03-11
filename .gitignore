@@ -1,3 +1,4 @@
+_build
 notebooks/__pycache__
 resources
 .nbgrader.log
