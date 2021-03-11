@@ -37,10 +37,13 @@
 
 # A chapter w/ a collection of sections beneath it
 - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
-  title: Understanding astronomical images
+  title: Astronomical Images
   numbered: true
   # expand_sections: true
   sections:
+    - title: Components of astronomical images
+      file: notebooks/01-01-astronomical-CCD-image-components
+      numbered: true
     - title: An artificial, but realistic, image
       file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
       numbered: true
