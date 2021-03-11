@@ -72,6 +72,9 @@
   numbered: true
   # expand_sections: true
   sections:
+    - title: About bias and overscan
+      file: notebooks/02-01-overscan-trimming-and-bias-subtraction-background
+      numbered: true
     - title: Calibrating bias images
       file: notebooks/02-02-Calibrating-bias-images
       numbered: true
