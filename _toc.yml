@@ -111,6 +111,9 @@
   # expand_sections: true
   sections:
     - title: Calibrating flat frames
+      file: notebooks/05-01-about-flat-corrections
+      numbered: true
+    - title: Calibrating flat frames
       file: notebooks/05-03-Calibrating-the-flats
       numbered: true
     - title: Combining flat frames
