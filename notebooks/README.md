@@ -2,7 +2,7 @@
 
 Want to try to get all of the processing steps in going from notebooks to book in one place.
 
-### Remove old outputs (in python)
+## Remove old outputs (in python)
 
 ```python
 from process_for_book import clean
@@ -15,7 +15,7 @@ or
 python -c "from process_for_book import clean; clean()"
 ```
 
-### Generate list of notebooks to process (fish version):
+## Generate list of notebooks to process (fish version):
 
 ```shell
 # The sort below is important because later notebooks depend on
@@ -23,7 +23,7 @@ python -c "from process_for_book import clean; clean()"
 set to_conv (find . -depth 1 -name 0[01234568]-\?\?-\*.ipynb | sort -)
 ```
 
-### Run the notebooks to generate output (fish version)
+## Run the notebooks to generate output (fish version)
 
 ``shell
 for conv in $to_conv
@@ -31,14 +31,14 @@ for conv in $to_conv
 end
 ```
 
-### Move the generated notebooks to separate folder (fish shown)
+## Move the generated notebooks to separate folder (fish shown)
 
 ```shell
 # This can be refactored easily.
 python process_for_book.py
 ```
 
-### Replace links to notebooks with links to html
+## Replace links to notebooks with links to html
 
 **Modifies notebooks in the directory with the *converted* notebooks**
 
@@ -59,14 +59,14 @@ for notebook in notebooks:
 os.chdir('..')
 ```
 
-### Set GitHub token
+## Set GitHub token
 
 
 ```shell
 set -x GITHUB_TOKEN your_token_here
 ```
 
-### Clean up old review rounds on GitHub, if any
+## Clean up old review rounds on GitHub, if any
 
 **Set `GITHUB_TOKEN` first**
 
@@ -79,7 +79,7 @@ delete_branches_prs('review-8036850', repo)
 ```
 
 
-### Copy content from the working directory to content
+## Copy content from the working directory to content
 
 This is silly, but right now it needs a copy/paste. DO NOT MOVE because
 the logic in the link-adding code below is a little janky.
@@ -88,7 +88,7 @@ the logic in the link-adding code below is a little janky.
 cp converted/* /Users/mcraig/Documents/Research/ccd-as-book/content
 ```
 
-### Add links for commenting on each section
+## Add links for commenting on each section
 
 **Set `GITHUB_TOKEN` first**
 
@@ -101,14 +101,14 @@ commentify_all_notebooks(converted_for_book,
                          comment_group='review-8036850')
 ```
 
-### Build the book markdown locally
+## Build the book markdown locally
 
 ```shell
 # Change to root directory of book
 jupyter-book build .
 ```
 
-### Build/serve to check locally
+## Build/serve to check locally
 
 Make ruby not suck: `set -x CONDA_BUILD_SYSROOT /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/`
 
@@ -117,7 +117,7 @@ Make ruby not suck: `set -x CONDA_BUILD_SYSROOT /Library/Developer/CommandLineTo
 make serve
 ```
 
-# CCD guide message for reviewers
+## CCD guide message for reviewers
 
 Dear X,
 
