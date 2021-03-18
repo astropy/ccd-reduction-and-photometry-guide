@@ -37,101 +37,84 @@
 
 # A chapter w/ a collection of sections beneath it
 - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
-  title: Understanding astronomical images
-  numbered: true
+  title: Astronomical Images
   # expand_sections: true
   sections:
+    - title: Components of astronomical images
+      file: notebooks/01-01-astronomical-CCD-image-components
     - title: An artificial, but realistic, image
       file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
-      numbered: true
     - title: Non-uniform sensitivity in astronomical detectors
       file: notebooks/01-04-Nonuniform-sensitivity
-      numbered: true
     - title: Calibration overview
       file: notebooks/01-05-Calibration-overview
-      numbered: true
     - title: Image combination
       file: notebooks/01-06-Image-combination
-      numbered: true
     - title: Overscan
       file: notebooks/01-08-Overscan
-      numbered: true
     - title: Calibration choices to make
       file: notebooks/01-09-Calibration-choices-you-need-to-make
-      numbered: true
     - title: Reading images
       file: notebooks/01-11-reading-images
-      numbered: true
 
 # A chapter w/ a collection of sections beneath it
 - file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
   title: Overscan and bias images
-  numbered: true
   # expand_sections: true
   sections:
+    - title: About bias and overscan
+      file: notebooks/02-01-overscan-trimming-and-bias-subtraction-background
     - title: Calibrating bias images
-      file: notebooks/02-01-Calibrating-bias-images
-      numbered: true
+      file: notebooks/02-02-Calibrating-bias-images
     - title: Combine bias images to make master bias
       file: notebooks/02-04-Combine-bias-images-to-make-master
-      numbered: true
 
 # A chapter w/ a collection of sections beneath it
 - file: notebooks/03-00-Dark-current-and-hot-pixels
   title: Dark current and dark frames
-  numbered: true
   # expand_sections: true
   sections:
     - title: 'Dark current: the ideal case'
       file: notebooks/03-01-Dark-current-The-ideal-case
-      numbered: true
     - title: 'Real dark current: noise and other artifacts'
       file: notebooks/03-02-Real-dark-current-noise-and-other-artifacts
-      numbered: true
     - title: Handling overscan and bias for dark frames
       file: notebooks/03-04-Handling-overscan-and-bias-for-dark-frames
-      numbered: true
     - title: Calibrate dark images
       file: notebooks/03-05-Calibrate-dark-images
-      numbered: true
     - title: Combine calibrated dark images for use in later reduction steps
       file: notebooks/03-06-Combine-darks-for-use-in-later-calibration-steps
-      numbered: true
 
 
 - file: notebooks/05-00-Flat-corrections
   title: Flat fielding
-  numbered: true
   # expand_sections: true
   sections:
     - title: Calibrating flat frames
+      file: notebooks/05-01-about-flat-corrections
+    - title: Calibrating flat frames
       file: notebooks/05-03-Calibrating-the-flats
-      numbered: true
     - title: Combining flat frames
       file: notebooks/05-04-Combining-flats
-      numbered: true
 
 - file: notebooks/06-00-Reducing-science-images
   title: Calibrating science images
-  numbered: true
+  sections:
+    - title: Two calibration examples
+      file: notebooks/06-03-science-images-calibration-examples
 
 - file: notebooks/08-00-Image-masking
   title: Finding and dealing with bad pixels
-  numbered: true
   # expand_sections: true
   sections:
     - title: Identifying hot pixels
       file: notebooks/08-01-Identifying-hot-pixels
-      numbered: true
     - title: Identifying bad pixels with ccdmask
       file: notebooks/08-02-Creating-a-mask
-      numbered: true
     - title: Removing cosmic rays
       file: notebooks/08-03-Cosmic-ray-removal
-      numbered: true
     - title: Incorporating masks in science images
       file: notebooks/08-05-incorporating-masks-into-calibrated-science-images
-      numbered: true
 
 # Divider for meta-pages and content page
 # - divider: true
