@@ -1,7 +1,7 @@
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
 # Users are expected to override these values in their own `_config.yml` file.
-# This is also the "master list" of all allowed keys and values.
+# This is also the "full list" of all allowed keys and values.
 
 #######################################################################################
 # Book settings
@@ -43,7 +43,7 @@ launch_buttons:
 repository:
   url                       : https://github.com/astropy/ccd-reduction-and-photometry-guide  # The URL to your book's repository
   path_to_book              : "notebooks"  # A path to your book's folder, relative to the repository root.
-  branch                    : master  # Which branch of the repository should be used when creating links
+  branch                    : main  # Which branch of the repository should be used when creating links
 
 #######################################################################################
 # Advanced and power-user settings
