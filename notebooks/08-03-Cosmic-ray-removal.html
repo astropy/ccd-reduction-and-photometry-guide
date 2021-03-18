@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Cosmic ray removal &#8212; CCD Data Reduction Guide</title>
+    <title>6.3. Cosmic ray removal &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,8 +59,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Incorporating masks into calibrated science images" href="08-05-incorporating-masks-into-calibrated-science-images.html" />
-    <link rel="prev" title="2. Creating an image mask" href="08-02-Creating-a-mask.html" />
+    <link rel="next" title="6.4. Incorporating masks into calibrated science images" href="08-05-incorporating-masks-into-calibrated-science-images.html" />
+    <link rel="prev" title="6.2. Creating an image mask" href="08-02-Creating-a-mask.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +100,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +149,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +173,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +207,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +284,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -360,64 +387,64 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#removal-from-calibration-images">
-   3.1. Removal from calibration images
+   6.3.1. Removal from calibration images
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#removal-from-science-images">
-   3.2. Removal from science images
+   6.3.2. Removal from science images
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#very-important-notes-about-using-lacosmic">
-     3.2.1. Very important notes about using LACosmic
+     6.3.2.1. Very important notes about using LACosmic
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#input-image">
-     3.2.2. Input image
+     6.3.2.2. Input image
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-in-and-applying-masks">
-     3.2.3. Reading in and applying masks
+     6.3.2.3. Reading in and applying masks
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#running-lacosmic">
-     3.2.4. Running LACosmic
+     6.3.2.4. Running LACosmic
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examining-the-cosmic-rays-identified-by-lacosmic">
-     3.2.5. Examining the cosmic rays identified by LACosmic
+     6.3.2.5. Examining the cosmic rays identified by LACosmic
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#discussion-of-sample-cosmic-rays">
-     3.2.6. Discussion of sample cosmic rays
+     6.3.2.6. Discussion of sample cosmic rays
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saving-the-mask-with-the-image">
-     3.2.7. Saving the mask with the image
+     6.3.2.7. Saving the mask with the image
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-happens-if-you-do-not-mask">
-   3.3. What happens if you do not mask?
+   6.3.3. What happens if you do not mask?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-of-these-are-not-cosmic-rays">
-     3.3.1. Some of these are not cosmic rays
+     6.3.3.1. Some of these are not cosmic rays
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#discussion">
-     3.3.2. Discussion
+     6.3.3.2. Discussion
     </a>
    </li>
   </ul>
@@ -435,7 +462,7 @@
               <div>
                 
   <div class="section" id="cosmic-ray-removal">
-<h1><span class="section-number">3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Permalink to this headline">¶</a></h1>
 <p>Almost all images from a CCD will include some number of cosmic rays, charged
 particles which bombard the Earth’s upper atmosphere. Some of those will make it
 through the atmosphere and into your detector (the rate of cosmic rays will be
@@ -445,7 +472,7 @@ which the chip is immediately read out.</p>
 <p>This notebook explains how to remove cosmic rays from calibration images and
 science images.</p>
 <div class="section" id="removal-from-calibration-images">
-<h2><span class="section-number">3.1. </span>Removal from calibration images<a class="headerlink" href="#removal-from-calibration-images" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3.1. </span>Removal from calibration images<a class="headerlink" href="#removal-from-calibration-images" title="Permalink to this headline">¶</a></h2>
 <p>The most convenient way to remove cosmic rays from calibration images (bias, dark, and
 flat images) is to combine them properly. Cosmic rays are, by their nature,
 random events that will affect different parts of each of the calibration
@@ -462,7 +489,7 @@ work well for removing them from calibration images and is unnecessary because
 they can be removed by properly combining the images.</p>
 </div>
 <div class="section" id="removal-from-science-images">
-<h2><span class="section-number">3.2. </span>Removal from science images<a class="headerlink" href="#removal-from-science-images" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3.2. </span>Removal from science images<a class="headerlink" href="#removal-from-science-images" title="Permalink to this headline">¶</a></h2>
 <p>One good technique for removing cosmic rays from an image is the
 <a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">LACosmic method</a> originally developed and implemented for IRAF
 by <a class="reference external" href="https://www.pietervandokkum.com/">Pieter G. van Dokkum</a>. The original paper describing the method,
@@ -475,7 +502,7 @@ rays you should cite both the original paper and
 code below never directly imports <a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a> because
 <code class="docutils literal notranslate"><span class="pre">ccdproc</span></code> provides a wrapper for it, so we called attention to it here.</p>
 <div class="section" id="very-important-notes-about-using-lacosmic">
-<h3><span class="section-number">3.2.1. </span>Very important notes about using LACosmic<a class="headerlink" href="#very-important-notes-about-using-lacosmic" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.1. </span>Very important notes about using LACosmic<a class="headerlink" href="#very-important-notes-about-using-lacosmic" title="Permalink to this headline">¶</a></h3>
 <p>There are a few things to be aware of before using the LACosmic technique. These
 are drawn from the advice van Dokkum provides under
 <a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">Notes for Users</a> and the original paper.</p>
@@ -526,7 +553,7 @@ identified by <code class="docutils literal notranslate"><span class="pre">ccdma
 </div>
 </div>
 <div class="section" id="input-image">
-<h3><span class="section-number">3.2.2. </span>Input image<a class="headerlink" href="#input-image" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.2. </span>Input image<a class="headerlink" href="#input-image" title="Permalink to this headline">¶</a></h3>
 <p>The image we will use in this notebook is one of the reduced images from Example
 2 in the previous notebooks. It is an image of the field of the exoplanet
 KELT-16 b, taken with a thermoelectrically-cooled CCD with read noise of 10<span class="math notranslate nohighlight">\(e^-\)</span>
@@ -570,7 +597,7 @@ electrons.</p>
 </div>
 </div>
 <div class="section" id="reading-in-and-applying-masks">
-<h3><span class="section-number">3.2.3. </span>Reading in and applying masks<a class="headerlink" href="#reading-in-and-applying-masks" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.3. </span>Reading in and applying masks<a class="headerlink" href="#reading-in-and-applying-masks" title="Permalink to this headline">¶</a></h3>
 <p>Two masks were calculated earlier. Hot pixels, whose dark current cannot be
 corrected, were <a class="reference internal" href="08-01-Identifying-hot-pixels.html"><span class="doc std std-doc">identified by comparing dark frames of different exposure time</span></a>.  The
 <a class="reference internal" href="08-02-Creating-a-mask.html"><span class="doc std std-doc">function <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code> was used</span></a> to identify other bad pixels; one example was a
@@ -655,7 +682,7 @@ are  identified.</p>
 </div>
 </div>
 <div class="section" id="running-lacosmic">
-<h3><span class="section-number">3.2.4. </span>Running LACosmic<a class="headerlink" href="#running-lacosmic" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.4. </span>Running LACosmic<a class="headerlink" href="#running-lacosmic" title="Permalink to this headline">¶</a></h3>
 <p>The actual invocation of LACosmic is fairly convenient. The key parameters
 are <code class="docutils literal notranslate"><span class="pre">readnoise</span></code>, the read noise, and <code class="docutils literal notranslate"><span class="pre">sigclip</span></code>, which determines how far above
 the background a pixel needs to be to consider it a cosmic ray. There is no
@@ -704,7 +731,7 @@ rays.</p>
 </div>
 </div>
 <div class="section" id="examining-the-cosmic-rays-identified-by-lacosmic">
-<h3><span class="section-number">3.2.5. </span>Examining the cosmic rays identified by LACosmic<a class="headerlink" href="#examining-the-cosmic-rays-identified-by-lacosmic" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.5. </span>Examining the cosmic rays identified by LACosmic<a class="headerlink" href="#examining-the-cosmic-rays-identified-by-lacosmic" title="Permalink to this headline">¶</a></h3>
 <p>There are 70 pixels that have been flagged as cosmic rays. Looking through each
 of them individually would be tedious, at best. It would also presumably be
 difficult to decide visually if a single pixel tagged as a cosmic ray was
@@ -780,7 +807,7 @@ inclusion in this discussion. Display them all by setting
 </div>
 </div>
 <div class="section" id="discussion-of-sample-cosmic-rays">
-<h3><span class="section-number">3.2.6. </span>Discussion of sample cosmic rays<a class="headerlink" href="#discussion-of-sample-cosmic-rays" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.6. </span>Discussion of sample cosmic rays<a class="headerlink" href="#discussion-of-sample-cosmic-rays" title="Permalink to this headline">¶</a></h3>
 <p>The first three examples above, labeled “Cosmic ray 0,” “Cosmic ray 1,” and
 “Cosmic ray 14,” are clear-cut; each is actually a cosmic ray.</p>
 <p>The fourth, “Cosmic ray 18,” is not a cosmic ray, though it does correspond to a
@@ -791,7 +818,7 @@ value in the value of the science image which ends up being identified as a
 cosmic ray.</p>
 </div>
 <div class="section" id="saving-the-mask-with-the-image">
-<h3><span class="section-number">3.2.7. </span>Saving the mask with the image<a class="headerlink" href="#saving-the-mask-with-the-image" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.2.7. </span>Saving the mask with the image<a class="headerlink" href="#saving-the-mask-with-the-image" title="Permalink to this headline">¶</a></h3>
 <p>To save the full mask, including cosmic rays, hot pixels, and pixels identified
 by <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code>, set the mask of <code class="docutils literal notranslate"><span class="pre">ccd</span></code> to the mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code>. In some use cases
 you might prefer to save <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> itself. The difference between the two is
@@ -810,7 +837,7 @@ that the pixel values in which there are cosmic rays have been replaced in
 </div>
 </div>
 <div class="section" id="what-happens-if-you-do-not-mask">
-<h2><span class="section-number">3.3. </span>What happens if you do not mask?<a class="headerlink" href="#what-happens-if-you-do-not-mask" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3.3. </span>What happens if you do not mask?<a class="headerlink" href="#what-happens-if-you-do-not-mask" title="Permalink to this headline">¶</a></h2>
 <p>In the example above we masked the pixels known to be bad in all of the images
 before detecting cosmic rays. It is possible to do cosmic ray detection without
 prior masking. The downside of not masking is that many features that are not
@@ -858,7 +885,7 @@ no light).</p>
 </div>
 </div>
 <div class="section" id="some-of-these-are-not-cosmic-rays">
-<h3><span class="section-number">3.3.1. </span>Some of these are not cosmic rays<a class="headerlink" href="#some-of-these-are-not-cosmic-rays" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3.1. </span>Some of these are not cosmic rays<a class="headerlink" href="#some-of-these-are-not-cosmic-rays" title="Permalink to this headline">¶</a></h3>
 <p>The display below shows a few examples of areas identified by
 <code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> that are not actually cosmic rays. These false positives
 are harmless because they reflect real problems with the detector and should be
@@ -879,7 +906,7 @@ masked first. As an example, the cosmic ray labeled “Cosmic ray 0” in the
 </div>
 </div>
 <div class="section" id="discussion">
-<h3><span class="section-number">3.3.2. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.3.2. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
 <p>The first example above is the bad column on the left side of the image.</p>
 <p>The one label “Cosmic ray 1” is caused by a single hot pixel with a large count
 in the dark frames, which leads to a large negative value in the calibrated
@@ -924,8 +951,8 @@ pixels will be identified as hot.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="08-02-Creating-a-mask.html" title="previous page"><span class="section-number">2. </span>Creating an image mask</a>
-    <a class='right-next' id="next-link" href="08-05-incorporating-masks-into-calibrated-science-images.html" title="next page"><span class="section-number">4. </span>Incorporating masks into calibrated science images</a>
+    <a class='left-prev' id="prev-link" href="08-02-Creating-a-mask.html" title="previous page"><span class="section-number">6.2. </span>Creating an image mask</a>
+    <a class='right-next' id="next-link" href="08-05-incorporating-masks-into-calibrated-science-images.html" title="next page"><span class="section-number">6.4. </span>Incorporating masks into calibrated science images</a>
 
         </div>
         

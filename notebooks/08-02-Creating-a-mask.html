@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Creating an image mask &#8212; CCD Data Reduction Guide</title>
+    <title>6.2. Creating an image mask &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Cosmic ray removal" href="08-03-Cosmic-ray-removal.html" />
-    <link rel="prev" title="1. Identifying hot pixels" href="08-01-Identifying-hot-pixels.html" />
+    <link rel="next" title="6.3. Cosmic ray removal" href="08-03-Cosmic-ray-removal.html" />
+    <link rel="prev" title="6.1. Identifying hot pixels" href="08-01-Identifying-hot-pixels.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -142,17 +147,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -161,32 +171,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -195,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -258,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -358,7 +385,7 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#detecting-bad-pixels-with-ccdmask">
-   2.1. Detecting bad pixels with
+   6.2.1. Detecting bad pixels with
    <code class="docutils literal notranslate">
     <span class="pre">
      ccdmask
@@ -368,14 +395,14 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saving-the-mask">
-     2.1.1. Saving the mask
+     6.2.1.1. Saving the mask
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#making-the-mask-with-a-single-flat">
-   2.2. Making the mask with a single flat
+   6.2.2. Making the mask with a single flat
   </a>
  </li>
 </ul>
@@ -391,7 +418,7 @@
               <div>
                 
   <div class="section" id="creating-an-image-mask">
-<h1><span class="section-number">2. </span>Creating an image mask<a class="headerlink" href="#creating-an-image-mask" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.2. </span>Creating an image mask<a class="headerlink" href="#creating-an-image-mask" title="Permalink to this headline">¶</a></h1>
 <p>Calibration cannot compensate for every defect in a CCD. Some examples (a
 non-exhaustive list):</p>
 <ul class="simple">
@@ -437,7 +464,7 @@ science images is discussed <a class="reference internal" href="08-03-Cosmic-ray
 </div>
 </div>
 <div class="section" id="detecting-bad-pixels-with-ccdmask">
-<h2><span class="section-number">2.1. </span>Detecting bad pixels with <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code><a class="headerlink" href="#detecting-bad-pixels-with-ccdmask" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.1. </span>Detecting bad pixels with <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code><a class="headerlink" href="#detecting-bad-pixels-with-ccdmask" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">ccdproc</span></code> function <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/api/ccdproc.ccdmask.html#ccdproc.ccdmask">ccdmask</a> uses a method that is
 based on the <a class="reference external" href="http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?ccdmask">IRAF task ccdmask</a>. The method works best when the
 input image used to detect flaws in the CCD is the ratio of two flat frames with
@@ -478,7 +505,7 @@ calibrated, uncombined, flat images.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table masked=True length=10</i>
-<table id="table140471565452576" class="table-striped table-bordered table-condensed">
+<table id="table140473415956752" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>date-obs</th><th>exptime</th><th>exposure</th><th>set-temp</th><th>ccd-temp</th><th>xpixsz</th><th>ypixsz</th><th>xbinning</th><th>ybinning</th><th>xorgsubf</th><th>yorgsubf</th><th>readoutm</th><th>filter</th><th>imagetyp</th><th>focallen</th><th>aptdia</th><th>aptarea</th><th>swcreate</th><th>swserial</th><th>sitelat</th><th>sitelong</th><th>telescop</th><th>instrume</th><th>notes</th><th>flipstat</th><th>swowner</th><th>date</th><th>time-obs</th><th>ut</th><th>timesys</th><th>radecsys</th><th>purged</th><th>latitude</th><th>longitud</th><th>altitude</th><th>lst</th><th>jd-obs</th><th>mjd-obs</th><th>biassec</th><th>trimsec</th><th>bunit</th><th>trim_image</th><th>trimim</th><th>subtract_dark</th><th>subdark</th><th>cstretch</th><th>cblack</th><th>cwhite</th><th>pedestal</th><th>bscale</th><th>bzero</th><th>subtract_bias</th><th>subbias</th><th>combined</th><th>hjd-obs</th><th>bjd-obs</th><th>azimuth</th><th>ha</th><th>readmode</th><th>st</th><th>lat-obs</th><th>long-obs</th><th>alt-obs</th><th>observat</th><th>ra</th><th>objctra</th><th>dec</th><th>objctdec</th><th>fwhm</th><th>zmag</th><th>_quinox</th><th>epoch</th><th>pa</th><th>_type1</th><th>_rval1</th><th>_rpix1</th><th>_delt1</th><th>_rota1</th><th>_type2</th><th>_rval2</th><th>_rpix2</th><th>_delt2</th><th>_rota2</th><th>_d1_1</th><th>_d1_2</th><th>_d2_1</th><th>_d2_2</th><th>tr1_0</th><th>tr1_1</th><th>tr1_2</th><th>tr1_3</th><th>tr1_4</th><th>tr1_5</th><th>tr1_6</th><th>tr1_7</th><th>tr1_8</th><th>tr1_9</th><th>tr1_10</th><th>tr1_11</th><th>tr1_12</th><th>tr1_13</th><th>tr1_14</th><th>tr2_0</th><th>tr2_1</th><th>tr2_2</th><th>tr2_3</th><th>tr2_4</th><th>tr2_5</th><th>tr2_6</th><th>tr2_7</th><th>tr2_8</th><th>tr2_9</th><th>tr2_10</th><th>tr2_11</th><th>tr2_12</th><th>tr2_13</th><th>tr2_14</th><th>pltsolvd</th><th>airmass</th><th>secz</th><th>alt-obj</th><th>az-obj</th><th>object</th><th>_ate</th><th>flat_correct</th><th>flatcor</th><th>wcsaxes</th><th>crpix1</th><th>crpix2</th><th>pc1_1</th><th>pc1_2</th><th>pc2_1</th><th>pc2_2</th><th>cdelt1</th><th>cdelt2</th><th>cunit1</th><th>cunit2</th><th>ctype1</th><th>ctype2</th><th>crval1</th><th>crval2</th><th>lonpole</th><th>latpole</th><th>mjdref</th><th>radesys</th><th>equinox</th><th>a_order</th><th>a_0_2</th><th>a_1_1</th><th>a_2_0</th><th>b_order</th><th>b_0_2</th><th>b_1_1</th><th>b_2_0</th><th>ap_order</th><th>ap_0_0</th><th>ap_0_1</th><th>ap_0_2</th><th>ap_1_0</th><th>ap_1_1</th><th>ap_2_0</th><th>bp_order</th><th>bp_0_0</th><th>bp_0_1</th><th>bp_0_2</th><th>bp_1_0</th><th>bp_1_1</th><th>bp_2_0</th></tr></thead>
 <thead><tr><th>str31</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str19</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str10</th><th>object</th><th>str5</th><th>float64</th><th>float64</th><th>float64</th><th>str34</th><th>str32</th><th>str13</th><th>str14</th><th>str39</th><th>str9</th><th>str1</th><th>str1</th><th>str10</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>bool</th><th>str13</th><th>str14</th><th>float64</th><th>str13</th><th>float64</th><th>float64</th><th>str11</th><th>str11</th><th>str3</th><th>str6</th><th>str13</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>True</td><td>-64</td><td>2</td><td>4096</td><td>4096</td><td>2018-08-23T01:25:17</td><td>1.0</td><td>1.0</td><td>-20.0</td><td>-20.0225025</td><td>9.0</td><td>9.0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>Monochrome</td><td>r</td><td>FLAT</td><td>3200.0</td><td>400.0</td><td>125663.70964050293</td><td>MaxIm DL Version 6.18 190601 00KPP</td><td>00KPP-F3HN8-9JMTJ-1CE5W-A4AX5-F3</td><td>+46:52:00.408</td><td>-96:27:11.8008</td><td></td><td>AspenCG16</td><td></td><td></td><td>Matt Craig</td><td>23/08/18</td><td>01:25:17</td><td>01:25:17</td><td>UTC</td><td>FK5</td><td>True</td><td>+46:52:00.408</td><td>-96:27:11.8008</td><td>311.7999999995668</td><td>17:04:39.2507</td><td>2458353.559224537</td><td>58353.05922453704</td><td>[4096:4109]</td><td>[1:4096, :]</td><td>adu</td><td>trimim</td><td>ccd=&lt;CCDData&gt;</td><td>subdark</td><td>ccd=&lt;CCDData&gt;, master=&lt;CCDData&gt;, exposure_time=exptime, exposure_unit=s, scale=True</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
@@ -549,8 +576,8 @@ for each image.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 6s, sys: 374 ms, total: 2min 6s
-Wall time: 2min 6s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 53s, sys: 474 ms, total: 1min 53s
+Wall time: 1min 53s
 </pre></div>
 </div>
 </div>
@@ -627,7 +654,7 @@ edge of the CCD. It turns out this column is not actually exposed to light.
 </div>
 </div>
 <div class="section" id="saving-the-mask">
-<h3><span class="section-number">2.1.1. </span>Saving the mask<a class="headerlink" href="#saving-the-mask" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.1.1. </span>Saving the mask<a class="headerlink" href="#saving-the-mask" title="Permalink to this headline">¶</a></h3>
 <p>The mask can be saved in a FITS file as an image. We will see in <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html"><span class="doc std std-doc">the summary
 notebook on masking</span></a> how to combine the mask generated here with a mask
 generated from the dark current and with a cosmic ray mask for each science
@@ -644,7 +671,7 @@ image.</p>
 </div>
 </div>
 <div class="section" id="making-the-mask-with-a-single-flat">
-<h2><span class="section-number">2.2. </span>Making the mask with a single flat<a class="headerlink" href="#making-the-mask-with-a-single-flat" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.2. </span>Making the mask with a single flat<a class="headerlink" href="#making-the-mask-with-a-single-flat" title="Permalink to this headline">¶</a></h2>
 <p>The flats we used in Example 1, taken with the Large Format Camera at Palomar,
 are dome flats taken with nearly constant illumination. In that case the best we
 can do is run <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code> on a single flat image. As we will see, this still
@@ -663,7 +690,7 @@ allows the identification of several clearly bad areas of the chip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table masked=True length=6</i>
-<table id="table140471268652752" class="table-striped table-bordered table-condensed">
+<table id="table140472704552720" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>date</th><th>origin</th><th>latitude</th><th>longitud</th><th>telescop</th><th>fratio</th><th>instrume</th><th>detector</th><th>frame</th><th>ccdpicno</th><th>object</th><th>imagetyp</th><th>exptime</th><th>darktime</th><th>date-obs</th><th>ut</th><th>jd</th><th>ra</th><th>dec</th><th>equinox</th><th>epoch</th><th>ha</th><th>st</th><th>airmass</th><th>filter</th><th>gain</th><th>secpix1</th><th>secpix2</th><th>ccdbin1</th><th>ccdbin2</th><th>rotangle</th><th>datasec</th><th>ccdsec</th><th>biassec</th><th>loginfo</th><th>chipid</th><th>subtract_overscan</th><th>suboscan</th><th>trim_image</th><th>trimim</th><th>bunit</th><th>subtract_dark</th><th>subdark</th><th>flat_correct</th><th>flatcor</th><th>combined</th></tr></thead>
 <thead><tr><th>str27</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str10</th><th>str34</th><th>float64</th><th>float64</th><th>str17</th><th>float64</th><th>str3</th><th>str14</th><th>int64</th><th>int64</th><th>str7</th><th>str9</th><th>float64</th><th>float64</th><th>str10</th><th>str12</th><th>float64</th><th>str12</th><th>str12</th><th>float64</th><th>float64</th><th>str12</th><th>str12</th><th>float64</th><th>str2</th><th>float64</th><th>float64</th><th>float64</th><th>int64</th><th>int64</th><th>float64</th><th>str15</th><th>str15</th><th>str18</th><th>str18</th><th>int64</th><th>str8</th><th>str46</th><th>str6</th><th>str13</th><th>str3</th><th>object</th><th>object</th><th>object</th><th>object</th><th>object</th></tr></thead>
 <tr><td>flat-ccd.014.0.fits</td><td>True</td><td>-64</td><td>2</td><td>2048</td><td>4128</td><td>2016-01-16</td><td>California Institute of Technology</td><td>33.4</td><td>-116.9</td><td>Hale 5m Telescope</td><td>7.5</td><td>LFC</td><td>SITe SI002 x 6</td><td>14</td><td>14</td><td>flat_g</td><td>FLATFIELD</td><td>70.001</td><td>70.673</td><td>2016-01-16</td><td>04:17:28.00</td><td>2457403.678796</td><td>04:08:58.50</td><td>33:25:12.69</td><td>2000.0</td><td>2000.0</td><td>00:00:04.00</td><td>04:10:04.46</td><td>1.0</td><td>g&apos;</td><td>1.1</td><td>0.182</td><td>0.182</td><td>1</td><td>1</td><td>0.0</td><td>[1:2048,1:4128]</td><td>[1:2048,1:4128]</td><td>[2049:2080,1:4127]</td><td>Status=0x00000000</td><td>0</td><td>suboscan</td><td>ccd=&lt;CCDData&gt;, overscan=&lt;CCDData&gt;, median=True</td><td>trimim</td><td>ccd=&lt;CCDData&gt;</td><td>adu</td><td>subdark</td><td>ccd=&lt;CCDData&gt;, master=&lt;CCDData&gt;, exposure_time=exptime, exposure_unit=s</td><td>--</td><td>--</td><td>--</td></tr>
@@ -709,8 +736,8 @@ itself and should be the same for all filters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 3s, sys: 180 ms, total: 1min 3s
-Wall time: 1min 3s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 55.3 s, sys: 192 ms, total: 55.5 s
+Wall time: 55.5 s
 </pre></div>
 </div>
 </div>
@@ -800,8 +827,8 @@ identified.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="08-01-Identifying-hot-pixels.html" title="previous page"><span class="section-number">1. </span>Identifying hot pixels</a>
-    <a class='right-next' id="next-link" href="08-03-Cosmic-ray-removal.html" title="next page"><span class="section-number">3. </span>Cosmic ray removal</a>
+    <a class='left-prev' id="prev-link" href="08-01-Identifying-hot-pixels.html" title="previous page"><span class="section-number">6.1. </span>Identifying hot pixels</a>
+    <a class='right-next' id="next-link" href="08-03-Cosmic-ray-removal.html" title="next page"><span class="section-number">6.3. </span>Cosmic ray removal</a>
 
         </div>
         

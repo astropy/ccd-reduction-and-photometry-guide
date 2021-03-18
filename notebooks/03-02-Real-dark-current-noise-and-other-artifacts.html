@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Real dark current: noise and other artifacts &#8212; CCD Data Reduction Guide</title>
+    <title>3.2. Real dark current: noise and other artifacts &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,8 +59,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
-    <link rel="prev" title="1. Dark current: the ideal case" href="03-01-Dark-current-The-ideal-case.html" />
+    <link rel="next" title="3.3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
+    <link rel="prev" title="3.1. Dark current: the ideal case" href="03-01-Dark-current-The-ideal-case.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +100,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +149,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +173,32 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +207,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +284,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -360,73 +387,73 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#making-an-image-to-check-for-hot-pixels">
-   2.1. Making an image to check for hot pixels
+   3.2.1. Making an image to check for hot pixels
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-if-that-isn-t-possible">
-     2.1.1. What if that isn’t possible?
+     3.2.1.1. What if that isn’t possible?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
-   2.2. Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar
+   3.2.2. Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
-     2.2.1. Estimating exposure time and number of frames for measuring dark current
+     3.2.2.1. Estimating exposure time and number of frames for measuring dark current
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examine-the-image">
-     2.2.2. Examine the image
+     3.2.2.2. Examine the image
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dark-current-in-this-ccd">
-     2.2.3. Dark current in this CCD
+     3.2.2.3. Dark current in this CCD
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#case-2-thermoelectrically-cooled-camera">
-   2.3. Case 2: Thermoelectrically-cooled camera
+   3.2.3. Case 2: Thermoelectrically-cooled camera
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#taking-an-image-to-measure-dark-current">
-     2.3.1. Taking an image to measure dark current
+     3.2.3.1. Taking an image to measure dark current
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#calculate-the-dark-current-for-each-pixel">
-     2.3.2. Calculate the dark current for each pixel
+     3.2.3.2. Calculate the dark current for each pixel
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#there-is-a-large-range-in-the-dark-current">
-     2.3.3. There is a large range in the dark current
+     3.2.3.3. There is a large range in the dark current
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-to-handle-hot-pixels">
-   2.4. How to handle hot pixels
+   3.2.4. How to handle hot pixels
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-thing-not-to-do">
-   2.5. One thing NOT to do
+   3.2.5. One thing NOT to do
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   2.6. Summary
+   3.2.6. Summary
   </a>
  </li>
 </ul>
@@ -442,7 +469,7 @@
               <div>
                 
   <div class="section" id="real-dark-current-noise-and-other-artifacts">
-<h1><span class="section-number">2. </span>Real dark current: noise and other artifacts<a class="headerlink" href="#real-dark-current-noise-and-other-artifacts" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.2. </span>Real dark current: noise and other artifacts<a class="headerlink" href="#real-dark-current-noise-and-other-artifacts" title="Permalink to this headline">¶</a></h1>
 <p>The dark current on modern CCDs, even relatively inexpensive ones, is very
 small. In a typical exposure the dark current is likely smaller, maybe much
 smaller, than the read noise. Despite that, it is worth examining some dark
@@ -483,7 +510,7 @@ your camera and analyze them.</p>
 </div>
 </div>
 <div class="section" id="making-an-image-to-check-for-hot-pixels">
-<h2><span class="section-number">2.1. </span>Making an image to check for hot pixels<a class="headerlink" href="#making-an-image-to-check-for-hot-pixels" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>Making an image to check for hot pixels<a class="headerlink" href="#making-an-image-to-check-for-hot-pixels" title="Permalink to this headline">¶</a></h2>
 <p>Measuring the dark current in a camera requires taking images with fairly long
 exposure time, ideally long enough that the expected counts due to dark current
 is larger than the expected noise in the image. If that isn’t the case then the
@@ -499,7 +526,7 @@ result. The noise in the combined image is proportional to <span class="math not
 <span class="math notranslate nohighlight">\(N\)</span> is the number of images that are combined.</p></li>
 </ul>
 <div class="section" id="what-if-that-isn-t-possible">
-<h3><span class="section-number">2.1.1. </span>What if that isn’t possible?<a class="headerlink" href="#what-if-that-isn-t-possible" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.1.1. </span>What if that isn’t possible?<a class="headerlink" href="#what-if-that-isn-t-possible" title="Permalink to this headline">¶</a></h3>
 <p>Do your best. The darks from the Large Format Camera were taken as part of a
 science run in which there was limited time for taking dark frames. The key
 thing to keep in mind is the lower limit on the dark current you can measure,
@@ -510,7 +537,7 @@ dark frames more feasible!</p>
 </div>
 </div>
 <div class="section" id="case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
-<h2><span class="section-number">2.2. </span>Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar<a class="headerlink" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar<a class="headerlink" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar" title="Permalink to this headline">¶</a></h2>
 <p>The images in this section are from chip 0 of the LFC at the Palomar 200-inch
 telescope. Technical information about the camera is
 <a class="reference external" href="http://www.astro.caltech.edu/palomar/observer/200inchResources/lfcspecs.html">here</a>. The technical information says nothing about
@@ -522,7 +549,7 @@ liquid nitrogen is that their dark current is essentially zero.</p>
 <li><p>not all of the counts in a dark image are from dark current.</p></li>
 </ul>
 <div class="section" id="estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
-<h3><span class="section-number">2.2.1. </span>Estimating exposure time and number of frames for measuring dark current<a class="headerlink" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.1. </span>Estimating exposure time and number of frames for measuring dark current<a class="headerlink" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current" title="Permalink to this headline">¶</a></h3>
 <p>Unfortunately, the technical information for this camera does not include any
 information about the expected dark current. For thermoelectrically-cooled
 cameras the dark current is no more than 0.1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec/pixel, and for newer
@@ -595,7 +622,7 @@ by the read noise.</p>
 </div>
 </div>
 <div class="section" id="examine-the-image">
-<h3><span class="section-number">2.2.2. </span>Examine the image<a class="headerlink" href="#examine-the-image" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.2. </span>Examine the image<a class="headerlink" href="#examine-the-image" title="Permalink to this headline">¶</a></h3>
 <p>The full image is on the left, and the lower left corner is shown on the right.
 The light area in the lower left corner is due to sensor glow, which is light
 emitted by the electronics of the CCD. The counts in the image due to sensor
@@ -628,7 +655,7 @@ shows a portion of the CCD in the upper right part of the chip; pixel values are
 </div>
 </div>
 <div class="section" id="dark-current-in-this-ccd">
-<h3><span class="section-number">2.2.3. </span>Dark current in this CCD<a class="headerlink" href="#dark-current-in-this-ccd" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.3. </span>Dark current in this CCD<a class="headerlink" href="#dark-current-in-this-ccd" title="Permalink to this headline">¶</a></h3>
 <p>The histogram below shows dark current along the horizontal axis and the number
 of pixels in the CCD with that dark current along the vertical axis. Since there
 is obvious sensor glow in the darks, three distributions are shown:</p>
@@ -678,9 +705,9 @@ equivalent dark current of 0.5<span class="math notranslate nohighlight">\(e^-\)
 </div>
 </div>
 <div class="section" id="case-2-thermoelectrically-cooled-camera">
-<h2><span class="section-number">2.3. </span>Case 2: Thermoelectrically-cooled camera<a class="headerlink" href="#case-2-thermoelectrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.3. </span>Case 2: Thermoelectrically-cooled camera<a class="headerlink" href="#case-2-thermoelectrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="taking-an-image-to-measure-dark-current">
-<h3><span class="section-number">2.3.1. </span>Taking an image to measure dark current<a class="headerlink" href="#taking-an-image-to-measure-dark-current" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.3.1. </span>Taking an image to measure dark current<a class="headerlink" href="#taking-an-image-to-measure-dark-current" title="Permalink to this headline">¶</a></h3>
 <p>The image below is a combination of 20 dark frames, each a 1000 sec exposure.
 That exposure time was chosen so that the expected number of dark electrons was
 at least somewhat larger than the read noise expected in a combination of 20
@@ -709,7 +736,7 @@ divide by the exposure time to obtain the dark current in <span class="math notr
 </div>
 </div>
 <div class="section" id="calculate-the-dark-current-for-each-pixel">
-<h3><span class="section-number">2.3.2. </span>Calculate the dark current for each pixel<a class="headerlink" href="#calculate-the-dark-current-for-each-pixel" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.3.2. </span>Calculate the dark current for each pixel<a class="headerlink" href="#calculate-the-dark-current-for-each-pixel" title="Permalink to this headline">¶</a></h3>
 <p>Recall that the dark current <span class="math notranslate nohighlight">\(d_c(T)\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -760,7 +787,7 @@ d_C(T) = g n_{dark}(t) / t.
 </div>
 </div>
 <div class="section" id="there-is-a-large-range-in-the-dark-current">
-<h3><span class="section-number">2.3.3. </span>There is a large range in the dark current<a class="headerlink" href="#there-is-a-large-range-in-the-dark-current" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.3.3. </span>There is a large range in the dark current<a class="headerlink" href="#there-is-a-large-range-in-the-dark-current" title="Permalink to this headline">¶</a></h3>
 <p>While the vast majority of the pixels do, as expected, have very low dark
 current, it is much higher for other pixels. These pixels, called hot pixels,
 can occur even in cryogenically-cooled cameras.</p>
@@ -807,7 +834,7 @@ roughly 0.1% of the pixels.</p>
 </div>
 </div>
 <div class="section" id="how-to-handle-hot-pixels">
-<h2><span class="section-number">2.4. </span>How to handle hot pixels<a class="headerlink" href="#how-to-handle-hot-pixels" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.4. </span>How to handle hot pixels<a class="headerlink" href="#how-to-handle-hot-pixels" title="Permalink to this headline">¶</a></h2>
 <p>There are a few ways you could handle this, which can be used in combination
 with each other:</p>
 <ul class="simple">
@@ -823,7 +850,7 @@ other exposure times.</p></li>
 </ul>
 </div>
 <div class="section" id="one-thing-not-to-do">
-<h2><span class="section-number">2.5. </span>One thing NOT to do<a class="headerlink" href="#one-thing-not-to-do" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.5. </span>One thing NOT to do<a class="headerlink" href="#one-thing-not-to-do" title="Permalink to this headline">¶</a></h2>
 <p>Do not take short dark frames and scale them up to longer exposure times. Modern
 cameras, even thermoelectrically-cooled ones, have very low dark current. If
 your dark frames have low exposure time then most of the pixels are measuring
@@ -834,7 +861,7 @@ larger than the expected read noise in the frames you combine to make a
 reference dark.</p>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>A dark frame only measures dark current if the expected dark counts exceed
 the read noise of the camera by a factor of a few.</p></li>
@@ -874,8 +901,8 @@ eliminating dark current, even if you have combined multiple images as in 2.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03-01-Dark-current-The-ideal-case.html" title="previous page"><span class="section-number">1. </span>Dark current: the ideal case</a>
-    <a class='right-next' id="next-link" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="next page"><span class="section-number">3. </span>Handling overscan and bias for dark frames</a>
+    <a class='left-prev' id="prev-link" href="03-01-Dark-current-The-ideal-case.html" title="previous page"><span class="section-number">3.1. </span>Dark current: the ideal case</a>
+    <a class='right-next' id="next-link" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="next page"><span class="section-number">3.3. </span>Handling overscan and bias for dark frames</a>
 
         </div>
         

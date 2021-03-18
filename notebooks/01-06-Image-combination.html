@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Image combination &#8212; CCD Data Reduction Guide</title>
+    <title>1.5. Image combination &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,8 +59,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Overscan" href="01-08-Overscan.html" />
-    <link rel="prev" title="3. Calibration overview" href="01-05-Calibration-overview.html" />
+    <link rel="next" title="1.6. Overscan" href="01-08-Overscan.html" />
+    <link rel="prev" title="1.4. Calibration overview" href="01-05-Calibration-overview.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +100,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +149,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +173,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +207,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +284,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -360,48 +387,48 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values">
-   4.1. The bottom line: combine by averaging images, but clip extreme values
+   1.5.1. The bottom line: combine by averaging images, but clip extreme values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#combination-method-average-or-median">
-   4.2. Combination method: average or median?
+   1.5.2. Combination method: average or median?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#image-view-of-these-distributions">
-     4.2.1. Image view of these distributions
+     1.5.2.1. Image view of these distributions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-effect-of-outliers">
-   4.3. The effect of outliers
+   1.5.3. The effect of outliers
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
-     4.3.1. Combining using the average has a noticeable effect on the result; median
+     1.5.3.1. Combining using the average has a noticeable effect on the result; median
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-solution-average-combine-but-clip-the-extreme-values">
-   4.4. The solution: average combine, but clip the extreme values
+   1.5.4. The solution: average combine, but clip the extreme values
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sigma-clipping">
-     4.4.1. Sigma clipping
+     1.5.4.1. Sigma clipping
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   4.5. Summary
+   1.5.5. Summary
   </a>
  </li>
 </ul>
@@ -417,7 +444,7 @@
               <div>
                 
   <div class="section" id="image-combination">
-<h1><span class="section-number">4. </span>Image combination<a class="headerlink" href="#image-combination" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.5. </span>Image combination<a class="headerlink" href="#image-combination" title="Permalink to this headline">¶</a></h1>
 <p>Image combination serves several purposes. Combining images:</p>
 <ul class="simple">
 <li><p>reduces noise in images</p></li>
@@ -434,7 +461,7 @@ in only one of the images (like cosmic rays) are not present in the combination.
 If done incorrectly, those features show up in your combined images and then
 contaminate your calibrated science images too.</p>
 <div class="section" id="the-bottom-line-combine-by-averaging-images-but-clip-extreme-values">
-<h2><span class="section-number">4.1. </span>The bottom line: combine by averaging images, but clip extreme values<a class="headerlink" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.1. </span>The bottom line: combine by averaging images, but clip extreme values<a class="headerlink" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values" title="Permalink to this headline">¶</a></h2>
 <p>The remainder of this notebook demonstrates this conclusion and explains how to
 do a combination by averaging images with <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/">ccdproc</a>.</p>
 <div class="cell docutils container">
@@ -470,7 +497,7 @@ do a combination by averaging images with <a class="reference external" href="ht
 </div>
 </div>
 <div class="section" id="combination-method-average-or-median">
-<h2><span class="section-number">4.2. </span>Combination method: average or median?<a class="headerlink" href="#combination-method-average-or-median" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.2. </span>Combination method: average or median?<a class="headerlink" href="#combination-method-average-or-median" title="Permalink to this headline">¶</a></h2>
 <p>In this section we’ll look at a simplified version of the challenges of
 combining images to reduce noise. It’s fair to think of astronomical images
 (especially bias and dark images) as being a Gaussian distribution of pixel
@@ -524,7 +551,7 @@ below because it can figure out what bin size to use for your data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f42ed1c9850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7feee153ec40&gt;
 </pre></div>
 </div>
 <img alt="../_images/01-06-Image-combination_7_1.png" src="../_images/01-06-Image-combination_7_1.png" />
@@ -536,7 +563,7 @@ distribution. The conclusion so far is that combining by averaging is mildly
 preferable to combining by median. Computationally, the mean is also faster to
 compute than the median.</p>
 <div class="section" id="image-view-of-these-distributions">
-<h3><span class="section-number">4.2.1. </span>Image view of these distributions<a class="headerlink" href="#image-view-of-these-distributions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.2.1. </span>Image view of these distributions<a class="headerlink" href="#image-view-of-these-distributions" title="Permalink to this headline">¶</a></h3>
 <p>As suggested above, we could view each of these distributions as an image
 instead of a histogram. One take away from the diagram below is that in this
 case, the difference between mean and median is not apparent.</p>
@@ -564,7 +591,7 @@ width of the initial distribution.</p>
 </div>
 </div>
 <div class="section" id="the-effect-of-outliers">
-<h2><span class="section-number">4.3. </span>The effect of outliers<a class="headerlink" href="#the-effect-of-outliers" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.3. </span>The effect of outliers<a class="headerlink" href="#the-effect-of-outliers" title="Permalink to this headline">¶</a></h2>
 <p>Suppose that, in just one of the 100 distributions we’re combining, there are a
 small number of extreme values. In astronomical images these extremes happen
 very frequently because of cosmic ray hits on the detector that cause, in one
@@ -627,7 +654,7 @@ looks for the middle value, an extreme value doesn’t affect the result too muc
 </div>
 </div>
 <div class="section" id="combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
-<h3><span class="section-number">4.3.1. </span>Combining using the average has a noticeable effect on the result; median<a class="headerlink" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.3.1. </span>Combining using the average has a noticeable effect on the result; median<a class="headerlink" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median" title="Permalink to this headline">¶</a></h3>
 <p>removes the artifact</p>
 <p>The effect of the outlier is <em>much</em> clearer if the distributions are displayed
 as images. If the distributions we’re combining were calibration images then the
@@ -661,7 +688,7 @@ are common.</p>
 </div>
 </div>
 <div class="section" id="the-solution-average-combine-but-clip-the-extreme-values">
-<h2><span class="section-number">4.4. </span>The solution: average combine, but clip the extreme values<a class="headerlink" href="#the-solution-average-combine-but-clip-the-extreme-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.4. </span>The solution: average combine, but clip the extreme values<a class="headerlink" href="#the-solution-average-combine-but-clip-the-extreme-values" title="Permalink to this headline">¶</a></h2>
 <p>The answer here is to first clip extreme values from the distributions and then
 combine using the average. That rejects outlying values like the median but with
 the modestly better statistical properties of the average. A method called
@@ -672,7 +699,7 @@ the modestly better statistical properties of the average. A method called
 The section below demonstrates and explains some of what’s happening behind the
 scenes in <a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a>.</p>
 <div class="section" id="sigma-clipping">
-<h3><span class="section-number">4.4.1. </span>Sigma clipping<a class="headerlink" href="#sigma-clipping" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.4.1. </span>Sigma clipping<a class="headerlink" href="#sigma-clipping" title="Permalink to this headline">¶</a></h3>
 <p>Sigma clipping means calculating how “far” each pixel to be combined is from the
 “typical” value and excluding values from the combination if they are “too far”
 from the pixel value.</p>
@@ -715,9 +742,9 @@ deviation from the average.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number combined	 Average	 Standard dev σ 	 10σ 
-        10	   1100.46	    299.85	   2998.49
-        20	   1050.28	    217.88	   2178.82
-       100	   1010.06	     99.50	    994.98
+        10	   1099.97	    300.01	   3000.13
+        20	   1049.87	    217.98	   2179.76
+       100	   1009.93	     99.51	    995.11
 </pre></div>
 </div>
 </div>
@@ -753,9 +780,9 @@ the extreme value will be excluded.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Number combined          Median              MAD σ                10σ         
-         10               1000.72               1.26               12.55        
-         20               1000.42               0.82                8.18        
-        100               1000.09               1.03               10.33        
+         10               1000.55               0.77                7.74        
+         20               1000.18               1.08               10.85        
+        100               1000.01               1.09               10.92        
 </pre></div>
 </div>
 </div>
@@ -805,7 +832,7 @@ you.</p>
 </div>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Combine images by (1) excluding extreme values using sigma clipping, with the
 median as the typical value and the MAD estimator of the standard deviation, and
 then (2) averaging the remaining pixels across all of the images.</p>
@@ -858,8 +885,8 @@ value that appeared in one image.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01-05-Calibration-overview.html" title="previous page"><span class="section-number">3. </span>Calibration overview</a>
-    <a class='right-next' id="next-link" href="01-08-Overscan.html" title="next page"><span class="section-number">5. </span>Overscan</a>
+    <a class='left-prev' id="prev-link" href="01-05-Calibration-overview.html" title="previous page"><span class="section-number">1.4. </span>Calibration overview</a>
+    <a class='right-next' id="next-link" href="01-08-Overscan.html" title="next page"><span class="section-number">1.6. </span>Overscan</a>
 
         </div>
         

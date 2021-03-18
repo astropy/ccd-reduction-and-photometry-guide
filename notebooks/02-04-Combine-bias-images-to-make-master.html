@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Combine bias images to make master &#8212; CCD Data Reduction Guide</title>
+    <title>2.3. Combine bias images to make master &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dark current and hot pixels" href="03-00-Dark-current-and-hot-pixels.html" />
-    <link rel="prev" title="1. Calibrating bias images" href="02-01-Calibrating-bias-images.html" />
+    <link rel="next" title="3. Dark current and hot pixels" href="03-00-Dark-current-and-hot-pixels.html" />
+    <link rel="prev" title="2.2. Calibrating bias images" href="02-02-Calibrating-bias-images.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -142,17 +147,22 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -161,32 +171,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -195,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -258,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -358,29 +385,29 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recommended-settings-for-image-combination">
-   2.1. Recommended settings for image combination
+   2.3.1. Recommended settings for image combination
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-1-cryogenically-cooled-camera">
-   2.2. Example 1: Cryogenically-cooled camera
+   2.3.2. Example 1: Cryogenically-cooled camera
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#result-for-example-1">
-     2.2.1. Result for Example 1
+     2.3.2.1. Result for Example 1
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-2-thermo-electrically-cooled-camera">
-   2.3. Example 2: Thermo-electrically cooled camera
+   2.3.3. Example 2: Thermo-electrically cooled camera
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#result-for-example-2">
-     2.3.1. Result for Example 2
+     2.3.3.1. Result for Example 2
     </a>
    </li>
   </ul>
@@ -398,7 +425,7 @@
               <div>
                 
   <div class="section" id="combine-bias-images-to-make-master">
-<h1><span class="section-number">2. </span>Combine bias images to make master<a class="headerlink" href="#combine-bias-images-to-make-master" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.3. </span>Combine bias images to make master<a class="headerlink" href="#combine-bias-images-to-make-master" title="Permalink to this headline">¶</a></h1>
 <p>The final step is to combine the individual calibrated bias images into a single
 combined image. That combined image will have less noise than the individual
 images, minimizing the noise added to the remaining images when the bias is
@@ -438,7 +465,7 @@ continuing with this one.</p>
 </div>
 </div>
 <div class="section" id="recommended-settings-for-image-combination">
-<h2><span class="section-number">2.1. </span>Recommended settings for image combination<a class="headerlink" href="#recommended-settings-for-image-combination" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.1. </span>Recommended settings for image combination<a class="headerlink" href="#recommended-settings-for-image-combination" title="Permalink to this headline">¶</a></h2>
 <p>As discussed in the <a class="reference internal" href="01-06-Image-combination.html"><span class="doc std std-doc">notebook about combining images</span></a>, the recommendation is
 that you combine by averaging the individual images but sigma clip to remove
 extreme values.</p>
@@ -455,7 +482,7 @@ to combine, how big they are, and how much memory your computer has.</p></li>
 factor of 2-3 lower than you want the maximum memory consumption to be.</em></p>
 </div>
 <div class="section" id="example-1-cryogenically-cooled-camera">
-<h2><span class="section-number">2.2. </span>Example 1: Cryogenically-cooled camera<a class="headerlink" href="#example-1-cryogenically-cooled-camera" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.2. </span>Example 1: Cryogenically-cooled camera<a class="headerlink" href="#example-1-cryogenically-cooled-camera" title="Permalink to this headline">¶</a></h2>
 <p>The remainder of this section assumes the calibrated bias images are in the
 folder <code class="docutils literal notranslate"><span class="pre">example1-reduced</span></code> which is created in the previous notebook.</p>
 <div class="cell docutils container">
@@ -501,7 +528,7 @@ easily identify which bias to use, and</p></li>
 </div>
 </div>
 <div class="section" id="result-for-example-1">
-<h3><span class="section-number">2.2.1. </span>Result for Example 1<a class="headerlink" href="#result-for-example-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.2.1. </span>Result for Example 1<a class="headerlink" href="#result-for-example-1" title="Permalink to this headline">¶</a></h3>
 <p>A single calibrated image and the combined image are shown below. There is
 significant two-dimensional structure in the bias that cannot easily be removed
 by subtracting only the overscan in the next image reduction steps. It takes
@@ -528,7 +555,7 @@ science images.</p>
 </div>
 </div>
 <div class="section" id="example-2-thermo-electrically-cooled-camera">
-<h2><span class="section-number">2.3. </span>Example 2: Thermo-electrically cooled camera<a class="headerlink" href="#example-2-thermo-electrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3.3. </span>Example 2: Thermo-electrically cooled camera<a class="headerlink" href="#example-2-thermo-electrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
 <p>The process for combining the images is exactly the same as in example 1. The
 only difference is the directory that contains the calibrated bias frames.</p>
 <div class="cell docutils container">
@@ -574,7 +601,7 @@ easily identify which bias to use, and</p></li>
 </div>
 </div>
 <div class="section" id="result-for-example-2">
-<h3><span class="section-number">2.3.1. </span>Result for Example 2<a class="headerlink" href="#result-for-example-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3.1. </span>Result for Example 2<a class="headerlink" href="#result-for-example-2" title="Permalink to this headline">¶</a></h3>
 <p>The difference between a single calibrated bias image and the combined bias
 image is much clearer in this case.</p>
 <div class="cell docutils container">
@@ -624,8 +651,8 @@ image is much clearer in this case.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="02-01-Calibrating-bias-images.html" title="previous page"><span class="section-number">1. </span>Calibrating bias images</a>
-    <a class='right-next' id="next-link" href="03-00-Dark-current-and-hot-pixels.html" title="next page">Dark current and hot pixels</a>
+    <a class='left-prev' id="prev-link" href="02-02-Calibrating-bias-images.html" title="previous page"><span class="section-number">2.2. </span>Calibrating bias images</a>
+    <a class='right-next' id="next-link" href="03-00-Dark-current-and-hot-pixels.html" title="next page"><span class="section-number">3. </span>Dark current and hot pixels</a>
 
         </div>
         

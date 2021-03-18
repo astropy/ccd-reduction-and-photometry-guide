@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. Reading images &#8212; CCD Data Reduction Guide</title>
+    <title>1.8. Reading images &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Handling overscan, trimming, and bias subtraction" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" />
-    <link rel="prev" title="6. Calibration choices you need to make" href="01-09-Calibration-choices-you-need-to-make.html" />
+    <link rel="next" title="2. Handling overscan, trimming, and bias subtraction" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" />
+    <link rel="prev" title="1.7. Calibration choices you need to make" href="01-09-Calibration-choices-you-need-to-make.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -142,17 +147,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -161,32 +171,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -195,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -258,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -358,17 +385,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-directories">
-   7.1. Working with directories
+   1.8.1. Working with directories
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#generate-some-fake-images">
-   7.2. Generate some fake images
+   1.8.2. Generate some fake images
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#option-1-reading-a-single-image-with-astropy-io-fits">
-   7.3. Option 1: Reading a single image with
+   1.8.3. Option 1: Reading a single image with
    <code class="docutils literal notranslate">
     <span class="pre">
      astropy.io.fits
@@ -378,7 +405,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#option-2-use-ccddata-to-read-in-a-single-image">
-   7.4. Option 2:  Use
+   1.8.4. Option 2:  Use
    <code class="docutils literal notranslate">
     <span class="pre">
      CCDData
@@ -389,7 +416,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#option-3-working-with-a-directory-of-images-using-imagefilecollection">
-   7.5. Option 3: Working with a directory of images using
+   1.8.5. Option 3: Working with a directory of images using
    <code class="docutils literal notranslate">
     <span class="pre">
      ImageFileCollection
@@ -399,12 +426,12 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#summary-of-directory-contents">
-     7.5.1. Summary of directory contents
+     1.8.5.1. Summary of directory contents
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-and-iterating-over-images">
-     7.5.2. Filtering and iterating over images
+     1.8.5.2. Filtering and iterating over images
     </a>
    </li>
   </ul>
@@ -422,7 +449,7 @@
               <div>
                 
   <div class="section" id="reading-images">
-<h1><span class="section-number">7. </span>Reading images<a class="headerlink" href="#reading-images" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.8. </span>Reading images<a class="headerlink" href="#reading-images" title="Permalink to this headline">¶</a></h1>
 <p>Astropy provides a few ways to read in FITS images, some in the core package and
 others in affiliated packages.</p>
 <p>Before exploring those, we’ll create a set of (fake) images to work with.</p>
@@ -436,7 +463,7 @@ others in affiliated packages.</p>
 </div>
 </div>
 <div class="section" id="working-with-directories">
-<h2><span class="section-number">7.1. </span>Working with directories<a class="headerlink" href="#working-with-directories" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8.1. </span>Working with directories<a class="headerlink" href="#working-with-directories" title="Permalink to this headline">¶</a></h2>
 <p>The cell below contains the path to the images. In this notebook we’ll use it
 both to store the fake images we generate and to read images. In normal use, you
 wouldn’t start by writing images there, however.</p>
@@ -457,7 +484,7 @@ about this.</p>
 </div>
 </div>
 <div class="section" id="generate-some-fake-images">
-<h2><span class="section-number">7.2. </span>Generate some fake images<a class="headerlink" href="#generate-some-fake-images" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8.2. </span>Generate some fake images<a class="headerlink" href="#generate-some-fake-images" title="Permalink to this headline">¶</a></h2>
 <p>The cells below generate some fake images to use later in the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,7 +584,7 @@ path/to/my/images/img-0027.fits
 </div>
 </div>
 <div class="section" id="option-1-reading-a-single-image-with-astropy-io-fits">
-<h2><span class="section-number">7.3. </span>Option 1: Reading a single image with <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code><a class="headerlink" href="#option-1-reading-a-single-image-with-astropy-io-fits" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8.3. </span>Option 1: Reading a single image with <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code><a class="headerlink" href="#option-1-reading-a-single-image-with-astropy-io-fits" title="Permalink to this headline">¶</a></h2>
 <p>This option gives you the most flexibility but is the least adapted to CCD
 images specifically. What you read in is a list of FITS extensions; you must
 first select the one you want then access the data or header as desired.</p>
@@ -613,19 +640,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.94177971, -0.0971064 ,  0.46885849, ...,  0.96424318,
-         0.78655262,  0.70729311],
-       [-1.64683841, -0.41723737,  0.20303175, ..., -1.45137533,
-        -0.636209  , -0.5383687 ],
-       [-1.45423084, -0.46754067,  2.12119996, ..., -0.22656583,
-        -1.09486892,  0.20611326],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.53071837, -0.09642759,  0.22732524, ...,  1.96681525,
+         0.91514115, -1.61700457],
+       [ 0.86558037, -0.11045387, -0.67695414, ...,  0.11221618,
+        -0.87087888, -0.50382778],
+       [-0.29192783,  0.04730181,  0.90047254, ...,  0.61454251,
+         0.99899352,  0.07093629],
        ...,
-       [ 1.13312544,  0.70510475,  0.21902252, ...,  0.15105813,
-         0.08035061,  0.11967444],
-       [ 0.42296925,  0.60749969, -1.75753892, ..., -0.25803326,
-        -0.94236871, -0.24477494],
-       [-0.46838757, -0.14629762,  0.27814147, ..., -0.69853978,
-        -0.02629578, -0.25714592]])
+       [ 0.07644062, -1.49684529, -3.80679952, ...,  0.18682   ,
+        -1.60708818,  0.36299487],
+       [-0.83899027, -0.01889642, -1.62878092, ...,  0.20631467,
+         0.16037065, -1.29501206],
+       [ 0.78188135, -0.3965356 , -0.20938141, ...,  0.42310097,
+         1.7176718 ,  0.35724586]])
 </pre></div>
 </div>
 </div>
@@ -633,7 +660,7 @@ BUNIT   = &#39;adu     &#39;
 <p>The <a class="reference external" href="https://astropy.readthedocs.io/en/stable/io/fits/index.html">documentation for io.fits</a> describes more of its capabilities.</p>
 </div>
 <div class="section" id="option-2-use-ccddata-to-read-in-a-single-image">
-<h2><span class="section-number">7.4. </span>Option 2:  Use <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> to read in a single image<a class="headerlink" href="#option-2-use-ccddata-to-read-in-a-single-image" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8.4. </span>Option 2:  Use <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> to read in a single image<a class="headerlink" href="#option-2-use-ccddata-to-read-in-a-single-image" title="Permalink to this headline">¶</a></h2>
 <p>Astropy contains a <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> object for representing a single image. It’s not as
 flexible as using <code class="docutils literal notranslate"><span class="pre">astrop.io.fits</span></code> directly (for example, it assumes there is
 only one FITS extension and that it contains image data) but it sets up several
@@ -675,19 +702,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.94177971, -0.0971064 ,  0.46885849, ...,  0.96424318,
-         0.78655262,  0.70729311],
-       [-1.64683841, -0.41723737,  0.20303175, ..., -1.45137533,
-        -0.636209  , -0.5383687 ],
-       [-1.45423084, -0.46754067,  2.12119996, ..., -0.22656583,
-        -1.09486892,  0.20611326],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.53071837, -0.09642759,  0.22732524, ...,  1.96681525,
+         0.91514115, -1.61700457],
+       [ 0.86558037, -0.11045387, -0.67695414, ...,  0.11221618,
+        -0.87087888, -0.50382778],
+       [-0.29192783,  0.04730181,  0.90047254, ...,  0.61454251,
+         0.99899352,  0.07093629],
        ...,
-       [ 1.13312544,  0.70510475,  0.21902252, ...,  0.15105813,
-         0.08035061,  0.11967444],
-       [ 0.42296925,  0.60749969, -1.75753892, ..., -0.25803326,
-        -0.94236871, -0.24477494],
-       [-0.46838757, -0.14629762,  0.27814147, ..., -0.69853978,
-        -0.02629578, -0.25714592]])
+       [ 0.07644062, -1.49684529, -3.80679952, ...,  0.18682   ,
+        -1.60708818,  0.36299487],
+       [-0.83899027, -0.01889642, -1.62878092, ...,  0.20631467,
+         0.16037065, -1.29501206],
+       [ 0.78188135, -0.3965356 , -0.20938141, ...,  0.42310097,
+         1.7176718 ,  0.35724586]])
 </pre></div>
 </div>
 </div>
@@ -697,7 +724,7 @@ with WCS, slicing, and more. Some of those features will be discussed in more
 detail in the notebooks that follow.</p>
 </div>
 <div class="section" id="option-3-working-with-a-directory-of-images-using-imagefilecollection">
-<h2><span class="section-number">7.5. </span>Option 3: Working with a directory of images using <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code><a class="headerlink" href="#option-3-working-with-a-directory-of-images-using-imagefilecollection" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8.5. </span>Option 3: Working with a directory of images using <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code><a class="headerlink" href="#option-3-working-with-a-directory-of-images-using-imagefilecollection" title="Permalink to this headline">¶</a></h2>
 <p>The affiliated package <a class="reference external" href="https://ccdproc.readthedocs.io/">ccdproc</a> provides an easier way
 to work with collections of images in a directory: an <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code>. The
 <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code> is initialized with the name of the directory containing
@@ -713,7 +740,7 @@ the images.</p>
 <p>Note that we didn’t need to worry about using <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> to combine the directory
 and file name, instead we give the collection the name of the directory.</p>
 <div class="section" id="summary-of-directory-contents">
-<h3><span class="section-number">7.5.1. </span>Summary of directory contents<a class="headerlink" href="#summary-of-directory-contents" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.8.5.1. </span>Summary of directory contents<a class="headerlink" href="#summary-of-directory-contents" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">summary</span></code> property provides an overview of the files in the directory: it’s
 an astropy <code class="docutils literal notranslate"><span class="pre">Table</span></code>, so you can access columns in the usual way.</p>
 <div class="cell docutils container">
@@ -724,7 +751,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table masked=True length=28</i>
-<table id="table140512102670288" class="table-striped table-bordered table-condensed">
+<table id="table140181810033136" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -752,7 +779,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 </div>
 <div class="section" id="filtering-and-iterating-over-images">
-<h3><span class="section-number">7.5.2. </span>Filtering and iterating over images<a class="headerlink" href="#filtering-and-iterating-over-images" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.8.5.2. </span>Filtering and iterating over images<a class="headerlink" href="#filtering-and-iterating-over-images" title="Permalink to this headline">¶</a></h3>
 <p>The great thing about <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code> is that it provides convenient ways
 to filter or loop over files via FITS header keyword values.</p>
 <p>For example, looping over just the flat files is one line of code:</p>
@@ -783,11 +810,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.002550705871626
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0004341451466272
-In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9951377183947056
-In file img-0024.fits the exposure is: 30.0 with standard deviation  1.000224475303619
-In file img-0026.fits the exposure is: 30.0 with standard deviation  1.000625705158555
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9987553585237646
+In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9999076044333147
+In file img-0022.fits the exposure is: 30.0 with standard deviation  1.003986064555978
+In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0015000584483915
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0067498249723643
 </pre></div>
 </div>
 </div>
@@ -885,8 +912,8 @@ BUNIT   = &#39;adu     &#39;
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page"><span class="section-number">6. </span>Calibration choices you need to make</a>
-    <a class='right-next' id="next-link" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page">Handling overscan, trimming, and bias subtraction</a>
+    <a class='left-prev' id="prev-link" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page"><span class="section-number">1.7. </span>Calibration choices you need to make</a>
+    <a class='right-next' id="next-link" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page"><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction</a>
 
         </div>
         

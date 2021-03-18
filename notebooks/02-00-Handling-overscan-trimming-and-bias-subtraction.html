@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Handling overscan, trimming, and bias subtraction &#8212; CCD Data Reduction Guide</title>
+    <title>2. Handling overscan, trimming, and bias subtraction &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,13 +54,11 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Calibrating bias images" href="02-01-Calibrating-bias-images.html" />
-    <link rel="prev" title="7. Reading images" href="01-11-reading-images.html" />
+    <link rel="next" title="2.1. About bias and overscan" href="02-01-overscan-trimming-and-bias-subtraction-background.html" />
+    <link rel="prev" title="1.8. Reading images" href="01-11-reading-images.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +147,22 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +171,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -352,43 +377,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sample-bias-images">
-   Sample bias images
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#note-a-few-things">
-     Note a few things
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#impact-of-combining-images-on-noise">
-   Impact of combining images on noise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bias-calibration-overview">
-   Bias calibration  overview
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
         </div>
     </div>
 </div>
@@ -398,9 +386,7 @@
               <div>
                 
   <div class="section" id="handling-overscan-trimming-and-bias-subtraction">
-<h1>Handling overscan, trimming, and bias subtraction<a class="headerlink" href="#handling-overscan-trimming-and-bias-subtraction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h1><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction<a class="headerlink" href="#handling-overscan-trimming-and-bias-subtraction" title="Permalink to this headline">¶</a></h1>
 <p>The bias in a CCD camera is a DC offset applied to all pixels so that when the
 voltage in each pixel is converted to a number, the number will always be
 positive. In an ideal CCD the bias would be the same for every pixel and not
@@ -410,147 +396,8 @@ and can vary by a count or two from night to night or during a night.</p>
 time; think about it as a command to the camera to do whatever it usually does
 to prepare the camera’s electronics to take an image and then immediately read
 out the CCD as though you had taken a picture.</p>
-</div>
-<div class="section" id="sample-bias-images">
-<h2>Sample bias images<a class="headerlink" href="#sample-bias-images" title="Permalink to this headline">¶</a></h2>
-<p>The images below are a single bias frame and an average 100 bias frames from an
-<a class="reference external" href="http://www.andor.com/pdfs/specifications/Apogee_Aspen_CG16M_Specifications.pdf">Andor Apogee Aspen CG16M</a>, a low-end 4k × 4k CCD with a
-<a class="reference external" href="http://www.onsemi.com/pub/Collateral/KAF-16803-D.PDF">Kodak KAF-16803 sensor chip</a>. That model camera has a typical bias level
-around 1000 and read noise around 10 <span class="math notranslate nohighlight">\(e^-\)</span>, though the precise value varies from
-camera to camera and with temperature.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use custom style for larger fonts and figures</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;guide.mplstyle&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">hist</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
-
-<span class="n">download_base_url</span> <span class="o">=</span> <span class="s1">&#39;http://physics.mnstate.edu/craig/ccd-guide/&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: block_reduce was moved to the astropy.nddata.blocks module.  Please update your import statement. [astropy.nddata.utils]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_bias</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">download_base_url</span> <span class="o">+</span> <span class="s1">&#39;dark-test-0100bias.fit.gz&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;adu&#39;</span><span class="p">)</span>
-<span class="n">one_hundred_bias</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">download_base_url</span> <span class="o">+</span> <span class="s1">&#39;master_bias.fit.gz&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;adu&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: using the unit adu passed to the FITS reader instead of the unit adu in the FITS file. [astropy.nddata.ccddata]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_1_bias</span><span class="p">,</span> <span class="n">ax_avg_bias</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
-
-<span class="n">show_image</span><span class="p">(</span><span class="n">one_bias</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_1_bias</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">input_ratio</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">ax_1_bias</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Single bias image&#39;</span><span class="p">)</span>
-<span class="n">show_image</span><span class="p">(</span><span class="n">one_hundred_bias</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_avg_bias</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">input_ratio</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">ax_avg_bias</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;100 bias images combined&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02-00-Handling-overscan-trimming-and-bias-subtraction_9_0.png" src="../_images/02-00-Handling-overscan-trimming-and-bias-subtraction_9_0.png" />
-</div>
-</div>
-<div class="section" id="note-a-few-things">
-<h3>Note a few things<a class="headerlink" href="#note-a-few-things" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>The bias level in this specific camera is about 1023 (the mid-range of the
-colorbar).</p></li>
-<li><p>The image is brighter on the left and right edges. This “amplifier glow” is
-frequently present and caused by the CCD electronics (photosensors with an
-applied voltage are LEDs).</p></li>
-<li><p>There are several vertical lines; these are columns for which the bias level
-is consistently higher.</p></li>
-<li><p>There is noticeable “static” in the images; that is read noise.</p></li>
-<li><p>None of the variations are particularly large.</p></li>
-<li><p>Combining several bias images vastly reduces the read noise. This example is a
-little unrealistic in that 100 bias images were combined, but it still illustrates the
-idea that combining images reduces noise.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="impact-of-combining-images-on-noise">
-<h2>Impact of combining images on noise<a class="headerlink" href="#impact-of-combining-images-on-noise" title="Permalink to this headline">¶</a></h2>
-<p>As discussed at length in the <a class="reference internal" href="01-06-Image-combination.html"><span class="doc std std-doc">notebook on combination</span></a>, the reason for
-taking and combining several calibration images is to reduce the noise if the
-images are used for calibration. The difference between a single image and a
-combination of images is apparent in the images above. Another way to see the
-impact of combining images is in the histogram of pixel values. Notice that the
-distribution of values is much narrower for the combined image than for a single
-bias. Pixels near the edges, where the amplifier glow is large, are binned
-separately from the rest of the pixels to emphasize the uniformity of the chip
-away from the glow.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">one_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One bias&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;deepskyblue&#39;</span><span class="p">)</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">one_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">one_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">30</span><span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One bias (edges only)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightskyblue&#39;</span><span class="p">)</span>
-<span class="c1">#hist(, bins=800, alpha=0.2, label=&#39;One bias (edges only)&#39;, color=&#39;darkblue&#39;)</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">one_hundred_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One hundred bias images&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">)</span>
-<span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">one_hundred_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">15</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">one_hundred_bias</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">30</span><span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One hundred bias images (edges only)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span>
-
-<span class="c1">#hist(one_hundred_bias.data[:, :15].flatten(), bins=800, alpha=0.4, label=&#39;One hundred bias images&#39;, color=&#39;darkgreen&#39;)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">975</span><span class="p">,</span> <span class="mi">1400</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pixel value&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02-00-Handling-overscan-trimming-and-bias-subtraction_12_0.png" src="../_images/02-00-Handling-overscan-trimming-and-bias-subtraction_12_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="bias-calibration-overview">
-<h2>Bias calibration  overview<a class="headerlink" href="#bias-calibration-overview" title="Permalink to this headline">¶</a></h2>
-<p>The progression here is to “calibrate” the bias images by subtracting overscan,
-if desired, trim the overscan from the bias images if it is present, and combine
-all of the bias images to make a “combined” bias (another common term for these
-images is “master” bias and occasionally “super” bias).</p>
+<p>The <em>overscan</em> is a portion of CCD chip that is not exposed to light. In some cameras this is literally several extra rows and/or columns that are not exposed to light while in others the overscan is produced electronically. It can be useful if the bias level changes over the course of a night.</p>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -579,8 +426,8 @@ images is “master” bias and occasionally “super” bias).</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01-11-reading-images.html" title="previous page"><span class="section-number">7. </span>Reading images</a>
-    <a class='right-next' id="next-link" href="02-01-Calibrating-bias-images.html" title="next page"><span class="section-number">1. </span>Calibrating bias images</a>
+    <a class='left-prev' id="prev-link" href="01-11-reading-images.html" title="previous page"><span class="section-number">1.8. </span>Reading images</a>
+    <a class='right-next' id="next-link" href="02-01-overscan-trimming-and-bias-subtraction-background.html" title="next page"><span class="section-number">2.1. </span>About bias and overscan</a>
 
         </div>
         

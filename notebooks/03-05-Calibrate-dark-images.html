@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Calibrate dark images &#8212; CCD Data Reduction Guide</title>
+    <title>3.4. Calibrate dark images &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Combine calibrated dark images for use in later reduction steps" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" />
-    <link rel="prev" title="3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
+    <link rel="next" title="3.5. Combine calibrated dark images for use in later reduction steps" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" />
+    <link rel="prev" title="3.3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -142,17 +147,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -161,32 +171,32 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -195,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -258,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -358,39 +385,39 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-1-overscan-subtracted-bias-not-removed">
-   4.1. Example 1: Overscan subtracted, bias not removed
+   3.4.1. Example 1: Overscan subtracted, bias not removed
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#take-a-look-at-what-images-you-have">
-     4.1.1. Take a look at what images you have
+     3.4.1.1. Take a look at what images you have
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#raw-images-everything-except-the-darks">
-       4.1.1.1. Raw images, everything except the darks
+       3.4.1.1.1. Raw images, everything except the darks
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#raw-dark-frames">
-       4.1.1.2. Raw dark frames
+       3.4.1.1.2. Raw dark frames
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decide-which-calibration-steps-to-take">
-     4.1.2. Decide which calibration  steps to take
+     3.4.1.2. Decide which calibration  steps to take
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#calibrate-the-individual-dark-frames">
-     4.1.3. Calibrate the individual dark frames
+     3.4.1.3. Calibrate the individual dark frames
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#reduced-images-so-far">
-       4.1.3.1. Reduced images (so far)
+       3.4.1.3.1. Reduced images (so far)
       </a>
      </li>
     </ul>
@@ -399,17 +426,17 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-2-overscan-not-subtracted-bias-is-removed">
-   4.2. Example 2: Overscan not subtracted, bias is removed
+   3.4.2. Example 2: Overscan not subtracted, bias is removed
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decide-what-steps-to-take-next">
-     4.2.1. Decide what steps to take next
+     3.4.2.1. Decide what steps to take next
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#calibration-the-individual-dark-frames">
-     4.2.2. Calibration the individual dark frames
+     3.4.2.2. Calibration the individual dark frames
     </a>
    </li>
   </ul>
@@ -427,7 +454,7 @@
               <div>
                 
   <div class="section" id="calibrate-dark-images">
-<h1><span class="section-number">4. </span>Calibrate dark images<a class="headerlink" href="#calibrate-dark-images" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.4. </span>Calibrate dark images<a class="headerlink" href="#calibrate-dark-images" title="Permalink to this headline">¶</a></h1>
 <p>Dark images, like any other images, need to be calibrated. Depending on the data
 you have and the choices you have made in reducing your data, the steps to
 reducing your images may include:</p>
@@ -451,9 +478,9 @@ exposure time).</p></li>
 </div>
 </div>
 <div class="section" id="example-1-overscan-subtracted-bias-not-removed">
-<h2><span class="section-number">4.1. </span>Example 1: Overscan subtracted, bias not removed<a class="headerlink" href="#example-1-overscan-subtracted-bias-not-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.1. </span>Example 1: Overscan subtracted, bias not removed<a class="headerlink" href="#example-1-overscan-subtracted-bias-not-removed" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="take-a-look-at-what-images-you-have">
-<h3><span class="section-number">4.1.1. </span>Take a look at what images you have<a class="headerlink" href="#take-a-look-at-what-images-you-have" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.1.1. </span>Take a look at what images you have<a class="headerlink" href="#take-a-look-at-what-images-you-have" title="Permalink to this headline">¶</a></h3>
 <p>First we gather up some information about the raw images and the reduced images
 up to this point. These examples have darks stored in a subdirectory of the
 folder with the rest of the images, so we create an <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code> for
@@ -472,7 +499,7 @@ each.</p>
 </div>
 </div>
 <div class="section" id="raw-images-everything-except-the-darks">
-<h4><span class="section-number">4.1.1.1. </span>Raw images, everything except the darks<a class="headerlink" href="#raw-images-everything-except-the-darks" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.4.1.1.1. </span>Raw images, everything except the darks<a class="headerlink" href="#raw-images-everything-except-the-darks" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_images_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exptime&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">]</span>
@@ -481,7 +508,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=14</i>
-<table id="table139813962368672" class="table-striped table-bordered table-condensed">
+<table id="table140424252442416" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -502,7 +529,7 @@ each.</p>
 </div>
 </div>
 <div class="section" id="raw-dark-frames">
-<h4><span class="section-number">4.1.1.2. </span>Raw dark frames<a class="headerlink" href="#raw-dark-frames" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.4.1.1.2. </span>Raw dark frames<a class="headerlink" href="#raw-dark-frames" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_darks_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exptime&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">]</span>
@@ -511,7 +538,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=10</i>
-<table id="table139813246477936" class="table-striped table-bordered table-condensed">
+<table id="table140423536478864" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -529,7 +556,7 @@ each.</p>
 </div>
 </div>
 <div class="section" id="decide-which-calibration-steps-to-take">
-<h3><span class="section-number">4.1.2. </span>Decide which calibration  steps to take<a class="headerlink" href="#decide-which-calibration-steps-to-take" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.1.2. </span>Decide which calibration  steps to take<a class="headerlink" href="#decide-which-calibration-steps-to-take" title="Permalink to this headline">¶</a></h3>
 <p>This example is, again, one of the chips of the LFC camera at Palomar. In
 earlier notebooks we have seen that the chip has a <a class="reference external" href="01.08-Overscan.ipynb#Case-1:-Cryogenically-cooled-Large-Format-Camera-(LFC)-at-Palomar">useful overscan region</a>, has little dark current except for some hot pixels, and sensor glow in
 one corner of the chip.</p>
@@ -552,7 +579,7 @@ be compensated for.</p>
 rescale them to a different exposure time.</p>
 </div>
 <div class="section" id="calibrate-the-individual-dark-frames">
-<h3><span class="section-number">4.1.3. </span>Calibrate the individual dark frames<a class="headerlink" href="#calibrate-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.1.3. </span>Calibrate the individual dark frames<a class="headerlink" href="#calibrate-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">ex1_darks_raw</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;DARK&#39;</span><span class="p">,</span>            <span class="c1"># Just get the dark frames</span>
@@ -573,7 +600,7 @@ rescale them to a different exposure time.</p>
 </div>
 </div>
 <div class="section" id="reduced-images-so-far">
-<h4><span class="section-number">4.1.3.1. </span>Reduced images (so far)<a class="headerlink" href="#reduced-images-so-far" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.4.1.3.1. </span>Reduced images (so far)<a class="headerlink" href="#reduced-images-so-far" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_images_reduced</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -583,7 +610,7 @@ rescale them to a different exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=16</i>
-<table id="table139813962368816" class="table-striped table-bordered table-condensed">
+<table id="table140423535956272" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -608,7 +635,7 @@ rescale them to a different exposure time.</p>
 </div>
 </div>
 <div class="section" id="example-2-overscan-not-subtracted-bias-is-removed">
-<h2><span class="section-number">4.2. </span>Example 2: Overscan not subtracted, bias is removed<a class="headerlink" href="#example-2-overscan-not-subtracted-bias-is-removed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.2. </span>Example 2: Overscan not subtracted, bias is removed<a class="headerlink" href="#example-2-overscan-not-subtracted-bias-is-removed" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex2_path_raw</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example-thermo-electric&#39;</span><span class="p">)</span>
@@ -630,7 +657,7 @@ rescale them to a different exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=32</i>
-<table id="table139813246480096-422571" class="table-striped table-bordered table-condensed">
+<table id="table140423536408656-342941" class="table-striped table-bordered table-condensed">
 <thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
 <tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
 <tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
@@ -687,14 +714,14 @@ require.config({paths: {
     datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
 }});
 require(["datatables"], function(){
-    console.log("$('#table139813246480096-422571').dataTable()");
+    console.log("$('#table140423536408656-342941').dataTable()");
 
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "optionalnum-asc": astropy_sort_num,
     "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
 });
 
-    $('#table139813246480096-422571').dataTable({
+    $('#table140423536408656-342941').dataTable({
         order: [],
         pageLength: 50,
         lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
@@ -706,7 +733,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 </div></div>
 </div>
 <div class="section" id="decide-what-steps-to-take-next">
-<h3><span class="section-number">4.2.1. </span>Decide what steps to take next<a class="headerlink" href="#decide-what-steps-to-take-next" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.2.1. </span>Decide what steps to take next<a class="headerlink" href="#decide-what-steps-to-take-next" title="Permalink to this headline">¶</a></h3>
 <p>In this case the only dark frames have exposure time 90 sec. Though that matches
 the exposure time of the science images, the flat field images are much shorter
 exposure time, ranging from 1 sec to 1.21 sec. This type of range of exposure is
@@ -722,7 +749,7 @@ to a different exposure time.</p></li>
 </ol>
 </div>
 <div class="section" id="calibration-the-individual-dark-frames">
-<h3><span class="section-number">4.2.2. </span>Calibration the individual dark frames<a class="headerlink" href="#calibration-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.2.2. </span>Calibration the individual dark frames<a class="headerlink" href="#calibration-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
 <p>First, we read the combined bias image created in the previous notebook. Though
 we could do this based on the file name, using a systematic set of header
 keywords to keep track of which images have been combined is less likely to lead
@@ -782,8 +809,8 @@ to errors.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="previous page"><span class="section-number">3. </span>Handling overscan and bias for dark frames</a>
-    <a class='right-next' id="next-link" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" title="next page"><span class="section-number">5. </span>Combine calibrated dark images for use in later reduction steps</a>
+    <a class='left-prev' id="prev-link" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="previous page"><span class="section-number">3.3. </span>Handling overscan and bias for dark frames</a>
+    <a class='right-next' id="next-link" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" title="next page"><span class="section-number">3.5. </span>Combine calibrated dark images for use in later reduction steps</a>
 
         </div>
         

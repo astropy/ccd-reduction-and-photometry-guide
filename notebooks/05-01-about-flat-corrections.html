@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3. Handling overscan and bias for dark frames &#8212; CCD Data Reduction Guide</title>
+    <title>4.1. More about flat corrections &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.4. Calibrate dark images" href="03-05-Calibrate-dark-images.html" />
-    <link rel="prev" title="3.2. Real dark current: noise and other artifacts" href="03-02-Real-dark-current-noise-and-other-artifacts.html" />
+    <link rel="next" title="4.2. Calibrating the flats" href="05-03-Calibrating-the-flats.html" />
+    <link rel="prev" title="4. Flat corrections" href="05-00-Flat-corrections.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -169,11 +169,11 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
    3. Dark current and dark frames
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
      3.1. Dark current: the ideal case
@@ -184,8 +184,8 @@
      3.2. Real dark current: noise and other artifacts
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
      3.3. Handling overscan and bias for dark frames
     </a>
    </li>
@@ -203,13 +203,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
    4. Flat fielding
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="05-01-about-flat-corrections.html">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.1. Calibrating flat frames
     </a>
    </li>
@@ -320,7 +320,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/03-04-Handling-overscan-and-bias-for-dark-frames.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/05-01-about-flat-corrections.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -337,10 +337,10 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-04-Handling-overscan-and-bias-for-dark-frames.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/05-01-about-flat-corrections.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/03-04-Handling-overscan-and-bias-for-dark-frames.ipynb"><button
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/05-01-about-flat-corrections.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -360,7 +360,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/03-04-Handling-overscan-and-bias-for-dark-frames.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/05-01-about-flat-corrections.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -384,21 +384,14 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-options-for-reducing-dark-frames">
-   3.3.1. The options for reducing dark frames
+  <a class="reference internal nav-link" href="#overview-of-taking-images-for-flat-corrections">
+   4.1.1. Overview of taking images for flat corrections
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#do-you-need-to-subtract-overscan">
-     3.3.1.1. 1. Do you need to subtract overscan?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#do-you-need-to-scale-the-darks">
-     3.3.1.2. 2. Do you need to scale the darks?
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calibrating-and-combining-flat-images">
+   4.1.2. Calibrating and combining flat images
+  </a>
  </li>
 </ul>
 
@@ -412,44 +405,44 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
         
               <div>
                 
-  <div class="section" id="handling-overscan-and-bias-for-dark-frames">
-<h1><span class="section-number">3.3. </span>Handling overscan and bias for dark frames<a class="headerlink" href="#handling-overscan-and-bias-for-dark-frames" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-options-for-reducing-dark-frames">
-<h2><span class="section-number">3.3.1. </span>The options for reducing dark frames<a class="headerlink" href="#the-options-for-reducing-dark-frames" title="Permalink to this headline">¶</a></h2>
-<p>The next steps to take depend on two things:</p>
-<ol class="simple">
-<li><p>Are you subtracting overscan? If so, you should subtract overscan for the
-dark frames.</p></li>
-<li><p>Will you need to scale these darks to a different exposure time? If so, you
-need to subtract bias from the darks. If not, leave the bias in.</p></li>
-</ol>
-<div class="section" id="do-you-need-to-subtract-overscan">
-<h3><span class="section-number">3.3.1.1. </span>1. Do you need to subtract overscan?<a class="headerlink" href="#do-you-need-to-subtract-overscan" title="Permalink to this headline">¶</a></h3>
-<p>If you decide to subtract the overscan from <em>any</em> of the images used in your
-data reduction then you must subtract overscan from <em>all</em> of the images. This
-includes the darks, and is independent of whether or not you intend to scale the dark
-frames to other exposure times.</p>
-<p>Use <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/reduction_toolbox.html#overscan-subtraction"><code class="docutils literal notranslate"><span class="pre">ccdproc.subtract_overscan</span></code></a> to remove the overscan. See the notebook XX
-for a discussion of overscan, and see YY for a worked example in which overscan
-is subtracted.</p>
+  <div class="section" id="more-about-flat-corrections">
+<h1><span class="section-number">4.1. </span>More about flat corrections<a class="headerlink" href="#more-about-flat-corrections" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview-of-taking-images-for-flat-corrections">
+<h2><span class="section-number">4.1.1. </span>Overview of taking images for flat corrections<a class="headerlink" href="#overview-of-taking-images-for-flat-corrections" title="Permalink to this headline">¶</a></h2>
+<p>There are a few ways of taking “flat” images:</p>
+<ul class="simple">
+<li><p>Twilight flats are images of the sky near zenith taken around sunrise or
+sunset.</p></li>
+<li><p>Dome flats are images of the inside of the dome (typically of a smooth
+surface, not of the dome itself),  illuminated by some light source in the dome.
+For smaller telescopes an electroluminescent or LED illuminated panel can be
+used as the light source.</p></li>
+<li><p>Sky flats are composed of several science images.</p></li>
+</ul>
+<p>Ideally the flat images have fairly high counts (roughly half the maximum counts
+of the detector) so that the <em>only</em> important source of error is Poisson error
+due to the light in the flat images, and so that the signal-to-noise ratio in
+those images is essentially zero.</p>
 </div>
-<div class="section" id="do-you-need-to-scale-the-darks">
-<h3><span class="section-number">3.3.1.2. </span>2. Do you need to scale the darks?<a class="headerlink" href="#do-you-need-to-scale-the-darks" title="Permalink to this headline">¶</a></h3>
-<p>It depends on the exposure times of the other images you need to reduce. If the
-other images have exposure times that match your dark frames then you do not
-need to scale the darks. If any other images (except bias frames, which are
-always zero exposure) have exposure time that do not match the exposure times of
-the darks, then you will need to scale the darks by exposure time.</p>
-<p>If you do need to scale the dark frames, then you should subtract the bias from
-them using <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/reduction_toolbox.html#subtract-bias-and-dark"><code class="docutils literal notranslate"><span class="pre">ccdproc.subtract_bias</span></code></a>. Examples of using
-<a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/reduction_toolbox.html#subtract-bias-and-dark"><code class="docutils literal notranslate"><span class="pre">ccdproc.subtract_bias</span></code></a> are in the next notebook.</p>
-<p>If you do not need to scale the dark frames to a different exposure time then do
-not subtract the bias from the darks. The dark frames will serve to remove both
-the bias and the dark current your images.</p>
-<p>As a reminder, you should try very hard to avoid scaling dark frames up to a
-longer exposure time because you will primarily be scaling up noise rather than
-dark current.</p>
-</div>
+<div class="section" id="calibrating-and-combining-flat-images">
+<h2><span class="section-number">4.1.2. </span>Calibrating and combining flat images<a class="headerlink" href="#calibrating-and-combining-flat-images" title="Permalink to this headline">¶</a></h2>
+<p>The process of calibrating and combining flat frames is largely the same
+regardless of the light source being used.</p>
+<p>It is useful to think of flat frames as just like science images of stars or
+galaxies. The telescope is taking a picture of a light source, so bias and dark
+need to be removed from the individual images.</p>
+<p>When combining the images there is a new step we have not discussed yet:
+normalizing (also called rescaling) the calibrated flat frames to a common mean
+or median before combining them. In both sky and twilight flats the illumination
+varies naturally from frame-to-frame. If the images are not scaled to a common
+value before combining, then the ones taken while the sky is brighter will
+inappropriately dominate the result. Dome flats ought to be, in principle,
+perfectly stable with no time variation in their illumination. In practice,
+every light source varies at some level; if you are trying to correct 1%
+differences in illumination, then 1% fluctuations in the light source matter.</p>
+<p>Typically the mean or median is scaled to 1.0 before combining so that when the
+science images are divided by the calibrated, combined flats, the science image
+values do not change too much.</p>
 </div>
 </div>
 
@@ -478,8 +471,8 @@ dark current.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03-02-Real-dark-current-noise-and-other-artifacts.html" title="previous page"><span class="section-number">3.2. </span>Real dark current: noise and other artifacts</a>
-    <a class='right-next' id="next-link" href="03-05-Calibrate-dark-images.html" title="next page"><span class="section-number">3.4. </span>Calibrate dark images</a>
+    <a class='left-prev' id="prev-link" href="05-00-Flat-corrections.html" title="previous page"><span class="section-number">4. </span>Flat corrections</a>
+    <a class='right-next' id="next-link" href="05-03-Calibrating-the-flats.html" title="next page"><span class="section-number">4.2. </span>Calibrating the flats</a>
 
         </div>
         

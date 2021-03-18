@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Dark current: the ideal case &#8212; CCD Data Reduction Guide</title>
+    <title>3.1. Dark current: the ideal case &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,8 +59,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Real dark current: noise and other artifacts" href="03-02-Real-dark-current-noise-and-other-artifacts.html" />
-    <link rel="prev" title="Dark current and hot pixels" href="03-00-Dark-current-and-hot-pixels.html" />
+    <link rel="next" title="3.2. Real dark current: noise and other artifacts" href="03-02-Real-dark-current-noise-and-other-artifacts.html" />
+    <link rel="prev" title="3. Dark current and hot pixels" href="03-00-Dark-current-and-hot-pixels.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +100,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +149,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +173,32 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +207,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +284,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -360,51 +387,51 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-dark-frame-measures-dark-current">
-   1.1. A dark frame measures dark current
+   3.1.1. A dark frame measures dark current
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#convenience-functions">
-     1.1.1. Convenience functions
+     3.1.1.1. Convenience functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dark-current-theory">
-   1.2. Dark current theory
+   3.1.2. Dark current theory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#illustration-with-dark-current-only">
-   1.3. Illustration with dark current only
+   3.1.3. Illustration with dark current only
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dark-current-is-a-random-process">
-     1.3.1. Dark current is a random process
+     3.1.3.1. Dark current is a random process
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dark-counts-follow-a-poisson-distribution">
-     1.3.2. Dark counts follow a Poisson distribution
+     3.1.3.2. Dark counts follow a Poisson distribution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#illustration-with-dark-current-and-read-noise">
-   1.4. Illustration with dark current and read noise
+   3.1.4. Illustration with dark current and read noise
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-noise">
-     1.4.1. High noise
+     3.1.4.1. High noise
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#low-noise">
-     1.4.2. Low noise
+     3.1.4.2. Low noise
     </a>
    </li>
   </ul>
@@ -422,7 +449,7 @@
               <div>
                 
   <div class="section" id="dark-current-the-ideal-case">
-<h1><span class="section-number">1. </span>Dark current: the ideal case<a class="headerlink" href="#dark-current-the-ideal-case" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.1. </span>Dark current: the ideal case<a class="headerlink" href="#dark-current-the-ideal-case" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -445,7 +472,7 @@
 </div>
 </div>
 <div class="section" id="a-dark-frame-measures-dark-current">
-<h2><span class="section-number">1.1. </span>A dark frame measures dark current<a class="headerlink" href="#a-dark-frame-measures-dark-current" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.1. </span>A dark frame measures dark current<a class="headerlink" href="#a-dark-frame-measures-dark-current" title="Permalink to this headline">¶</a></h2>
 <p>Recall that <em>dark current</em> refers to counts (electrons) generated in a pixel
 because an electron in the pixel happens to have enough energy to “break free”
 and register as a count. The distribution of electron thermal energies in a pixel
@@ -461,7 +488,7 @@ with the shutter closed. It is the sum of the bias level of your camera, the
 readout noise, and the dark current.</p>
 <p>You measure the dark current in your camera by taking dark frames.</p>
 <div class="section" id="convenience-functions">
-<h3><span class="section-number">1.1.1. </span>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.1.1. </span>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h3>
 <p>A couple of functions that will be reused a few times in this notebook are
 defined below.</p>
 <p><strong>A function to generate dark frames</strong></p>
@@ -577,7 +604,7 @@ below.</p>
 </div>
 </div>
 <div class="section" id="dark-current-theory">
-<h2><span class="section-number">1.2. </span>Dark current theory<a class="headerlink" href="#dark-current-theory" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.2. </span>Dark current theory<a class="headerlink" href="#dark-current-theory" title="Permalink to this headline">¶</a></h2>
 <p>The expected signal in a dark frame exposure of time <span class="math notranslate nohighlight">\(t\)</span> is proportional to <span class="math notranslate nohighlight">\(t\)</span>.
 If we call the dark electrons in an exposure <span class="math notranslate nohighlight">\(d_e(t)\)</span> and the dark current
 <span class="math notranslate nohighlight">\(d_c(T)\)</span>, where <span class="math notranslate nohighlight">\(T\)</span> is the temperature, then</p>
@@ -602,7 +629,7 @@ have the same dark current — it is usually best to take dark frames every time
 you observe anyway.</p>
 </div>
 <div class="section" id="illustration-with-dark-current-only">
-<h2><span class="section-number">1.3. </span>Illustration with dark current only<a class="headerlink" href="#illustration-with-dark-current-only" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.3. </span>Illustration with dark current only<a class="headerlink" href="#illustration-with-dark-current-only" title="Permalink to this headline">¶</a></h2>
 <p>For the purposes of illustrating some of the properties of dark current and dark
 frames, we’ll generate some simulated images in which the counts are due to dark
 current alone. We’ll use these values:</p>
@@ -621,7 +648,7 @@ current alone. We’ll use these values:</p>
 </div>
 </div>
 <div class="section" id="dark-current-is-a-random-process">
-<h3><span class="section-number">1.3.1. </span>Dark current is a random process<a class="headerlink" href="#dark-current-is-a-random-process" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.3.1. </span>Dark current is a random process<a class="headerlink" href="#dark-current-is-a-random-process" title="Permalink to this headline">¶</a></h3>
 <p>The dark counts in a dark frame are counts and so they follow a Poisson
 distribution. The plot below shows the dark current in a number of randomly
 chosen pixels in 20 different simulated images each with exposure time 100 sec.
@@ -678,7 +705,7 @@ to the expected value.</p>
 </div>
 </div>
 <div class="section" id="dark-counts-follow-a-poisson-distribution">
-<h3><span class="section-number">1.3.2. </span>Dark counts follow a Poisson distribution<a class="headerlink" href="#dark-counts-follow-a-poisson-distribution" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.3.2. </span>Dark counts follow a Poisson distribution<a class="headerlink" href="#dark-counts-follow-a-poisson-distribution" title="Permalink to this headline">¶</a></h3>
 <p>The distribution below shows a normalized histogram of number of pixels as a
 function of dark counts in each pixel for one of the simulated dark frames.
 Overlaid on the histogram is a Poisson distribution with a mean of <span class="math notranslate nohighlight">\(d_e(t_{exp})
@@ -711,7 +738,7 @@ Overlaid on the histogram is a Poisson distribution with a mean of <span class="
 </div>
 </div>
 <div class="section" id="illustration-with-dark-current-and-read-noise">
-<h2><span class="section-number">1.4. </span>Illustration with dark current and read noise<a class="headerlink" href="#illustration-with-dark-current-and-read-noise" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.4. </span>Illustration with dark current and read noise<a class="headerlink" href="#illustration-with-dark-current-and-read-noise" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s run through the same couple of plots with a non-zero read noise. For
 the sake of illustration, we’ll look at two cases:</p>
 <ol class="simple">
@@ -732,7 +759,7 @@ CCD. A large dark current is used here to demonstrate the interaction of dark
 current and read noise, and the exposure time has been chosen that expected dark
 electrons is 10<span class="math notranslate nohighlight">\(e-\)</span>.</p>
 <div class="section" id="high-noise">
-<h3><span class="section-number">1.4.1. </span>High noise<a class="headerlink" href="#high-noise" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.4.1. </span>High noise<a class="headerlink" href="#high-noise" title="Permalink to this headline">¶</a></h3>
 <p>In this first case, the read noise and the dark current are both 10<span class="math notranslate nohighlight">\(e^-\)</span>. As we
 will see shortly, the dark frame really measures read noise, not dark current,
 under these circumstances.</p>
@@ -804,7 +831,7 @@ the distribution is still a Gaussian whose width is determined by the read noise
 and the number of images.</p>
 </div>
 <div class="section" id="low-noise">
-<h3><span class="section-number">1.4.2. </span>Low noise<a class="headerlink" href="#low-noise" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.4.2. </span>Low noise<a class="headerlink" href="#low-noise" title="Permalink to this headline">¶</a></h3>
 <p>In this case the read noise is 1 <span class="math notranslate nohighlight">\(e^-\)</span>, lower by a factor of ten than the
 expected dark current for this exposure time, 10<span class="math notranslate nohighlight">\(e^-\)</span>.</p>
 <p>This case almost never occurs in real CCDs, but it illustrates that with a low
@@ -891,8 +918,8 @@ distribution, as expected in this case.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03-00-Dark-current-and-hot-pixels.html" title="previous page">Dark current and hot pixels</a>
-    <a class='right-next' id="next-link" href="03-02-Real-dark-current-noise-and-other-artifacts.html" title="next page"><span class="section-number">2. </span>Real dark current: noise and other artifacts</a>
+    <a class='left-prev' id="prev-link" href="03-00-Dark-current-and-hot-pixels.html" title="previous page"><span class="section-number">3. </span>Dark current and hot pixels</a>
+    <a class='right-next' id="next-link" href="03-02-Real-dark-current-noise-and-other-artifacts.html" title="next page"><span class="section-number">3.2. </span>Real dark current: noise and other artifacts</a>
 
         </div>
         

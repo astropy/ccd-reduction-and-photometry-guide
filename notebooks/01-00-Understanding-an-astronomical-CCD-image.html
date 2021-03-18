@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Understanding an astronomical CCD image &#8212; CCD Data Reduction Guide</title>
+    <title>1. Astronomical Images &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Construction of an artificial (but realistic) image" href="01-03-Construction-of-an-artificial-but-realistic-image.html" />
+    <link rel="next" title="1.1. Understanding an astronomical CCD image" href="01-01-astronomical-CCD-image-components.html" />
     <link rel="prev" title="Preface" href="00-00-Preface.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,42 +98,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -142,17 +147,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
-     1. Calibrating bias images
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -161,32 +171,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -195,51 +205,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -258,7 +282,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -350,36 +377,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counts-photons-and-electrons">
-   Counts, photons, and electrons
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#not-all-counts-are-interesting-light">
-   Not all counts are (interesting) light
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ccds-are-not-perfect">
-   CCDs are not perfect
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
         </div>
     </div>
 </div>
@@ -388,8 +385,8 @@
         
               <div>
                 
-  <div class="section" id="understanding-an-astronomical-ccd-image">
-<h1>Understanding an astronomical CCD image<a class="headerlink" href="#understanding-an-astronomical-ccd-image" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="astronomical-images">
+<h1><span class="section-number">1. </span>Astronomical Images<a class="headerlink" href="#astronomical-images" title="Permalink to this headline">¶</a></h1>
 <p>An astronomical image like the one shown below is essentially a two-dimensional
 array of values. In an ideal world, the value of each pixel (a pixel being one
 element of the array) would be directly proportional to the amount of light that
@@ -397,73 +394,7 @@ fell on the pixel during the time the camera’s shutter was open.</p>
 <p>But the ideal scenario does not in fact hold true. A solid understanding of
 <em>why</em> pixel values are not directly proportional to light is useful before
 diving into the details of image reduction.</p>
-<div class="section" id="counts-photons-and-electrons">
-<h2>Counts, photons, and electrons<a class="headerlink" href="#counts-photons-and-electrons" title="Permalink to this headline">¶</a></h2>
-<p>The number stored in a raw astronomical image straight off a telescope is called
-an Analog Digital Unit (ADU) or count, because internally the camera converts
-the analog voltage in each pixel to a numerical count. The counts of interest to
-an astronomer are the ones generated via the photoelectric effect when a photon
-hits the detector. The number of photons (or equivalently, electrons) that reach
-the pixel is related to the counts in the pixel by the gain.</p>
-<p>The gain is typically provided by the manufacturer of the camera and can be
-measured from a combination of bias and flat images (Howell 2002; p. 71).</p>
-<p><strong>Take note</strong> that trying to convert a raw image count to photons/electrons by
-multiplying by the gain will not be meaningful because the raw counts include
-contributions from sources other than light.</p>
-</div>
-<div class="section" id="not-all-counts-are-interesting-light">
-<h2>Not all counts are (interesting) light<a class="headerlink" href="#not-all-counts-are-interesting-light" title="Permalink to this headline">¶</a></h2>
-<p>There are several contributions to the counts in a pixel. Image reduction is
-essentially the process of removing all of these except those due to light from
-an astronomical object:</p>
-<ul class="simple">
-<li><p>An offset voltage called <strong>bias</strong> is applied to the CCD chip to ensure there
-are no negative counts during readout. There are small variations in the value
-of the bias across the chip, and there can be small variations in the bias level
-over time.</p></li>
-<li><p>Counts can be generated in a pixel due to thermal motion of electrons in CCD;
-cooling a CCD reduces, but may not fully eliminate, this <strong>dark current</strong>. In
-modern CCDs the dark current is often ignorable exept for a small fraction of
-pixels. Dark current is typically reported in electrons/second/pixel, and
-depends strongly on temperature.</p></li>
-<li><p>There is <strong>read noise</strong> intrinsic to the electronics of the CCD. It is
-impossible to eliminate this noise (it’s present in every image taken by the
-camera) but there are approaches to minimizing it. Read noise is typically
-reported in electrons as it can depend on temperature.</p></li>
-<li><p>Some light received by the telescope is scattered light coming from the night
-sky. The amount of <strong>sky background</strong> depends on the filter passband, the
-atmospheric conditions, and the local light sources.</p></li>
-<li><p>Though a CCD chip is fairly small, it’s not unsual for <strong>cosmic rays</strong> to hit
-the chip, releasing charge that is then converted to counts.</p></li>
-</ul>
-<p>Whatever remains after taking all of those things away is, in principle, light
-from astronomical sources.</p>
-<p>In practice, there are additional complications.</p>
-</div>
-<div class="section" id="ccds-are-not-perfect">
-<h2>CCDs are not perfect<a class="headerlink" href="#ccds-are-not-perfect" title="Permalink to this headline">¶</a></h2>
-<p>There are a number of issues that affect the sensitivity of the CCD to light,
-some of which can be corrected for and some of which cannot.</p>
-<ul class="simple">
-<li><p>Vignetting, a darkening of the images in the corners, is common and
-correctable.</p></li>
-<li><p>Dust in the optical path, which causes “donuts” or “worms” on the image, is
-also common and correctable.</p></li>
-<li><p>Variations in the sensitivity of individual pixels are also common and
-correctable.</p></li>
-<li><p>Dead pixels, which are pixels that don’t respond to light, cannot be corrected
-for.</p></li>
-</ul>
-<p><strong>Flat</strong> corrections attempt to remove many of these effects. The idea is to
-image something which is uniformly illuminated as a way to measure variations in
-sensitivity (regardless of cause) and compensate for them.</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p>Howell, S., <em>Handbook of CCD Astronomy</em>, Second Ed, Cambridge University Press
-2006</p>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -493,7 +424,7 @@ sensitivity (regardless of cause) and compensate for them.</p>
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="00-00-Preface.html" title="previous page">Preface</a>
-    <a class='right-next' id="next-link" href="01-03-Construction-of-an-artificial-but-realistic-image.html" title="next page"><span class="section-number">1. </span>Construction of an artificial (but realistic) image</a>
+    <a class='right-next' id="next-link" href="01-01-astronomical-CCD-image-components.html" title="next page"><span class="section-number">1.1. </span>Understanding an astronomical CCD image</a>
 
         </div>
         

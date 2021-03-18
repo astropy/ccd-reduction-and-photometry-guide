@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Calibrating bias images &#8212; CCD Data Reduction Guide</title>
+    <title>2.2. Calibrating bias images &#8212; CCD Data Reduction Guide</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -59,8 +59,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Combine bias images to make master" href="02-04-Combine-bias-images-to-make-master.html" />
-    <link rel="prev" title="Handling overscan, trimming, and bias subtraction" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" />
+    <link rel="next" title="2.3. Combine bias images to make master" href="02-04-Combine-bias-images-to-make-master.html" />
+    <link rel="prev" title="2.1. About bias and overscan" href="02-01-overscan-trimming-and-bias-subtraction-background.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,42 +100,47 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
-   Understanding astronomical images
+   1. Astronomical Images
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
-     1. An artificial, but realistic, image
+     1.2. An artificial, but realistic, image
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
-     2. Non-uniform sensitivity in astronomical detectors
+     1.3. Non-uniform sensitivity in astronomical detectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-05-Calibration-overview.html">
-     3. Calibration overview
+     1.4. Calibration overview
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-06-Image-combination.html">
-     4. Image combination
+     1.5. Image combination
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-08-Overscan.html">
-     5. Overscan
+     1.6. Overscan
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
-     6. Calibration choices to make
+     1.7. Calibration choices to make
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01-11-reading-images.html">
-     7. Reading images
+     1.8. Reading images
     </a>
    </li>
   </ul>
@@ -144,17 +149,22 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
-   Overscan and bias images
+   2. Overscan and bias images
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1. Calibrating bias images
+     2.2. Calibrating bias images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
-     2. Combine bias images to make master bias
+     2.3. Combine bias images to make master bias
     </a>
    </li>
   </ul>
@@ -163,32 +173,32 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
-   Dark current and dark frames
+   3. Dark current and dark frames
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
-     1. Dark current: the ideal case
+     3.1. Dark current: the ideal case
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
-     2. Real dark current: noise and other artifacts
+     3.2. Real dark current: noise and other artifacts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
-     3. Handling overscan and bias for dark frames
+     3.3. Handling overscan and bias for dark frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-05-Calibrate-dark-images.html">
-     4. Calibrate dark images
+     3.4. Calibrate dark images
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
-     5. Combine calibrated dark images for use in later reduction steps
+     3.5. Combine calibrated dark images for use in later reduction steps
     </a>
    </li>
   </ul>
@@ -197,51 +207,65 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="05-00-Flat-corrections.html">
-   Flat fielding
+   4. Flat fielding
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-03-Calibrating-the-flats.html">
-     1. Calibrating flat frames
+     4.2. Calibrating flat frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-04-Combining-flats.html">
-     2. Combining flat frames
+     4.3. Combining flat frames
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="06-00-Reducing-science-images.html">
-   1. Calibrating science images
+   5. Calibrating science images
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="08-00-Image-masking.html">
-   Finding and dealing with bad pixels
+   6. Finding and dealing with bad pixels
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
-     1. Identifying hot pixels
+     6.1. Identifying hot pixels
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-02-Creating-a-mask.html">
-     2. Identifying bad pixels with ccdmask
+     6.2. Identifying bad pixels with ccdmask
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
-     3. Removing cosmic rays
+     6.3. Removing cosmic rays
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
-     4. Incorporating masks in science images
+     6.4. Incorporating masks in science images
     </a>
    </li>
   </ul>
@@ -260,7 +284,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
 </div>
 
 </div>
@@ -295,7 +322,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/02-01-Calibrating-bias-images.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/02-02-Calibrating-bias-images.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -312,10 +339,10 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-01-Calibrating-bias-images.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-02-Calibrating-bias-images.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/02-01-Calibrating-bias-images.ipynb"><button
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -335,7 +362,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/02-01-Calibrating-bias-images.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -360,81 +387,81 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-for-these-examples">
-   1.1. Data for these examples
+   2.2.1. Data for these examples
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-1-with-overscan-subtraction">
-   1.2. Example 1: With overscan subtraction
+   2.2.2. Example 1: With overscan subtraction
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decide-where-to-put-your-example-1-calibrated-images">
-     1.2.1. Decide where to put your Example 1 calibrated images
+     2.2.2.1. Decide where to put your Example 1 calibrated images
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#make-an-image-file-collection-for-the-raw-data">
-     1.2.2. Make an image file collection for the raw data
+     2.2.2.2. Make an image file collection for the raw data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#determine-overscan-region-for-the-lfc-chip-0">
-     1.2.3. Determine overscan region for the LFC Chip 0
+     2.2.2.3. Determine overscan region for the LFC Chip 0
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fits-vs-python-indexing">
-     1.2.4. FITS vs. Python indexing
+     2.2.2.4. FITS vs. Python indexing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#subtract-and-then-trim-the-overscan-one-sample-image">
-     1.2.5. Subtract and then trim the overscan (one sample image)
+     2.2.2.5. Subtract and then trim the overscan (one sample image)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#discussion">
-     1.2.6. Discussion
+     2.2.2.6. Discussion
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#processing-the-folder-of-bias-images-for-the-lfc-chip-0">
-     1.2.7. Processing the folder of bias images for the LFC Chip 0
+     2.2.2.7. Processing the folder of bias images for the LFC Chip 0
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-2-no-overscan-subtraction-but-trim-the-images">
-   1.3. Example 2: No overscan subtraction, but trim the images
+   2.2.3. Example 2: No overscan subtraction, but trim the images
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decide-where-to-put-your-calibrated-example-2-images">
-     1.3.1. Decide where to put your calibrated Example 2 images
+     2.2.3.1. Decide where to put your calibrated Example 2 images
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#determine-overscan-region-for-this-camera">
-     1.3.2. Determine overscan region for this camera
+     2.2.3.2. Determine overscan region for this camera
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#trim-the-overscan-one-sample-image">
-     1.3.3. Trim the overscan (one sample image)
+     2.2.3.3. Trim the overscan (one sample image)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#processing-the-folder-of-bias-images-for-example-2">
-     1.3.4. Processing the folder of bias images for Example 2
+     2.2.3.4. Processing the folder of bias images for Example 2
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-3-no-overscan-at-all">
-   1.4. Example 3: No overscan at all
+   2.2.4. Example 3: No overscan at all
   </a>
  </li>
 </ul>
@@ -450,7 +477,7 @@
               <div>
                 
   <div class="section" id="calibrating-bias-images">
-<h1><span class="section-number">1. </span>Calibrating bias images<a class="headerlink" href="#calibrating-bias-images" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2.2. </span>Calibrating bias images<a class="headerlink" href="#calibrating-bias-images" title="Permalink to this headline">¶</a></h1>
 <p>The purpose of calibrating bias images is threefold:</p>
 <ul class="simple">
 <li><p>Subtract overscan if you have decided your science will be better if you
@@ -494,13 +521,13 @@ calibrate a folder containing several images of that type.</p>
 </div>
 </div>
 <div class="section" id="data-for-these-examples">
-<h2><span class="section-number">1.1. </span>Data for these examples<a class="headerlink" href="#data-for-these-examples" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.1. </span>Data for these examples<a class="headerlink" href="#data-for-these-examples" title="Permalink to this headline">¶</a></h2>
 <p>See the <a class="reference internal" href="00-00-Preface.html"><span class="doc std std-doc">Preface notebook</span></a> for download links for all data.</p>
 </div>
 <div class="section" id="example-1-with-overscan-subtraction">
-<h2><span class="section-number">1.2. </span>Example 1: With overscan subtraction<a class="headerlink" href="#example-1-with-overscan-subtraction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.2. </span>Example 1: With overscan subtraction<a class="headerlink" href="#example-1-with-overscan-subtraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="decide-where-to-put-your-example-1-calibrated-images">
-<h3><span class="section-number">1.2.1. </span>Decide where to put your Example 1 calibrated images<a class="headerlink" href="#decide-where-to-put-your-example-1-calibrated-images" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.1. </span>Decide where to put your Example 1 calibrated images<a class="headerlink" href="#decide-where-to-put-your-example-1-calibrated-images" title="Permalink to this headline">¶</a></h3>
 <p>Though it is possible to overwrite your raw data with calibrated images, this is not recommended. Here we create a folder called <code class="docutils literal notranslate"><span class="pre">example1-reduced</span></code> that will contain
 the calibrated data and create it if it doesn’t exist.</p>
 <div class="cell docutils container">
@@ -513,7 +540,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="section" id="make-an-image-file-collection-for-the-raw-data">
-<h3><span class="section-number">1.2.2. </span>Make an image file collection for the raw data<a class="headerlink" href="#make-an-image-file-collection-for-the-raw-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.2. </span>Make an image file collection for the raw data<a class="headerlink" href="#make-an-image-file-collection-for-the-raw-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_cryo_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example-cryo-LFC&#39;</span><span class="p">)</span>
@@ -530,7 +557,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=14</i>
-<table id="table140136332362944" class="table-striped table-bordered table-condensed">
+<table id="table139817696800192" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str2</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>i&apos;</td><td>0.0</td><td>2080</td><td>4128</td></tr>
@@ -558,7 +585,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=10</i>
-<table id="table140135928858896" class="table-striped table-bordered table-condensed">
+<table id="table139817696800528" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td></tr>
@@ -575,7 +602,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="section" id="determine-overscan-region-for-the-lfc-chip-0">
-<h3><span class="section-number">1.2.3. </span>Determine overscan region for the LFC Chip 0<a class="headerlink" href="#determine-overscan-region-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.3. </span>Determine overscan region for the LFC Chip 0<a class="headerlink" href="#determine-overscan-region-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
 <p>Please see the discussion of this camera in
 <a class="reference external" href="01.08-Overscan.ipynb#Case-1:-Cryogenically-cooled-Large-Format-Camera-(LFC)-at-Palomar">the Overscan notebook</a> for the appropriate overscan region
 to use for this camera. Note, in particular, that it differs from the value
@@ -603,7 +630,7 @@ for the camera you are using.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140135928860480">
+<table id="table139817696798176">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>ccdsec</th><th>datasec</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str18</th><th>str15</th><th>str15</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>[2049:2080,1:4127]</td><td>[1:2048,1:4128]</td><td>[1:2048,1:4128]</td></tr>
@@ -615,7 +642,7 @@ exposed to light extends over all rows and from the first column to the
 2048<span class="math notranslate nohighlight">\(^{th}\)</span> column (again, this is one-indexed).</p>
 </div>
 <div class="section" id="fits-vs-python-indexing">
-<h3><span class="section-number">1.2.4. </span>FITS vs. Python indexing<a class="headerlink" href="#fits-vs-python-indexing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.4. </span>FITS vs. Python indexing<a class="headerlink" href="#fits-vs-python-indexing" title="Permalink to this headline">¶</a></h3>
 <p>There are two differences between FITS and Python in terms of indexing:</p>
 <ul class="simple">
 <li><p>Python indexes are zero-based (i.e., numbering starts at zero), while FITS indexes
@@ -640,7 +667,7 @@ representative images to understand which part of the overscan to use.</p>
 <code class="docutils literal notranslate"><span class="pre">[:,</span> <span class="pre">2055:]</span></code>.</p>
 </div>
 <div class="section" id="subtract-and-then-trim-the-overscan-one-sample-image">
-<h3><span class="section-number">1.2.5. </span>Subtract and then trim the overscan (one sample image)<a class="headerlink" href="#subtract-and-then-trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.5. </span>Subtract and then trim the overscan (one sample image)<a class="headerlink" href="#subtract-and-then-trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
 <p>Using <code class="docutils literal notranslate"><span class="pre">subtract_overscan</span></code> is reasonably concise, as shown in the cell
 below.</p>
 <div class="cell docutils container">
@@ -688,12 +715,12 @@ subtracting overscan).</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Bias, overscan subtracted and trimmed&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02-01-Calibrating-bias-images_27_1.png" src="../_images/02-01-Calibrating-bias-images_27_1.png" />
+<img alt="../_images/02-02-Calibrating-bias-images_27_1.png" src="../_images/02-02-Calibrating-bias-images_27_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="discussion">
-<h3><span class="section-number">1.2.6. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.6. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
 <p>Visually, the images look nearly identical before and after calibration. The
 only prominent difference is a shift in the pixel values, as one would expect
 from subtracting the same value from each pixel in an image. It simply shifts
@@ -709,7 +736,7 @@ to do this just before writing the image out because arithmetic operations on
 the image may convert its <code class="docutils literal notranslate"><span class="pre">dtype</span></code> back to <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p>
 </div>
 <div class="section" id="processing-the-folder-of-bias-images-for-the-lfc-chip-0">
-<h3><span class="section-number">1.2.7. </span>Processing the folder of bias images for the LFC Chip 0<a class="headerlink" href="#processing-the-folder-of-bias-images-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2.7. </span>Processing the folder of bias images for the LFC Chip 0<a class="headerlink" href="#processing-the-folder-of-bias-images-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
 <p>Processing each of the bias images individually would be tedious, at best.
 Instead, we can use the <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/image_management.html"><code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code></a> we created above to
 loop over only the bias images, saving each in the folder <code class="docutils literal notranslate"><span class="pre">calibrated_data</span></code>. In
@@ -747,7 +774,7 @@ will be the same number of reduced bias images as input bias images (six).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=6</i>
-<table id="table140136332334992" class="table-striped table-bordered table-condensed">
+<table id="table139817358709712" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
@@ -761,12 +788,12 @@ will be the same number of reduced bias images as input bias images (six).</p>
 </div>
 </div>
 <div class="section" id="example-2-no-overscan-subtraction-but-trim-the-images">
-<h2><span class="section-number">1.3. </span>Example 2: No overscan subtraction, but trim the images<a class="headerlink" href="#example-2-no-overscan-subtraction-but-trim-the-images" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.3. </span>Example 2: No overscan subtraction, but trim the images<a class="headerlink" href="#example-2-no-overscan-subtraction-but-trim-the-images" title="Permalink to this headline">¶</a></h2>
 <p>If you are not subtracting overscan then the only manipulation you may need to
 do is trimming the overscan from the images. If there is no overscan region in
 your images then even that is unnecessary.</p>
 <div class="section" id="decide-where-to-put-your-calibrated-example-2-images">
-<h3><span class="section-number">1.3.1. </span>Decide where to put your calibrated Example 2 images<a class="headerlink" href="#decide-where-to-put-your-calibrated-example-2-images" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3.1. </span>Decide where to put your calibrated Example 2 images<a class="headerlink" href="#decide-where-to-put-your-calibrated-example-2-images" title="Permalink to this headline">¶</a></h3>
 <p>Though it is possible to overwrite your raw data with calibrated images, this is not recommended. Here we create a folder called <code class="docutils literal notranslate"><span class="pre">example2-reduced</span></code> that will contain
 the calibrated data and create it if it doesn’t exist.</p>
 <div class="cell docutils container">
@@ -786,7 +813,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=32</i>
-<table id="table140135927104608" class="table-striped table-bordered table-condensed">
+<table id="table139817358573424" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>object</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>r</td><td>1.0</td><td>4109</td><td>4096</td></tr>
@@ -814,7 +841,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="section" id="determine-overscan-region-for-this-camera">
-<h3><span class="section-number">1.3.2. </span>Determine overscan region for this camera<a class="headerlink" href="#determine-overscan-region-for-this-camera" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3.2. </span>Determine overscan region for this camera<a class="headerlink" href="#determine-overscan-region-for-this-camera" title="Permalink to this headline">¶</a></h3>
 <p>Please see the discussion of this camera in <a class="reference external" href="01.08-Overscan.ipynb#Case-2:-Thermo-electrically-cooled-Apogee-Aspen-CG16M">the Overscan notebook</a> for
 a discussion of the overscan region of this camera. The overscan for this camera
 is not useful but should be trimmed out at this stage.</p>
@@ -829,7 +856,7 @@ science region of the chip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140135927343952">
+<table id="table139817358207680">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>trimsec</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>str11</th><th>str11</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>[4096:4109]</td><td>[1:4096, :]</td></tr>
@@ -842,7 +869,7 @@ difference between FITS and Python indexing. Essentially, to get Python indexes
 from FITS, reverse the order and subtract one.</p>
 </div>
 <div class="section" id="trim-the-overscan-one-sample-image">
-<h3><span class="section-number">1.3.3. </span>Trim the overscan (one sample image)<a class="headerlink" href="#trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3.3. </span>Trim the overscan (one sample image)<a class="headerlink" href="#trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
 <p>The function <code class="docutils literal notranslate"><span class="pre">trim_image</span></code> from <a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a> removes a
 portion of the image and updates the image metadata as needed.</p>
 <p>Below we get the first bias image.</p>
@@ -891,7 +918,7 @@ slicing.</p>
 </div>
 </div>
 <div class="section" id="processing-the-folder-of-bias-images-for-example-2">
-<h3><span class="section-number">1.3.4. </span>Processing the folder of bias images for Example 2<a class="headerlink" href="#processing-the-folder-of-bias-images-for-example-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3.4. </span>Processing the folder of bias images for Example 2<a class="headerlink" href="#processing-the-folder-of-bias-images-for-example-2" title="Permalink to this headline">¶</a></h3>
 <p>As in <a class="reference external" href="#Example-1:-With-overscan-subtraction">Example 1</a>, above, we can use the
 <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/image_management.html"><code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code></a> we created  to loop over only the bias images,
 saving each in the folder <code class="docutils literal notranslate"><span class="pre">calibrated_data</span></code>.</p>
@@ -912,7 +939,7 @@ saving each in the folder <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <div class="section" id="example-3-no-overscan-at-all">
-<h2><span class="section-number">1.4. </span>Example 3: No overscan at all<a class="headerlink" href="#example-3-no-overscan-at-all" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.4. </span>Example 3: No overscan at all<a class="headerlink" href="#example-3-no-overscan-at-all" title="Permalink to this headline">¶</a></h2>
 <p>If there is no overscan then there is, in principle, nothing to be done with the
 bias frames. It may be convenient to copy them to the directory with the rest of
 your reduced images. The code below does that.</p>
@@ -959,8 +986,8 @@ your reduced images. The code below does that.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="previous page">Handling overscan, trimming, and bias subtraction</a>
-    <a class='right-next' id="next-link" href="02-04-Combine-bias-images-to-make-master.html" title="next page"><span class="section-number">2. </span>Combine bias images to make master</a>
+    <a class='left-prev' id="prev-link" href="02-01-overscan-trimming-and-bias-subtraction-background.html" title="previous page"><span class="section-number">2.1. </span>About bias and overscan</a>
+    <a class='right-next' id="next-link" href="02-04-Combine-bias-images-to-make-master.html" title="next page"><span class="section-number">2.3. </span>Combine bias images to make master</a>
 
         </div>
         
