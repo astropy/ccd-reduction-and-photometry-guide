@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Calibrate dark images &#8212; CCD Data Reduction Guide</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Combine calibrated dark images for use in later reduction steps" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" />
+    <link rel="prev" title="3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CCD Data Reduction Guide</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-00-Preface.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
+   Understanding astronomical images
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
+     1. An artificial, but realistic, image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
+     2. Non-uniform sensitivity in astronomical detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05-Calibration-overview.html">
+     3. Calibration overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06-Image-combination.html">
+     4. Image combination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-08-Overscan.html">
+     5. Overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
+     6. Calibration choices to make
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-11-reading-images.html">
+     7. Reading images
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
+   Overscan and bias images
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-Calibrating-bias-images.html">
+     1. Calibrating bias images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
+     2. Combine bias images to make master bias
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
+   Dark current and dark frames
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
+     1. Dark current: the ideal case
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
+     2. Real dark current: noise and other artifacts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
+     3. Handling overscan and bias for dark frames
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4. Calibrate dark images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
+     5. Combine calibrated dark images for use in later reduction steps
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="05-00-Flat-corrections.html">
+   Flat fielding
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-03-Calibrating-the-flats.html">
+     1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-04-Combining-flats.html">
+     2. Combining flat frames
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-00-Reducing-science-images.html">
+   1. Calibrating science images
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="08-00-Image-masking.html">
+   Finding and dealing with bad pixels
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
+     1. Identifying hot pixels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-02-Creating-a-mask.html">
+     2. Identifying bad pixels with ccdmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
+     3. Removing cosmic rays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
+     4. Incorporating masks in science images
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
+   GitHub repository
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and <a href="https://astropy.org">Astropy</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/03-05-Calibrate-dark-images.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-05-Calibrate-dark-images.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/03-05-Calibrate-dark-images.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/03-05-Calibrate-dark-images.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-overscan-subtracted-bias-not-removed">
+   4.1. Example 1: Overscan subtracted, bias not removed
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#take-a-look-at-what-images-you-have">
+     4.1.1. Take a look at what images you have
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#raw-images-everything-except-the-darks">
+       4.1.1.1. Raw images, everything except the darks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#raw-dark-frames">
+       4.1.1.2. Raw dark frames
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decide-which-calibration-steps-to-take">
+     4.1.2. Decide which calibration  steps to take
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calibrate-the-individual-dark-frames">
+     4.1.3. Calibrate the individual dark frames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reduced-images-so-far">
+       4.1.3.1. Reduced images (so far)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2-overscan-not-subtracted-bias-is-removed">
+   4.2. Example 2: Overscan not subtracted, bias is removed
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decide-what-steps-to-take-next">
+     4.2.1. Decide what steps to take next
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calibration-the-individual-dark-frames">
+     4.2.2. Calibration the individual dark frames
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="calibrate-dark-images">
+<h1><span class="section-number">4. </span>Calibrate dark images<a class="headerlink" href="#calibrate-dark-images" title="Permalink to this headline">¶</a></h1>
+<p>Dark images, like any other images, need to be calibrated. Depending on the data
+you have and the choices you have made in reducing your data, the steps to
+reducing your images may include:</p>
+<ol class="simple">
+<li><p>Subtracting overscan (only if you decide to subtract overscan from all
+images).</p></li>
+<li><p>Trim the image (if it has overscan, whether you are using the overscan or
+not).</p></li>
+<li><p>Subtract bias (if you need to scale the calibrated dark frames to a different
+exposure time).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">ccdproc</span> <span class="kn">import</span> <span class="n">ImageFileCollection</span>
+<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-1-overscan-subtracted-bias-not-removed">
+<h2><span class="section-number">4.1. </span>Example 1: Overscan subtracted, bias not removed<a class="headerlink" href="#example-1-overscan-subtracted-bias-not-removed" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="take-a-look-at-what-images-you-have">
+<h3><span class="section-number">4.1.1. </span>Take a look at what images you have<a class="headerlink" href="#take-a-look-at-what-images-you-have" title="Permalink to this headline">¶</a></h3>
+<p>First we gather up some information about the raw images and the reduced images
+up to this point. These examples have darks stored in a subdirectory of the
+folder with the rest of the images, so we create an <code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code> for
+each.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_path_raw</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example-cryo-LFC&#39;</span><span class="p">)</span>
+
+<span class="n">ex1_images_raw</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">ex1_path_raw</span><span class="p">)</span>
+<span class="n">ex1_darks_raw</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">ex1_path_raw</span> <span class="o">/</span> <span class="s1">&#39;darks&#39;</span><span class="p">)</span>
+
+<span class="n">ex1_path_reduced</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example1-reduced&#39;</span><span class="p">)</span>
+<span class="n">ex1_images_reduced</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">ex1_path_reduced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="raw-images-everything-except-the-darks">
+<h4><span class="section-number">4.1.1.1. </span>Raw images, everything except the darks<a class="headerlink" href="#raw-images-everything-except-the-darks" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_images_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exptime&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><i>Table length=14</i>
+<table id="table139813962368672" class="table-striped table-bordered table-condensed">
+<thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
+<thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
+<tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.003.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.004.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.005.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.006.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.014.0.fits</td><td>FLATFIELD</td><td>70.001</td><td>g&apos;</td></tr>
+<tr><td>ccd.015.0.fits</td><td>FLATFIELD</td><td>70.011</td><td>g&apos;</td></tr>
+<tr><td>ccd.016.0.fits</td><td>FLATFIELD</td><td>70.001</td><td>g&apos;</td></tr>
+<tr><td>ccd.017.0.fits</td><td>FLATFIELD</td><td>7.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.018.0.fits</td><td>FLATFIELD</td><td>7.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.019.0.fits</td><td>FLATFIELD</td><td>7.0</td><td>i&apos;</td></tr>
+<tr><td>ccd.037.0.fits</td><td>OBJECT</td><td>300.062</td><td>g&apos;</td></tr>
+<tr><td>ccd.043.0.fits</td><td>OBJECT</td><td>300.014</td><td>i&apos;</td></tr>
+</table></div></div>
+</div>
+</div>
+<div class="section" id="raw-dark-frames">
+<h4><span class="section-number">4.1.1.2. </span>Raw dark frames<a class="headerlink" href="#raw-dark-frames" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_darks_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exptime&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><i>Table length=10</i>
+<table id="table139813246477936" class="table-striped table-bordered table-condensed">
+<thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
+<thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
+<tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.013.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.014.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.015.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.017.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.018.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.019.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.023.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.024.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
+<tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
+</table></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="decide-which-calibration-steps-to-take">
+<h3><span class="section-number">4.1.2. </span>Decide which calibration  steps to take<a class="headerlink" href="#decide-which-calibration-steps-to-take" title="Permalink to this headline">¶</a></h3>
+<p>This example is, again, one of the chips of the LFC camera at Palomar. In
+earlier notebooks we have seen that the chip has a <a class="reference external" href="01.08-Overscan.ipynb#Case-1:-Cryogenically-cooled-Large-Format-Camera-(LFC)-at-Palomar">useful overscan region</a>, has little dark current except for some hot pixels, and sensor glow in
+one corner of the chip.</p>
+<p>Looking at the list of non-dark images (i.e., the flat and light images) shows
+that for each exposure time in the non-dark images there is a set of dark
+exposures that has a matching, or very close to matching, exposure time.</p>
+<p>To be more explicit, there are flats with exposure times of 7.0 sec and 70.011
+sec and darks with exposure time of 7.0 and 70.0 sec. The dark and flat exposure
+times are close enough that there is no need to scale them.  The two images of
+an object are each roughly 300 sec, matching the darks with exposure time 300
+sec. The very small difference in exposure time, under 0.1 sec, does not need to
+be compensated for.</p>
+<p>Given this, we will:</p>
+<ol class="simple">
+<li><p>Subtract overscan from each of the darks. The useful overscan region is XXX
+(see LINK).</p></li>
+<li><p>Trim the overscan out of the dark images.</p></li>
+</ol>
+<p>We will <em>not</em> subtract bias from these images because we will <em>not</em> need to
+rescale them to a different exposure time.</p>
+</div>
+<div class="section" id="calibrate-the-individual-dark-frames">
+<h3><span class="section-number">4.1.3. </span>Calibrate the individual dark frames<a class="headerlink" href="#calibrate-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">ex1_darks_raw</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;DARK&#39;</span><span class="p">,</span>            <span class="c1"># Just get the dark frames</span>
+                                         <span class="n">ccd_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;adu&#39;</span><span class="p">},</span> <span class="c1"># CCDData requires a unit for the image if </span>
+                                                                     <span class="c1"># it is not in the header</span>
+                                         <span class="n">return_fname</span><span class="o">=</span><span class="kc">True</span>           <span class="c1"># Provide the file name too.</span>
+                                        <span class="p">):</span>    
+    <span class="c1"># Subtract the overscan</span>
+    <span class="n">ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">subtract_overscan</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">overscan</span><span class="o">=</span><span class="n">ccd</span><span class="p">[:,</span> <span class="mi">2055</span><span class="p">:],</span> <span class="n">median</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Trim the overscan</span>
+    <span class="n">ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">trim_image</span><span class="p">(</span><span class="n">ccd</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2048</span><span class="p">])</span>
+    
+    <span class="c1"># Save the result</span>
+    <span class="n">ccd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ex1_path_reduced</span> <span class="o">/</span> <span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reduced-images-so-far">
+<h4><span class="section-number">4.1.3.1. </span>Reduced images (so far)<a class="headerlink" href="#reduced-images-so-far" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex1_images_reduced</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<span class="n">ex1_images_reduced</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exptime&#39;</span><span class="p">,</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="s1">&#39;combined&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><i>Table length=16</i>
+<table id="table139813962368816" class="table-striped table-bordered table-condensed">
+<thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
+<thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
+<tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.003.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.004.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.005.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.006.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
+<tr><td>ccd.013.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.014.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.015.0.fits</td><td>DARK</td><td>300.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.017.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.018.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.019.0.fits</td><td>DARK</td><td>70.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.023.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.024.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td><td>--</td></tr>
+<tr><td>combined_bias.fit</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>True</td></tr>
+</table></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-2-overscan-not-subtracted-bias-is-removed">
+<h2><span class="section-number">4.2. </span>Example 2: Overscan not subtracted, bias is removed<a class="headerlink" href="#example-2-overscan-not-subtracted-bias-is-removed" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex2_path_raw</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example-thermo-electric&#39;</span><span class="p">)</span>
+
+<span class="n">ex2_images_raw</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">ex2_path_raw</span><span class="p">)</span>
+
+<span class="n">ex2_path_reduced</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example2-reduced&#39;</span><span class="p">)</span>
+<span class="n">ex2_images_reduced</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">ex2_path_reduced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We begin by looking at what exposure times we have in this data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex2_images_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exposure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">show_in_notebook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><i>Table length=32</i>
+<table id="table139813246480096-422571" class="table-striped table-bordered table-condensed">
+<thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
+<tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
+<tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
+<tr><td>2</td><td>AutoFlat-PANoRot-r-Bin1-003.fit</td><td>FLAT</td><td>1.0</td></tr>
+<tr><td>3</td><td>AutoFlat-PANoRot-r-Bin1-004.fit</td><td>FLAT</td><td>1.0</td></tr>
+<tr><td>4</td><td>AutoFlat-PANoRot-r-Bin1-005.fit</td><td>FLAT</td><td>1.0</td></tr>
+<tr><td>5</td><td>AutoFlat-PANoRot-r-Bin1-006.fit</td><td>FLAT</td><td>1.02</td></tr>
+<tr><td>6</td><td>AutoFlat-PANoRot-r-Bin1-007.fit</td><td>FLAT</td><td>1.06</td></tr>
+<tr><td>7</td><td>AutoFlat-PANoRot-r-Bin1-008.fit</td><td>FLAT</td><td>1.11</td></tr>
+<tr><td>8</td><td>AutoFlat-PANoRot-r-Bin1-009.fit</td><td>FLAT</td><td>1.16</td></tr>
+<tr><td>9</td><td>AutoFlat-PANoRot-r-Bin1-010.fit</td><td>FLAT</td><td>1.21</td></tr>
+<tr><td>10</td><td>Bias-S001-R001-C001-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>11</td><td>Bias-S001-R001-C002-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>12</td><td>Bias-S001-R001-C003-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>13</td><td>Bias-S001-R001-C004-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>14</td><td>Bias-S001-R001-C005-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>15</td><td>Bias-S001-R001-C006-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>16</td><td>Bias-S001-R001-C007-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>17</td><td>Bias-S001-R001-C008-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>18</td><td>Bias-S001-R001-C009-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>19</td><td>Bias-S001-R001-C020-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
+<tr><td>20</td><td>Dark-S001-R001-C001-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>21</td><td>Dark-S001-R001-C002-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>22</td><td>Dark-S001-R001-C003-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>23</td><td>Dark-S001-R001-C004-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>24</td><td>Dark-S001-R001-C005-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>25</td><td>Dark-S001-R001-C006-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>26</td><td>Dark-S001-R001-C007-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>27</td><td>Dark-S001-R001-C008-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>28</td><td>Dark-S001-R001-C009-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>29</td><td>Dark-S001-R001-C020-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
+<tr><td>30</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>LIGHT</td><td>90.0</td></tr>
+<tr><td>31</td><td>kelt-16-b-S001-R001-C125-r.fit</td><td>LIGHT</td><td>90.0</td></tr>
+</table><style>table.dataTable {clear: both; width: auto !important; margin: 0 !important;}
+.dataTables_info, .dataTables_length, .dataTables_filter, .dataTables_paginate{
+display: inline-block; margin-right: 1em; }
+.paginate_button { margin-right: 5px; }
+</style>
+<script>
+
+var astropy_sort_num = function(a, b) {
+    var a_num = parseFloat(a);
+    var b_num = parseFloat(b);
+
+    if (isNaN(a_num) && isNaN(b_num))
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    else if (!isNaN(a_num) && !isNaN(b_num))
+        return ((a_num < b_num) ? -1 : ((a_num > b_num) ? 1 : 0));
+    else
+        return isNaN(a_num) ? -1 : 1;
+}
+
+require.config({paths: {
+    datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
+}});
+require(["datatables"], function(){
+    console.log("$('#table139813246480096-422571').dataTable()");
+
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "optionalnum-asc": astropy_sort_num,
+    "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
+});
+
+    $('#table139813246480096-422571').dataTable({
+        order: [],
+        pageLength: 50,
+        lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
+        pagingType: "full_numbers",
+        columnDefs: [{targets: [0, 3], type: "optionalnum"}]
+    });
+});
+</script>
+</div></div>
+</div>
+<div class="section" id="decide-what-steps-to-take-next">
+<h3><span class="section-number">4.2.1. </span>Decide what steps to take next<a class="headerlink" href="#decide-what-steps-to-take-next" title="Permalink to this headline">¶</a></h3>
+<p>In this case the only dark frames have exposure time 90 sec. Though that matches
+the exposure time of the science images, the flat field images are much shorter
+exposure time, ranging from 1 sec to 1.21 sec. This type of range of exposure is
+typical when twilight flats are taken. Since these are a much different
+exposure time than the darks, the dark frames will need to be scaled.</p>
+<p>Recall that for this camera the overscan is not useful and should be
+trimmed off.</p>
+<p>Given this, we will:</p>
+<ol class="simple">
+<li><p>Trim the overscan from each of the dark frames.</p></li>
+<li><p>Subtract calibration bias from the dark frames so that we can scale the darks
+to a different exposure time.</p></li>
+</ol>
+</div>
+<div class="section" id="calibration-the-individual-dark-frames">
+<h3><span class="section-number">4.2.2. </span>Calibration the individual dark frames<a class="headerlink" href="#calibration-the-individual-dark-frames" title="Permalink to this headline">¶</a></h3>
+<p>First, we read the combined bias image created in the previous notebook. Though
+we could do this based on the file name, using a systematic set of header
+keywords to keep track of which images have been combined is less likely to lead
+to errors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_bias</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_images_reduced</span><span class="o">.</span><span class="n">files_filtered</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;bias&#39;</span><span class="p">,</span> 
+                                                               <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                                                               <span class="n">include_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">ex2_images_raw</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;DARK&#39;</span><span class="p">,</span>            <span class="c1"># Just get the bias frames</span>
+                                          <span class="n">return_fname</span><span class="o">=</span><span class="kc">True</span>           <span class="c1"># Provide the file name too.</span>
+                                         <span class="p">):</span>
+        
+    <span class="c1"># Trim the overscan</span>
+    <span class="n">ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">trim_image</span><span class="p">(</span><span class="n">ccd</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4096</span><span class="p">])</span>
+    
+    <span class="c1"># Subtract bias</span>
+    <span class="n">ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">subtract_bias</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">combined_bias</span><span class="p">)</span>
+    <span class="c1"># Save the result</span>
+    <span class="n">ccd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ex2_path_reduced</span> <span class="o">/</span> <span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="previous page"><span class="section-number">3. </span>Handling overscan and bias for dark frames</a>
+    <a class='right-next' id="next-link" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html" title="next page"><span class="section-number">5. </span>Combine calibrated dark images for use in later reduction steps</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Matthew Craig<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
