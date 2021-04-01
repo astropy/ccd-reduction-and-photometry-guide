@@ -508,7 +508,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=14</i>
-<table id="table140424252442416" class="table-striped table-bordered table-condensed">
+<table id="table140615320713680" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -538,7 +538,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=10</i>
-<table id="table140423536478864" class="table-striped table-bordered table-condensed">
+<table id="table140615320714688" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -610,7 +610,7 @@ rescale them to a different exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=16</i>
-<table id="table140423535956272" class="table-striped table-bordered table-condensed">
+<table id="table140616036536384" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -657,7 +657,7 @@ rescale them to a different exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=32</i>
-<table id="table140423536408656-342941" class="table-striped table-bordered table-condensed">
+<table id="table140615320143376-451080" class="table-striped table-bordered table-condensed">
 <thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
 <tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
 <tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
@@ -714,14 +714,14 @@ require.config({paths: {
     datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
 }});
 require(["datatables"], function(){
-    console.log("$('#table140423536408656-342941').dataTable()");
+    console.log("$('#table140615320143376-451080').dataTable()");
 
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "optionalnum-asc": astropy_sort_num,
     "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
 });
 
-    $('#table140423536408656-342941').dataTable({
+    $('#table140615320143376-451080').dataTable({
         order: [],
         pageLength: 50,
         lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
