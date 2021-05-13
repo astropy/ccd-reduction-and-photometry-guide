@@ -1,4 +1,7 @@
 # GitHub Actions workflow for testing and continuous integration.
+#
+# This file performs testing using tox and tox.ini to define and configure the test environments.
+
 name: CI Tests
 
 on:
@@ -62,11 +65,6 @@ jobs:
       shell: bash -l {0}
       run: |
         jb build .
-
-    - name: Add CNAME to built book
-      shell: bash -l {0}
-      run: |
-        cp CNAME _build/html
 
     - name: Upload HTML
       uses: actions/upload-artifact@v2
