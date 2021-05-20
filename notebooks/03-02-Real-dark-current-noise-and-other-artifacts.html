@@ -592,6 +592,45 @@ by the read noise.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">7</span><span class="n">d84a0e6fb85</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">calibrated_images</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">combined_dark_lfc</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">calibrated_images</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_300.000.fits.bz2&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> 
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">58</span>         <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> 
+<span class="g g-Whitespace">     </span><span class="mi">60</span> 
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/io/registry.py</span> in <span class="ni">read</span><span class="nt">(cls, format, cache, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>                     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>                         <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">505</span>                         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>                     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>                         <span class="k">raise</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/contextlib.py</span> in <span class="ni">__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>             <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/utils/data.py</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>                 <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span>                 <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">252</span>         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span>         <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>             <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;combined_dark_300.000.fits.bz2&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="examine-the-image">
@@ -624,12 +663,6 @@ shows a portion of the CCD in the upper right part of the chip; pixel values are
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: meta, unit [astropy.nddata.decorators]
-</pre></div>
-</div>
-<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_10_1.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_10_1.png" />
 </div>
 </div>
 </div>
@@ -680,9 +713,6 @@ equivalent dark current of 0.5<span class="math notranslate nohighlight">\(e^-\)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_12_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_12_0.png" />
-</div>
 </div>
 </div>
 </div>
@@ -714,9 +744,6 @@ divide by the exposure time to obtain the dark current in <span class="math notr
 <span class="n">show_image</span><span class="p">(</span><span class="n">dark_1000</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_16_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_16_0.png" />
 </div>
 </div>
 </div>
@@ -769,9 +796,6 @@ d_C(T) = g n_{dark}(t) / t.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_18_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_18_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="there-is-a-large-range-in-the-dark-current">
@@ -817,9 +841,6 @@ roughly 0.1% of the pixels.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_20_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_20_0.png" />
 </div>
 </div>
 </div>

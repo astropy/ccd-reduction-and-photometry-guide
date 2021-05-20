@@ -502,6 +502,48 @@ to be trimmed to remove the overscan region.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">a9d704a99f32</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dark_90</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_90.000.fit&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">dark_1000</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;combined_dark_exposure_1000.0.fit.bz2&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dark_1000</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">trim_image</span><span class="p">(</span><span class="n">dark_1000</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4096</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> 
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">58</span>         <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> 
+<span class="g g-Whitespace">     </span><span class="mi">60</span> 
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/io/registry.py</span> in <span class="ni">read</span><span class="nt">(cls, format, cache, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>                     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>                         <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">505</span>                         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>                     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>                         <span class="k">raise</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/contextlib.py</span> in <span class="ni">__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>             <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/utils/data.py</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>                 <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span>                 <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">252</span>         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span>         <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>             <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;combined_dark_exposure_1000.0.fit.bz2&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The histogram below shows the distribution of dark current values in each image.
 There are some differences we should <em>expect</em> to see between the two images.</p>
@@ -531,9 +573,6 @@ long 1,000 second exposure time.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/08-01-Identifying-hot-pixels_8_0.png" src="../_images/08-01-Identifying-hot-pixels_8_0.png" />
-</div>
 </div>
 <p>Overall, there appear to be more hot pixels in the 90 sec exposure than in the
 1,000 sec exposure. For dark current under 0.1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec, that is certainly
@@ -561,9 +600,6 @@ the longer exposure.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/08-01-Identifying-hot-pixels_11_0.png" src="../_images/08-01-Identifying-hot-pixels_11_0.png" />
-</div>
 </div>
 <p>The upper limit on dark current that can be measured with the long exposure time
 can be clearly seen in the plot above; there is a ceiling at roughly 95<span class="math notranslate nohighlight">\(e^-\)</span>/sec
@@ -584,9 +620,6 @@ values of the dark current, so we replot to get a better look at that region.</p
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/08-01-Identifying-hot-pixels_13_0.png" src="../_images/08-01-Identifying-hot-pixels_13_0.png" />
-</div>
 </div>
 <p>Here it looks like the measured dark currents are consistent until around
 4<span class="math notranslate nohighlight">\(e^-\)</span>/sec. Beyond that the dark current is consistently larger in the short
@@ -599,11 +632,6 @@ subtracting a combined dark frame.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_hot_pixels</span> <span class="o">=</span> <span class="p">(</span><span class="n">dark_90</span><span class="o">.</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">bad_hot_pixels</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4302
 </pre></div>
 </div>
 </div>
