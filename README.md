@@ -7,7 +7,7 @@ The inspiration for this work is two guides and a book:
 
 # Web version of the guide
 
-The rendered version of the guide is [here](https://mwcraig.github.io/ccd-as-book/00-00-Preface).
+The rendered version of the guide is [here](http://www.astropy.org/ccd-reduction-and-photometry-guide/).
 
 ## Try out the notebooks in the cloud: click the button below
 
