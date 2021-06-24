@@ -7,7 +7,7 @@
 # Book settings
 title                       : CCD Data Reduction Guide  # The title of the book. Will be placed in the left navbar.
 author                      : Matthew Craig  # The author of the book
-copyright                   : "2020"  # Copyright year to be placed in the footer
+copyright                   : "2020-2021"  # Copyright year to be placed in the footer
 logo                        : "book_media/images/logo/logo.png"  # A path to the book logo
 exclude_patterns            : ["*LICENSE.md", "*07-*.ipynb", ".git/*", "*/photometry/*", "*.md", "*add_style_cell.ipynb*"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
@@ -30,7 +30,11 @@ html:
     <strong>Book edition 2.0.dev</strong></br>
     Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
     <a href="https://astropy.org">Astropy</a>
-  extra_footer              : ""  # Will be displayed underneath the footer.
+  extra_footer              : |  # Will be displayed underneath the footer.
+    <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+    <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
