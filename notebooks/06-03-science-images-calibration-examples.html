@@ -548,7 +548,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=2</i>
-<table id="table140658697637744" class="table-striped table-bordered table-condensed">
+<table id="table140212773324112" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str14</th><th>str7</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-16</td><td>ccd.037.0.fits</td><td>vv124_1</td><td>g&apos;</td><td>300.062</td></tr>
@@ -565,7 +565,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=6</i>
-<table id="table140658697634864" class="table-striped table-bordered table-condensed">
+<table id="table140211967866384" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str27</th><th>str9</th><th>str6</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-15</td><td>combined_bias.fit</td><td>BIAS</td><td>bias</td><td>i&apos;</td><td>0.0</td></tr>
@@ -627,6 +627,10 @@ stage. Identification of cosmic rays will be discussed in <a class="reference in
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/units/quantity.py:479: RuntimeWarning: divide by zero encountered in true_divide
   result = super().__array_ufunc__(function, method, *arrays, **kwargs)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/nduncertainty.py:653: RuntimeWarning: invalid value encountered in true_divide
+  return from_variance((left + right + correlation_sign * corr) /
 </pre></div>
 </div>
 </div>
@@ -702,7 +706,7 @@ the science images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=2</i>
-<table id="table140658356278224" class="table-striped table-bordered table-condensed">
+<table id="table140210863484832" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>object</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T09:00:21</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
@@ -721,7 +725,7 @@ exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=3</i>
-<table id="table140658324151648" class="table-striped table-bordered table-condensed">
+<table id="table140210863483968" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>str4</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T11:20:07</td><td>combined_bias.fit</td><td>BIAS</td><td>--</td><td>0.0</td></tr>
@@ -865,7 +869,14 @@ image was taken.</p>
         
           By Matthew Craig<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2020-2021.<br/>
+          <div class="extra_footer">
+            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+          </div>
       </p>
     </div>
   </footer>

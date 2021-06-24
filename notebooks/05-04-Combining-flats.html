@@ -562,16 +562,16 @@ combined flat is created for each filter in the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 2 chunks to limit memory usage to 350000000.0 bytes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 4 chunks to limit memory usage to 350000000.0 bytes.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 2 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 4 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 2 chunks to limit memory usage to 350000000.0 bytes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 4 chunks to limit memory usage to 350000000.0 bytes.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 2 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 4 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
 </pre></div>
 </div>
 </div>
@@ -701,10 +701,10 @@ WARNING:astropy:FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordina
 the RADECSYS keyword is deprecated, use RADESYSa.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 12 chunks to limit memory usage to 350000000.0 bytes.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 22 chunks to limit memory usage to 350000000.0 bytes.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 12 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 22 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
 </pre></div>
 </div>
 </div>
@@ -735,8 +735,8 @@ were added after the collection was created.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: meta, unit [astropy.nddata.decorators]
-WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: meta, unit
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit [astropy.nddata.decorators]
+WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit
 </pre></div>
 </div>
 <img alt="../_images/05-04-Combining-flats_29_1.png" src="../_images/05-04-Combining-flats_29_1.png" />
@@ -790,7 +790,14 @@ filters on this camera.</p>
         
           By Matthew Craig<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2020-2021.<br/>
+          <div class="extra_footer">
+            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+          </div>
       </p>
     </div>
   </footer>

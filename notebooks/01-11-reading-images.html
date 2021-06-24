@@ -652,19 +652,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.39376423, -1.65507891, -0.34954893, ...,  2.0281121 ,
-         1.91472317, -0.02083999],
-       [-0.23488302,  0.26424689,  0.36511612, ..., -0.83720384,
-         1.32749699, -0.60479702],
-       [ 0.04311913,  0.02050211, -0.97247316, ...,  0.7335338 ,
-         0.17346148, -1.05376137],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.71636732, -0.67953485,  1.59508546, ...,  0.2374397 ,
+        -0.35925718,  1.4351974 ],
+       [-0.34365561,  0.21705322,  0.78761335, ..., -0.34681866,
+         0.54612548,  1.46645499],
+       [ 1.40922849, -0.07347623,  1.12905652, ...,  0.63627362,
+         0.97221206,  0.45063518],
        ...,
-       [ 0.60666862,  0.39201881, -0.86124345, ...,  0.71402991,
-         0.43385574, -0.70900319],
-       [ 0.35869345, -0.49279216,  2.08607423, ..., -1.28724745,
-        -1.57583608,  1.13918897],
-       [ 0.24468408, -0.06510385, -0.69221485, ..., -0.23642179,
-        -0.86579713, -0.29399016]])
+       [-1.36849919, -0.70461185,  0.40503834, ...,  0.6505628 ,
+        -0.92317455, -0.14132972],
+       [-1.88679057,  1.1814373 ,  0.49657887, ...,  0.4205962 ,
+        -0.08900253, -0.89756737],
+       [-0.17432198,  0.7947108 , -0.32929344, ..., -0.01810744,
+         0.72241974,  1.26253601]])
 </pre></div>
 </div>
 </div>
@@ -714,19 +714,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.39376423, -1.65507891, -0.34954893, ...,  2.0281121 ,
-         1.91472317, -0.02083999],
-       [-0.23488302,  0.26424689,  0.36511612, ..., -0.83720384,
-         1.32749699, -0.60479702],
-       [ 0.04311913,  0.02050211, -0.97247316, ...,  0.7335338 ,
-         0.17346148, -1.05376137],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.71636732, -0.67953485,  1.59508546, ...,  0.2374397 ,
+        -0.35925718,  1.4351974 ],
+       [-0.34365561,  0.21705322,  0.78761335, ..., -0.34681866,
+         0.54612548,  1.46645499],
+       [ 1.40922849, -0.07347623,  1.12905652, ...,  0.63627362,
+         0.97221206,  0.45063518],
        ...,
-       [ 0.60666862,  0.39201881, -0.86124345, ...,  0.71402991,
-         0.43385574, -0.70900319],
-       [ 0.35869345, -0.49279216,  2.08607423, ..., -1.28724745,
-        -1.57583608,  1.13918897],
-       [ 0.24468408, -0.06510385, -0.69221485, ..., -0.23642179,
-        -0.86579713, -0.29399016]])
+       [-1.36849919, -0.70461185,  0.40503834, ...,  0.6505628 ,
+        -0.92317455, -0.14132972],
+       [-1.88679057,  1.1814373 ,  0.49657887, ...,  0.4205962 ,
+        -0.08900253, -0.89756737],
+       [-0.17432198,  0.7947108 , -0.32929344, ..., -0.01810744,
+         0.72241974,  1.26253601]])
 </pre></div>
 </div>
 </div>
@@ -763,7 +763,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table masked=True length=28</i>
-<table id="table139885135396720" class="table-striped table-bordered table-condensed">
+<table id="table140434571079392" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -822,11 +822,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0033059720545723
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.003993441573128
-In file img-0022.fits the exposure is: 30.0 with standard deviation  1.0007767013164417
-In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0039050603176989
-In file img-0026.fits the exposure is: 30.0 with standard deviation  1.000837796152276
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0007026248156583
+In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9998484784224345
+In file img-0022.fits the exposure is: 30.0 with standard deviation  1.0014833580375537
+In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9963779969458846
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0034062166248758
 </pre></div>
 </div>
 </div>
@@ -937,7 +937,14 @@ BUNIT   = &#39;adu     &#39;
         
           By Matthew Craig<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2020-2021.<br/>
+          <div class="extra_footer">
+            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+          </div>
       </p>
     </div>
   </footer>
