@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.1. More about flat corrections &#8212; CCD Data Reduction Guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.2. Calibrating the flats" href="05-03-Calibrating-the-flats.html" />
+    <link rel="prev" title="4. Flat corrections" href="05-00-Flat-corrections.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CCD Data Reduction Guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-00-Preface.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
+   1. Astronomical Images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
+     1.2. An artificial, but realistic, image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
+     1.3. Non-uniform sensitivity in astronomical detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05-Calibration-overview.html">
+     1.4. Calibration overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06-Image-combination.html">
+     1.5. Image combination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-08-Overscan.html">
+     1.6. Overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
+     1.7. Calibration choices to make
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-11-reading-images.html">
+     1.8. Reading images
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
+   2. Overscan and bias images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
+     2.3. Combine bias images to make master bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
+   3. Dark current and dark frames
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
+     3.1. Dark current: the ideal case
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
+     3.2. Real dark current: noise and other artifacts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
+     3.3. Handling overscan and bias for dark frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-05-Calibrate-dark-images.html">
+     3.4. Calibrate dark images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
+     3.5. Combine calibrated dark images for use in later reduction steps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="05-00-Flat-corrections.html">
+   4. Flat fielding
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-03-Calibrating-the-flats.html">
+     4.2. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-04-Combining-flats.html">
+     4.3. Combining flat frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06-00-Reducing-science-images.html">
+   5. Calibrating science images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08-00-Image-masking.html">
+   6. Finding and dealing with bad pixels
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
+     6.1. Identifying hot pixels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-02-Creating-a-mask.html">
+     6.2. Identifying bad pixels with ccdmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
+     6.3. Removing cosmic rays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
+     6.4. Incorporating masks in science images
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
+   GitHub repository
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <strong>Book edition 2.0.dev</strong></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/05-01-about-flat-corrections.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/05-01-about-flat-corrections.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/05-01-about-flat-corrections.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/05-01-about-flat-corrections.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-taking-images-for-flat-corrections">
+   4.1.1. Overview of taking images for flat corrections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calibrating-and-combining-flat-images">
+   4.1.2. Calibrating and combining flat images
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="more-about-flat-corrections">
+<h1><span class="section-number">4.1. </span>More about flat corrections<a class="headerlink" href="#more-about-flat-corrections" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview-of-taking-images-for-flat-corrections">
+<h2><span class="section-number">4.1.1. </span>Overview of taking images for flat corrections<a class="headerlink" href="#overview-of-taking-images-for-flat-corrections" title="Permalink to this headline">¶</a></h2>
+<p>There are a few ways of taking “flat” images:</p>
+<ul class="simple">
+<li><p>Twilight flats are images of the sky near zenith taken around sunrise or
+sunset.</p></li>
+<li><p>Dome flats are images of the inside of the dome (typically of a smooth
+surface, not of the dome itself),  illuminated by some light source in the dome.
+For smaller telescopes an electroluminescent or LED illuminated panel can be
+used as the light source.</p></li>
+<li><p>Sky flats are composed of several science images.</p></li>
+</ul>
+<p>Ideally the flat images have fairly high counts (roughly half the maximum counts
+of the detector) so that the <em>only</em> important source of error is Poisson error
+due to the light in the flat images, and so that the signal-to-noise ratio in
+those images is essentially zero.</p>
+</div>
+<div class="section" id="calibrating-and-combining-flat-images">
+<h2><span class="section-number">4.1.2. </span>Calibrating and combining flat images<a class="headerlink" href="#calibrating-and-combining-flat-images" title="Permalink to this headline">¶</a></h2>
+<p>The process of calibrating and combining flat frames is largely the same
+regardless of the light source being used.</p>
+<p>It is useful to think of flat frames as just like science images of stars or
+galaxies. The telescope is taking a picture of a light source, so bias and dark
+need to be removed from the individual images.</p>
+<p>When combining the images there is a new step we have not discussed yet:
+normalizing (also called rescaling) the calibrated flat frames to a common mean
+or median before combining them. In both sky and twilight flats the illumination
+varies naturally from frame-to-frame. If the images are not scaled to a common
+value before combining, then the ones taken while the sky is brighter will
+inappropriately dominate the result. Dome flats ought to be, in principle,
+perfectly stable with no time variation in their illumination. In practice,
+every light source varies at some level; if you are trying to correct 1%
+differences in illumination, then 1% fluctuations in the light source matter.</p>
+<p>Typically the mean or median is scaled to 1.0 before combining so that when the
+science images are divided by the calibrated, combined flats, the science image
+values do not change too much.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="05-00-Flat-corrections.html" title="previous page"><span class="section-number">4. </span>Flat corrections</a>
+    <a class='right-next' id="next-link" href="05-03-Calibrating-the-flats.html" title="next page"><span class="section-number">4.2. </span>Calibrating the flats</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Matthew Craig<br/>
+        
+            &copy; Copyright 2020-2021.<br/>
+          <div class="extra_footer">
+            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
