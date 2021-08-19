@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -284,11 +284,6 @@
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
-   GitHub repository
-  </a>
  </li>
 </ul>
 
@@ -628,11 +623,15 @@ this example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: meta, unit [astropy.nddata.decorators]
 WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: meta, unit
 </pre></div>
 </div>
-<img alt="../_images/05-03-Calibrating-the-flats_12_1.png" src="../_images/05-03-Calibrating-the-flats_12_1.png" />
+<img alt="../_images/05-03-Calibrating-the-flats_12_2.png" src="../_images/05-03-Calibrating-the-flats_12_2.png" />
 </div>
 </div>
 <p>There is not a lot of variation in this. Note that the overscan region on the
@@ -710,6 +709,12 @@ is the exposure time, so we set that up below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_darks</span> <span class="o">=</span> <span class="p">{</span><span class="n">ccd</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;exptime&#39;</span><span class="p">]:</span> <span class="n">ccd</span> <span class="k">for</span> <span class="n">ccd</span> <span class="ow">in</span> <span class="n">ifc_reduced</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">,</span> <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;.
 </pre></div>
 </div>
 </div>
@@ -957,7 +962,7 @@ is the exposure time, so we set that up below.</p>
           ...,
           [  2.7,   5.9,   9.4, ...,  -1.8,   7.5,   2.7],
           [  0.4,  13.4,   7.4, ...,  -0.7,  12. ,  -3.3],
-          [  0.1, -11.7,   3.1, ...,  -0.9,   2.6,   4.5]])}
+          [  0.1, -11.7,   3.1, ...,  -0.9,   2.6,   4.5]], unit=&#39;adu&#39;)}
 </pre></div>
 </div>
 </div>

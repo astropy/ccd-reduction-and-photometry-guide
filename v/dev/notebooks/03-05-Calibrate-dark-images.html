@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -285,11 +285,6 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
-   GitHub repository
-  </a>
- </li>
 </ul>
 
     </div>
@@ -519,8 +514,8 @@ each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=14</i>
-<table id="table140125284209664" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=14</i>
+<table id="table140532817249472" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -537,7 +532,7 @@ each.</p>
 <tr><td>ccd.019.0.fits</td><td>FLATFIELD</td><td>7.0</td><td>i&apos;</td></tr>
 <tr><td>ccd.037.0.fits</td><td>OBJECT</td><td>300.062</td><td>g&apos;</td></tr>
 <tr><td>ccd.043.0.fits</td><td>OBJECT</td><td>300.014</td><td>i&apos;</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 <div class="section" id="raw-dark-frames">
@@ -549,8 +544,8 @@ each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=10</i>
-<table id="table140125284211632" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=10</i>
+<table id="table140532817143696" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -563,7 +558,7 @@ each.</p>
 <tr><td>ccd.023.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
 <tr><td>ccd.024.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
 <tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 </div>
@@ -610,6 +605,16 @@ rescale them to a different exposure time.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57461.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57461.000000 from DATE-OBS&#39;.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="reduced-images-so-far">
 <h4><span class="section-number">3.4.1.3.1. </span>Reduced images (so far)<a class="headerlink" href="#reduced-images-so-far" title="Permalink to this headline">¶</a></h4>
@@ -621,8 +626,8 @@ rescale them to a different exposure time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=16</i>
-<table id="table140125283895088" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=16</i>
+<table id="table140531779392272" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -641,7 +646,7 @@ rescale them to a different exposure time.</p>
 <tr><td>ccd.024.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td><td>--</td></tr>
 <tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td><td>r&apos;</td><td>--</td></tr>
 <tr><td>combined_bias.fit</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>True</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 </div>
@@ -669,7 +674,7 @@ rescale them to a different exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=32</i>
-<table id="table140125284211776-321968" class="table-striped table-bordered table-condensed">
+<table id="table140531778318640-673006" class="table-striped table-bordered table-condensed">
 <thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
 <tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
 <tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
@@ -726,14 +731,14 @@ require.config({paths: {
     datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
 }});
 require(["datatables"], function(){
-    console.log("$('#table140125284211776-321968').dataTable()");
+    console.log("$('#table140531778318640-673006').dataTable()");
 
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "optionalnum-asc": astropy_sort_num,
     "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
 });
 
-    $('#table140125284211776-321968').dataTable({
+    $('#table140531778318640-673006').dataTable({
         order: [],
         pageLength: 50,
         lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -286,11 +286,6 @@
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
-   GitHub repository
-  </a>
  </li>
 </ul>
 
@@ -568,8 +563,8 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=14</i>
-<table id="table140385359500432" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=14</i>
+<table id="table139775536328656" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str2</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>i&apos;</td><td>0.0</td><td>2080</td><td>4128</td></tr>
@@ -586,7 +581,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 <tr><td>ccd.019.0.fits</td><td>FLATFIELD</td><td>i&apos;</td><td>7.0</td><td>2080</td><td>4128</td></tr>
 <tr><td>ccd.037.0.fits</td><td>OBJECT</td><td>g&apos;</td><td>300.062</td><td>2080</td><td>4128</td></tr>
 <tr><td>ccd.043.0.fits</td><td>OBJECT</td><td>i&apos;</td><td>300.014</td><td>2080</td><td>4128</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,8 +591,8 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=10</i>
-<table id="table140386384814864" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=10</i>
+<table id="table139776557659088" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td></tr>
@@ -610,7 +605,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 <tr><td>ccd.023.0.fits</td><td>DARK</td><td>7.0</td></tr>
 <tr><td>ccd.024.0.fits</td><td>DARK</td><td>7.0</td></tr>
 <tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 <div class="section" id="determine-overscan-region-for-the-lfc-chip-0">
@@ -642,7 +637,7 @@ for the camera you are using.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140385359988288">
+<table id="table139775536326688">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>ccdsec</th><th>datasec</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str18</th><th>str15</th><th>str15</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>[2049:2080,1:4127]</td><td>[1:2048,1:4128]</td><td>[1:2048,1:4128]</td></tr>
@@ -692,6 +687,12 @@ below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_bias</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw_biases</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;adu&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57402.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57402.000000 from DATE-OBS&#39;.
 </pre></div>
 </div>
 </div>
@@ -772,6 +773,12 @@ compressing gzip files is extremely slow.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s check that we really did get the images we expect by creating an
 <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/image_management.html"><code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code></a> for the reduced folder and displaying the size
@@ -785,8 +792,8 @@ will be the same number of reduced bias images as input bias images (six).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=6</i>
-<table id="table140385357843664" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=6</i>
+<table id="table139775534392704" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
@@ -795,7 +802,7 @@ will be the same number of reduced bias images as input bias images (six).</p>
 <tr><td>ccd.004.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
 <tr><td>ccd.005.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
 <tr><td>ccd.006.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 </div>
@@ -824,8 +831,8 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=32</i>
-<table id="table140385356889632" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=32</i>
+<table id="table139775534455104" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>object</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>r</td><td>1.0</td><td>4109</td><td>4096</td></tr>
@@ -849,7 +856,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 <tr><td>Dark-S001-R001-C020-NoFilt.fit</td><td>DARK</td><td>--</td><td>90.0</td><td>4109</td><td>4096</td></tr>
 <tr><td>kelt-16-b-S001-R001-C084-r.fit</td><td>LIGHT</td><td>r</td><td>90.0</td><td>4109</td><td>4096</td></tr>
 <tr><td>kelt-16-b-S001-R001-C125-r.fit</td><td>LIGHT</td><td>r</td><td>90.0</td><td>4109</td><td>4096</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 </div>
 <div class="section" id="determine-overscan-region-for-this-camera">
@@ -868,7 +875,7 @@ science region of the chip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140385356888096">
+<table id="table139775533607280">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>trimsec</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>str11</th><th>str11</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>[4096:4109]</td><td>[1:4096, :]</td></tr>

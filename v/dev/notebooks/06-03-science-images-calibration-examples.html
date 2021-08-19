@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -285,11 +285,6 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/mwcraig/ccd-reduction-and-photometry-guide">
-   GitHub repository
-  </a>
- </li>
 </ul>
 
     </div>
@@ -547,13 +542,13 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=2</i>
-<table id="table140490214428480" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table140274880262928" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str14</th><th>str7</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-16</td><td>ccd.037.0.fits</td><td>vv124_1</td><td>g&apos;</td><td>300.062</td></tr>
 <tr><td>2016-01-16</td><td>ccd.043.0.fits</td><td>vv124_1</td><td>i&apos;</td><td>300.014</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 <p>Next, a look at the calibrated combined images available to us.</p>
 <div class="cell docutils container">
@@ -564,8 +559,8 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=6</i>
-<table id="table140490214427184" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=6</i>
+<table id="table140275919103072" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str27</th><th>str9</th><th>str6</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-15</td><td>combined_bias.fit</td><td>BIAS</td><td>bias</td><td>i&apos;</td><td>0.0</td></tr>
@@ -574,7 +569,7 @@ images (there are, unfortunately, no standard names for these).</p>
 <tr><td>2016-03-13</td><td>combined_dark_70.000.fit</td><td>DARK</td><td>dark</td><td>r&apos;</td><td>70.0</td></tr>
 <tr><td>2016-01-16</td><td>combined_flat_filter_g&apos;.fit</td><td>FLATFIELD</td><td>flat_g</td><td>g&apos;</td><td>70.001</td></tr>
 <tr><td>2016-01-16</td><td>combined_flat_filter_i&apos;.fit</td><td>FLATFIELD</td><td>flat_i</td><td>i&apos;</td><td>7.0</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 <p>Both of these images will use the 300 second dark exposure to remove dark
 current and there is a flat field image for each of the two filters present in
@@ -586,6 +581,16 @@ images. The goal is to write code that is more conveniently reused.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_darks</span> <span class="o">=</span> <span class="p">{</span><span class="n">ccd</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="n">exposure</span><span class="p">]:</span> <span class="n">ccd</span> <span class="k">for</span> <span class="n">ccd</span> <span class="ow">in</span> <span class="n">ifc_reduced</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;dark&#39;</span><span class="p">,</span> <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
 <span class="n">combined_flats</span> <span class="o">=</span> <span class="p">{</span><span class="n">ccd</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;filter&#39;</span><span class="p">]:</span> <span class="n">ccd</span> <span class="k">for</span> <span class="n">ccd</span> <span class="ow">in</span> <span class="n">ifc_reduced</span><span class="o">.</span><span class="n">ccds</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="n">flat_imagetyp</span><span class="p">,</span> <span class="n">combined</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57403.000000 from DATE-OBS&#39;.
 </pre></div>
 </div>
 </div>
@@ -625,11 +630,11 @@ stage. Identification of cosmic rays will be discussed in <a class="reference in
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/units/quantity.py:479: RuntimeWarning: divide by zero encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/units/quantity.py:486: RuntimeWarning: divide by zero encountered in true_divide
   result = super().__array_ufunc__(function, method, *arrays, **kwargs)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/nduncertainty.py:653: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/nduncertainty.py:650: RuntimeWarning: invalid value encountered in true_divide
   return from_variance((left + right + correlation_sign * corr) /
 </pre></div>
 </div>
@@ -705,13 +710,13 @@ the science images (there are, unfortunately, no standard names for these).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=2</i>
-<table id="table140491272644352" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=2</i>
+<table id="table140274880139120" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>object</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T09:00:21</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
 <tr><td>2018-08-23T10:29:30</td><td>kelt-16-b-S001-R001-C125-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 <p>There are only two science images, both in the same filter and with the same
 exposure time.</p>
@@ -724,14 +729,14 @@ exposure time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><i>Table length=3</i>
-<table id="table140490214208848" class="table-striped table-bordered table-condensed">
+<div class="output text_html"><div><i>Table length=3</i>
+<table id="table140273777677312" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>str4</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T11:20:07</td><td>combined_bias.fit</td><td>BIAS</td><td>--</td><td>0.0</td></tr>
 <tr><td>2018-08-23T10:42:41</td><td>combined_dark_90.000.fit</td><td>DARK</td><td>--</td><td>90.0</td></tr>
 <tr><td>2018-08-23T01:25:17</td><td>combined_flat_filter_r.fit</td><td>FLAT</td><td>r</td><td>1.0</td></tr>
-</table></div></div>
+</table></div></div></div>
 </div>
 <p>Although there is only one of each type of combined calibration image, the code
 below sets up a dictionary for the flats and darks. That code will work on a
