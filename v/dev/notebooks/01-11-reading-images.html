@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -83,7 +83,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -389,7 +389,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-directories">
@@ -647,19 +647,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.9860467 , -2.02009723,  0.7104873 , ..., -0.99731379,
-        -0.25947622, -1.44742774],
-       [ 1.76180371, -1.39509361, -0.76702205, ..., -1.51625777,
-        -0.46204096,  1.5632682 ],
-       [ 0.59172008, -0.92152118, -0.98151467, ...,  0.21830719,
-        -0.26003137,  0.31045584],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.54724625, -1.3376576 , -0.20574803, ..., -0.34847533,
+         0.15165173, -0.1886318 ],
+       [-0.38471977, -0.38364788, -0.11688176, ...,  0.22266921,
+         0.52241523, -0.43073128],
+       [-0.39471265,  0.23293471,  1.00866929, ..., -1.57762126,
+        -1.33692976,  0.5655476 ],
        ...,
-       [-1.69675534,  1.93641328,  0.26294332, ..., -0.15802296,
-         1.23834341, -0.29219099],
-       [-0.6558248 ,  0.49285495, -2.29286554, ..., -0.79101156,
-        -1.72660437,  0.58458867],
-       [ 0.20401216,  0.27711785, -1.45497035, ..., -0.73696119,
-         1.60530726,  2.54770036]])
+       [ 0.47443449, -0.10195049,  1.22291019, ...,  0.16727652,
+        -0.58982367,  0.42849285],
+       [-0.8770578 , -0.9832213 , -0.55011564, ..., -0.04169608,
+         0.12958535, -0.66623579],
+       [-0.69143996, -1.54510386, -0.07975711, ...,  1.28629204,
+        -1.56117782,  0.59231926]])
 </pre></div>
 </div>
 </div>
@@ -709,19 +709,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.9860467 , -2.02009723,  0.7104873 , ..., -0.99731379,
-        -0.25947622, -1.44742774],
-       [ 1.76180371, -1.39509361, -0.76702205, ..., -1.51625777,
-        -0.46204096,  1.5632682 ],
-       [ 0.59172008, -0.92152118, -0.98151467, ...,  0.21830719,
-        -0.26003137,  0.31045584],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.54724625, -1.3376576 , -0.20574803, ..., -0.34847533,
+         0.15165173, -0.1886318 ],
+       [-0.38471977, -0.38364788, -0.11688176, ...,  0.22266921,
+         0.52241523, -0.43073128],
+       [-0.39471265,  0.23293471,  1.00866929, ..., -1.57762126,
+        -1.33692976,  0.5655476 ],
        ...,
-       [-1.69675534,  1.93641328,  0.26294332, ..., -0.15802296,
-         1.23834341, -0.29219099],
-       [-0.6558248 ,  0.49285495, -2.29286554, ..., -0.79101156,
-        -1.72660437,  0.58458867],
-       [ 0.20401216,  0.27711785, -1.45497035, ..., -0.73696119,
-         1.60530726,  2.54770036]])
+       [ 0.47443449, -0.10195049,  1.22291019, ...,  0.16727652,
+        -0.58982367,  0.42849285],
+       [-0.8770578 , -0.9832213 , -0.55011564, ..., -0.04169608,
+         0.12958535, -0.66623579],
+       [-0.69143996, -1.54510386, -0.07975711, ...,  1.28629204,
+        -1.56117782,  0.59231926]])
 </pre></div>
 </div>
 </div>
@@ -758,7 +758,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140432113565408" class="table-striped table-bordered table-condensed">
+<table id="table139808637812160" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -817,11 +817,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9979359678707517
-In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9943564968021094
-In file img-0022.fits the exposure is: 30.0 with standard deviation  1.0010142984070265
-In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9983258857677596
-In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0014048546277967
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0060505397913941
+In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0010374975003795
+In file img-0022.fits the exposure is: 30.0 with standard deviation  1.0001741014111176
+In file img-0024.fits the exposure is: 30.0 with standard deviation  1.002304728915946
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0038384598135717
 </pre></div>
 </div>
 </div>
@@ -917,12 +917,32 @@ BUNIT   = &#39;adu     &#39;
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page"><span class="section-number">1.7. </span>Calibration choices you need to make</a>
-    <a class='right-next' id="next-link" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page"><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">1.7. </span>Calibration choices you need to make</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

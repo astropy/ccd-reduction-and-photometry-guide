@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,7 +44,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -82,7 +82,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
@@ -388,11 +388,11 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#guide-editions">
-   Guide editions
+  <a class="reference internal nav-link" href="#edition-numbers">
+   Edition numbers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -468,8 +468,8 @@ familiarity with astronomical images and with Python. The inspiration for this
 work is a pair of guides written for IRAF, <a class="reference external" href="http://www.ifa.hawaii.edu/~meech/a399/handouts/ccduser3.pdf">“A User’s Guide to CCD Reductions with IRAF” (Massey 1997)</a> and
 <a class="reference external" href="https://www.mn.uio.no/astro/english/services/it/help/visualization/iraf/daophot2.pdf">“A User’s Guide to Stellar CCD Photometry with IRAF” (Massey and Davis 1992)</a>.</p>
 <p>The focus is on optical/IR images, not spectra.</p>
-<div class="section" id="guide-editions">
-<h2>Guide editions<a class="headerlink" href="#guide-editions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edition-numbers">
+<h2>Edition numbers<a class="headerlink" href="#edition-numbers" title="Permalink to this headline">¶</a></h2>
 <p>The guide now has version numbers, roughly equivalent to editions in a printed book. Each
 number has three pieces – for example the first official stable version is <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>.
 Think of that as roughly equivalent to “edition”, “revision” and “printing” in the physical
@@ -613,11 +613,23 @@ notebooks.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="01-00-Understanding-an-astronomical-CCD-image.html" title="next page"><span class="section-number">1. </span>Astronomical Images</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="01-00-Understanding-an-astronomical-CCD-image.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">1. </span>Astronomical Images</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
