@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.2. Real dark current: noise and other artifacts &#8212; CCD Data Reduction Guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3. Handling overscan and bias for dark frames" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" />
+    <link rel="prev" title="3.1. Dark current: the ideal case" href="03-01-Dark-current-The-ideal-case.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CCD Data Reduction Guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-00-Preface.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
+   1. Astronomical Images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
+     1.2. An artificial, but realistic, image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
+     1.3. Non-uniform sensitivity in astronomical detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05-Calibration-overview.html">
+     1.4. Calibration overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-06-Image-combination.html">
+     1.5. Image combination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-08-Overscan.html">
+     1.6. Overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
+     1.7. Calibration choices to make
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-11-reading-images.html">
+     1.8. Reading images
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
+   2. Overscan and bias images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
+     2.3. Combine bias images to make master bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
+   3. Dark current and dark frames
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
+     3.1. Dark current: the ideal case
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.2. Real dark current: noise and other artifacts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
+     3.3. Handling overscan and bias for dark frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-05-Calibrate-dark-images.html">
+     3.4. Calibrate dark images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
+     3.5. Combine calibrated dark images for use in later reduction steps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05-00-Flat-corrections.html">
+   4. Flat fielding
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-03-Calibrating-the-flats.html">
+     4.2. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-04-Combining-flats.html">
+     4.3. Combining flat frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06-00-Reducing-science-images.html">
+   5. Calibrating science images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08-00-Image-masking.html">
+   6. Finding and dealing with bad pixels
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
+     6.1. Identifying hot pixels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-02-Creating-a-mask.html">
+     6.2. Identifying bad pixels with ccdmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
+     6.3. Removing cosmic rays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
+     6.4. Incorporating masks in science images
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <h2>Book edition 2.0.0.dev</h2></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-02-Real-dark-current-noise-and-other-artifacts.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-an-image-to-check-for-hot-pixels">
+   3.2.1. Making an image to check for hot pixels
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-if-that-isn-t-possible">
+     3.2.1.1. What if that isn’t possible?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
+   3.2.2. Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
+     3.2.2.1. Estimating exposure time and number of frames for measuring dark current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examine-the-image">
+     3.2.2.2. Examine the image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dark-current-in-this-ccd">
+     3.2.2.3. Dark current in this CCD
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-2-thermoelectrically-cooled-camera">
+   3.2.3. Case 2: Thermoelectrically-cooled camera
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taking-an-image-to-measure-dark-current">
+     3.2.3.1. Taking an image to measure dark current
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-the-dark-current-for-each-pixel">
+     3.2.3.2. Calculate the dark current for each pixel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-is-a-large-range-in-the-dark-current">
+     3.2.3.3. There is a large range in the dark current
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-handle-hot-pixels">
+   3.2.4. How to handle hot pixels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-thing-not-to-do">
+   3.2.5. One thing NOT to do
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   3.2.6. Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="real-dark-current-noise-and-other-artifacts">
+<h1><span class="section-number">3.2. </span>Real dark current: noise and other artifacts<a class="headerlink" href="#real-dark-current-noise-and-other-artifacts" title="Permalink to this headline">¶</a></h1>
+<p>The dark current on modern CCDs, even relatively inexpensive ones, is very
+small. In a typical exposure the dark current is likely smaller, maybe much
+smaller, than the read noise. Despite that, it is worth examining some dark
+frames from your camera because not all pixels have the same dark current.
+Some, called hot pixels, have much higher dark current than the rest of the
+sensor. Some sensors have non-astronomical sources of counts whose value are
+proportional to exposure time, like dark current, but whose origin is nonthermal
+effects.</p>
+<p>As we did in the <a class="reference internal" href="01-08-Overscan.html"><span class="doc std std-doc">notebook about overscan</span></a>, we will focus on a pair of
+cameras to illustrate this point and demonstrate how to take similar images with
+your camera and analyze them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">hist</span>
+
+<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: block_reduce was moved to the astropy.nddata.blocks module.  Please update your import statement. [astropy.nddata.utils]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use custom style for larger fonts and figures</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;guide.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-an-image-to-check-for-hot-pixels">
+<h2><span class="section-number">3.2.1. </span>Making an image to check for hot pixels<a class="headerlink" href="#making-an-image-to-check-for-hot-pixels" title="Permalink to this headline">¶</a></h2>
+<p>Measuring the dark current in a camera requires taking images with fairly long
+exposure time, ideally long enough that the expected counts due to dark current
+is larger than the expected noise in the image. If that isn’t the case then the
+dark images will be measuring noise, not dark current, as we saw in the
+<a class="reference internal" href="03-01-Dark-current-The-ideal-case.html"><span class="doc std std-doc">previous section</span></a>.</p>
+<p>There are two ways to ensure that you are measuring dark current:</p>
+<ul class="simple">
+<li><p>Take some long-exposure dark frames. The exposure time should be long enough
+that the expected dark counts is at least as large as the noise expected in a
+single image.</p></li>
+<li><p>Take several of these images and combine them to reduce the noise in the
+result. The noise in the combined image is proportional to <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span>, where
+<span class="math notranslate nohighlight">\(N\)</span> is the number of images that are combined.</p></li>
+</ul>
+<div class="section" id="what-if-that-isn-t-possible">
+<h3><span class="section-number">3.2.1.1. </span>What if that isn’t possible?<a class="headerlink" href="#what-if-that-isn-t-possible" title="Permalink to this headline">¶</a></h3>
+<p>Do your best. The darks from the Large Format Camera were taken as part of a
+science run in which there was limited time for taking dark frames. The key
+thing to keep in mind is the lower limit on the dark current you can measure,
+given the read noise and exposure time.</p>
+<p>The darks in Case 2 were taken with a new camera that was not yet mounted on the
+telescope as part of commissioning the camera. That made taking over five hours of
+dark frames more feasible!</p>
+</div>
+</div>
+<div class="section" id="case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
+<h2><span class="section-number">3.2.2. </span>Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar<a class="headerlink" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar" title="Permalink to this headline">¶</a></h2>
+<p>The images in this section are from chip 0 of the LFC at the Palomar 200-inch
+telescope. Technical information about the camera is
+<a class="reference external" href="http://www.astro.caltech.edu/palomar/observer/200inchResources/lfcspecs.html">here</a>. The technical information says nothing about
+the expected dark current of this camera. The expectation for cameras cooled by
+liquid nitrogen is that their dark current is essentially zero.</p>
+<p>What we will see with this camera is that</p>
+<ul class="simple">
+<li><p>not all of the pixels have negligible dark current, and</p></li>
+<li><p>not all of the counts in a dark image are from dark current.</p></li>
+</ul>
+<div class="section" id="estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
+<h3><span class="section-number">3.2.2.1. </span>Estimating exposure time and number of frames for measuring dark current<a class="headerlink" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current" title="Permalink to this headline">¶</a></h3>
+<p>Unfortunately, the technical information for this camera does not include any
+information about the expected dark current. For thermoelectrically-cooled
+cameras the dark current is no more than 0.1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec/pixel, and for newer
+camers is more like 0.01<span class="math notranslate nohighlight">\(e^-\)</span>/sec/pixel. We will assume the smaller dark current
+here.</p>
+<p>The read noise for this camera is 11<span class="math notranslate nohighlight">\(e^-\)</span>/pixel, so the exposure time needed to
+just reach the case where the dark counts is equal to the read noise is</p>
+<div class="math notranslate nohighlight">
+\[
+t_\text{dark, min} = \frac{11 e^-/\text{pixel}}{0.01 e^-/\text{sec/pixel}} = 1100~\text{sec}.
+\]</div>
+<p>Even that leaves us with an image dominated by read noise rather than dark
+current. Combining 100 of those images would reduce the read noise by a factor
+of 10, which would be ideal for precisely measuring the dark current in each
+pixel. Unfortunately, taking over 30 hours of dark images is not feasible.</p>
+<p>Instead, we will work with what we have for this camera: three dark images, each
+300 seconds. This places a lower limit on the dark current we can measure — we
+will only be able to measure the dark current for fairly “hot” pixels — but it
+at least gives us some idea of the dark properties of the camera.</p>
+<p>Another way to phrase this is much more positive: for most of the pixels in the
+image the dark current simply does not matter because it is completely swamped
+by the read noise.</p>
+<p>First, we read in the image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calibrated_images</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">combined_dark_lfc</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">calibrated_images</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_300.000.fits.bz2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3743</span><span class="o">/</span><span class="mf">3085340991.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">calibrated_images</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">combined_dark_lfc</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">calibrated_images</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_300.000.fits.bz2&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> 
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">58</span>         <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> 
+<span class="g g-Whitespace">     </span><span class="mi">60</span> 
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/io/registry.py</span> in <span class="ni">read</span><span class="nt">(cls, format, cache, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span>                     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>                         <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">512</span>                         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span>                     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>                         <span class="k">raise</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/contextlib.py</span> in <span class="ni">__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>             <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+
+<span class="nn">/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/utils/data.py</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>                 <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span>                 <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">262</span>         <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span>             <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;combined_dark_300.000.fits.bz2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="examine-the-image">
+<h3><span class="section-number">3.2.2.2. </span>Examine the image<a class="headerlink" href="#examine-the-image" title="Permalink to this headline">¶</a></h3>
+<p>The full image is on the left, and the lower left corner is shown on the right.
+The light area in the lower left corner is due to sensor glow, which is light
+emitted by the electronics of the CCD. The counts in the image due to sensor
+glow should grow linearly with exposure time, like dark counts do, but the pixel
+values are much higher than for pixels whose counts are due to dark current.</p>
+<p>The top right panel in the figure below shows the part of the CCD near the
+sensor glow; pixel values are several thousand counts. The bottom right panel
+shows a portion of the CCD in the upper right part of the chip; pixel values are
+<em>much</em> lower, typically under 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">whole_im_ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">glow_ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">dark_ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+
+<span class="n">show_image</span><span class="p">(</span><span class="n">combined_dark_lfc</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">whole_im_ax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">whole_im_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Entire chip&#39;</span><span class="p">)</span>
+
+<span class="n">show_image</span><span class="p">(</span><span class="n">combined_dark_lfc</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="p">:</span><span class="mi">200</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">glow_ax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">glow_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Lower left corner of chip&#39;</span><span class="p">)</span>
+
+<span class="n">show_image</span><span class="p">(</span><span class="n">combined_dark_lfc</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:,</span> <span class="o">-</span><span class="mi">200</span><span class="p">:],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">dark_ax</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">dark_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Upper right corner of chip&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dark-current-in-this-ccd">
+<h3><span class="section-number">3.2.2.3. </span>Dark current in this CCD<a class="headerlink" href="#dark-current-in-this-ccd" title="Permalink to this headline">¶</a></h3>
+<p>The histogram below shows dark current along the horizontal axis and the number
+of pixels in the CCD with that dark current along the vertical axis. Since there
+is obvious sensor glow in the darks, three distributions are shown:</p>
+<ul class="simple">
+<li><p>The full sensor, which at first glance has some pixels with dark current as
+high as 10 <span class="math notranslate nohighlight">\(e^-\)</span>/sec.</p></li>
+<li><p>The portion of the sensor <em>excluding</em> the sensor glow, in which the dark
+current is, as expected, low, though there is a small fraction of “hot pixels”
+with dark current around 1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec.</p></li>
+<li><p>The sensor glow region. That region is apparent in the clump of pixels with
+equivalent dark current of 0.5<span class="math notranslate nohighlight">\(e^-\)</span>/sec and higher.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">exposure_time</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">dark_current_ln2</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">combined_dark_lfc</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">exposure_time</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current_ln2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span>
+     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Full sensor&#39;</span><span class="p">);</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current_ln2</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">200</span><span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span>
+     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sensor, excluding sensor glow region&#39;</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current_ln2</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="p">:</span><span class="mi">200</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C9&#39;</span><span class="p">,</span>
+     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sensor glow region only&#39;</span><span class="p">);</span>
+<span class="c1">#plt.semilogy()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">noise_limit</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">11</span><span class="o">/</span><span class="n">exposure_time</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">11</span><span class="o">/</span><span class="n">exposure_time</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">8e6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">8e6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">)</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+<span class="n">noisy_region</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">),</span> <span class="n">noise_limit</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Noise-dominated region&#39;</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hatch</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">noisy_region</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dark current, electrons per second&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels with that dark current&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="case-2-thermoelectrically-cooled-camera">
+<h2><span class="section-number">3.2.3. </span>Case 2: Thermoelectrically-cooled camera<a class="headerlink" href="#case-2-thermoelectrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="taking-an-image-to-measure-dark-current">
+<h3><span class="section-number">3.2.3.1. </span>Taking an image to measure dark current<a class="headerlink" href="#taking-an-image-to-measure-dark-current" title="Permalink to this headline">¶</a></h3>
+<p>The image below is a combination of 20 dark frames, each a 1000 sec exposure.
+That exposure time was chosen so that the expected number of dark electrons was
+at least somewhat larger than the read noise expected in a combination of 20
+images. As we saw in the previous notebook, unless that is the case the dark
+frames will measure read noise instead of dark current.</p>
+<p>This camera has a dark current of <span class="math notranslate nohighlight">\(0.01 e^-\)</span>/sec/pixel and read noise of roughly
+<span class="math notranslate nohighlight">\(10 e^-\)</span>/read/pixel/, so the exposure time at which the dark current is as large
+as the read noise is</p>
+<div class="math notranslate nohighlight">
+\[
+t_\text{dark, min} = \frac{10 e^-/\text{pixel}}{0.01 e^-/\text{sec/pixel}} = 1000~\text{sec}.
+\]</div>
+<p>By combining 20 of the images, the expected noise in the combination is reduced
+by a factor of <span class="math notranslate nohighlight">\(\sqrt{20}\)</span> to <span class="math notranslate nohighlight">\(2.2 e^-\)</span>/pixel. This puts us in the “low read
+noise” limit in the previous notebook about ideal dark current.</p>
+<p>Measuring the dark current once you have the images is relatively
+direct: subtract the bias, multiply the result by the gain, and then
+divide by the exposure time to obtain the dark current in <span class="math notranslate nohighlight">\(e^-\)</span>/pixel/sec.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dark_1000</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;combined_dark_exposure_1000.0.fit.bz2&#39;</span><span class="p">)</span>
+<span class="n">show_image</span><span class="p">(</span><span class="n">dark_1000</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-the-dark-current-for-each-pixel">
+<h3><span class="section-number">3.2.3.2. </span>Calculate the dark current for each pixel<a class="headerlink" href="#calculate-the-dark-current-for-each-pixel" title="Permalink to this headline">¶</a></h3>
+<p>Recall that the dark current <span class="math notranslate nohighlight">\(d_c(T)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+d_c(T) = d_e(t) / t,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(d_e(t)\)</span> is the number of dark electrons in the images. That is related to
+the dark counts, <span class="math notranslate nohighlight">\(n_{dark}(t)\)</span>, the image values displayed in the image above,
+by the gain of the camera, <span class="math notranslate nohighlight">\(d_e(t) = g n_{dark}(t)\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[
+d_C(T) = g n_{dark}(t) / t.
+\]</div>
+<p>This particular camera has a gain of <span class="math notranslate nohighlight">\(g = 1.5 e^-\)</span>/ADU.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gain</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">read_noise</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">exposure_time</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">dark_current</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">dark_1000</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">exposure_time</span>
+
+<span class="n">noisy_region</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">read_noise</span> <span class="o">/</span> <span class="n">exposure_time</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dark current&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">4e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">noisy_region</span><span class="p">,</span> <span class="o">*</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+<span class="n">noisy_region</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">),</span> <span class="n">noisy_region</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Noise-dominated region&#39;</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hatch</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">noisy_region</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dark current, electrons per second&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels with that dark current&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="there-is-a-large-range-in-the-dark-current">
+<h3><span class="section-number">3.2.3.3. </span>There is a large range in the dark current<a class="headerlink" href="#there-is-a-large-range-in-the-dark-current" title="Permalink to this headline">¶</a></h3>
+<p>While the vast majority of the pixels do, as expected, have very low dark
+current, it is much higher for other pixels. These pixels, called hot pixels,
+can occur even in cryogenically-cooled cameras.</p>
+<p>The vast majority of the pixels in the image have a dark current around the
+value promised by the manufacturer, 0.01 <span class="math notranslate nohighlight">\(e^-\)</span>/sec; the highest nominally have a
+dark current of 98 <span class="math notranslate nohighlight">\(e^-\)</span>/sec.</p>
+<p>However, there is  an upper limit to the dark current that can be measured in a
+particular exposure because the CCD saturates once the counts become large
+enough. In other words, there is an upper limit to the number of counts a CCD
+can represent; for this camera the limit is <span class="math notranslate nohighlight">\(2^{16} -1\)</span>, or <span class="math notranslate nohighlight">\(65,563\)</span> counts. If
+we convert that to a dark current for a 1000 sec exposure, it is approximately</p>
+<div class="math notranslate nohighlight">
+\[
+\text{dark current for saturated pixel} =  \text{gain} \times \frac{\text{saturation counts}}{\text{exposure time}} =  1.5 \frac{e^-}{\text{count}}\frac{65,563~\text{count}}{1000 \text{sec}} = 98 \frac{e^-}{\text{sec}}.
+\]</div>
+<p>For the hottest pixels in this image, that is the <em>lower limit</em> of the dark
+current for those pixels.</p>
+<p>The dark current is also not well estimated for pixels a bit below the maximum
+because CCDs stop responding linearly once they pass a pixel value that depends
+on the camera. For this camera, the linearity limit is around 55,000 counts,
+corresponding to a dark current of roughly  82 <span class="math notranslate nohighlight">\(e^-\)</span>/sec.</p>
+<p>You can, in principle, also check whether or not the hot pixels have a constant dark
+current that does not change with time by creating a number of these darks at
+different exposure times and plotting the dark current as a function of exposure
+time for the hot pixels. If the dark current is constant then the dark counts
+will be properly removed when the dark is subtracted from the science image. If
+the dark current is not constant, the pixel should be excluded from analysis.</p>
+<p>The fraction of very hot pixels, those above 1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec, is relatively small,
+roughly 0.1% of the pixels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current_ln2</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">200</span><span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cryogenically cooled, excluding sensor glow&#39;</span><span class="p">);</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">dark_current</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Thermo-electrically cooled&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dark current, electrons per second&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels with that dark current&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-handle-hot-pixels">
+<h2><span class="section-number">3.2.4. </span>How to handle hot pixels<a class="headerlink" href="#how-to-handle-hot-pixels" title="Permalink to this headline">¶</a></h2>
+<p>There are a few ways you could handle this, which can be used in combination
+with each other:</p>
+<ul class="simple">
+<li><p>Mark all pixels above some threshold as bad and create a mask to keep track of
+these bad pixels.</p></li>
+<li><p>Mark only the really high dark current pixels as bad and mask them; for the
+rest, subtract dark current as usual.</p></li>
+<li><p>Always take dark images with exposure times that match your flat and light
+frames and subtract dark current as usual.</p></li>
+<li><p>Take one set of darks with exposure equal to the <em>longest</em> exposure time in
+your flat and light images and scale the dark current downwards to match your
+other exposure times.</p></li>
+</ul>
+</div>
+<div class="section" id="one-thing-not-to-do">
+<h2><span class="section-number">3.2.5. </span>One thing NOT to do<a class="headerlink" href="#one-thing-not-to-do" title="Permalink to this headline">¶</a></h2>
+<p>Do not take short dark frames and scale them up to longer exposure times. Modern
+cameras, even thermoelectrically-cooled ones, have very low dark current. If
+your dark frames have low exposure time then most of the pixels are measuring
+read noise, not dark current. If you rescale those images to a longer exposure
+time then you inappropriately amplify that noise. Ideally, the expected dark
+counts (or dark electrons) in your dark frames should be at least a few times
+larger than the expected read noise in the frames you combine to make a
+reference dark.</p>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">3.2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>A dark frame only measures dark current if the expected dark counts exceed
+the read noise of the camera by a factor of a few.</p></li>
+<li><p>Take multiple dark frames and combine them to reduce the noise level in the
+combined image as much as possible.</p></li>
+<li><p>Most pixels in a CCD have very low dark current.</p></li>
+<li><p>A consequence of 1 and 3 is that you should almost never scale your dark
+frames up to a longer exposure time because you will amplify noise instead of
+eliminating dark current, even if you have combined multiple images as in 2.</p></li>
+<li><p>Identify hot pixels and mask them out or otherwise deal with them.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="03-01-Dark-current-The-ideal-case.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">3.1. </span>Dark current: the ideal case</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="03-04-Handling-overscan-and-bias-for-dark-frames.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">3.3. </span>Handling overscan and bias for dark frames</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Matthew Craig<br/>
+        
+            &copy; Copyright 2020-2021.<br/>
+          <div class="extra_footer">
+            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
