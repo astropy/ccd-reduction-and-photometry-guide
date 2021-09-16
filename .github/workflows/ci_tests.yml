@@ -87,7 +87,7 @@ jobs:
       - name: Set version number
         run: |
           VERSION_NUMBER=${GITHUB_REF#refs/tags/}
-          if [[ ${{ github.ref }} == 'refs/head/main' ]]; then VERSION_NUMBER=dev; fi
+          if [[ "${{ github.ref }}" == 'refs/heads/main' ]]; then VERSION_NUMBER=dev; fi
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
       - name: Download artifact
         uses: actions/download-artifact@v2
