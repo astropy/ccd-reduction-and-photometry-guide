@@ -9,7 +9,11 @@ on:
     branches:
       - main  # GitHub now defaults to 'main' as the name of the primary branch. Change this as needed.
     tags: # run CI if specific tags are pushed
-      - '[0-9]+.[0-9]+.[0-9]+[a-z0-9]*'
+      - '[0-9]+.[0-9]+.[0-9]+[a-z0-9]*'  # pre-releases -- note that brackets only
+                                         # match single character, and that * does
+                                         # not mean zero or more of previous
+                                         # character.
+      - '[0-9]+.[0-9]+.[0-9]+'  # actual releases.
   pull_request:
     branches: # only build on PRs against 'main' if you need to further limit when CI is run.
        - main
