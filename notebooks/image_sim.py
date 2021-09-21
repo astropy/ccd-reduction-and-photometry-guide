@@ -1,3 +1,4 @@
+import os
 
 import numpy as np
 
@@ -5,6 +6,12 @@ from astropy.modeling.models import Gaussian2D, RickerWavelet2D, Const2D
 from photutils.datasets import (make_random_gaussians_table,
                                 make_gaussian_sources_image)
 from photutils.aperture import EllipticalAperture
+
+# To use a sesed, set it in the environment. Useful for minimuizing changes when
+# publishing the book.
+seed = os.getenv('GUIDE_RANDOM_SEED', None)
+
+default_rng = np.random.default_rng(int(seed))
 
 
 def read_noise(image, amount, gain=1):
@@ -23,7 +30,7 @@ def read_noise(image, amount, gain=1):
     """
     shape = image.shape
 
-    noise = np.random.normal(scale=amount / gain, size=shape)
+    noise = default_rng.normal(scale=amount / gain, size=shape)
 
     return noise
 
@@ -99,7 +106,7 @@ def dark_current(image, current, exposure_time, gain=1.0, hot_pixels=False):
     base_current = current * exposure_time / gain
 
     # This random number generation should change on each call.
-    dark_im = np.random.poisson(base_current, size=image.shape)
+    dark_im = default_rng.poisson(base_current, size=image.shape)
 
     if hot_pixels:
         # We'll set 0.01% of the pixels to be hot; that is probably too high
@@ -139,7 +146,7 @@ def sky_background(image, sky_counts, gain=1):
     gain : float, optional
         Gain of the camera, in units of electrons/ADU.
     """
-    sky_im = np.random.poisson(sky_counts * gain, size=image.shape) / gain
+    sky_im = default_rng.poisson(sky_counts * gain, size=image.shape) / gain
 
     return sky_im
 
@@ -198,12 +205,12 @@ def make_cosmic_rays(image, number, strength=10000):
     maximum_pos = np.min(cr_image.shape)
     # These will be center points of the cosmic rays, which we place away from
     # the edges to ensure they are visible.
-    xy_cr = np.random.randint(0.1 * maximum_pos, 0.9 * maximum_pos,
-                              size=[number, 2])
+    xy_cr = default_rng.integers(0.1 * maximum_pos, 0.9 * maximum_pos,
+                                 size=[number, 2])
 
     cr_length = 5  # pixels, a little big
     cr_width = 2
-    theta_cr = 2 * np.pi * np.random.rand()
+    theta_cr = 2 * np.pi * default_rng.uniform()
     apertures = EllipticalAperture(xy_cr, cr_length, cr_width, theta_cr)
     masks = apertures.to_mask(method='center')
     for mask in masks:
