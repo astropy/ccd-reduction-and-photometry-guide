@@ -69,6 +69,7 @@ jobs:
     - name: Build book
       shell: bash -l {0}
       run: |
+        export GUIDE_RANDOM_SEED=4920385  # Use a seed to minimize changes in images
         jb build .
 
     - name: Upload HTML
