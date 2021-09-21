@@ -22,7 +22,7 @@ dark_mask = CCDData.read(ex2_path / 'mask_from_dark_current.fits', unit=u.dimens
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_4202/2944487908.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_4323/2944487908.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mdark_mask[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0mex2_path[0m [0;34m/[0m [0;34m'mask_from_dark_current.fits'[0m[0;34m,[0m [0munit[0m[0;34m=[0m[0mu[0m[0;34m.[0m[0mdimensionless_unscaled[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py[0m in [0;36m__call__[0;34m(self, *args, **kwargs)[0m

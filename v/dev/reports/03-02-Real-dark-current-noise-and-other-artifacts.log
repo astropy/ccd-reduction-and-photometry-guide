@@ -23,7 +23,7 @@ combined_dark_lfc = CCDData.read(calibrated_images / 'combined_dark_300.000.fits
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3745/3085340991.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3856/3085340991.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mcalibrated_images[0m [0;34m=[0m [0mPath[0m[0;34m([0m[0;34m'.'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mcombined_dark_lfc[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0mcalibrated_images[0m [0;34m/[0m [0;34m'combined_dark_300.000.fits.bz2'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m

@@ -29,7 +29,7 @@ dark_1000 = dark_1000.multiply(1.5 * u.electron / u.adu).divide(1000 * u.second)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_4084/805464159.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_4189/805464159.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      2[0m [0;34m[0m[0m
 [1;32m      3[0m [0mdark_90[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0mex2_path[0m [0;34m/[0m [0;34m'combined_dark_90.000.fit'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 4[0;31m [0mdark_1000[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m'combined_dark_exposure_1000.0.fit.bz2'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
