@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -73,6 +73,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/logo.png" class="logo" alt="logo">
       
@@ -647,19 +651,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5202209 , -1.99751561, -1.79611629, ...,  0.98063438,
-        -0.56991767, -0.09871062],
-       [ 0.83599066, -0.07467924, -0.51763175, ..., -1.96436352,
-         0.00703545, -0.54443282],
-       [ 0.64755751,  0.98151772, -2.19035519, ..., -0.01073748,
-         0.18214277,  0.9115667 ],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.33614991,  0.87448558, -0.94986064, ..., -1.38329556,
+         0.24975106,  0.1149659 ],
+       [-0.85968478, -0.08757763,  0.71451935, ..., -1.24311774,
+        -0.04990056, -0.03779106],
+       [-0.95437848,  1.69669628,  0.17365157, ...,  0.12317803,
+         0.12408427, -1.48553599],
        ...,
-       [ 0.64489269,  1.61183299,  0.6402503 , ...,  0.11727449,
-        -0.11982441,  0.65135236],
-       [ 1.14053992, -1.00089097, -0.72813791, ...,  0.26609036,
-        -0.44045742, -1.30691337],
-       [-1.10916005, -0.6349685 ,  0.48270097, ..., -1.23247288,
-         0.53378746,  0.39664026]])
+       [-0.93814316, -0.04115855, -0.62577412, ..., -1.5383841 ,
+         0.60250623,  1.39399833],
+       [ 1.81131704, -1.3586332 , -0.95645718, ...,  0.32654135,
+         0.80721313,  1.13247238],
+       [-1.07271847,  0.75468453,  1.83422677, ..., -0.72458374,
+         0.22034497,  0.04271635]])
 </pre></div>
 </div>
 </div>
@@ -709,19 +713,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5202209 , -1.99751561, -1.79611629, ...,  0.98063438,
-        -0.56991767, -0.09871062],
-       [ 0.83599066, -0.07467924, -0.51763175, ..., -1.96436352,
-         0.00703545, -0.54443282],
-       [ 0.64755751,  0.98151772, -2.19035519, ..., -0.01073748,
-         0.18214277,  0.9115667 ],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.33614991,  0.87448558, -0.94986064, ..., -1.38329556,
+         0.24975106,  0.1149659 ],
+       [-0.85968478, -0.08757763,  0.71451935, ..., -1.24311774,
+        -0.04990056, -0.03779106],
+       [-0.95437848,  1.69669628,  0.17365157, ...,  0.12317803,
+         0.12408427, -1.48553599],
        ...,
-       [ 0.64489269,  1.61183299,  0.6402503 , ...,  0.11727449,
-        -0.11982441,  0.65135236],
-       [ 1.14053992, -1.00089097, -0.72813791, ...,  0.26609036,
-        -0.44045742, -1.30691337],
-       [-1.10916005, -0.6349685 ,  0.48270097, ..., -1.23247288,
-         0.53378746,  0.39664026]])
+       [-0.93814316, -0.04115855, -0.62577412, ..., -1.5383841 ,
+         0.60250623,  1.39399833],
+       [ 1.81131704, -1.3586332 , -0.95645718, ...,  0.32654135,
+         0.80721313,  1.13247238],
+       [-1.07271847,  0.75468453,  1.83422677, ..., -0.72458374,
+         0.22034497,  0.04271635]])
 </pre></div>
 </div>
 </div>
@@ -758,7 +762,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140625637451472" class="table-striped table-bordered table-condensed">
+<table id="table140376531033440" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -817,11 +821,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.994211937398388
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0012600246609178
-In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9999233901072979
-In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0005154878213687
-In file img-0026.fits the exposure is: 30.0 with standard deviation  0.9981401530229187
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9962426331386655
+In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0032804095805
+In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9992796773631466
+In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0007173301372987
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.003912707172093
 </pre></div>
 </div>
 </div>
@@ -946,7 +950,7 @@ BUNIT   = &#39;adu     &#39;
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

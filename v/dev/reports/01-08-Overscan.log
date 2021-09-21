@@ -26,7 +26,7 @@ master = CCDData.read('combined_bias_100_images.fit.bz2', unit='adu')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_3559/114701153.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_3521/114701153.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0mtherma_path[0m [0;34m=[0m [0mPath[0m[0;34m([0m[0;34m'example-thermo-electric'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      2[0m [0mkelt[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0mtherma_path[0m [0;34m/[0m [0;34m'kelt-16-b-S001-R001-C084-r.fit'[0m[0;34m,[0m [0munit[0m[0;34m=[0m[0;34m'adu'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 3[0;31m [0mdark1000[0m [0;34m=[0m [0mCCDData[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m'dark-test-0002d1000.fit.bz2'[0m[0;34m,[0m [0munit[0m[0;34m=[0m[0;34m'adu'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

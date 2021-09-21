@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -75,6 +75,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/logo.png" class="logo" alt="logo">
       
@@ -473,7 +477,9 @@ contaminate your calibrated science images too.</p>
 do a combination by averaging images with <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/">ccdproc</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -498,6 +504,18 @@ do a combination by averaging images with <a class="reference external" href="ht
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set some default parameters for the plots below</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the random number generator, allowing a seed to be set from the environment</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;GUIDE_RANDOM_SEED&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># This is the generator to use for any image component which changes in each image, e.g. read noise</span>
+<span class="c1"># or Poisson error</span>
+<span class="n">noise_rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">seed</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -530,7 +548,7 @@ of 1000 is added to each distribution.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_distributions</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">bias_level</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">n_side</span> <span class="o">=</span> <span class="mi">320</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_distributions</span><span class="p">,</span> <span class="n">n_side</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias_level</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="n">noise_rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_distributions</span><span class="p">,</span> <span class="n">n_side</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">bias_level</span>
 <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -558,10 +576,10 @@ below because it can figure out what bin size to use for your data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f30584b15b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7ddce24d60&gt;
 </pre></div>
 </div>
-<img alt="../_images/01-06-Image-combination_7_1.png" src="../_images/01-06-Image-combination_7_1.png" />
+<img alt="../_images/01-06-Image-combination_8_1.png" src="../_images/01-06-Image-combination_8_1.png" />
 </div>
 </div>
 <p>Combining by averaging gives a narrower (i.e. less noisy) distribution than
@@ -592,7 +610,7 @@ width of the initial distribution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01-06-Image-combination_10_0.png" src="../_images/01-06-Image-combination_10_0.png" />
+<img alt="../_images/01-06-Image-combination_11_0.png" src="../_images/01-06-Image-combination_11_0.png" />
 </div>
 </div>
 </div>
@@ -626,7 +644,7 @@ that will be particularly convenient in this case.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01-06-Image-combination_14_0.png" src="../_images/01-06-Image-combination_14_0.png" />
+<img alt="../_images/01-06-Image-combination_15_0.png" src="../_images/01-06-Image-combination_15_0.png" />
 </div>
 </div>
 <p>Now that we know what the outliers in this (and <em>only</em> this) distribution look
@@ -657,7 +675,7 @@ looks for the middle value, an extreme value doesn’t affect the result too muc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01-06-Image-combination_18_0.png" src="../_images/01-06-Image-combination_18_0.png" />
+<img alt="../_images/01-06-Image-combination_19_0.png" src="../_images/01-06-Image-combination_19_0.png" />
 </div>
 </div>
 <div class="section" id="combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
@@ -683,7 +701,7 @@ image we hoped to use for calibration.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01-06-Image-combination_20_0.png" src="../_images/01-06-Image-combination_20_0.png" />
+<img alt="../_images/01-06-Image-combination_21_0.png" src="../_images/01-06-Image-combination_21_0.png" />
 </div>
 </div>
 <p>On one hand, the noise properties are better when you combine by taking the
@@ -749,9 +767,9 @@ deviation from the average.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number combined	 Average	 Standard dev σ 	 10σ 
-        10	   1100.30	    299.90	   2999.01
-        20	   1050.42	    217.85	   2178.50
-       100	   1010.19	     99.49	    994.85
+        10	   1099.72	    300.09	   3000.93
+        20	   1049.81	    217.99	   2179.93
+       100	   1009.90	     99.51	    995.14
 </pre></div>
 </div>
 </div>
@@ -787,9 +805,9 @@ the extreme value will be excluded.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Number combined          Median              MAD σ                10σ         
-         10               1000.55               1.74               17.38        
-         20               1000.85               1.28               12.84        
-        100               1000.17               1.18               11.85        
+         10               1000.11               0.94                9.41        
+         20               1000.21               1.28               12.75        
+        100                999.88               0.87                8.73        
 </pre></div>
 </div>
 </div>
@@ -861,7 +879,7 @@ value that appeared in one image.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of pixels&#39;)
 </pre></div>
 </div>
-<img alt="../_images/01-06-Image-combination_36_1.png" src="../_images/01-06-Image-combination_36_1.png" />
+<img alt="../_images/01-06-Image-combination_37_1.png" src="../_images/01-06-Image-combination_37_1.png" />
 </div>
 </div>
 </div>
@@ -919,7 +937,7 @@ value that appeared in one image.</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
