@@ -7,11 +7,14 @@ from photutils.datasets import (make_random_gaussians_table,
                                 make_gaussian_sources_image)
 from photutils.aperture import EllipticalAperture
 
-# To use a sesed, set it in the environment. Useful for minimuizing changes when
+# To use a seed, set it in the environment. Useful for minimizing changes when
 # publishing the book.
 seed = os.getenv('GUIDE_RANDOM_SEED', None)
 
-default_rng = np.random.default_rng(int(seed))
+if seed is not None:
+    seed = int(seed)
+    
+default_rng = np.random.default_rng(seed)
 
 
 def read_noise(image, amount, gain=1):
