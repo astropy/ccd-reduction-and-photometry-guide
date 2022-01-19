@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/client.py", line 1085, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/share/miniconda/envs/test/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/client.py", line 551, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/client.py", line 846, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/share/miniconda/envs/test/lib/python3.8/site-packages/nbclient/client.py", line 748, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+stars_only = stars(synthetic_image, 50, max_counts=2000)
+show_image(stars_only, cmap='gray', percu=99.9)
+plt.title('Stars only'.format(stars_only), fontsize=20)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [20][0m, in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0m stars_only [38;5;241m=[39m [43mstars[49m[43m([49m[43msynthetic_image[49m[43m,[49m[43m [49m[38;5;241;43m50[39;49m[43m,[49m[43m [49m[43mmax_counts[49m[38;5;241;43m=[39;49m[38;5;241;43m2000[39;49m[43m)[49m
+[1;32m      2[0m show_image(stars_only, cmap[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgray[39m[38;5;124m'[39m, percu[38;5;241m=[39m[38;5;241m99.9[39m)
+[1;32m      3[0m plt[38;5;241m.[39mtitle([38;5;124m'[39m[38;5;124mStars only[39m[38;5;124m'[39m[38;5;241m.[39mformat(stars_only), fontsize[38;5;241m=[39m[38;5;241m20[39m)
+
+Input [0;32mIn [19][0m, in [0;36mstars[0;34m(image, number, max_counts, gain)[0m
+[1;32m     15[0m ystddev_range [38;5;241m=[39m [[38;5;241m4[39m, [38;5;241m4[39m]
+[1;32m     16[0m params [38;5;241m=[39m [38;5;28mdict[39m([([38;5;124m'[39m[38;5;124mamplitude[39m[38;5;124m'[39m, flux_range),
+[1;32m     17[0m               ([38;5;124m'[39m[38;5;124mx_mean[39m[38;5;124m'[39m, xmean_range),
+[1;32m     18[0m               ([38;5;124m'[39m[38;5;124my_mean[39m[38;5;124m'[39m, ymean_range),
+[1;32m     19[0m               ([38;5;124m'[39m[38;5;124mx_stddev[39m[38;5;124m'[39m, xstddev_range),
+[1;32m     20[0m               ([38;5;124m'[39m[38;5;124my_stddev[39m[38;5;124m'[39m, ystddev_range),
+[1;32m     21[0m               ([38;5;124m'[39m[38;5;124mtheta[39m[38;5;124m'[39m, [[38;5;241m0[39m, [38;5;241m2[39m[38;5;241m*[39mnp[38;5;241m.[39mpi])])
+[0;32m---> 23[0m sources [38;5;241m=[39m [43mmake_random_gaussians_table[49m[43m([49m[43mnumber[49m[43m,[49m[43m [49m[43mparams[49m[43m,[49m
+[1;32m     24[0m [43m                                      [49m[43mrandom_state[49m[38;5;241;43m=[39;49m[38;5;241;43m12345[39;49m[43m)[49m
+[1;32m     26[0m star_im [38;5;241m=[39m make_gaussian_sources_image(image[38;5;241m.[39mshape, sources)
+[1;32m     28[0m [38;5;28;01mreturn[39;00m star_im
+
+[0;31mTypeError[0m: make_random_gaussians_table() got an unexpected keyword argument 'random_state'
+TypeError: make_random_gaussians_table() got an unexpected keyword argument 'random_state'
+

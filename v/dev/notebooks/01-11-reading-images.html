@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1.8. Reading images &#8212; CCD Data Reduction Guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -57,7 +57,10 @@
     <link rel="next" title="2. Handling overscan, trimming, and bias subtraction" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" />
     <link rel="prev" title="1.7. Calibration choices you need to make" href="01-09-Calibration-choices-you-need-to-make.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -338,7 +341,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -388,7 +391,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -456,7 +459,78 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Reading images</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-directories">
+   1.8.1. Working with directories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-some-fake-images">
+   1.8.2. Generate some fake images
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-1-reading-a-single-image-with-astropy-io-fits">
+   1.8.3. Option 1: Reading a single image with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     astropy.io.fits
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-2-use-ccddata-to-read-in-a-single-image">
+   1.8.4. Option 2:  Use
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CCDData
+    </span>
+   </code>
+   to read in a single image
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-3-working-with-a-directory-of-images-using-imagefilecollection">
+   1.8.5. Option 3: Working with a directory of images using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ImageFileCollection
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-of-directory-contents">
+     1.8.5.1. Summary of directory contents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-and-iterating-over-images">
+     1.8.5.2. Filtering and iterating over images
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="section" id="reading-images">
@@ -651,19 +725,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.50694397, -0.34978525, -1.06514637, ...,  1.33319028,
-         0.7671867 ,  0.31786591],
-       [ 0.54806881,  1.6969727 , -0.14471508, ..., -1.1391841 ,
-         1.06733005, -0.45468351],
-       [-1.08901793,  1.12837977, -0.65632156, ..., -0.88460407,
-        -0.91230592,  1.47434194],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.6150744 ,  0.70164217, -0.60706689, ..., -0.03116078,
+        -1.2816702 , -1.83109835],
+       [-0.30439426, -1.17590826, -0.6263003 , ...,  0.90482866,
+        -0.96254808, -0.6933673 ],
+       [ 0.22697426, -1.08479939, -1.67885581, ..., -1.08791619,
+         1.0684616 ,  2.30915373],
        ...,
-       [-1.71538423,  0.52786531,  0.20507431, ...,  0.6785413 ,
-         1.18922874, -0.93084154],
-       [ 0.32680255,  0.36717352, -0.56205497, ..., -2.00204034,
-         0.12578003, -0.40091228],
-       [-0.6349378 ,  0.86435764, -1.35290096, ...,  1.37222609,
-        -0.43831125, -0.99272898]])
+       [-0.62732738,  1.86061587, -1.25500543, ...,  0.31772285,
+        -1.04468594,  0.22766669],
+       [ 0.08783092, -0.29307669, -0.60316065, ...,  2.25490751,
+         0.47733458,  0.13368344],
+       [ 0.44941448, -1.6307054 , -0.67272187, ...,  0.84517366,
+         0.88372353,  0.77409479]])
 </pre></div>
 </div>
 </div>
@@ -713,19 +787,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.50694397, -0.34978525, -1.06514637, ...,  1.33319028,
-         0.7671867 ,  0.31786591],
-       [ 0.54806881,  1.6969727 , -0.14471508, ..., -1.1391841 ,
-         1.06733005, -0.45468351],
-       [-1.08901793,  1.12837977, -0.65632156, ..., -0.88460407,
-        -0.91230592,  1.47434194],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.6150744 ,  0.70164217, -0.60706689, ..., -0.03116078,
+        -1.2816702 , -1.83109835],
+       [-0.30439426, -1.17590826, -0.6263003 , ...,  0.90482866,
+        -0.96254808, -0.6933673 ],
+       [ 0.22697426, -1.08479939, -1.67885581, ..., -1.08791619,
+         1.0684616 ,  2.30915373],
        ...,
-       [-1.71538423,  0.52786531,  0.20507431, ...,  0.6785413 ,
-         1.18922874, -0.93084154],
-       [ 0.32680255,  0.36717352, -0.56205497, ..., -2.00204034,
-         0.12578003, -0.40091228],
-       [-0.6349378 ,  0.86435764, -1.35290096, ...,  1.37222609,
-        -0.43831125, -0.99272898]])
+       [-0.62732738,  1.86061587, -1.25500543, ...,  0.31772285,
+        -1.04468594,  0.22766669],
+       [ 0.08783092, -0.29307669, -0.60316065, ...,  2.25490751,
+         0.47733458,  0.13368344],
+       [ 0.44941448, -1.6307054 , -0.67272187, ...,  0.84517366,
+         0.88372353,  0.77409479]])
 </pre></div>
 </div>
 </div>
@@ -762,7 +836,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140133407239520" class="table-striped table-bordered table-condensed">
+<table id="table140480368867936" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -821,11 +895,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0009078895747765
-In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9977260062490223
-In file img-0022.fits the exposure is: 30.0 with standard deviation  1.001234186061768
-In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9950471424178217
-In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0018288693326702
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9967376642657488
+In file img-0020.fits the exposure is: 30.0 with standard deviation  1.001896164229402
+In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9984584971710772
+In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9968243211454346
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0018915196016036
 </pre></div>
 </div>
 </div>
@@ -920,61 +994,49 @@ BUNIT   = &#39;adu     &#39;
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1.7. </span>Calibration choices you need to make</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-09-Calibration-choices-you-need-to-make.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.7. </span>Calibration choices you need to make</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">2. </span>Handling overscan, trimming, and bias subtraction</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Matthew Craig<br/>
-        
-            &copy; Copyright 2020-2021.<br/>
-          <div class="extra_footer">
-            <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+  <p>
+    
+      By Matthew Craig<br/>
+    
+        &copy; Copyright 2020-2021.<br/>
+      <div class="extra_footer">
+        <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
