@@ -47,7 +47,7 @@ jobs:
         conda install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex
         conda list
         conda info -e
-        python -m pip install jupyter-book==0.11.2
+        python -m pip install jupyter-book==0.12.1
     - name: Cache
       id: cache
       uses: actions/cache@v2
