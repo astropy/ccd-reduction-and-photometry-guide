@@ -607,7 +607,7 @@ tolerance is useful if the intent is to scale the dark frames anyway.</p>
         <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;exptime&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">closest_dark_exposure</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
         
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Closest dark exposure time is </span><span class="si">{}</span><span class="s1"> for flat of exposure &#39;</span>
-                           <span class="s1">&#39;time </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">closest_dark_exposure</span><span class="p">,</span> <span class="n">a_flat</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;exptime&#39;</span><span class="p">]))</span>
+                           <span class="s1">&#39;time </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">closest_dark_exposure</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;exptime&#39;</span><span class="p">]))</span>
         
     
     <span class="k">return</span> <span class="n">closest_dark_exposure</span>
