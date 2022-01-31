@@ -15,6 +15,12 @@ p = Path(download)
 print(p)
 p.rename('dark-test-0002d1000.fit.bz2')
 
+url = 'https://zenodo.org/record/5931364/files/single_bias_thermoelectric.fit.bz2?download=1'
+download = download_file(url, show_progress=True)
+p = Path(download)
+print(p)
+p.rename('single_bias_thermoelectric.fit.bz2')
+
 url = 'https://zenodo.org/record/3332818/files/combined_dark_300.000.fits.bz2?download=1'
 download = download_file(url, show_progress=True)
 p = Path(download)
