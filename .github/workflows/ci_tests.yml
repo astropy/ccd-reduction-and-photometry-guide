@@ -44,10 +44,12 @@ jobs:
     - name: Install base dependencies
       shell: bash -l {0}
       run: |
-        conda install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex
+        conda install -c conda-forge mamba
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex
         conda list
         conda info -e
-        python -m pip install jupyter-book==0.12.1
+        mamba install --quiet -c conda-forge  "jupyter-book=0.12.1"
+        # python -m pip install jupyter-book==0.12.1
     - name: Cache
       id: cache
       uses: actions/cache@v2
