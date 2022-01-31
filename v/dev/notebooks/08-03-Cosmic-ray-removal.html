@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,21 +33,21 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -557,7 +557,7 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
             
               <div>
                 
-  <div class="section" id="cosmic-ray-removal">
+  <div class="tex2jax_ignore mathjax_ignore section" id="cosmic-ray-removal">
 <h1><span class="section-number">6.3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Permalink to this headline">¶</a></h1>
 <p>Almost all images from a CCD will include some number of cosmic rays, charged
 particles which bombard the Earth’s upper atmosphere. Some of those will make it
@@ -621,26 +621,12 @@ identified by <code class="docutils literal notranslate"><span class="pre">ccdma
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata.utils</span> <span class="kn">import</span> <span class="n">block_replicate</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">block_replicate</span>
 <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 <span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
 <span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">detect_sources</span>
 
 <span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span><span class="p">,</span> <span class="n">display_cosmic_rays</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">astropy.nddata.utils</span> <span class="kn">import</span> <span class="n">block_replicate</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;block_replicate&#39; from &#39;astropy.nddata.utils&#39; (/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/utils.py)
 </pre></div>
 </div>
 </div>
@@ -668,12 +654,24 @@ and gain of <span class="math notranslate nohighlight">\(1.5~e^-\)</span>/ADU.</
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
+the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_image</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit, wcs [astropy.nddata.decorators]
+</pre></div>
+</div>
+<img alt="../_images/08-03-Cosmic-ray-removal_8_1.png" src="../_images/08-03-Cosmic-ray-removal_8_1.png" />
 </div>
 </div>
 <p>The unit of this image is ADU, so we need to multiply by the gain to convert to
@@ -721,6 +719,9 @@ using logical “OR.”</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_16_0.png" src="../_images/08-03-Cosmic-ray-removal_16_0.png" />
+</div>
 </div>
 <p>Excluding these pixels from cosmic ray detection ensures that only cosmic rays
 are  identified.</p>
@@ -759,6 +760,27 @@ rays were identified replaced by interpolating the neighboring pixels.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 L.A.Cosmic iterations
+Iteration 1:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>152 cosmic pixels this iteration
+Iteration 2:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 cosmic pixels this iteration
+Iteration 3:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 cosmic pixels this iteration
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 24.1 s, sys: 2.2 s, total: 26.3 s
+Wall time: 14.2 s
+</pre></div>
+</div>
+</div>
 </div>
 <p>The mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> includes both cosmic rays identified by
 <code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> and the mask we applied to <code class="docutils literal notranslate"><span class="pre">ccd</span></code> above. To get only the
@@ -777,6 +799,11 @@ rays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160
 </pre></div>
 </div>
 </div>
@@ -811,6 +838,11 @@ these extended cosmic rays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span><span class="o">.</span><span class="n">areas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 3, 3, 3, 7, 3, 7, 8, 8, 3, 4, 4, 3, 7, 5, 3, 4, 3, 4])
 </pre></div>
 </div>
 </div>
@@ -855,6 +887,9 @@ inclusion in this discussion. Display them all by setting
                    <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_33_0.png" src="../_images/08-03-Cosmic-ray-removal_33_0.png" />
 </div>
 </div>
 </div>
@@ -903,6 +938,12 @@ the same parameters as above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
+the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,10 +952,41 @@ the same parameters as above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 L.A.Cosmic iterations
+Iteration 1:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>231 cosmic pixels this iteration
+Iteration 2:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123 cosmic pixels this iteration
+Iteration 3:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125 cosmic pixels this iteration
+Iteration 4:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>105 cosmic pixels this iteration
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 31.3 s, sys: 2.92 s, total: 34.3 s
+Wall time: 18.2 s
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.</span><span class="se">\n</span><span class="s2">No pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pre-masking detects 160 cosmic ray pixels.
+No pre-masking detects 307 cosmic ray pixels.
 </pre></div>
 </div>
 </div>
@@ -932,6 +1004,12 @@ no light).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs_no_premask</span><span class="o">.</span><span class="n">areas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 52,  3,  3, 24,  6,  3,  3,  4,  5,  6,  8,  5,  3,  3,  8,  5,
+        3,  3,  5,  4,  3, 35,  4])
 </pre></div>
 </div>
 </div>
@@ -955,6 +1033,9 @@ masked first. As an example, the cosmic ray labeled “Cosmic ray 0” in the
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_46_0.png" src="../_images/08-03-Cosmic-ray-removal_46_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="discussion">
@@ -965,7 +1046,7 @@ in the dark frames, which leads to a large negative value in the calibrated
 science image. LACosmic tags that pixel and many around it as cosmic rays. While
 the individual hot pixel should be masked, the ones around it do not need to be
 masked.</p>
-<p>The final example, “Cosmic ray 3,” looks a lot like a star. It is, in fact, the
+<p>The final example, “Cosmic ray 2,” looks a lot like a star. It is, in fact, the
 after-image of one of the bright stars in the field of KELT-16 b. Bright stars in
 the field of view can deposit enough charge that it does not dissipate between
 images. Typically the effect can be avoided altogether by “pre-flashing” the
