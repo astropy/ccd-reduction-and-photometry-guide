@@ -37,13 +37,16 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -585,7 +588,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table140332326489728" class="table-striped table-bordered table-condensed">
+<table id="table140018839632864" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str14</th><th>str7</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-16</td><td>ccd.037.0.fits</td><td>vv124_1</td><td>g&apos;</td><td>300.062</td></tr>
@@ -602,7 +605,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table140332326486512" class="table-striped table-bordered table-condensed">
+<table id="table140018839631328" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str27</th><th>str9</th><th>str6</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-15</td><td>combined_bias.fit</td><td>BIAS</td><td>bias</td><td>i&apos;</td><td>0.0</td></tr>
@@ -672,11 +675,11 @@ stage. Identification of cosmic rays will be discussed in <a class="reference in
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/units/quantity.py:613: RuntimeWarning: divide by zero encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/units/quantity.py:611: RuntimeWarning: divide by zero encountered in divide
   result = super().__array_ufunc__(function, method, *arrays, **kwargs)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/nduncertainty.py:650: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/nduncertainty.py:684: RuntimeWarning: invalid value encountered in divide
   return from_variance((left + right + correlation_sign * corr) /
 </pre></div>
 </div>
@@ -753,7 +756,7 @@ the science images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table140331222292752" class="table-striped table-bordered table-condensed">
+<table id="table140017735677600" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>object</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T09:00:21</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
@@ -772,7 +775,7 @@ exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=3</i>
-<table id="table140331222294144" class="table-striped table-bordered table-condensed">
+<table id="table140017734626128" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>str4</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T11:20:07</td><td>combined_bias.fit</td><td>BIAS</td><td>--</td><td>0.0</td></tr>

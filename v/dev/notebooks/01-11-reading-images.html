@@ -37,13 +37,16 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -725,19 +728,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.03720503, -0.56110488,  0.45719695, ...,  0.87139517,
-        -0.31621735, -0.31715592],
-       [ 1.13145614, -0.43969149, -0.06225672, ...,  0.50282734,
-         0.63618726, -1.38182403],
-       [-0.39397456, -0.59376413, -0.18249109, ..., -0.11063339,
-         0.6345211 ,  1.05738124],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.09624975e+00, -3.54376311e-01,  9.50744650e-02, ...,
+        -1.42051900e+00, -1.03311733e+00,  4.21799391e-01],
+       [-1.13457273e+00, -9.47313964e-01,  5.72800833e-01, ...,
+        -1.93571864e-01,  4.47150562e-01, -7.87909021e-01],
+       [-1.56877985e+00,  6.35847204e-01,  3.05072022e+00, ...,
+         2.33573330e-01, -1.87560522e-01,  5.11759884e-01],
        ...,
-       [ 1.53822196,  1.33366136,  1.73892021, ...,  0.00926015,
-        -1.65698258,  0.88943047],
-       [-1.03710145, -0.04212187, -1.80543538, ...,  0.50496181,
-         0.70473711,  0.94411605],
-       [-0.52034891, -3.43053519, -0.83821418, ...,  0.55902233,
-         0.31879936,  1.26126028]])
+       [ 7.36350095e-01, -3.27088499e-01, -3.93368227e-01, ...,
+        -1.18382074e+00, -2.51629798e-03,  4.77786143e-01],
+       [ 8.97381916e-01,  9.09053690e-01,  1.60636049e-02, ...,
+         4.36114199e-01,  6.90429271e-01, -1.47462930e+00],
+       [-1.42605440e-01, -1.24359131e+00,  2.22828326e-01, ...,
+        -5.54778303e-01, -1.92497400e+00,  3.67741885e-01]])
 </pre></div>
 </div>
 </div>
@@ -787,19 +790,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.03720503, -0.56110488,  0.45719695, ...,  0.87139517,
-        -0.31621735, -0.31715592],
-       [ 1.13145614, -0.43969149, -0.06225672, ...,  0.50282734,
-         0.63618726, -1.38182403],
-       [-0.39397456, -0.59376413, -0.18249109, ..., -0.11063339,
-         0.6345211 ,  1.05738124],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.09624975e+00, -3.54376311e-01,  9.50744650e-02, ...,
+        -1.42051900e+00, -1.03311733e+00,  4.21799391e-01],
+       [-1.13457273e+00, -9.47313964e-01,  5.72800833e-01, ...,
+        -1.93571864e-01,  4.47150562e-01, -7.87909021e-01],
+       [-1.56877985e+00,  6.35847204e-01,  3.05072022e+00, ...,
+         2.33573330e-01, -1.87560522e-01,  5.11759884e-01],
        ...,
-       [ 1.53822196,  1.33366136,  1.73892021, ...,  0.00926015,
-        -1.65698258,  0.88943047],
-       [-1.03710145, -0.04212187, -1.80543538, ...,  0.50496181,
-         0.70473711,  0.94411605],
-       [-0.52034891, -3.43053519, -0.83821418, ...,  0.55902233,
-         0.31879936,  1.26126028]])
+       [ 7.36350095e-01, -3.27088499e-01, -3.93368227e-01, ...,
+        -1.18382074e+00, -2.51629798e-03,  4.77786143e-01],
+       [ 8.97381916e-01,  9.09053690e-01,  1.60636049e-02, ...,
+         4.36114199e-01,  6.90429271e-01, -1.47462930e+00],
+       [-1.42605440e-01, -1.24359131e+00,  2.22828326e-01, ...,
+        -5.54778303e-01, -1.92497400e+00,  3.67741885e-01]])
 </pre></div>
 </div>
 </div>
@@ -836,7 +839,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140286210138016" class="table-striped table-bordered table-condensed">
+<table id="table140489736675136" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -895,11 +898,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9957808616121987
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0018023484436116
-In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9952257782956183
-In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9997410007935899
-In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0037991010302787
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0023747539174659
+In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9982417425064296
+In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9964953429276509
+In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0008417316302645
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0026539986696854
 </pre></div>
 </div>
 </div>

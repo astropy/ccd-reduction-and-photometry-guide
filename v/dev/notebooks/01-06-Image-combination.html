@@ -37,13 +37,16 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -646,7 +649,7 @@ below because it can figure out what bin size to use for your data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f087998a5e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff008a30160&gt;
 </pre></div>
 </div>
 <img alt="../_images/01-06-Image-combination_8_1.png" src="../_images/01-06-Image-combination_8_1.png" />
@@ -849,7 +852,7 @@ absolute deviation</em> in place of the standard deviation as the measure of how
 a value is from the typical value. The <a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a>, or MAD,
 of a set of points <span class="math notranslate nohighlight">\(x\)</span> is defined by:
 $<span class="math notranslate nohighlight">\(
-MAD = \frac{1}{N}\sum_{i=0}^N |x_i - \text{median}(x)|.
+\text{MAD} = \text{median}\big( x_i - \text{median}(x) \big).
 \)</span>$
 This is a measure of the typical absolute distance from the median of the set of
 values. The MAD is not directly equivalent to the standard deviation. The
