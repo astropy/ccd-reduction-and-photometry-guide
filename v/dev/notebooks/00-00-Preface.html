@@ -433,9 +433,55 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#software-setup">
-   Software setup
+  <a class="reference internal nav-link" href="#software-setup-getting-started-on-your-computer">
+   Software setup/getting started on your computer
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-python">
+     Setting up Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-a-copy-of-these-notebooks">
+     Getting a copy of these notebooks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-want-to-run-this-code-in-a-notebook-from-the-command-line">
+     If you want to run this code in a notebook from the command line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-want-to-run-this-code-in-some-other-way-ipython-spyder-visual-studio-code">
+     If you want to run this code in some other way (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       IPython
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spyder
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Visual
+      </span>
+      <span class="pre">
+       Studio
+      </span>
+      <span class="pre">
+       Code
+      </span>
+     </code>
+     , …)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-files">
@@ -512,9 +558,55 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#software-setup">
-   Software setup
+  <a class="reference internal nav-link" href="#software-setup-getting-started-on-your-computer">
+   Software setup/getting started on your computer
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-python">
+     Setting up Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-a-copy-of-these-notebooks">
+     Getting a copy of these notebooks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-want-to-run-this-code-in-a-notebook-from-the-command-line">
+     If you want to run this code in a notebook from the command line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-you-want-to-run-this-code-in-some-other-way-ipython-spyder-visual-studio-code">
+     If you want to run this code in some other way (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       IPython
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spyder
+      </span>
+     </code>
+     ,
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Visual
+      </span>
+      <span class="pre">
+       Studio
+      </span>
+      <span class="pre">
+       Code
+      </span>
+     </code>
+     , …)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-files">
@@ -557,25 +649,35 @@ work is a pair of guides written for IRAF, <a class="reference external" href="h
 <p>The focus is on optical/IR images, not spectra.</p>
 <div class="section" id="edition-numbers">
 <h2>Edition numbers<a class="headerlink" href="#edition-numbers" title="Permalink to this headline">¶</a></h2>
-<p>The guide now has version numbers, roughly equivalent to editions in a printed book. Each
-number has three pieces – for example the first official stable version is <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>.
-Think of that as roughly equivalent to “edition”, “revision” and “printing” in the physical
+<p>The guide now has version numbers, roughly equivalent to editions in a printed
+book. Each
+number has three pieces – for example the first official stable version is
+<code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>.
+Think of that as roughly equivalent to “edition”, “revision” and “printing” in
+the physical
 book world.</p>
 <p>The edition number is listed in the sidebar.</p>
 <p>This is what changes in each of those numbers means:</p>
 <ul class="simple">
-<li><p>Change in the first number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>, indicates a major revision
+<li><p>Change in the first number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>, indicates a major
+revision
 that changes the numbering of sections or adds significant new sections.</p></li>
-<li><p>Changes in the middle number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">2.1.0</span></code>, indicates suibstantive
-updates have been made to the content and/or important errors have been fixed. The
+<li><p>Changes in the middle number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">2.1.0</span></code>, indicates
+suibstantive
+updates have been made to the content and/or important errors have been fixed.
+The
 section numbers will not change, though.</p></li>
-<li><p>Changes in the last number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">2.0.1</span></code>, indicates minor changes have
-been made like fixing typographic errors, broken links, and similar corrections. The
-section numbers will not change in these revisions.</p></li>
+<li><p>Changes in the last number, e.g. changing <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code> → <code class="docutils literal notranslate"><span class="pre">2.0.1</span></code>, indicates minor
+changes have
+been made like fixing typographic errors, broken links, and similar
+corrections. The
+section numbers will not change in these revisions.
+In addition, there is a “development” version available that reflects the latest
+changes
+made to the guide between releases.</p></li>
 </ul>
-<p>In addition, there is a “development” version available that reflects the latest changes
-made to the guide between releases.</p>
-<p>Those familiar with <a class="reference external" href="https://semver.org/">semantic versioning</a> from software development will recognize this as
+<p>Those familiar with <a class="reference external" href="https://semver.org/">semantic versioning</a> from software development
+will recognize this as
 roughly the equivalent for text.</p>
 </div>
 <div class="section" id="credits">
@@ -628,19 +730,55 @@ difficult to install over time and is no longer supported.</p></li>
 <li><p><a class="reference external" href="https://www.amazon.com/Handbook-Astronomical-Image-Processing/dp/0943396824">The Handbook of Astronomical Image Processing</a> by Richard Berry and James Burnell. This
 provides a very detailed overview of data reduction and photometry. One virtue
 is its inclusion of <em>real</em> images with defects.</p></li>
-<li><p>The <a class="reference external" href="https://www.aavso.org/sites/default/files/publications_files/ccd_photometry_guide/CCDPhotometryGuide.pdf">AAVSO CCD Obseving Manual</a> provides a complete introduction to CCD data reduction and photometry.</p></li>
+<li><p>The <a class="reference external" href="https://www.aavso.org/sites/default/files/publications_files/ccd_photometry_guide/CCDPhotometryGuide.pdf">AAVSO CCD Obseving Manual</a> provides a complete introduction to CCD
+data reduction and photometry.</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1905.13189">A Beginner’s Guide to Working with Astronomical Data</a> is much broader than this guide. It
 includes an introduction to Python.</p></li>
 </ul>
 </div>
-<div class="section" id="software-setup">
-<h2>Software setup<a class="headerlink" href="#software-setup" title="Permalink to this headline">¶</a></h2>
-<p>The recommended way to get set up to use this guide is to use the
-<a class="reference external" href="https://www.anaconda.com/download/">Anaconda Python distribution</a> (or the much smaller
-<a class="reference external" href="https://conda.io/miniconda.html">miniconda installer</a>). Once you have that, you can install
+<div class="section" id="software-setup-getting-started-on-your-computer">
+<h2>Software setup/getting started on your computer<a class="headerlink" href="#software-setup-getting-started-on-your-computer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-python">
+<h3>Setting up Python<a class="headerlink" href="#setting-up-python" title="Permalink to this headline">¶</a></h3>
+<p>To use any of this software you will need an installation of Python. We
+recommend the <a class="reference external" href="https://github.com/conda-forge/miniforge#mambaforge">mambaforge installer</a> or
+<a class="reference external" href="https://conda.io/miniconda.html">miniconda installer</a>
+(or the much larger
+<a class="reference external" href="https://www.anaconda.com/download/">Anaconda Python distribution</a> if you must). Once you have that, you can
+install
 everything you need with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">astropy</span> <span class="n">ccdproc</span> <span class="n">photutils</span> <span class="n">ipywidgets</span> <span class="n">matplotlib</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">astropy</span> <span class="n">ccdproc</span> <span class="n">photutils</span> <span class="n">ipywidgets</span> <span class="n">matplotlib</span> <span class="n">jupyterlab</span>
 </pre></div>
+</div>
+<p>(alternatively, <code class="docutils literal notranslate"><span class="pre">mamba</span></code> should work in place of <code class="docutils literal notranslate"><span class="pre">conda</span></code>; if you get an error
+message saying you need to intialize <code class="docutils literal notranslate"><span class="pre">mamba</span></code> then follow the instructions in
+that message.</p>
+</div>
+<div class="section" id="getting-a-copy-of-these-notebooks">
+<h3>Getting a copy of these notebooks<a class="headerlink" href="#getting-a-copy-of-these-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>Get a copy of these files from <a class="reference external" href="https://github.com/astropy/ccd-reduction-and-photometry-guide">https://github.com/astropy/ccd-reduction-and-photometry-guide</a> – click the
+green “Code” button and either clone (if you are using <code class="docutils literal notranslate"><span class="pre">git</span></code>) or download the
+zip file and extract it. If you are looking for a specific edition, e.g. <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>
+then go to <a class="reference external" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/releases">https://github.com/astropy/ccd-reduction-and-photometry-guide/releases</a>.</p>
+</div>
+<div class="section" id="if-you-want-to-run-this-code-in-a-notebook-from-the-command-line">
+<h3>If you want to run this code in a notebook from the command line<a class="headerlink" href="#if-you-want-to-run-this-code-in-a-notebook-from-the-command-line" title="Permalink to this headline">¶</a></h3>
+<p>Open a terminal, change directory into the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> folder in this
+repository, type <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> and a browser tab should open with the notebooks.</p>
+<p><em>You will still need to download the data by following the instructions below in
+<a class="reference external" href="#Data-files">Data files</a></em></p>
+</div>
+<div class="section" id="if-you-want-to-run-this-code-in-some-other-way-ipython-spyder-visual-studio-code">
+<h3>If you want to run this code in some other way (<code class="docutils literal notranslate"><span class="pre">IPython</span></code>, <code class="docutils literal notranslate"><span class="pre">Spyder</span></code>, <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">Code</span></code>, …)<a class="headerlink" href="#if-you-want-to-run-this-code-in-some-other-way-ipython-spyder-visual-studio-code" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Spyder</span></code> and <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">Code</span></code> can run notebooks; follow the instructions
+<a class="reference external" href="#Getting-a-copy-of-these-notebooks">above</a> to get the notebooks. Follow the instructions
+for opening notebooks in the tool you chose.</p>
+<p>If you are copy/pasting code from the online book into one of these tools, you
+need two files from the repository. Follow the <a class="reference external" href="#Getting-a-copy-of-these-notebooks">instructions for getting a copy of the repository</a>,
+then copy the two files <code class="docutils literal notranslate"><span class="pre">download_data.py</span></code> and <code class="docutils literal notranslate"><span class="pre">convenience_functions.py</span></code> from
+the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> folder to whatever folder you plan to run the code in.</p>
+<p><em>You will still need to download the data by following the instructions below in
+<a class="reference external" href="#Data-files">Data files</a></em></p>
 </div>
 </div>
 <div class="section" id="data-files">
