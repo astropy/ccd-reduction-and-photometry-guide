@@ -27,7 +27,7 @@ html:
   use_repository_button     : false  # Whether to add a link to your repository button
   use_issues_button         : true  # Whether to add an "open an issue" button
   extra_navbar              : |     # Will be displayed underneath the left navbar.
-    <h2>Book edition: development</h2>
+    <h2>Book edition: 2.0.1rc1</h2>
     <strong>Previous editions</strong></br>
     <a href="../../../v/2.0.0/index.html">2.0.0</a></br>
     Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
