@@ -301,9 +301,10 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  <h2>Book edition: 2.0.1rc1</h2>
+  <h2>Book edition: 2.0.1</h2>
 <strong>Previous editions</strong></br>
 <a href="../../../v/2.0.0/index.html">2.0.0</a></br>
+<a href="../../../v/dev/index.html">dev (latest)</a></br>
 Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
 <a href="https://astropy.org">Astropy</a>
 
@@ -603,7 +604,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=14</i>
-<table id="table140123270953232" class="table-striped table-bordered table-condensed">
+<table id="table140349642034144" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -633,7 +634,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table140123270953760" class="table-striped table-bordered table-condensed">
+<table id="table140349642035008" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -715,7 +716,7 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=16</i>
-<table id="table140123269888704" class="table-striped table-bordered table-condensed">
+<table id="table140350545958848" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -762,7 +763,7 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Table length=32</i>
-<table id="table140123270952080-154197" class="table-striped table-bordered table-condensed">
+<table id="table140349606328496-728982" class="table-striped table-bordered table-condensed">
 <thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
 <tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
 <tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
@@ -819,14 +820,14 @@ require.config({paths: {
     datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
 }});
 require(["datatables"], function(){
-    console.log("$('#table140123270952080-154197').dataTable()");
+    console.log("$('#table140349606328496-728982').dataTable()");
 
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "optionalnum-asc": astropy_sort_num,
     "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
 });
 
-    $('#table140123270952080-154197').dataTable({
+    $('#table140349606328496-728982').dataTable({
         order: [],
         pageLength: 50,
         lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
