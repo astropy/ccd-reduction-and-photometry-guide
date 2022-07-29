@@ -1,0 +1,1030 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.5. Image combination &#8212; CCD Data Reduction Guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.6. Overscan" href="01-08-Overscan.html" />
+    <link rel="prev" title="1.4. Calibration overview" href="01-05-Calibration-overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CCD Data Reduction Guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00-00-Preface.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
+   1. Astronomical Images
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">
+     1.2. An artificial, but realistic, image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-04-Nonuniform-sensitivity.html">
+     1.3. Non-uniform sensitivity in astronomical detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-05-Calibration-overview.html">
+     1.4. Calibration overview
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.5. Image combination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-08-Overscan.html">
+     1.6. Overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">
+     1.7. Calibration choices to make
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-11-reading-images.html">
+     1.8. Reading images
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">
+   2. Overscan and bias images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">
+     2.3. Combine bias images to make master bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">
+   3. Dark current and dark frames
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">
+     3.1. Dark current: the ideal case
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">
+     3.2. Real dark current: noise and other artifacts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">
+     3.3. Handling overscan and bias for dark frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-05-Calibrate-dark-images.html">
+     3.4. Calibrate dark images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">
+     3.5. Combine calibrated dark images for use in later reduction steps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05-00-Flat-corrections.html">
+   4. Flat fielding
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-03-Calibrating-the-flats.html">
+     4.2. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-04-Combining-flats.html">
+     4.3. Combining flat frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06-00-Reducing-science-images.html">
+   5. Calibrating science images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08-00-Image-masking.html">
+   6. Finding and dealing with bad pixels
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-01-Identifying-hot-pixels.html">
+     6.1. Identifying hot pixels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-02-Creating-a-mask.html">
+     6.2. Identifying bad pixels with ccdmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-03-Cosmic-ray-removal.html">
+     6.3. Removing cosmic rays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">
+     6.4. Incorporating masks in science images
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <h2>Book edition: 2.0.1rc1</h2>
+<strong>Previous editions</strong></br>
+<a href="../../../v/2.0.0/index.html">2.0.0</a></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/01-06-Image-combination.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/01-06-Image-combination.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/01-06-Image-combination.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/01-06-Image-combination.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values">
+   1.5.1. The bottom line: combine by averaging images, but clip extreme values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combination-method-average-or-median">
+   1.5.2. Combination method: average or median?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-view-of-these-distributions">
+     1.5.2.1. Image view of these distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-effect-of-outliers">
+   1.5.3. The effect of outliers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
+     1.5.3.1. Combining using the average has a noticeable effect on the result; median
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-solution-average-combine-but-clip-the-extreme-values">
+   1.5.4. The solution: average combine, but clip the extreme values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sigma-clipping">
+     1.5.4.1. Sigma clipping
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   1.5.5. Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Image combination</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values">
+   1.5.1. The bottom line: combine by averaging images, but clip extreme values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combination-method-average-or-median">
+   1.5.2. Combination method: average or median?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-view-of-these-distributions">
+     1.5.2.1. Image view of these distributions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-effect-of-outliers">
+   1.5.3. The effect of outliers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
+     1.5.3.1. Combining using the average has a noticeable effect on the result; median
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-solution-average-combine-but-clip-the-extreme-values">
+   1.5.4. The solution: average combine, but clip the extreme values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sigma-clipping">
+     1.5.4.1. Sigma clipping
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   1.5.5. Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="image-combination">
+<h1><span class="section-number">1.5. </span>Image combination<a class="headerlink" href="#image-combination" title="Permalink to this headline">¶</a></h1>
+<p>Image combination serves several purposes. Combining images:</p>
+<ul class="simple">
+<li><p>reduces noise in images</p></li>
+<li><p>can remove transient artifacts like cosmic rays and satellite tracks</p></li>
+<li><p>can remove stars in flat images taken at twilight</p></li>
+</ul>
+<p>It’s essential that several of each type of calibration image (bias, dark, flat)
+be taken. Combining them reduces the noise in the images by roughly a factor of
+<span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of images being combined. As shown in the
+previous notebook, using a single calibration image actually <em>increases</em> the
+noise in your image.</p>
+<p>There are a few ways to combine images; if done properly, features that show up
+in only one of the images (like cosmic rays) are not present in the combination.
+If done incorrectly, those features show up in your combined images and then
+contaminate your calibrated science images too.</p>
+<div class="section" id="the-bottom-line-combine-by-averaging-images-but-clip-extreme-values">
+<h2><span class="section-number">1.5.1. </span>The bottom line: combine by averaging images, but clip extreme values<a class="headerlink" href="#the-bottom-line-combine-by-averaging-images-but-clip-extreme-values" title="Permalink to this headline">¶</a></h2>
+<p>The remainder of this notebook demonstrates this conclusion and explains how to
+do a combination by averaging images with <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/">ccdproc</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+
+<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">hist</span>
+<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">mad_std</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use custom style for larger fonts and figures</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;guide.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set some default parameters for the plots below</span>
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the random number generator, allowing a seed to be set from the environment</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;GUIDE_RANDOM_SEED&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    
+<span class="c1"># This is the generator to use for any image component which changes in each image, e.g. read noise</span>
+<span class="c1"># or Poisson error</span>
+<span class="n">noise_rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combination-method-average-or-median">
+<h2><span class="section-number">1.5.2. </span>Combination method: average or median?<a class="headerlink" href="#combination-method-average-or-median" title="Permalink to this headline">¶</a></h2>
+<p>In this section we’ll look at a simplified version of the challenges of
+combining images to reduce noise. It’s fair to think of astronomical images
+(especially bias and dark images) as being a Gaussian distribution of pixel
+values around the bias level, and a width related to the read noise of the
+detector. To simplify what follows, we will work arrays of random numbers drawn
+from a Gaussian distribution instead of with astronomical images.</p>
+<p>In properly done flat images the noise is technically a Poisson distribution,
+but with a large enough number of counts, the distribution is indistinguishable
+from a Gaussian distribution whose width is related to the square root of the
+number of counts. While some regions of a science image are dominated by Poisson
+noise from sources in the image, most of the image will be dominated by Gaussian
+read noise from the detector or Poisson noise from the sky background.</p>
+<p>Instead of working with a combination of images, we’ll create 100 Gaussian
+distributions with a mean of zero, and a standard deviation of one, and combine
+those two different ways: by finding the average and by finding the median. Each
+distribution has size <span class="math notranslate nohighlight">\(320^2\)</span> so that we can view it as either a distribution of
+102,400 values or as an image that is <span class="math notranslate nohighlight">\(320 \times 320\)</span>.</p>
+<p>We can think of each of these 100 distributions as representing an image, like a
+bias or dark. To make the analogy to real images a little more direct, a “bias”
+of 1000 is added to each distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_distributions</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">bias_level</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_side</span> <span class="o">=</span> <span class="mi">320</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="n">noise_rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_distributions</span><span class="p">,</span> <span class="n">n_side</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">bias_level</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve created the distributions and combined them in two different
+ways, let’s take a look at them. The <a class="reference external" href="https://astropy.readthedocs.io/en/stable/visualization/histogram.html"><code class="docutils literal notranslate"><span class="pre">hist</span></code> function from astropy.visualization</a> is used
+below because it can figure out what bin size to use for your data.</p>
+<!-- *Note: but beware https://github.com/astropy/astropy/issues/7758* --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">hist</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;One sample distribution&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pixel value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
+
+<span class="n">hist</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;average&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> distributions combined&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_distributions</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pixel value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ffa0e1b44c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/01-06-Image-combination_8_1.png" src="../_images/01-06-Image-combination_8_1.png" />
+</div>
+</div>
+<p>Combining by averaging gives a narrower (i.e. less noisy) distribution than
+combining by median, though both substantially reduced the width of the
+distribution. The conclusion so far is that combining by averaging is mildly
+preferable to combining by median. Computationally, the mean is also faster to
+compute than the median.</p>
+<div class="section" id="image-view-of-these-distributions">
+<h3><span class="section-number">1.5.2.1. </span>Image view of these distributions<a class="headerlink" href="#image-view-of-these-distributions" title="Permalink to this headline">¶</a></h3>
+<p>As suggested above, we could view each of these distributions as an image
+instead of a histogram. One take away from the diagram below is that in this
+case, the difference between mean and median is not apparent.</p>
+<p>In all cases, the extreme values of the image display are set to bracket the
+width of the initial distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="p">[</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">average</span><span class="p">,</span> <span class="n">median</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One distrbution&#39;</span><span class="p">,</span> <span class="s1">&#39;Average of </span><span class="si">{n}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_distributions</span><span class="p">),</span> <span class="s1">&#39;Median of </span><span class="si">{n}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_distributions</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">axis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_side</span><span class="p">,</span> <span class="n">n_side</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06-Image-combination_11_0.png" src="../_images/01-06-Image-combination_11_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-effect-of-outliers">
+<h2><span class="section-number">1.5.3. </span>The effect of outliers<a class="headerlink" href="#the-effect-of-outliers" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that, in just one of the 100 distributions we’re combining, there are a
+small number of extreme values. In astronomical images these extremes happen
+very frequently because of cosmic ray hits on the detector that cause, in one
+small patch of a calibration image, much higher counts. Another case occurs when
+combining twilight flats, which often contain faint images of stars.</p>
+<p>In the example below, we set just 50 points out of the 102,400 in the first
+distribution to a somewhat higher value than the rest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">:</span><span class="mi">10050</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">bias_level</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember, we can think of the values in this distribution as an image, a view
+that will be particularly convenient in this case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_side</span><span class="p">,</span> <span class="n">n_side</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;One distribution with outliers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06-Image-combination_15_0.png" src="../_images/01-06-Image-combination_15_0.png" />
+</div>
+</div>
+<p>Now that we know what the outliers in this (and <em>only</em> this) distribution look
+like, we’ll combine all of the distributions as we did above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though only one out of the 100 “images” we’re combining has these high
+pixel values, the distribution of pixels for the average is clearly affected
+(well, maybe not clearly, since seeing it requires a logarithmic <span class="math notranslate nohighlight">\(y\)</span>-axis). The
+distribution for the median looks much the same as above. Since median simply
+looks for the middle value, an extreme value doesn’t affect the result too much.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;average&#39;</span><span class="p">);</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06-Image-combination_19_0.png" src="../_images/01-06-Image-combination_19_0.png" />
+</div>
+</div>
+<div class="section" id="combining-using-the-average-has-a-noticeable-effect-on-the-result-median">
+<h3><span class="section-number">1.5.3.1. </span>Combining using the average has a noticeable effect on the result; median<a class="headerlink" href="#combining-using-the-average-has-a-noticeable-effect-on-the-result-median" title="Permalink to this headline">¶</a></h3>
+<p>removes the artifact</p>
+<p>The effect of the outlier is <em>much</em> clearer if the distributions are displayed
+as images. If the distributions we’re combining were calibration images then the
+outliers that appear in one image (e.g. a cosmic ray) would affect the combined
+image we hoped to use for calibration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="p">[</span><span class="n">bits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">average</span><span class="p">,</span> <span class="n">median</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;One distribution with outliers&#39;</span><span class="p">,</span> <span class="s1">&#39;Average of </span><span class="si">{n}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_distributions</span><span class="p">),</span> <span class="s1">&#39;Median of </span><span class="si">{n}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_distributions</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">axis</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_side</span><span class="p">,</span> <span class="n">n_side</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">bias_level</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">axis</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-06-Image-combination_21_0.png" src="../_images/01-06-Image-combination_21_0.png" />
+</div>
+</div>
+<p>On one hand, the noise properties are better when you combine by taking the
+average. On the other hand, the median eliminates features that appear in only
+one image.</p>
+<p>Astronomical images will almost always have those transient features. Even at an
+observatory near sea level in an exposure that is very short, cosmic ray hits
+are common.</p>
+</div>
+</div>
+<div class="section" id="the-solution-average-combine-but-clip-the-extreme-values">
+<h2><span class="section-number">1.5.4. </span>The solution: average combine, but clip the extreme values<a class="headerlink" href="#the-solution-average-combine-but-clip-the-extreme-values" title="Permalink to this headline">¶</a></h2>
+<p>The answer here is to first clip extreme values from the distributions and then
+combine using the average. That rejects outlying values like the median but with
+the modestly better statistical properties of the average. A method called
+“sigma clipping” is used to remove the extreme values.</p>
+<p><strong>Please do not use the code below for reducing your data…</strong></p>
+<p>…in the next set of notebooks we’ll walk through the package
+<a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a>, which automates much of what you see below.
+The section below demonstrates and explains some of what’s happening behind the
+scenes in <a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a>.</p>
+<div class="section" id="sigma-clipping">
+<h3><span class="section-number">1.5.4.1. </span>Sigma clipping<a class="headerlink" href="#sigma-clipping" title="Permalink to this headline">¶</a></h3>
+<p>Sigma clipping means calculating how “far” each pixel to be combined is from the
+“typical” value and excluding values from the combination if they are “too far”
+from the pixel value.</p>
+<p>To be clear, when evaluating which values to reject we’re doing it for each of
+the 102,400 points in the distribution (or, if you prefer, each of the
+320<span class="math notranslate nohighlight">\(\times\)</span>320 pixels in the image) we’re going to combine. In other words, for
+each point (or pixel), we’ll compute a “typical” value for the 100 distributions
+(images) we’re combining and exclude any from the average that are “too far”
+from the “typical value.”</p>
+<p>What should be used as the “typical” value, how do we measure how “far” away a
+value is, and how far is “too far”?</p>
+<p>The last question is easiest to answer: it depends a bit on the noise level in
+your camera but something like 5 farther from the “typical” value than most of
+the pixels are.</p>
+<p>Using the average as the typical value and the standard deviation as a measure
+of how far a particular value is from the typical value is often not the best
+choice. The problem with this is that outlying values in a single distribution
+(or image) strongly bias the average and exaggerate the standard deviation. In
+this example, where we’re combining 100 distributions (images), using the
+average and standard deviation might work since there are so many distributions.
+A more typical number of bias or dark images that one might combine is 10 or 20.
+In that case, an extreme value in one image strongly affects the mean and
+standard deviation.</p>
+<p>As an example, consider combining 10, 20, or 100 of our distributions, as shown
+in the cell below. Only in the case of 100 distributions would our extreme value
+of 2000 be excluded if we excluded values more than 5 times the standard
+deviation from the average.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number combined</span><span class="se">\t</span><span class="s1"> Average</span><span class="se">\t</span><span class="s1"> Standard dev σ </span><span class="se">\t</span><span class="s1"> 10σ &#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n_to_combine</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">n_distributions</span><span class="p">]:</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bits</span><span class="p">[:</span><span class="n">n_to_combine</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">bits</span><span class="p">[:</span><span class="n">n_to_combine</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{n:10d}</span><span class="se">\t</span><span class="si">{avg:10.2f}</span><span class="se">\t</span><span class="si">{std:10.2f}</span><span class="se">\t</span><span class="si">{ten_sig:10.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_to_combine</span><span class="p">,</span> 
+                                         <span class="n">avg</span><span class="o">=</span><span class="n">avg</span><span class="p">,</span> 
+                                         <span class="n">std</span><span class="o">=</span><span class="n">std</span><span class="p">,</span> <span class="n">ten_sig</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="n">std</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number combined	 Average	 Standard dev σ 	 10σ 
+        10	   1099.72	    300.09	   3000.93
+        20	   1049.81	    217.99	   2179.93
+       100	   1009.90	     99.51	    995.14
+</pre></div>
+</div>
+</div>
+</div>
+<p>A better choice is to use the median as the typical value and the <em>median
+absolute deviation</em> in place of the standard deviation as the measure of how far
+a value is from the typical value. The <a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation">median absolute deviation</a>, or MAD,
+of a set of points <span class="math notranslate nohighlight">\(x\)</span> is defined by:
+$<span class="math notranslate nohighlight">\(
+\text{MAD} = \text{median}\big( x_i - \text{median}(x) \big).
+\)</span>$
+This is a measure of the typical absolute distance from the median of the set of
+values. The MAD is not directly equivalent to the standard deviation. The
+relationship between the two depends on the distribution of values, but for a
+Gaussian distribution multiplying the MAD by 1.4826 does the trick. The
+<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.stats.mad_std.html">astropy function <code class="docutils literal notranslate"><span class="pre">mad_std</span></code></a> will calculate the MAD and multiply by the
+appropriate factor for you.</p>
+<p>Repeating the calculation above but with median as the central value and the MAD
+in place of the standard deviation demonstrates that even for 10 distributions
+the extreme value will be excluded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:^20}{:^20}{:^20}{:^20}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Number combined&#39;</span><span class="p">,</span> <span class="s1">&#39;Median&#39;</span><span class="p">,</span> <span class="s1">&#39;MAD σ&#39;</span><span class="p">,</span> <span class="s1">&#39;10σ&#39;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">n_to_combine</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">n_distributions</span><span class="p">]:</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">bits</span><span class="p">[:</span><span class="n">n_to_combine</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">mad_std</span><span class="p">(</span><span class="n">bits</span><span class="p">[:</span><span class="n">n_to_combine</span><span class="p">,</span> <span class="mi">10000</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{n:^20d}{avg:^20.2f}{std:^20.2f}{ten_sig:^20.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_to_combine</span><span class="p">,</span> 
+                                         <span class="n">avg</span><span class="o">=</span><span class="n">avg</span><span class="p">,</span> 
+                                         <span class="n">std</span><span class="o">=</span><span class="n">std</span><span class="p">,</span> <span class="n">ten_sig</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="n">std</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Number combined          Median              MAD σ                10σ         
+         10               1000.11               0.94                9.41        
+         20               1000.21               1.28               12.75        
+        100                999.88               0.87                8.73        
+</pre></div>
+</div>
+</div>
+</div>
+<p>The downside to using the median and median absolute deviation? They can be slow
+to compute for large images or large stacks of images.</p>
+<p>The cells below perform the actual clipping; you should generally use the
+astropy function <a class="reference external" href="https://astropy.readthedocs.io/en/stable/stats/robust.html"><code class="docutils literal notranslate"><span class="pre">sigma_clip</span></code></a> to do this, but here we’ll do
+it manually to illustrate the process.</p>
+<p>We begin by calculating the MAD standard deviation estimator for our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mad_sigma</span> <span class="o">=</span> <span class="n">mad_std</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The expression below is true for all of the points farther than <span class="math notranslate nohighlight">\(10
+\sigma_{MAD}\)</span> from the median of the distributions and false everywhere else.
+This array will be used to exclude the extreme points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="n">bits</span> <span class="o">-</span> <span class="n">median</span><span class="p">)</span> <span class="o">/</span> <span class="n">mad_sigma</span> <span class="o">&gt;</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we calculate the average, excluding the points identified as “too far”
+from from the median. There are two approaches we can take here. One is to use
+numpy masked arrays; the other is to temporarily set the excluded values to the
+special value <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> and use a numpy function that excludes <code class="docutils literal notranslate"><span class="pre">nan</span></code> from the
+calculation. The latter approach is often faster than the former.</p>
+<p>The best approach is really to use a higher-level function from astropy for
+ccdproc. Those will take care of the details of implementing the clipping for
+you.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_values</span> <span class="o">=</span> <span class="n">bits</span><span class="p">[</span><span class="n">exclude</span><span class="p">]</span>
+<span class="n">bits</span><span class="p">[</span><span class="n">exclude</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">clip_combine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bits</span><span class="p">[</span><span class="n">exclude</span><span class="p">]</span> <span class="o">=</span> <span class="n">original_values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2><span class="section-number">1.5.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Combine images by (1) excluding extreme values using sigma clipping, with the
+median as the typical value and the MAD estimator of the standard deviation, and
+then (2) averaging the remaining pixels across all of the images.</p>
+<p>Note that in the distribution below the clipped average is a narrower
+distribution (less noise) than the median but that it still excludes the extreme
+value that appeared in one image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">clip_combine</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;clipped average&#39;</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">median</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s1">&#39;freedman&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of pixels&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of pixels&#39;)
+</pre></div>
+</div>
+<img alt="../_images/01-06-Image-combination_37_1.png" src="../_images/01-06-Image-combination_37_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01-05-Calibration-overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.4. </span>Calibration overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="01-08-Overscan.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.6. </span>Overscan</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Matthew Craig<br/>
+    
+        &copy; Copyright 2020-2021.<br/>
+      <div class="extra_footer">
+        <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
