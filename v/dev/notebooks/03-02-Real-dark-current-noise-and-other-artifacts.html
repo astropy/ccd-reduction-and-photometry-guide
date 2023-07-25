@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.2. Real dark current: noise and other artifacts &#8212; CCD Data Reduction Guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,23 +37,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +66,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -97,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="00-00-Preface.html">
-   Preface
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
    1. Astronomical Images
@@ -300,10 +314,12 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <h2>Book edition: dev</h2>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <h2>Book edition: dev</h2>
 <strong>Previous editions</strong></br>
 <a href="../../../v/2.0.1/index.html">2.0.1</a></br>
 <a href="../../../v/2.0.0/index.html">2.0.0</a></br>
@@ -311,102 +327,203 @@
 Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
 <a href="https://astropy.org">Astropy</a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        
-        <a class="issues-button"
-            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-02-Real-dark-current-noise-and-other-artifacts.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03-02-Real-dark-current-noise-and-other-artifacts.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/03-02-Real-dark-current-noise-and-other-artifacts.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#making-an-image-to-check-for-hot-pixels">
    3.2.1. Making an image to check for hot pixels
@@ -480,12 +597,11 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Real dark current: noise and other artifacts</h1>
@@ -575,11 +691,12 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="real-dark-current-noise-and-other-artifacts">
-<h1><span class="section-number">3.2. </span>Real dark current: noise and other artifacts<a class="headerlink" href="#real-dark-current-noise-and-other-artifacts" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="real-dark-current-noise-and-other-artifacts">
+<h1><span class="section-number">3.2. </span>Real dark current: noise and other artifacts<a class="headerlink" href="#real-dark-current-noise-and-other-artifacts" title="Permalink to this headline">#</a></h1>
 <p>The dark current on modern CCDs, even relatively inexpensive ones, is very
 small. In a typical exposure the dark current is likely smaller, maybe much
 smaller, than the read noise. Despite that, it is worth examining some dark
@@ -614,8 +731,8 @@ your camera and analyze them.</p>
 </div>
 </div>
 </div>
-<div class="section" id="making-an-image-to-check-for-hot-pixels">
-<h2><span class="section-number">3.2.1. </span>Making an image to check for hot pixels<a class="headerlink" href="#making-an-image-to-check-for-hot-pixels" title="Permalink to this headline">¶</a></h2>
+<section id="making-an-image-to-check-for-hot-pixels">
+<h2><span class="section-number">3.2.1. </span>Making an image to check for hot pixels<a class="headerlink" href="#making-an-image-to-check-for-hot-pixels" title="Permalink to this headline">#</a></h2>
 <p>Measuring the dark current in a camera requires taking images with fairly long
 exposure time, ideally long enough that the expected counts due to dark current
 is larger than the expected noise in the image. If that isn’t the case then the
@@ -630,8 +747,8 @@ single image.</p></li>
 result. The noise in the combined image is proportional to <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span>, where
 <span class="math notranslate nohighlight">\(N\)</span> is the number of images that are combined.</p></li>
 </ul>
-<div class="section" id="what-if-that-isn-t-possible">
-<h3><span class="section-number">3.2.1.1. </span>What if that isn’t possible?<a class="headerlink" href="#what-if-that-isn-t-possible" title="Permalink to this headline">¶</a></h3>
+<section id="what-if-that-isn-t-possible">
+<h3><span class="section-number">3.2.1.1. </span>What if that isn’t possible?<a class="headerlink" href="#what-if-that-isn-t-possible" title="Permalink to this headline">#</a></h3>
 <p>Do your best. The darks from the Large Format Camera were taken as part of a
 science run in which there was limited time for taking dark frames. The key
 thing to keep in mind is the lower limit on the dark current you can measure,
@@ -639,10 +756,10 @@ given the read noise and exposure time.</p>
 <p>The darks in Case 2 were taken with a new camera that was not yet mounted on the
 telescope as part of commissioning the camera. That made taking over five hours of
 dark frames more feasible!</p>
-</div>
-</div>
-<div class="section" id="case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
-<h2><span class="section-number">3.2.2. </span>Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar<a class="headerlink" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">
+<h2><span class="section-number">3.2.2. </span>Case 1: Cryogenically cooled  Large Format Camera (LFC) at Palomar<a class="headerlink" href="#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar" title="Permalink to this headline">#</a></h2>
 <p>The images in this section are from chip 0 of the LFC at the Palomar 200-inch
 telescope. Technical information about the camera is
 <a class="reference external" href="http://www.astro.caltech.edu/palomar/observer/200inchResources/lfcspecs.html">here</a>. The technical information says nothing about
@@ -653,8 +770,8 @@ liquid nitrogen is that their dark current is essentially zero.</p>
 <li><p>not all of the pixels have negligible dark current, and</p></li>
 <li><p>not all of the counts in a dark image are from dark current.</p></li>
 </ul>
-<div class="section" id="estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
-<h3><span class="section-number">3.2.2.1. </span>Estimating exposure time and number of frames for measuring dark current<a class="headerlink" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current" title="Permalink to this headline">¶</a></h3>
+<section id="estimating-exposure-time-and-number-of-frames-for-measuring-dark-current">
+<h3><span class="section-number">3.2.2.1. </span>Estimating exposure time and number of frames for measuring dark current<a class="headerlink" href="#estimating-exposure-time-and-number-of-frames-for-measuring-dark-current" title="Permalink to this headline">#</a></h3>
 <p>Unfortunately, the technical information for this camera does not include any
 information about the expected dark current. For thermoelectrically-cooled
 cameras the dark current is no more than 0.1 <span class="math notranslate nohighlight">\(e^-\)</span>/sec/pixel, and for newer
@@ -686,48 +803,14 @@ by the read noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">calibrated_images</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">combined_dark_lfc</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">calibrated_images</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_300.000.fits.bz2&#39;</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py:59,</span> in <span class="ni">NDDataRead.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/io/registry/core.py:197,</span> in <span class="ni">UnifiedInputRegistry.read</span><span class="nt">(self, cls, format, cache, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="k">raise</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/contextlib.py:113,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">113</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/utils/data.py:271,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span>         <span class="n">name_or_obj</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">271</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>     <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;combined_dark_300.000.fits.bz2&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="examine-the-image">
-<h3><span class="section-number">3.2.2.2. </span>Examine the image<a class="headerlink" href="#examine-the-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="examine-the-image">
+<h3><span class="section-number">3.2.2.2. </span>Examine the image<a class="headerlink" href="#examine-the-image" title="Permalink to this headline">#</a></h3>
 <p>The full image is on the left, and the lower left corner is shown on the right.
 The light area in the lower left corner is due to sensor glow, which is light
 emitted by the electronics of the CCD. The counts in the image due to sensor
@@ -757,10 +840,16 @@ shows a portion of the CCD in the upper right part of the chip; pixel values are
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: meta, unit [astropy.nddata.decorators]
+</pre></div>
+</div>
+<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_10_1.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_10_1.png" />
 </div>
 </div>
-<div class="section" id="dark-current-in-this-ccd">
-<h3><span class="section-number">3.2.2.3. </span>Dark current in this CCD<a class="headerlink" href="#dark-current-in-this-ccd" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dark-current-in-this-ccd">
+<h3><span class="section-number">3.2.2.3. </span>Dark current in this CCD<a class="headerlink" href="#dark-current-in-this-ccd" title="Permalink to this headline">#</a></h3>
 <p>The histogram below shows dark current along the horizontal axis and the number
 of pixels in the CCD with that dark current along the vertical axis. Since there
 is obvious sensor glow in the darks, three distributions are shown:</p>
@@ -806,13 +895,16 @@ equivalent dark current of 0.5<span class="math notranslate nohighlight">\(e^-\)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_12_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_12_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="case-2-thermoelectrically-cooled-camera">
-<h2><span class="section-number">3.2.3. </span>Case 2: Thermoelectrically-cooled camera<a class="headerlink" href="#case-2-thermoelectrically-cooled-camera" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="taking-an-image-to-measure-dark-current">
-<h3><span class="section-number">3.2.3.1. </span>Taking an image to measure dark current<a class="headerlink" href="#taking-an-image-to-measure-dark-current" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="case-2-thermoelectrically-cooled-camera">
+<h2><span class="section-number">3.2.3. </span>Case 2: Thermoelectrically-cooled camera<a class="headerlink" href="#case-2-thermoelectrically-cooled-camera" title="Permalink to this headline">#</a></h2>
+<section id="taking-an-image-to-measure-dark-current">
+<h3><span class="section-number">3.2.3.1. </span>Taking an image to measure dark current<a class="headerlink" href="#taking-an-image-to-measure-dark-current" title="Permalink to this headline">#</a></h3>
 <p>The image below is a combination of 20 dark frames, each a 1000 sec exposure.
 That exposure time was chosen so that the expected number of dark electrons was
 at least somewhat larger than the read noise expected in a combination of 20
@@ -838,10 +930,16 @@ divide by the exposure time to obtain the dark current in <span class="math notr
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 58269.955093 from DATE-OBS&#39;. [astropy.wcs.wcs]
+</pre></div>
+</div>
+<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_16_1.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_16_1.png" />
 </div>
 </div>
-<div class="section" id="calculate-the-dark-current-for-each-pixel">
-<h3><span class="section-number">3.2.3.2. </span>Calculate the dark current for each pixel<a class="headerlink" href="#calculate-the-dark-current-for-each-pixel" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="calculate-the-dark-current-for-each-pixel">
+<h3><span class="section-number">3.2.3.2. </span>Calculate the dark current for each pixel<a class="headerlink" href="#calculate-the-dark-current-for-each-pixel" title="Permalink to this headline">#</a></h3>
 <p>Recall that the dark current <span class="math notranslate nohighlight">\(d_c(T)\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -889,10 +987,13 @@ d_C(T) = g n_{dark}(t) / t.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_18_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_18_0.png" />
 </div>
 </div>
-<div class="section" id="there-is-a-large-range-in-the-dark-current">
-<h3><span class="section-number">3.2.3.3. </span>There is a large range in the dark current<a class="headerlink" href="#there-is-a-large-range-in-the-dark-current" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="there-is-a-large-range-in-the-dark-current">
+<h3><span class="section-number">3.2.3.3. </span>There is a large range in the dark current<a class="headerlink" href="#there-is-a-large-range-in-the-dark-current" title="Permalink to this headline">#</a></h3>
 <p>While the vast majority of the pixels do, as expected, have very low dark
 current, it is much higher for other pixels. These pixels, called hot pixels,
 can occur even in cryogenically-cooled cameras.</p>
@@ -935,11 +1036,14 @@ roughly 0.1% of the pixels.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/03-02-Real-dark-current-noise-and-other-artifacts_20_0.png" src="../_images/03-02-Real-dark-current-noise-and-other-artifacts_20_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="how-to-handle-hot-pixels">
-<h2><span class="section-number">3.2.4. </span>How to handle hot pixels<a class="headerlink" href="#how-to-handle-hot-pixels" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="how-to-handle-hot-pixels">
+<h2><span class="section-number">3.2.4. </span>How to handle hot pixels<a class="headerlink" href="#how-to-handle-hot-pixels" title="Permalink to this headline">#</a></h2>
 <p>There are a few ways you could handle this, which can be used in combination
 with each other:</p>
 <ul class="simple">
@@ -953,9 +1057,9 @@ frames and subtract dark current as usual.</p></li>
 your flat and light images and scale the dark current downwards to match your
 other exposure times.</p></li>
 </ul>
-</div>
-<div class="section" id="one-thing-not-to-do">
-<h2><span class="section-number">3.2.5. </span>One thing NOT to do<a class="headerlink" href="#one-thing-not-to-do" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="one-thing-not-to-do">
+<h2><span class="section-number">3.2.5. </span>One thing NOT to do<a class="headerlink" href="#one-thing-not-to-do" title="Permalink to this headline">#</a></h2>
 <p>Do not take short dark frames and scale them up to longer exposure times. Modern
 cameras, even thermoelectrically-cooled ones, have very low dark current. If
 your dark frames have low exposure time then most of the pixels are measuring
@@ -964,9 +1068,9 @@ time then you inappropriately amplify that noise. Ideally, the expected dark
 counts (or dark electrons) in your dark frames should be at least a few times
 larger than the expected read noise in the frames you combine to make a
 reference dark.</p>
-</div>
-<div class="section" id="summary">
-<h2><span class="section-number">3.2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2><span class="section-number">3.2.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>A dark frame only measures dark current if the expected dark counts exceed
 the read noise of the camera by a factor of a few.</p></li>
@@ -978,8 +1082,8 @@ frames up to a longer exposure time because you will amplify noise instead of
 eliminating dark current, even if you have combined multiple images as in 2.</p></li>
 <li><p>Identify hot pixels and mask them out or otherwise deal with them.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -993,7 +1097,7 @@ eliminating dark current, even if you have combined multiple images as in 2.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1003,9 +1107,11 @@ eliminating dark current, even if you have combined multiple images as in 2.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="03-01-Dark-current-The-ideal-case.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1021,31 +1127,35 @@ eliminating dark current, even if you have combined multiple images as in 2.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By Matthew Craig<br/>
-    
-        &copy; Copyright 2020-2021.<br/>
-      <div class="extra_footer">
-        <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew Craig<br/>
+  
+      &copy; Copyright 2020-2023.<br/>
+    <div class="extra_footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

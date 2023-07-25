@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.3. Cosmic ray removal &#8212; CCD Data Reduction Guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,23 +37,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +66,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -97,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="00-00-Preface.html">
-   Preface
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
    1. Astronomical Images
@@ -300,10 +314,12 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <h2>Book edition: dev</h2>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <h2>Book edition: dev</h2>
 <strong>Previous editions</strong></br>
 <a href="../../../v/2.0.1/index.html">2.0.1</a></br>
 <a href="../../../v/2.0.0/index.html">2.0.0</a></br>
@@ -311,102 +327,203 @@
 Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
 <a href="https://astropy.org">Astropy</a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/08-03-Cosmic-ray-removal.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        
-        <a class="issues-button"
-            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/08-03-Cosmic-ray-removal.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/08-03-Cosmic-ray-removal.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/08-03-Cosmic-ray-removal.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#removal-from-calibration-images">
    6.3.1. Removal from calibration images
@@ -473,12 +590,11 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Cosmic ray removal</h1>
@@ -561,11 +677,12 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cosmic-ray-removal">
-<h1><span class="section-number">6.3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cosmic-ray-removal">
+<h1><span class="section-number">6.3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Permalink to this headline">#</a></h1>
 <p>Almost all images from a CCD will include some number of cosmic rays, charged
 particles which bombard the Earth’s upper atmosphere. Some of those will make it
 through the atmosphere and into your detector (the rate of cosmic rays will be
@@ -574,8 +691,8 @@ proportional to exposure time, there will be cosmic rays even in bias frames in
 which the chip is immediately read out.</p>
 <p>This notebook explains how to remove cosmic rays from calibration images and
 science images.</p>
-<div class="section" id="removal-from-calibration-images">
-<h2><span class="section-number">6.3.1. </span>Removal from calibration images<a class="headerlink" href="#removal-from-calibration-images" title="Permalink to this headline">¶</a></h2>
+<section id="removal-from-calibration-images">
+<h2><span class="section-number">6.3.1. </span>Removal from calibration images<a class="headerlink" href="#removal-from-calibration-images" title="Permalink to this headline">#</a></h2>
 <p>The most convenient way to remove cosmic rays from calibration images (bias, dark, and
 flat images) is to combine them properly. Cosmic rays are, by their nature,
 random events that will affect different parts of each of the calibration
@@ -590,9 +707,9 @@ description of each option is discussed in the <a class="reference internal" hre
 <p>The method described below for removing cosmic rays from science images will not
 work well for removing them from calibration images and is unnecessary because
 they can be removed by properly combining the images.</p>
-</div>
-<div class="section" id="removal-from-science-images">
-<h2><span class="section-number">6.3.2. </span>Removal from science images<a class="headerlink" href="#removal-from-science-images" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="removal-from-science-images">
+<h2><span class="section-number">6.3.2. </span>Removal from science images<a class="headerlink" href="#removal-from-science-images" title="Permalink to this headline">#</a></h2>
 <p>One good technique for removing cosmic rays from an image is the
 <a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">LACosmic method</a> originally developed and implemented for IRAF
 by <a class="reference external" href="https://www.pietervandokkum.com/">Pieter G. van Dokkum</a>. The original paper describing the method,
@@ -604,8 +721,8 @@ rays you should cite both the original paper and
 <a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a> (citation details are on its web site). The
 code below never directly imports <a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a> because
 <code class="docutils literal notranslate"><span class="pre">ccdproc</span></code> provides a wrapper for it, so we called attention to it here.</p>
-<div class="section" id="very-important-notes-about-using-lacosmic">
-<h3><span class="section-number">6.3.2.1. </span>Very important notes about using LACosmic<a class="headerlink" href="#very-important-notes-about-using-lacosmic" title="Permalink to this headline">¶</a></h3>
+<section id="very-important-notes-about-using-lacosmic">
+<h3><span class="section-number">6.3.2.1. </span>Very important notes about using LACosmic<a class="headerlink" href="#very-important-notes-about-using-lacosmic" title="Permalink to this headline">#</a></h3>
 <p>There are a few things to be aware of before using the LACosmic technique. These
 are drawn from the advice van Dokkum provides under
 <a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">Notes for Users</a> and the original paper.</p>
@@ -637,6 +754,12 @@ identified by <code class="docutils literal notranslate"><span class="pre">ccdma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5139/268536688.py:10: DeprecationWarning: `photutils.detect_sources` is a deprecated alias for `photutils.segmentation.detect_sources` and will be removed in the future. Instead, please use `from photutils.segmentation import detect_sources` to silence this warning.
+  from photutils import detect_sources
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,9 +769,9 @@ identified by <code class="docutils literal notranslate"><span class="pre">ccdma
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="input-image">
-<h3><span class="section-number">6.3.2.2. </span>Input image<a class="headerlink" href="#input-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="input-image">
+<h3><span class="section-number">6.3.2.2. </span>Input image<a class="headerlink" href="#input-image" title="Permalink to this headline">#</a></h3>
 <p>The image we will use in this notebook is one of the reduced images from Example
 2 in the previous notebooks. It is an image of the field of the exoplanet
 KELT-16 b, taken with a thermoelectrically-cooled CCD with read noise of 10<span class="math notranslate nohighlight">\(e^-\)</span>
@@ -690,9 +813,9 @@ electrons.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="reading-in-and-applying-masks">
-<h3><span class="section-number">6.3.2.3. </span>Reading in and applying masks<a class="headerlink" href="#reading-in-and-applying-masks" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="reading-in-and-applying-masks">
+<h3><span class="section-number">6.3.2.3. </span>Reading in and applying masks<a class="headerlink" href="#reading-in-and-applying-masks" title="Permalink to this headline">#</a></h3>
 <p>Two masks were calculated earlier. Hot pixels, whose dark current cannot be
 corrected, were <a class="reference internal" href="08-01-Identifying-hot-pixels.html"><span class="doc std std-doc">identified by comparing dark frames of different exposure time</span></a>.  The
 <a class="reference internal" href="08-02-Creating-a-mask.html"><span class="doc std std-doc">function <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code> was used</span></a> to identify other bad pixels; one example was a
@@ -702,44 +825,6 @@ using logical “OR.”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dark_mask</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;mask_from_dark_current.fits&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dark_mask</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;mask_from_dark_current.fits&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/nddata/mixins/ndio.py:59,</span> in <span class="ni">NDDataRead.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/io/registry/core.py:197,</span> in <span class="ni">UnifiedInputRegistry.read</span><span class="nt">(self, cls, format, cache, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">197</span>     <span class="n">fileobj</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="k">raise</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/contextlib.py:113,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">113</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.8/site-packages/astropy/utils/data.py:271,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span>         <span class="n">name_or_obj</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">271</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>     <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;example2-reduced/mask_from_dark_current.fits&#39;
 </pre></div>
 </div>
 </div>
@@ -764,6 +849,9 @@ using logical “OR.”</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_16_0.png" src="../_images/08-03-Cosmic-ray-removal_16_0.png" />
+</div>
 </div>
 <p>Excluding these pixels from cosmic ray detection ensures that only cosmic rays
 are  identified.</p>
@@ -775,9 +863,9 @@ are  identified.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="running-lacosmic">
-<h3><span class="section-number">6.3.2.4. </span>Running LACosmic<a class="headerlink" href="#running-lacosmic" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="running-lacosmic">
+<h3><span class="section-number">6.3.2.4. </span>Running LACosmic<a class="headerlink" href="#running-lacosmic" title="Permalink to this headline">#</a></h3>
 <p>The actual invocation of LACosmic is fairly convenient. The key parameters
 are <code class="docutils literal notranslate"><span class="pre">readnoise</span></code>, the read noise, and <code class="docutils literal notranslate"><span class="pre">sigclip</span></code>, which determines how far above
 the background a pixel needs to be to consider it a cosmic ray. There is no
@@ -802,6 +890,27 @@ rays were identified replaced by interpolating the neighboring pixels.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 L.A.Cosmic iterations
+Iteration 1:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>152 cosmic pixels this iteration
+Iteration 2:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 cosmic pixels this iteration
+Iteration 3:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 cosmic pixels this iteration
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 27.3 s, sys: 2.13 s, total: 29.4 s
+Wall time: 15.6 s
+</pre></div>
+</div>
+</div>
 </div>
 <p>The mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> includes both cosmic rays identified by
 <code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> and the mask we applied to <code class="docutils literal notranslate"><span class="pre">ccd</span></code> above. To get only the
@@ -823,10 +932,15 @@ rays.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160
+</pre></div>
 </div>
 </div>
-<div class="section" id="examining-the-cosmic-rays-identified-by-lacosmic">
-<h3><span class="section-number">6.3.2.5. </span>Examining the cosmic rays identified by LACosmic<a class="headerlink" href="#examining-the-cosmic-rays-identified-by-lacosmic" title="Permalink to this headline">¶</a></h3>
+</div>
+</section>
+<section id="examining-the-cosmic-rays-identified-by-lacosmic">
+<h3><span class="section-number">6.3.2.5. </span>Examining the cosmic rays identified by LACosmic<a class="headerlink" href="#examining-the-cosmic-rays-identified-by-lacosmic" title="Permalink to this headline">#</a></h3>
 <p>There are 70 pixels that have been flagged as cosmic rays. Looking through each
 of them individually would be tedious, at best. It would also presumably be
 difficult to decide visually if a single pixel tagged as a cosmic ray was
@@ -854,6 +968,11 @@ these extended cosmic rays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span><span class="o">.</span><span class="n">areas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 3, 3, 3, 7, 3, 7, 8, 8, 3, 4, 4, 3, 7, 5, 3, 4, 3, 4])
 </pre></div>
 </div>
 </div>
@@ -899,10 +1018,13 @@ inclusion in this discussion. Display them all by setting
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_33_0.png" src="../_images/08-03-Cosmic-ray-removal_33_0.png" />
 </div>
 </div>
-<div class="section" id="discussion-of-sample-cosmic-rays">
-<h3><span class="section-number">6.3.2.6. </span>Discussion of sample cosmic rays<a class="headerlink" href="#discussion-of-sample-cosmic-rays" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="discussion-of-sample-cosmic-rays">
+<h3><span class="section-number">6.3.2.6. </span>Discussion of sample cosmic rays<a class="headerlink" href="#discussion-of-sample-cosmic-rays" title="Permalink to this headline">#</a></h3>
 <p>The first three examples above, labeled “Cosmic ray 0,” “Cosmic ray 1,” and
 “Cosmic ray 14,” are clear-cut; each is actually a cosmic ray.</p>
 <p>The fourth, “Cosmic ray 18,” is not a cosmic ray, though it does correspond to a
@@ -911,9 +1033,9 @@ defect in the CCD. It is caused by a single  hot pixel (dark current around
 combined dark is subtracted from the science image it causes a large <em>negative</em>
 value in the value of the science image which ends up being identified as a
 cosmic ray.</p>
-</div>
-<div class="section" id="saving-the-mask-with-the-image">
-<h3><span class="section-number">6.3.2.7. </span>Saving the mask with the image<a class="headerlink" href="#saving-the-mask-with-the-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="saving-the-mask-with-the-image">
+<h3><span class="section-number">6.3.2.7. </span>Saving the mask with the image<a class="headerlink" href="#saving-the-mask-with-the-image" title="Permalink to this headline">#</a></h3>
 <p>To save the full mask, including cosmic rays, hot pixels, and pixels identified
 by <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code>, set the mask of <code class="docutils literal notranslate"><span class="pre">ccd</span></code> to the mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code>. In some use cases
 you might prefer to save <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> itself. The difference between the two is
@@ -929,10 +1051,10 @@ that the pixel values in which there are cosmic rays have been replaced in
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="what-happens-if-you-do-not-mask">
-<h2><span class="section-number">6.3.3. </span>What happens if you do not mask?<a class="headerlink" href="#what-happens-if-you-do-not-mask" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-happens-if-you-do-not-mask">
+<h2><span class="section-number">6.3.3. </span>What happens if you do not mask?<a class="headerlink" href="#what-happens-if-you-do-not-mask" title="Permalink to this headline">#</a></h2>
 <p>In the example above we masked the pixels known to be bad in all of the images
 before detecting cosmic rays. It is possible to do cosmic ray detection without
 prior masking. The downside of not masking is that many features that are not
@@ -946,6 +1068,12 @@ the same parameters as above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
+the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -954,10 +1082,41 @@ the same parameters as above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting 4 L.A.Cosmic iterations
+Iteration 1:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>231 cosmic pixels this iteration
+Iteration 2:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123 cosmic pixels this iteration
+Iteration 3:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125 cosmic pixels this iteration
+Iteration 4:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>105 cosmic pixels this iteration
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 35.8 s, sys: 3.39 s, total: 39.2 s
+Wall time: 21.4 s
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.</span><span class="se">\n</span><span class="s2">No pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pre-masking detects 160 cosmic ray pixels.
+No pre-masking detects 307 cosmic ray pixels.
 </pre></div>
 </div>
 </div>
@@ -978,16 +1137,22 @@ no light).</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([20, 52,  3,  3, 24,  6,  3,  3,  4,  5,  6,  8,  5,  3,  3,  8,  5,
+        3,  3,  5,  4,  3, 35,  4])
+</pre></div>
 </div>
-<div class="section" id="some-of-these-are-not-cosmic-rays">
-<h3><span class="section-number">6.3.3.1. </span>Some of these are not cosmic rays<a class="headerlink" href="#some-of-these-are-not-cosmic-rays" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<section id="some-of-these-are-not-cosmic-rays">
+<h3><span class="section-number">6.3.3.1. </span>Some of these are not cosmic rays<a class="headerlink" href="#some-of-these-are-not-cosmic-rays" title="Permalink to this headline">#</a></h3>
 <p>The display below shows a few examples of areas identified by
 <code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> that are not actually cosmic rays. These false positives
 are harmless because they reflect real problems with the detector and should be
 masked out anyway.</p>
 <p>More problematic are the cosmic rays that are undetected if the image is not
 masked first. As an example, the cosmic ray labeled “Cosmic ray 0” in the
-<a class="reference external" href="#Discussion-of-sample-cosmic-rays">example above in which a mask was applied before detecting cosmic rays</a> is not detected at all when no masking is done.</p>
+<a class="reference external" href="#discussion-of-sample-cosmic-rays">example above in which a mask was applied before detecting cosmic rays</a> is not detected at all when no masking is done.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images_to_display</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">ccd_dark</span><span class="p">]</span>
@@ -998,10 +1163,13 @@ masked first. As an example, the cosmic ray labeled “Cosmic ray 0” in the
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/08-03-Cosmic-ray-removal_46_0.png" src="../_images/08-03-Cosmic-ray-removal_46_0.png" />
 </div>
 </div>
-<div class="section" id="discussion">
-<h3><span class="section-number">6.3.3.2. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="discussion">
+<h3><span class="section-number">6.3.3.2. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h3>
 <p>The first example above is the bad column on the left side of the image.</p>
 <p>The one label “Cosmic ray 1” is caused by a single hot pixel with a large count
 in the dark frames, which leads to a large negative value in the calibrated
@@ -1017,9 +1185,9 @@ CCD.</p>
 the next best thing: masking out this part of the images. The masking should be
 done during the stage at which hot pixels are being identified because all of these
 pixels will be identified as hot.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1033,7 +1201,7 @@ pixels will be identified as hot.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1043,9 +1211,11 @@ pixels will be identified as hot.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="08-02-Creating-a-mask.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1061,31 +1231,35 @@ pixels will be identified as hot.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By Matthew Craig<br/>
-    
-        &copy; Copyright 2020-2021.<br/>
-      <div class="extra_footer">
-        <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew Craig<br/>
+  
+      &copy; Copyright 2020-2023.<br/>
+    <div class="extra_footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

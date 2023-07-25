@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.2. Calibrating bias images &#8212; CCD Data Reduction Guide</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,23 +37,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +66,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +89,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -97,14 +110,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="00-00-Preface.html">
-   Preface
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">
    1. Astronomical Images
@@ -300,10 +314,12 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <h2>Book edition: dev</h2>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <h2>Book edition: dev</h2>
 <strong>Previous editions</strong></br>
 <a href="../../../v/2.0.1/index.html">2.0.1</a></br>
 <a href="../../../v/2.0.0/index.html">2.0.0</a></br>
@@ -311,102 +327,203 @@
 Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
 <a href="https://astropy.org">Astropy</a>
 
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/02-02-Calibrating-bias-images.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        
-        <a class="issues-button"
-            href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-02-Calibrating-bias-images.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02-02-Calibrating-bias-images.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/02-02-Calibrating-bias-images.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/02-02-Calibrating-bias-images.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-for-these-examples">
    2.2.1. Data for these examples
@@ -488,12 +605,11 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Calibrating bias images</h1>
@@ -591,11 +707,12 @@ Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="calibrating-bias-images">
-<h1><span class="section-number">2.2. </span>Calibrating bias images<a class="headerlink" href="#calibrating-bias-images" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="calibrating-bias-images">
+<h1><span class="section-number">2.2. </span>Calibrating bias images<a class="headerlink" href="#calibrating-bias-images" title="Permalink to this headline">#</a></h1>
 <p>The purpose of calibrating bias images is threefold:</p>
 <ul class="simple">
 <li><p>Subtract overscan if you have decided your science will be better if you
@@ -633,14 +750,14 @@ calibrate a folder containing several images of that type.</p>
 </div>
 </div>
 </div>
-<div class="section" id="data-for-these-examples">
-<h2><span class="section-number">2.2.1. </span>Data for these examples<a class="headerlink" href="#data-for-these-examples" title="Permalink to this headline">¶</a></h2>
+<section id="data-for-these-examples">
+<h2><span class="section-number">2.2.1. </span>Data for these examples<a class="headerlink" href="#data-for-these-examples" title="Permalink to this headline">#</a></h2>
 <p>See the <a class="reference internal" href="00-00-Preface.html"><span class="doc std std-doc">Preface notebook</span></a> for download links for all data.</p>
-</div>
-<div class="section" id="example-1-with-overscan-subtraction">
-<h2><span class="section-number">2.2.2. </span>Example 1: With overscan subtraction<a class="headerlink" href="#example-1-with-overscan-subtraction" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="decide-where-to-put-your-example-1-calibrated-images">
-<h3><span class="section-number">2.2.2.1. </span>Decide where to put your Example 1 calibrated images<a class="headerlink" href="#decide-where-to-put-your-example-1-calibrated-images" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-1-with-overscan-subtraction">
+<h2><span class="section-number">2.2.2. </span>Example 1: With overscan subtraction<a class="headerlink" href="#example-1-with-overscan-subtraction" title="Permalink to this headline">#</a></h2>
+<section id="decide-where-to-put-your-example-1-calibrated-images">
+<h3><span class="section-number">2.2.2.1. </span>Decide where to put your Example 1 calibrated images<a class="headerlink" href="#decide-where-to-put-your-example-1-calibrated-images" title="Permalink to this headline">#</a></h3>
 <p>Though it is possible to overwrite your raw data with calibrated images, this is not recommended. Here we create a folder called <code class="docutils literal notranslate"><span class="pre">example1-reduced</span></code> that will contain
 the calibrated data and create it if it doesn’t exist.</p>
 <div class="cell docutils container">
@@ -651,9 +768,9 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="make-an-image-file-collection-for-the-raw-data">
-<h3><span class="section-number">2.2.2.2. </span>Make an image file collection for the raw data<a class="headerlink" href="#make-an-image-file-collection-for-the-raw-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="make-an-image-file-collection-for-the-raw-data">
+<h3><span class="section-number">2.2.2.2. </span>Make an image file collection for the raw data<a class="headerlink" href="#make-an-image-file-collection-for-the-raw-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_cryo_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example-cryo-LFC&#39;</span><span class="p">)</span>
@@ -670,7 +787,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=14</i>
-<table id="table140553664468448" class="table-striped table-bordered table-condensed">
+<table id="table139647896216080" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str2</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>i&apos;</td><td>0.0</td><td>2080</td><td>4128</td></tr>
@@ -698,7 +815,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table140554553767824" class="table-striped table-bordered table-condensed">
+<table id="table139647903570064" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td></tr>
@@ -713,11 +830,11 @@ the calibrated data and create it if it doesn’t exist.</p>
 <tr><td>ccd.025.0.fits</td><td>DARK</td><td>7.0</td></tr>
 </table></div></div></div>
 </div>
-</div>
-<div class="section" id="determine-overscan-region-for-the-lfc-chip-0">
-<h3><span class="section-number">2.2.2.3. </span>Determine overscan region for the LFC Chip 0<a class="headerlink" href="#determine-overscan-region-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="determine-overscan-region-for-the-lfc-chip-0">
+<h3><span class="section-number">2.2.2.3. </span>Determine overscan region for the LFC Chip 0<a class="headerlink" href="#determine-overscan-region-for-the-lfc-chip-0" title="Permalink to this headline">#</a></h3>
 <p>Please see the discussion of this camera in
-<a class="reference external" href="01.08-Overscan.ipynb#Case-1:-Cryogenically-cooled-Large-Format-Camera-(LFC)-at-Palomar">the Overscan notebook</a> for the appropriate overscan region
+<a class="reference external" href="01-08-Overscan.ipynb#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">the Overscan notebook</a> for the appropriate overscan region
 to use for this camera. Note, in particular, that it differs from the value
 given in the <code class="docutils literal notranslate"><span class="pre">BIASSEC</span></code> keyword in the header of the images.</p>
 <p>The astropy affiliated package <a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a> provides two
@@ -743,7 +860,7 @@ for the camera you are using.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140553664470320">
+<table id="table139647892858832">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>ccdsec</th><th>datasec</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str18</th><th>str15</th><th>str15</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>[2049:2080,1:4127]</td><td>[1:2048,1:4128]</td><td>[1:2048,1:4128]</td></tr>
@@ -753,9 +870,9 @@ for the camera you are using.</p>
 end of the image (this is one-based indexing) and that the part of the image
 exposed to light extends over all rows and from the first column to the
 2048<span class="math notranslate nohighlight">\(^{th}\)</span> column (again, this is one-indexed).</p>
-</div>
-<div class="section" id="fits-vs-python-indexing">
-<h3><span class="section-number">2.2.2.4. </span>FITS vs. Python indexing<a class="headerlink" href="#fits-vs-python-indexing" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fits-vs-python-indexing">
+<h3><span class="section-number">2.2.2.4. </span>FITS vs. Python indexing<a class="headerlink" href="#fits-vs-python-indexing" title="Permalink to this headline">#</a></h3>
 <p>There are two differences between FITS and Python in terms of indexing:</p>
 <ul class="simple">
 <li><p>Python indexes are zero-based (i.e., numbering starts at zero), while FITS indexes
@@ -769,7 +886,7 @@ here for Python are correct because the second part of a range (after the colon)
 is <em>not included</em> in the array slice. For example, <code class="docutils literal notranslate"><span class="pre">0:2048</span></code> starts at 0 (the
 first pixel) and goes up to but does not include 2048, so the last pixel included
 is <code class="docutils literal notranslate"><span class="pre">2047</span></code> (the 2048<span class="math notranslate nohighlight">\(^{th}\)</span> pixel).</p>
-<p>As discussed in <a class="reference external" href="01.08-Overscan.ipynb#Case-1:-Cryogenically-cooled-Large-Format-Camera-(LFC)-at-Palomar">the Overscan notebook</a>, the useful
+<p>As discussed in <a class="reference external" href="01-08-Overscan.ipynb#case-1-cryogenically-cooled-large-format-camera-lfc-at-palomar">the Overscan notebook</a>, the useful
 overscan region for this camera starts at the 2055<span class="math notranslate nohighlight">\(^{th}\)</span> column, not column
 2049 as indicated by the <code class="docutils literal notranslate"><span class="pre">BIASSEC</span></code> keyword in the header. This situation is not
 unusual; column 2049 is the first of the columns masked from light by the manufacturer,
@@ -778,9 +895,9 @@ but there is some leakage into this region from the rest of the CCD.</p>
 representative images to understand which part of the overscan to use.</p>
 <p>In what follows, we will use for the overscan the region (Python/NumPy indexing)
 <code class="docutils literal notranslate"><span class="pre">[:,</span> <span class="pre">2055:]</span></code>.</p>
-</div>
-<div class="section" id="subtract-and-then-trim-the-overscan-one-sample-image">
-<h3><span class="section-number">2.2.2.5. </span>Subtract and then trim the overscan (one sample image)<a class="headerlink" href="#subtract-and-then-trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="subtract-and-then-trim-the-overscan-one-sample-image">
+<h3><span class="section-number">2.2.2.5. </span>Subtract and then trim the overscan (one sample image)<a class="headerlink" href="#subtract-and-then-trim-the-overscan-one-sample-image" title="Permalink to this headline">#</a></h3>
 <p>Using <code class="docutils literal notranslate"><span class="pre">subtract_overscan</span></code> is reasonably concise, as shown in the cell
 below.</p>
 <div class="cell docutils container">
@@ -837,9 +954,9 @@ subtracting overscan).</p>
 <img alt="../_images/02-02-Calibrating-bias-images_27_1.png" src="../_images/02-02-Calibrating-bias-images_27_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="discussion">
-<h3><span class="section-number">2.2.2.6. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="discussion">
+<h3><span class="section-number">2.2.2.6. </span>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h3>
 <p>Visually, the images look nearly identical before and after calibration. The
 only prominent difference is a shift in the pixel values, as one would expect
 from subtracting the same value from each pixel in an image. It simply shifts
@@ -853,9 +970,9 @@ disk (ignoring any compression). You can reduce the memory and disk footprint by
 changing the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> of the image: <code class="docutils literal notranslate"><span class="pre">trimmed_bias.data</span> <span class="pre">=</span> <span class="pre">trimmed_bias.data.astype('float32')</span></code>. It is best
 to do this just before writing the image out because arithmetic operations on
 the image may convert its <code class="docutils literal notranslate"><span class="pre">dtype</span></code> back to <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p>
-</div>
-<div class="section" id="processing-the-folder-of-bias-images-for-the-lfc-chip-0">
-<h3><span class="section-number">2.2.2.7. </span>Processing the folder of bias images for the LFC Chip 0<a class="headerlink" href="#processing-the-folder-of-bias-images-for-the-lfc-chip-0" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="processing-the-folder-of-bias-images-for-the-lfc-chip-0">
+<h3><span class="section-number">2.2.2.7. </span>Processing the folder of bias images for the LFC Chip 0<a class="headerlink" href="#processing-the-folder-of-bias-images-for-the-lfc-chip-0" title="Permalink to this headline">#</a></h3>
 <p>Processing each of the bias images individually would be tedious, at best.
 Instead, we can use the <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/image_management.html"><code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code></a> we created above to
 loop over only the bias images, saving each in the folder <code class="docutils literal notranslate"><span class="pre">calibrated_data</span></code>. In
@@ -899,7 +1016,7 @@ will be the same number of reduced bias images as input bias images (six).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table140553664138400" class="table-striped table-bordered table-condensed">
+<table id="table139647893483280" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
@@ -910,15 +1027,15 @@ will be the same number of reduced bias images as input bias images (six).</p>
 <tr><td>ccd.006.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
 </table></div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="example-2-no-overscan-subtraction-but-trim-the-images">
-<h2><span class="section-number">2.2.3. </span>Example 2: No overscan subtraction, but trim the images<a class="headerlink" href="#example-2-no-overscan-subtraction-but-trim-the-images" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-2-no-overscan-subtraction-but-trim-the-images">
+<h2><span class="section-number">2.2.3. </span>Example 2: No overscan subtraction, but trim the images<a class="headerlink" href="#example-2-no-overscan-subtraction-but-trim-the-images" title="Permalink to this headline">#</a></h2>
 <p>If you are not subtracting overscan then the only manipulation you may need to
 do is trimming the overscan from the images. If there is no overscan region in
 your images then even that is unnecessary.</p>
-<div class="section" id="decide-where-to-put-your-calibrated-example-2-images">
-<h3><span class="section-number">2.2.3.1. </span>Decide where to put your calibrated Example 2 images<a class="headerlink" href="#decide-where-to-put-your-calibrated-example-2-images" title="Permalink to this headline">¶</a></h3>
+<section id="decide-where-to-put-your-calibrated-example-2-images">
+<h3><span class="section-number">2.2.3.1. </span>Decide where to put your calibrated Example 2 images<a class="headerlink" href="#decide-where-to-put-your-calibrated-example-2-images" title="Permalink to this headline">#</a></h3>
 <p>Though it is possible to overwrite your raw data with calibrated images, this is not recommended. Here we create a folder called <code class="docutils literal notranslate"><span class="pre">example2-reduced</span></code> that will contain
 the calibrated data and create it if it doesn’t exist.</p>
 <div class="cell docutils container">
@@ -938,7 +1055,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=32</i>
-<table id="table140553661347824" class="table-striped table-bordered table-condensed">
+<table id="table139647891132944" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>object</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>r</td><td>1.0</td><td>4109</td><td>4096</td></tr>
@@ -964,10 +1081,10 @@ the calibrated data and create it if it doesn’t exist.</p>
 <tr><td>kelt-16-b-S001-R001-C125-r.fit</td><td>LIGHT</td><td>r</td><td>90.0</td><td>4109</td><td>4096</td></tr>
 </table></div></div></div>
 </div>
-</div>
-<div class="section" id="determine-overscan-region-for-this-camera">
-<h3><span class="section-number">2.2.3.2. </span>Determine overscan region for this camera<a class="headerlink" href="#determine-overscan-region-for-this-camera" title="Permalink to this headline">¶</a></h3>
-<p>Please see the discussion of this camera in <a class="reference external" href="01.08-Overscan.ipynb#Case-2:-Thermo-electrically-cooled-Apogee-Aspen-CG16M">the Overscan notebook</a> for
+</section>
+<section id="determine-overscan-region-for-this-camera">
+<h3><span class="section-number">2.2.3.2. </span>Determine overscan region for this camera<a class="headerlink" href="#determine-overscan-region-for-this-camera" title="Permalink to this headline">#</a></h3>
+<p>Please see the discussion of this camera in <a class="reference external" href="01-08-Overscan.ipynb#case-2-thermo-electrically-cooled-apogee-aspen-cg16m">the Overscan notebook</a> for
 a discussion of the overscan region of this camera. The overscan for this camera
 is not useful but should be trimmed out at this stage.</p>
 <p>These headers have some information in the keywords <code class="docutils literal notranslate"><span class="pre">BIASSEC</span></code> and <code class="docutils literal notranslate"><span class="pre">TRIMSEC</span></code>
@@ -981,7 +1098,7 @@ science region of the chip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140553661349120">
+<table id="table139647892853456">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>trimsec</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>str11</th><th>str11</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>[4096:4109]</td><td>[1:4096, :]</td></tr>
@@ -989,12 +1106,12 @@ science region of the chip.</p>
 </div>
 <p>Based on this, and the decision not to subtract overscan for this camera, we
 will only need to trim the overscan region off of the images. See the discussion
-at <a class="reference external" href="#FITS-vs-Python-indexing">FITS vs. Python indexing</a>, above, for some details about the
+at <a class="reference external" href="#fits-vs-python-indexing">FITS vs. Python indexing</a>, above, for some details about the
 difference between FITS and Python indexing. Essentially, to get Python indexes
 from FITS, reverse the order and subtract one.</p>
-</div>
-<div class="section" id="trim-the-overscan-one-sample-image">
-<h3><span class="section-number">2.2.3.3. </span>Trim the overscan (one sample image)<a class="headerlink" href="#trim-the-overscan-one-sample-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="trim-the-overscan-one-sample-image">
+<h3><span class="section-number">2.2.3.3. </span>Trim the overscan (one sample image)<a class="headerlink" href="#trim-the-overscan-one-sample-image" title="Permalink to this headline">#</a></h3>
 <p>The function <code class="docutils literal notranslate"><span class="pre">trim_image</span></code> from <a class="reference external" href="https://ccdproc.readthedocs.io">ccdproc</a> removes a
 portion of the image and updates the image metadata as needed.</p>
 <p>Below we get the first bias image.</p>
@@ -1041,10 +1158,10 @@ slicing.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="processing-the-folder-of-bias-images-for-example-2">
-<h3><span class="section-number">2.2.3.4. </span>Processing the folder of bias images for Example 2<a class="headerlink" href="#processing-the-folder-of-bias-images-for-example-2" title="Permalink to this headline">¶</a></h3>
-<p>As in <a class="reference external" href="#Example-1:-With-overscan-subtraction">Example 1</a>, above, we can use the
+</section>
+<section id="processing-the-folder-of-bias-images-for-example-2">
+<h3><span class="section-number">2.2.3.4. </span>Processing the folder of bias images for Example 2<a class="headerlink" href="#processing-the-folder-of-bias-images-for-example-2" title="Permalink to this headline">#</a></h3>
+<p>As in <a class="reference external" href="#example-1-with-overscan-subtraction">Example 1</a>, above, we can use the
 <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccdproc/image_management.html"><code class="docutils literal notranslate"><span class="pre">ImageFileCollection</span></code></a> we created  to loop over only the bias images,
 saving each in the folder <code class="docutils literal notranslate"><span class="pre">calibrated_data</span></code>.</p>
 <div class="cell docutils container">
@@ -1061,10 +1178,10 @@ saving each in the folder <code class="docutils literal notranslate"><span class
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="example-3-no-overscan-at-all">
-<h2><span class="section-number">2.2.4. </span>Example 3: No overscan at all<a class="headerlink" href="#example-3-no-overscan-at-all" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-3-no-overscan-at-all">
+<h2><span class="section-number">2.2.4. </span>Example 3: No overscan at all<a class="headerlink" href="#example-3-no-overscan-at-all" title="Permalink to this headline">#</a></h2>
 <p>If there is no overscan then there is, in principle, nothing to be done with the
 bias frames. It may be convenient to copy them to the directory with the rest of
 your reduced images. The code below does that.</p>
@@ -1083,8 +1200,8 @@ your reduced images. The code below does that.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1098,7 +1215,7 @@ your reduced images. The code below does that.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1108,9 +1225,11 @@ your reduced images. The code below does that.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="02-01-overscan-trimming-and-bias-subtraction-background.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1126,31 +1245,35 @@ your reduced images. The code below does that.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By Matthew Craig<br/>
-    
-        &copy; Copyright 2020-2021.<br/>
-      <div class="extra_footer">
-        <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew Craig<br/>
+  
+      &copy; Copyright 2020-2023.<br/>
+    <div class="extra_footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
