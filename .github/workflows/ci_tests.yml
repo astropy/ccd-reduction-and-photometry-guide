@@ -92,7 +92,7 @@ jobs:
           if [[ "${{ github.ref }}" == 'refs/heads/main' ]]; then VERSION_NUMBER=dev; fi
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: rendered-book-sha-${{ github.sha }}
           path: dev
