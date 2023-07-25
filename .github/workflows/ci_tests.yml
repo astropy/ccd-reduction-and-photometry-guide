@@ -2,7 +2,7 @@
 #
 # This file performs testing using tox and tox.ini to define and configure the test environments.
 
-name: CI Tests
+name: Build and Deploy Book
 
 on:
   push:
@@ -21,7 +21,7 @@ on:
 jobs:
   # Github Actions supports ubuntu, windows, and macos virtual environments:
   # https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners
-  ci_tests:
+  build_book:
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -29,7 +29,7 @@ jobs:
         include:
           - name: Build book
             os: ubuntu-latest
-            python: 3.8
+            python: 3.11
 
     steps:
     - name: Checkout code
@@ -45,7 +45,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge mamba
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.12.1
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
         conda list
         conda info -e
         # python -m pip install jupyter-book==0.12.1
@@ -83,7 +83,7 @@ jobs:
   deploy_html:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: ci_tests
+    needs: build_book
     if: ${{ github.ref == 'refs/heads/main' || contains(github.ref, 'tags') }}
     steps:
       - name: Set version number
