@@ -9,14 +9,14 @@ title                       : CCD Data Reduction Guide  # The title of the book.
 author                      : Matthew Craig  # The author of the book
 copyright                   : "2020-2023"  # Copyright year to be placed in the footer
 logo                        : "book_media/images/logo/logo.png"  # A path to the book logo
-exclude_patterns            : ["*LICENSE.md", "0[1-8]*.ipynb", "*07-*.ipynb", ".git/*", "*/photometry/*", "*.md", "*add_style_cell.ipynb*", "Artificial*.ipynb"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns            : ["*LICENSE.md", "0[1-8]*.ipynb", "*07-*.ipynb", ".git/*", "*.md", "*add_style_cell.ipynb*", "Artificial*.ipynb"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
 #######################################################################################
 # Execution settings
 execute:
   execute_notebooks         : force  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""  # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
-  exclude_patterns          : ["*07-*.ipynb", "*/photometry/*", "*add_style_cell.ipynb*"]  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  exclude_patterns          : ["*0?-*.ipynb", "*add_style_cell.ipynb*"]  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   timeout                   : 300    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.
