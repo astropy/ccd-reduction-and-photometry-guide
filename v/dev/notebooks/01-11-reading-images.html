@@ -849,19 +849,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.01668266, -0.70609288,  0.67918964, ..., -0.06607633,
-         0.98023309,  0.51116543],
-       [ 0.29609534, -0.27951437,  1.02348836, ...,  1.19791074,
-        -0.4905331 , -0.6675231 ],
-       [ 0.09198004, -0.17116174,  1.19732619, ...,  1.48648072,
-         1.69603543,  0.17444575],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2.14786663, -1.47700943,  0.67656071, ...,  0.93729241,
+        -1.16125257,  1.57022476],
+       [-0.7914642 ,  0.80797481, -1.95004166, ..., -1.25215437,
+         1.45049103,  2.10092118],
+       [-0.75507644,  1.11058161, -0.88196393, ...,  1.3722141 ,
+        -0.36911198, -0.64287794],
        ...,
-       [ 1.76371055,  2.08223238,  1.87231555, ..., -0.15852839,
-        -0.36921956, -0.02324597],
-       [-0.41214442,  1.40661966,  0.17629245, ...,  0.11863918,
-         0.36762486, -0.27952456],
-       [-0.78586751, -0.33560379, -0.48624872, ...,  0.90300221,
-        -0.35192871,  0.32434506]], dtype=&#39;&gt;f8&#39;)
+       [-0.59493396,  2.23882676, -0.19210513, ..., -1.52347315,
+         1.00874461, -2.35312321],
+       [ 0.42912896,  0.05166269, -1.42623463, ..., -1.0831194 ,
+         0.8348582 ,  2.08318683],
+       [ 1.41922596,  0.30117568, -0.7027721 , ...,  1.27741072,
+         0.93217251, -0.10349716]], dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -911,19 +911,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.01668266, -0.70609288,  0.67918964, ..., -0.06607633,
-         0.98023309,  0.51116543],
-       [ 0.29609534, -0.27951437,  1.02348836, ...,  1.19791074,
-        -0.4905331 , -0.6675231 ],
-       [ 0.09198004, -0.17116174,  1.19732619, ...,  1.48648072,
-         1.69603543,  0.17444575],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2.14786663, -1.47700943,  0.67656071, ...,  0.93729241,
+        -1.16125257,  1.57022476],
+       [-0.7914642 ,  0.80797481, -1.95004166, ..., -1.25215437,
+         1.45049103,  2.10092118],
+       [-0.75507644,  1.11058161, -0.88196393, ...,  1.3722141 ,
+        -0.36911198, -0.64287794],
        ...,
-       [ 1.76371055,  2.08223238,  1.87231555, ..., -0.15852839,
-        -0.36921956, -0.02324597],
-       [-0.41214442,  1.40661966,  0.17629245, ...,  0.11863918,
-         0.36762486, -0.27952456],
-       [-0.78586751, -0.33560379, -0.48624872, ...,  0.90300221,
-        -0.35192871,  0.32434506]], dtype=&#39;&gt;f8&#39;)
+       [-0.59493396,  2.23882676, -0.19210513, ..., -1.52347315,
+         1.00874461, -2.35312321],
+       [ 0.42912896,  0.05166269, -1.42623463, ..., -1.0831194 ,
+         0.8348582 ,  2.08318683],
+       [ 1.41922596,  0.30117568, -0.7027721 , ...,  1.27741072,
+         0.93217251, -0.10349716]], dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140643684183632" class="table-striped table-bordered table-condensed">
+<table id="table140101711659280" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -1019,11 +1019,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0000553224577795
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0012116633755577
-In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9943312787770793
-In file img-0024.fits the exposure is: 30.0 with standard deviation  1.002127430146373
-In file img-0026.fits the exposure is: 30.0 with standard deviation  0.9991862542680355
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9988206538233089
+In file img-0020.fits the exposure is: 30.0 with standard deviation  1.0001337234346508
+In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9990099918767245
+In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0036651377013115
+In file img-0026.fits the exposure is: 30.0 with standard deviation  0.9997251438523909
 </pre></div>
 </div>
 </div>
