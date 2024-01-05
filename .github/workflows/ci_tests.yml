@@ -74,7 +74,7 @@ jobs:
         jb build .
 
     - name: Upload HTML
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: rendered-book-sha-${{ github.sha }}
         path: |
@@ -92,7 +92,7 @@ jobs:
           if [[ "${{ github.ref }}" == 'refs/heads/main' ]]; then VERSION_NUMBER=dev; fi
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: rendered-book-sha-${{ github.sha }}
           path: dev
