@@ -81,7 +81,8 @@ parts:
         sections:
         - file: notebooks/photometry/01.01-Background-removal-(for-source-detection).ipynb
           title: Background
-
+        - file: notebooks/photometry/01.04-Background-estimation.ipynb
+          title: Background
 
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
 #   title: GitHub repository
