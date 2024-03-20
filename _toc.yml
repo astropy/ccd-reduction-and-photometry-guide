@@ -84,7 +84,7 @@ parts:
           sections:
           - file: notebooks/photometry/01.01.01-Background-removal-simulated-data.ipynb
             title: Overview with simulated image
-          - file: notebooks/photometry/01.01.02-Background-estimation.ipynb
+          - file: notebooks/photometry/01.01.02-Background-estimation-XDF.ipynb
             title: Handling images that need masking
           - file: notebooks/photometry/01.01.03-Background-estimation-FEDER.ipynb
             title: Removing a gradient
