@@ -47,7 +47,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge mamba
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=1
         conda list
         conda info -e
         # python -m pip install jupyter-book==0.12.1
@@ -60,6 +60,7 @@ jobs:
           notebooks/example-cryo-LFC
           notebooks/example-thermo-electric
           notebooks/download_data.py
+          notebooks/photometry/*.fit*
         key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
 
     - name: Download data
