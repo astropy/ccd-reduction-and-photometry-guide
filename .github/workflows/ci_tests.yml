@@ -60,6 +60,7 @@ jobs:
           notebooks/example-cryo-LFC
           notebooks/example-thermo-electric
           notebooks/download_data.py
+          notebooks/photometry/*.fit*
         key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
 
     - name: Download data
