@@ -36,6 +36,16 @@ download = download_file(url, show_progress=True)
 p = Path(download)
 move(p,'combined_dark_exposure_1000.0.fit.bz2')
 
+url = 'https://zenodo.org/records/10844909/files/TIC_125489084.01-S001-R055-C001-ip.fit.bz2?download=1'
+download = download_file(url, show_progress=True)
+p = Path(download)
+p.rename('photometry/TIC_125489084.01-S001-R055-C001-ip.fit.bz2')
+
+url = 'https://archive.stsci.edu/pub/hlsp/xdf/hlsp_xdf_hst_acswfc-60mas_hudf_f435w_v1_sci.fits'
+download = download_file(url, show_progress=True)
+p = Path(download)
+p.rename('photometry/hlsp_xdf_hst_acswfc-60mas_hudf_f435w_v1_sci.fits')
+
 # Get the tarball for the smaller example and extract it
 url = 'https://zenodo.org/record/3254683/files/example-cryo-LFC.tar.bz2?download=1'
 download = download_file(url, show_progress=True, cache=True)

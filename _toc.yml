@@ -3,72 +3,91 @@ root: notebooks/00-00-Preface.ipynb
 title: Home
 defaults:
   numbered: true
-chapters:
-  - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
-    title: Astronomical Images
-    sections:
-    - file: notebooks/01-01-astronomical-CCD-image-components
-      title: Components of astronomical images
-    - file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
-      title: An artificial, but realistic, image
-    - file: notebooks/01-04-Nonuniform-sensitivity
-      title: Non-uniform sensitivity in astronomical detectors
-    - file: notebooks/01-05-Calibration-overview
-      title: Calibration overview
-    - file: notebooks/01-06-Image-combination
-      title: Image combination
-    - file: notebooks/01-08-Overscan
-      title: Overscan
-    - file: notebooks/01-09-Calibration-choices-you-need-to-make
-      title: Calibration choices to make
-    - file: notebooks/01-11-reading-images
-      title: Reading images
-  - file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
-    title: Overscan and bias images
-    sections:
-    - file: notebooks/02-01-overscan-trimming-and-bias-subtraction-background
-      title: About bias and overscan
-    - file: notebooks/02-02-Calibrating-bias-images
-      title: Calibrating bias images
-    - file: notebooks/02-04-Combine-bias-images-to-make-master
-      title: Combine bias images to make master bias
-  - file: notebooks/03-00-Dark-current-and-hot-pixels
-    title: Dark current and dark frames
-    sections:
-    - file: notebooks/03-01-Dark-current-The-ideal-case
-      title: 'Dark current: the ideal case'
-    - file: notebooks/03-02-Real-dark-current-noise-and-other-artifacts
-      title: 'Real dark current: noise and other artifacts'
-    - file: notebooks/03-04-Handling-overscan-and-bias-for-dark-frames
-      title: Handling overscan and bias for dark frames
-    - file: notebooks/03-05-Calibrate-dark-images
-      title: Calibrate dark images
-    - file: notebooks/03-06-Combine-darks-for-use-in-later-calibration-steps
-      title: Combine calibrated dark images for use in later reduction steps
-  - file: notebooks/05-00-Flat-corrections
-    title: Flat fielding
-    sections:
-    - file: notebooks/05-01-about-flat-corrections
-      title: Calibrating flat frames
-    - file: notebooks/05-03-Calibrating-the-flats
-      title: Calibrating flat frames
-    - file: notebooks/05-04-Combining-flats
-      title: Combining flat frames
-  - file: notebooks/06-00-Reducing-science-images
-    title: Calibrating science images
-    sections:
-    - file: notebooks/06-03-science-images-calibration-examples
-      title: Two calibration examples
-  - file: notebooks/08-00-Image-masking
-    title: Finding and dealing with bad pixels
-    sections:
-    - file: notebooks/08-01-Identifying-hot-pixels
-      title: Identifying hot pixels
-    - file: notebooks/08-02-Creating-a-mask
-      title: Identifying bad pixels with ccdmask
-    - file: notebooks/08-03-Cosmic-ray-removal
-      title: Removing cosmic rays
-    - file: notebooks/08-05-incorporating-masks-into-calibrated-science-images
-      title: Incorporating masks in science images
+parts:
+  - caption: Data reduction
+    chapters:
+      - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
+        title: Astronomical Images
+        sections:
+        - file: notebooks/01-01-astronomical-CCD-image-components
+          title: Components of astronomical images
+        - file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
+          title: An artificial, but realistic, image
+        - file: notebooks/01-04-Nonuniform-sensitivity
+          title: Non-uniform sensitivity in astronomical detectors
+        - file: notebooks/01-05-Calibration-overview
+          title: Calibration overview
+        - file: notebooks/01-06-Image-combination
+          title: Image combination
+        - file: notebooks/01-08-Overscan
+          title: Overscan
+        - file: notebooks/01-09-Calibration-choices-you-need-to-make
+          title: Calibration choices to make
+        - file: notebooks/01-11-reading-images
+          title: Reading images
+      - file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
+        title: Overscan and bias images
+        sections:
+        - file: notebooks/02-01-overscan-trimming-and-bias-subtraction-background
+          title: About bias and overscan
+        - file: notebooks/02-02-Calibrating-bias-images
+          title: Calibrating bias images
+        - file: notebooks/02-04-Combine-bias-images-to-make-master
+          title: Combine bias images to make master bias
+      - file: notebooks/03-00-Dark-current-and-hot-pixels
+        title: Dark current and dark frames
+        sections:
+        - file: notebooks/03-01-Dark-current-The-ideal-case
+          title: 'Dark current: the ideal case'
+        - file: notebooks/03-02-Real-dark-current-noise-and-other-artifacts
+          title: 'Real dark current: noise and other artifacts'
+        - file: notebooks/03-04-Handling-overscan-and-bias-for-dark-frames
+          title: Handling overscan and bias for dark frames
+        - file: notebooks/03-05-Calibrate-dark-images
+          title: Calibrate dark images
+        - file: notebooks/03-06-Combine-darks-for-use-in-later-calibration-steps
+          title: Combine calibrated dark images for use in later reduction steps
+      - file: notebooks/05-00-Flat-corrections
+        title: Flat fielding
+        sections:
+        - file: notebooks/05-01-about-flat-corrections
+          title: Calibrating flat frames
+        - file: notebooks/05-03-Calibrating-the-flats
+          title: Calibrating flat frames
+        - file: notebooks/05-04-Combining-flats
+          title: Combining flat frames
+      - file: notebooks/06-00-Reducing-science-images
+        title: Calibrating science images
+        sections:
+        - file: notebooks/06-03-science-images-calibration-examples
+          title: Two calibration examples
+      - file: notebooks/08-00-Image-masking
+        title: Finding and dealing with bad pixels
+        sections:
+        - file: notebooks/08-01-Identifying-hot-pixels
+          title: Identifying hot pixels
+        - file: notebooks/08-02-Creating-a-mask
+          title: Identifying bad pixels with ccdmask
+        - file: notebooks/08-03-Cosmic-ray-removal
+          title: Removing cosmic rays
+        - file: notebooks/08-05-incorporating-masks-into-calibrated-science-images
+          title: Incorporating masks in science images
+  - caption: Photometry
+    chapters:
+      - file: notebooks/photometry/00.00-Preface.ipynb
+        title: Overview
+      - file: notebooks/photometry/01.00-Source-detection.ipynb
+        title: Source detection
+        sections:
+        - file: notebooks/photometry/01.01-Background-removal.ipynb
+          title: Background estimation
+          sections:
+          - file: notebooks/photometry/01.01.01-Background-removal-simulated-data.ipynb
+            title: Overview with simulated image
+          - file: notebooks/photometry/01.01.02-Background-estimation-XDF.ipynb
+            title: Handling images that need masking
+          - file: notebooks/photometry/01.01.03-Background-estimation-FEDER.ipynb
+            title: Removing a gradient
+
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
 #   title: GitHub repository
