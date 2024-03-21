@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main  # GitHub now defaults to 'main' as the name of the primary branch. Change this as needed.
+      - photometry-dev
     tags: # run CI if specific tags are pushed
       - '[0-9]+.[0-9]+.[0-9]+[a-z0-9]*'  # pre-releases -- note that brackets only
                                          # match single character, and that * does
@@ -17,6 +18,7 @@ on:
   pull_request:
     branches: # only build on PRs against 'main'
        - main
+       - photometry-dev
 
 jobs:
   # Github Actions supports ubuntu, windows, and macos virtual environments:
