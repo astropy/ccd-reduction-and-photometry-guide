@@ -72,7 +72,11 @@ html:
 
   comments:
     hypothesis              : false
-    utterances              : false
+    utterances              :
+      repo                  : astropy/ccd-reduction-and-photometry-guide
+      issue-term            : pathname
+      theme                 : github-dark
+      label                 : "review-comment"
   announcement              : "" # A banner announcement at the top of the site.
 
 #######################################################################################
