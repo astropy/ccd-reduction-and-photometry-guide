@@ -1,0 +1,1589 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Aperture Photometry with photutils &#8212; CCD Data Reduction Guide</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CCD Data Reduction Guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data reduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../01-00-Understanding-an-astronomical-CCD-image.html">
+   1. Astronomical Images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-01-astronomical-CCD-image-components.html">
+     1.1. Components of astronomical images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-03-Construction-of-an-artificial-but-realistic-image.html">
+     1.2. An artificial, but realistic, image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-04-Nonuniform-sensitivity.html">
+     1.3. Non-uniform sensitivity in astronomical detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-05-Calibration-overview.html">
+     1.4. Calibration overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-06-Image-combination.html">
+     1.5. Image combination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-08-Overscan.html">
+     1.6. Overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-09-Calibration-choices-you-need-to-make.html">
+     1.7. Calibration choices to make
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../01-11-reading-images.html">
+     1.8. Reading images
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../02-00-Handling-overscan-trimming-and-bias-subtraction.html">
+   2. Overscan and bias images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-01-overscan-trimming-and-bias-subtraction-background.html">
+     2.1. About bias and overscan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-02-Calibrating-bias-images.html">
+     2.2. Calibrating bias images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../02-04-Combine-bias-images-to-make-master.html">
+     2.3. Combine bias images to make master bias
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../03-00-Dark-current-and-hot-pixels.html">
+   3. Dark current and dark frames
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-01-Dark-current-The-ideal-case.html">
+     3.1. Dark current: the ideal case
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-02-Real-dark-current-noise-and-other-artifacts.html">
+     3.2. Real dark current: noise and other artifacts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-04-Handling-overscan-and-bias-for-dark-frames.html">
+     3.3. Handling overscan and bias for dark frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-05-Calibrate-dark-images.html">
+     3.4. Calibrate dark images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../03-06-Combine-darks-for-use-in-later-calibration-steps.html">
+     3.5. Combine calibrated dark images for use in later reduction steps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../05-00-Flat-corrections.html">
+   4. Flat fielding
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-01-about-flat-corrections.html">
+     4.1. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-03-Calibrating-the-flats.html">
+     4.2. Calibrating flat frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../05-04-Combining-flats.html">
+     4.3. Combining flat frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../06-00-Reducing-science-images.html">
+   5. Calibrating science images
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../06-03-science-images-calibration-examples.html">
+     5.1. Two calibration examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../08-00-Image-masking.html">
+   6. Finding and dealing with bad pixels
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08-01-Identifying-hot-pixels.html">
+     6.1. Identifying hot pixels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08-02-Creating-a-mask.html">
+     6.2. Identifying bad pixels with ccdmask
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08-03-Cosmic-ray-removal.html">
+     6.3. Removing cosmic rays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../08-05-incorporating-masks-into-calibrated-science-images.html">
+     6.4. Incorporating masks in science images
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Photometry
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../photometry/00.00-Preface.html">
+   7. Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../photometry/01.00-Source-detection.html">
+   8. Source detection
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../photometry/01.01-Background-removal.html">
+     8.1. Background estimation
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../photometry/01.01.01-Background-removal-simulated-data.html">
+       8.1.1. Overview with simulated image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../photometry/01.01.02-Background-estimation-XDF.html">
+       8.1.2. Handling images that need masking
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../photometry/01.01.03-Background-estimation-FEDER.html">
+       8.1.3. Removing a gradient
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            <h2>Book edition: dev</h2>
+<strong>Previous editions</strong></br>
+<a href="../../../v/2.0.1/index.html">2.0.1</a></br>
+<a href="../../../v/2.0.0/index.html">2.0.0</a></br>
+<a href="../../../v/dev/index.html">dev (latest)</a></br>
+Powered by <a href="https://jupyterbook.org">Jupyter Book</a> and
+<a href="https://astropy.org">Astropy</a>
+
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/photutils/03_aperture_photometry/03_aperture_photometry.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/photutils/03_aperture_photometry/03_aperture_photometry.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/photutils/03_aperture_photometry/03_aperture_photometry.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/notebooks/photutils/03_aperture_photometry/03_aperture_photometry.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Aperture Photometry with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     photutils
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-aperture-photometry">
+     What is aperture photometry?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-this-tutorial-include">
+     What does this tutorial include?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-data-are-used-in-this-tutorial">
+     Which data are used in this tutorial?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-necessary-packages">
+     Import necessary packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-data">
+     Retrieve data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-apertures">
+     Creating Apertures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#circular-apertures">
+       Circular Apertures
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#elliptical-apertures">
+       Elliptical Apertures
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#defining-apertures-for-sources-of-different-sizes">
+       Defining apertures for sources of different sizes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sky-coordinates-apertures">
+       Sky Coordinates &amp; Apertures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performing-aperture-photometry">
+     Performing Aperture Photometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aperture-corrections">
+   Aperture Corrections
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-background-subtraction">
+     Local Background Subtraction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-aperture-corrections">
+     Calculating Aperture Corrections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-resources">
+     Additional Resources
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-this-notebook">
+     About this Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Aperture Photometry with photutils</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Aperture Photometry with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     photutils
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-aperture-photometry">
+     What is aperture photometry?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-this-tutorial-include">
+     What does this tutorial include?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#which-data-are-used-in-this-tutorial">
+     Which data are used in this tutorial?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-necessary-packages">
+     Import necessary packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retrieve-data">
+     Retrieve data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-apertures">
+     Creating Apertures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#circular-apertures">
+       Circular Apertures
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#elliptical-apertures">
+       Elliptical Apertures
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#defining-apertures-for-sources-of-different-sizes">
+       Defining apertures for sources of different sizes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sky-coordinates-apertures">
+       Sky Coordinates &amp; Apertures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performing-aperture-photometry">
+     Performing Aperture Photometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aperture-corrections">
+   Aperture Corrections
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-background-subtraction">
+     Local Background Subtraction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-aperture-corrections">
+     Calculating Aperture Corrections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-resources">
+     Additional Resources
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-this-notebook">
+     About this Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <center><i>Made possible by the Astropy Project and ScienceBetter Consulting through financial support from the Community Software Initiative at the Space Telescope Science Institute.</i></center>
+<p><a id="title_ID"></a></p>
+<p><a href="http://photutils.readthedocs.io/en/stable/index.html"><img src="https://photutils.readthedocs.io/en/stable/_static/photutils_banner.svg" width=300></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="aperture-photometry-with-photutils">
+<h1>Aperture Photometry with <code class="docutils literal notranslate"><span class="pre">photutils</span></code><a class="headerlink" href="#aperture-photometry-with-photutils" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<section id="what-is-aperture-photometry">
+<h2>What is aperture photometry?<a class="headerlink" href="#what-is-aperture-photometry" title="Permalink to this headline">#</a></h2>
+<p>The most common method to measure the flux of a celestial source is aperture photometry. This kind of photometry measures the amount of flux within a region of an astronomical image of defined shape and size (an aperture) surrounding a source. The ideal aperture would capture all of the flux emitted by a desired source, and none of the flux emitted by the surrounding sky or nearby sources. Especially when performing photometry on image data that includes a number of sources with varying size and shape, it is important to perform aperture corrections to account for imperfect apertures and better constrain photometric errors.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">photutils</span></code> package provides tools for performing photometry with apertures of various shapes.</p>
+</section>
+<section id="what-does-this-tutorial-include">
+<h2>What does this tutorial include?<a class="headerlink" href="#what-does-this-tutorial-include" title="Permalink to this headline">#</a></h2>
+<p>This tutorial covers how to perform aperture photometry with <code class="docutils literal notranslate"><span class="pre">photutils</span></code>, including the following methods:</p>
+<ul class="simple">
+<li><p>Creating Apertures</p>
+<ul>
+<li><p>Circular Apertures</p></li>
+<li><p>Elliptical Apertures</p></li>
+<li><p>Sky Apertures with WCS</p></li>
+</ul>
+</li>
+<li><p>Performing Aperture Photometry</p></li>
+<li><p>Calculating Aperture Corrections with Local Background Subtraction</p></li>
+</ul>
+</section>
+<section id="which-data-are-used-in-this-tutorial">
+<h2>Which data are used in this tutorial?<a class="headerlink" href="#which-data-are-used-in-this-tutorial" title="Permalink to this headline">#</a></h2>
+<p>We will be manipulating Hubble eXtreme Deep Field (XDF) data, which was collected using the Advanced Camera for Surveys (ACS) on Hubble between 2002 and 2012. The image we use here is the result of 1.8 million seconds (500 hours!) of exposure time, and includes some of the faintest and most distant galaxies that have ever been observed.</p>
+<p><em>The methods demonstrated here are available in narrative form within the <code class="docutils literal notranslate"><span class="pre">photutils.aperture</span></code> <a class="reference external" href="http://photutils.readthedocs.io/en/stable/aperture.html">documentation</a>.</em></p>
+<div class="alert alert-block alert-warning">
+<p><b>Important:</b> Before proceeding, please be sure to update your versions of <code>astropy</code>, <code>matplotlib</code>, and <code>photutils</code>, or this notebook may not work properly. Or, if you don’t want to handle packages individually, you can always use (and keep updated!) the <a href="https://astroconda.readthedocs.io">AstroConda</a> distribution.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="import-necessary-packages">
+<h2>Import necessary packages<a class="headerlink" href="#import-necessary-packages" title="Permalink to this headline">#</a></h2>
+<p>First, let’s import packages that we will use to perform arithmetic functions and visualize data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+
+<span class="c1"># Show plots in the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also define some <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> parameters, such as title font size and the dpi, to make sure our plots look nice. To make it quick, we’ll do this by loading a <span class="xref myst">style file shared with the other photutils tutorials</span> into <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>. We will use this style file for all the notebook tutorials. (See <a class="reference external" href="https://matplotlib.org/users/customizing.html">here</a> to learn more about customizing <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/style/core.py:137,</span> in <span class="ni">use</span><span class="nt">(style)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="n">style</span> <span class="o">=</span> <span class="n">_rc_params_in_file</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:866,</span> in <span class="ni">_rc_params_in_file</span><span class="nt">(fname, transform, fail_on_error)</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="n">rc_temp</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="ne">--&gt; </span><span class="mi">866</span> <span class="k">with</span> <span class="n">_open_file_or_url</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>     <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+
+<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:843,</span> in <span class="ni">_open_file_or_url</span><span class="nt">(fname)</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">843</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">844</span>     <span class="k">yield</span> <span class="n">f</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../photutils_notebook_style.mplstyle&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+
+<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/style/core.py:139,</span> in <span class="ni">use</span><span class="nt">(style)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>         <span class="n">style</span> <span class="o">=</span> <span class="n">_rc_params_in_file</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">139</span>         <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">style</span><span class="si">!r}</span><span class="s2"> is not a valid package style, path of style &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>             <span class="sa">f</span><span class="s2">&quot;file, URL of style file, or library style name (library &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>             <span class="sa">f</span><span class="s2">&quot;styles are listed in `style.available`)&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="n">filtered</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nn">    144 for k</span> in <span class="ni">style:  # don&#39;t trigger RcParams.__getitem__</span><span class="nt">(&#39;backend&#39;)</span>
+
+<span class="ne">OSError</span>: &#39;../photutils_notebook_style.mplstyle&#39; is not a valid package style, path of style file, URL of style file, or library style name (library styles are listed in `style.available`)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="retrieve-data">
+<h2>Retrieve data<a class="headerlink" href="#retrieve-data" title="Permalink to this headline">#</a></h2>
+<p>As described in the introduction, we will be using Hubble eXtreme Deep Field (XDF) data. Since this file is too large to store on GitHub, we will just use <code class="docutils literal notranslate"><span class="pre">astropy</span></code> to directly download the file from the STScI archive: <a class="reference external" href="https://archive.stsci.edu/prepds/xdf/">https://archive.stsci.edu/prepds/xdf/</a></p>
+<p>(Generally, the best package for web queries of astronomical data is <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/">Astroquery</a>; however, the dataset we are using is a High Level Science Product (HLSP) and thus is not located within a catalog that could be queried with Astroquery.)</p>
+<p>Throughout this notebook, we are going to store our images in Python using a <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> object (see <a class="reference external" href="http://docs.astropy.org/en/stable/nddata/index.html#ccddata-class-for-images">Astropy documentation</a>), which contains a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array in addition to metadata such as uncertainty, masks, or units. In this case, our data is in electrons per second.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://archive.stsci.edu/pub/hlsp/xdf/hlsp_xdf_hst_acswfc-60mas_hudf_f435w_v1_sci.fits&#39;</span>
+<span class="n">xdf_image</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">electron</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As explained in a <span class="xref myst">previous notebook</span> on background estimation, it is important to <strong>mask</strong> these data, as a large portion of the values are equal to zero. We will mask out the non-data portions of the image array, so all of those pixels that have a value of zero don’t interfere with our statistics and analyses of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the mask</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Set up the normalization and colormap</span>
+<span class="n">norm_image</span> <span class="o">=</span> <span class="n">ImageNormalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">5e-2</span><span class="p">,</span> <span class="n">stretch</span><span class="o">=</span><span class="n">LogStretch</span><span class="p">(),</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="c1"># Show masked data as white</span>
+<span class="n">xdf_image_clipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># clip to plot with logarithmic stretch</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span> 
+                      <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="c1"># Define the colorbar and fix the labels</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> 
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Tip: Double-click on any inline plot to zoom in.</em></p>
+</section>
+<hr class="docutils" />
+<section id="creating-apertures">
+<h2>Creating Apertures<a class="headerlink" href="#creating-apertures" title="Permalink to this headline">#</a></h2>
+<p>With <code class="docutils literal notranslate"><span class="pre">photutils</span></code>, users can create apertures with the following shapes:</p>
+<p><a><img src="apertures.png" width=700 alt="Examples of circular, elliptical, and rectangular apertures and annuli."></a></p>
+<p>Each of these can be defined either in pixel coordinates or in celestial coordinates (using a WCS transformation).</p>
+<p>It is also possible for users to create custom aperture shapes.</p>
+<p>Any aperture object is created by defining its position and size (and, if applicable, orientation). Let’s use the <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> method that we learned about in a <a class="reference internal" href="../02_source_detection/02_source_detection.html"><span class="doc std std-doc">previous notebook</span></a> to get the positions of sources in our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">find_peaks</span>
+<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate statistics</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sigma_clipped_stats</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sources_findpeaks</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> 
+                               <span class="n">threshold</span><span class="o">=</span><span class="mf">20.</span><span class="o">*</span><span class="n">std</span><span class="p">,</span> <span class="n">box_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+                               <span class="n">centroid_func</span><span class="o">=</span><span class="n">centroid_2dg</span><span class="p">)</span>     
+<span class="c1"># Display the table</span>
+<span class="n">sources_findpeaks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s plot the centroids of each of these sources:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;x_centroid&#39;</span><span class="p">],</span> <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;y_centroid&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> 
+            <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="c1">#facecolor=&#39;None&#39;, edgecolor=&#39;r&#39;)</span>
+
+<span class="c1"># Define the colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> 
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;find_peaks Sources&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So thanks to <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code>, we now we know the positions of all our sources. Next, we need to define apertures for each source. First, as the simplest example, let’s try using circular apertures of a fixed radius: 10 pixels.</p>
+<section id="circular-apertures">
+<h3>Circular Apertures<a class="headerlink" href="#circular-apertures" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">CircularAperture</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the aperture</span>
+<span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;x_centroid&#39;</span><span class="p">],</span> <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;y_centroid&#39;</span><span class="p">])</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mf">10.</span>  <span class="c1"># pixels</span>
+<span class="n">circular_aperture</span> <span class="o">=</span> <span class="n">CircularAperture</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">)</span>
+
+<span class="c1"># Plot the apertures</span>
+<span class="n">circular_aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Define the colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> 
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Circular Apertures&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crop to show an inset of the data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, these circular apertures don’t fit our data very well. After all, this is the Hubble eXtreme Deep Field, so there aren’t any nice, round, nearby Milky Way stars in this image!</p>
+<p>Let’s use ellipses instead, to better match the morphology of the galactic blobs in our image.</p>
+</section>
+<section id="elliptical-apertures">
+<h3>Elliptical Apertures<a class="headerlink" href="#elliptical-apertures" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">detect_sources</span><span class="p">,</span> <span class="n">source_properties</span><span class="p">,</span> \
+                       <span class="n">EllipticalAnnulus</span><span class="p">,</span> <span class="n">EllipticalAperture</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a <a class="reference internal" href="../02_source_detection/02_source_detection.html"><span class="doc std std-doc">previous notebook</span></a>, we showed how you can use the <code class="docutils literal notranslate"><span class="pre">photutils.detect_sources</span></code> <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detect_sources.html">feature</a> to generate segmentation maps, which identify and label contiguous (connected) objects within an image. Then, with <code class="docutils literal notranslate"><span class="pre">source_properties</span></code> <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.source_properties.html?highlight=source_properties">feature</a>, you can access descriptive properties for each unique object - not just their centroid positions, but also their pixel areas, eccentricities, orientations with respect to the coordinate frame of the image, and more.</p>
+<p>Here we’ll use the centroid, semimajor axis, semiminor axis, and orientation values from <code class="docutils literal notranslate"><span class="pre">source_properties</span></code> to generate elliptical apertures for each of the sources in our image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define threshold and minimum object size</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">5.</span> <span class="o">*</span> <span class="n">std</span>
+<span class="n">npixels</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># Create a segmentation image</span>
+<span class="n">segm</span> <span class="o">=</span> <span class="n">detect_sources</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">npixels</span><span class="p">)</span>
+
+<span class="c1"># Create a catalog using source properties</span>
+<span class="n">catalog</span> <span class="o">=</span> <span class="n">source_properties</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">segm</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">to_table</span><span class="p">()</span>
+
+<span class="c1"># Display the table</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="defining-apertures-for-sources-of-different-sizes">
+<h3>Defining apertures for sources of different sizes<a class="headerlink" href="#defining-apertures-for-sources-of-different-sizes" title="Permalink to this headline">#</a></h3>
+<p>The galaxies in this HST image vary widely in size, from a few hundred pixels across to a few dozen pixels. Two of the
+properties calculated by <code class="docutils literal notranslate"><span class="pre">source_properties</span></code> are the 1-<span class="math notranslate nohighlight">\(\sigma\)</span> standard deviations of a 2D Gaussian fit to each
+source. Those deviations are called the <code class="docutils literal notranslate"><span class="pre">semimajor_axis_sigma</span></code> and the <code class="docutils literal notranslate"><span class="pre">semiminor_axis_sigma</span></code>.</p>
+<p>In what follows the elliptical aperture for each source will be a fixed multiple of that source’s
+<code class="docutils literal notranslate"><span class="pre">semimajor_axis_sigma</span></code> and <code class="docutils literal notranslate"><span class="pre">semiminor_axis_sigma</span></code>. The multiplier will be denoted by the variable <code class="docutils literal notranslate"><span class="pre">r</span></code> and we use a
+value of <code class="docutils literal notranslate"><span class="pre">3</span></code> in most cases below. The multiplier value of 3 was chosen here because it is the approximate isphotal
+extent of the galaxy.</p>
+<p>There are several accepted ways of perfforming preciion photometry on galaxies. Though this notebook illustrates one
+way to do it you should make sure that the method you use is appropriate for the science you are doing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mf">3.</span>  <span class="c1"># Multiplier of semimajor and semiminor axes of source</span>
+
+<span class="c1"># Create the apertures</span>
+<span class="n">elliptical_apertures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">xcentroid</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">ycentroid</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>  <span class="c1"># pixel</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semiminor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>  <span class="c1"># pixel</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">elliptical_apertures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EllipticalAperture</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">)</span>
+
+<span class="c1"># Plot the apertures</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">elliptical_apertures</span><span class="p">:</span>
+    <span class="n">aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># Define the colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> 
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Elliptical Apertures&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crop to show an inset of the data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly, these custom-made elliptical apertures fit our XDF galaxies much better than the one-size-fits-all circular
+apertures from before. It is also clear that our apertures do not quite enclose all of the light from each galaxy.</p>
+</section>
+<section id="sky-coordinates-apertures">
+<h3>Sky Coordinates &amp; Apertures<a class="headerlink" href="#sky-coordinates-apertures" title="Permalink to this headline">#</a></h3>
+<p>At the moment, the positions of our apertures are in pixels, relative to our data array. However, if you need aperture positions in terms of celestial coordinates, <code class="docutils literal notranslate"><span class="pre">photutils</span></code> also includes aperture objects that can be integrated with Astropy’s <code class="docutils literal notranslate"><span class="pre">SkyCoords</span></code>.</p>
+<p>Fortunately this is extremely easy when we use the <a class="reference external" href="http://docs.astropy.org/en/stable/wcs/">World Coordinate System (WCS)</a> to decipher a WCS object from the header of the FITS file containing our image, and then use the <code class="docutils literal notranslate"><span class="pre">to_sky()</span></code> method to transform our <code class="docutils literal notranslate"><span class="pre">EllipticalAperture</span></code> objects into <code class="docutils literal notranslate"><span class="pre">SkyEllipticalAperture</span></code> objects.</p>
+<p>And, better yet, our <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> object has held onto its WCS information ever since we created it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs</span> <span class="o">=</span> <span class="n">xdf_image</span><span class="o">.</span><span class="n">wcs</span>
+<span class="n">sky_elliptical_apertures</span> <span class="o">=</span> <span class="p">[</span><span class="n">ap</span><span class="o">.</span><span class="n">to_sky</span><span class="p">(</span><span class="n">wcs</span><span class="p">)</span> <span class="k">for</span> <span class="n">ap</span> <span class="ow">in</span> <span class="n">elliptical_apertures</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we wanted to generate <code class="docutils literal notranslate"><span class="pre">SkyEllipticalAperture</span></code> objects from the get-go, we could have used that WCS object in the following way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">SkyEllipticalAperture</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">SkyCoord</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="mf">3.</span>  <span class="c1"># pixels; approximate isophotal extent of semimajor axis</span>
+
+<span class="c1"># Create the apertures</span>
+<span class="n">sky_elliptical_apertures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
+    <span class="c1"># Convert the centroids into RA/Dec using WCS</span>
+    <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">all_pix2world</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">xcentroid</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">ycentroid</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># Convert the positions to an Astropy SkyCoord object, with units!</span>
+    <span class="n">sky_position</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+    
+    <span class="c1"># Define the elliptical parameters, now with units</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pix</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semiminor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pix</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">value</span>  <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span>
+    
+    <span class="c1"># Convert the theta from radians from X axis to the radians from North </span>
+    <span class="n">x_to_north_angle</span> <span class="o">=</span> <span class="p">(</span><span class="mf">90.</span> <span class="o">+</span> <span class="n">xdf_image</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;ORIENTAT&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span>
+    <span class="n">x_to_north_angle_rad</span> <span class="o">=</span> <span class="n">x_to_north_angle</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span>
+    <span class="n">theta</span> <span class="o">-=</span> <span class="n">x_to_north_angle_rad</span>
+    
+    <span class="c1"># Define the apertures</span>
+    <span class="n">ap</span> <span class="o">=</span> <span class="n">SkyEllipticalAperture</span><span class="p">(</span><span class="n">sky_position</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">sky_elliptical_apertures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unfortunately, you can’t plot SkyApertures. However, you can use them just as easily to perform aperture photometry!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="performing-aperture-photometry">
+<h2>Performing Aperture Photometry<a class="headerlink" href="#performing-aperture-photometry" title="Permalink to this headline">#</a></h2>
+<p>Now that we have aperture objects that fit our data reasonably well, we can finally perform photometry with the <code class="docutils literal notranslate"><span class="pre">aperture_photometry</span></code> function. This function takes the following arguments:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">data</span></code></strong> – the background-subtracted data array on which to perform photometry.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">apertures</span></code></strong> – an aperture object containing the aperture(s) to use for the photometry.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">error</span></code></strong> (optional) – an array of values that represent the pixel-wise Gaussian 1-sigma errors of the input data.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">mask</span></code></strong> (optional) – a mask for the <code class="docutils literal notranslate"><span class="pre">data</span></code> to exclude certain pixels from calculations.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">method</span></code></strong> (optional) – how to place the aperture(s) onto the pixel grid (see below).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">unit</span></code></strong> (optional) – unit of <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">error</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">wcs</span></code></strong> (optional) – the WCS transformation to use if <code class="docutils literal notranslate"><span class="pre">apertures</span></code> is a <code class="docutils literal notranslate"><span class="pre">SkyAperture</span></code> object.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">subpixels</span></code></strong> (optional) – the factor by which pixels are resampled (see below).</p></li>
+</ul>
+<p>The following methods are the options for how to place apertures onto the data pixel grid:</p>
+<ul class="simple">
+<li><p><strong>exact</strong> (default) – calculate the exact fractional overlap of each aperture for each overlapping pixel. This method is the most accurate, but will also take the longest.</p></li>
+<li><p><strong>center</strong> – a pixel is either entirely in or entirely out of the aperture, depending on whether the pixel center is inside or outside of the aperture.</p></li>
+<li><p><strong>subpixel</strong> – a pixel is divided into <code class="docutils literal notranslate"><span class="pre">subpixels</span></code> x <code class="docutils literal notranslate"><span class="pre">subpixels</span></code> subpixels, each of which are considered to be entirely in or out of the aperture depending on whether its center is in or out of the aperture.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">aperture_photometry</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">QTable</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what this looks like using the first aperture in our image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The CCDData mask will be automatically applied</span>
+<span class="n">phot_datum</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">elliptical_apertures</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+<span class="n">phot_datum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">aperture_sum</span></code> value is what reports the number of electron counts within the aperture: 3.47 e<sup>–</sup>/s.</p>
+<p>And, just as a check, to make sure our sky apertures give basically the same answer…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The CCDData mask will be automatically applied</span>
+<span class="n">sky_phot_datum</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">sky_elliptical_apertures</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sky_phot_datum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Woohoo!</p>
+<p>Unfortunately for our purposes, the <code class="docutils literal notranslate"><span class="pre">aperture_photometry</span></code> function can be only used alone for one of the two cases:</p>
+<ul class="simple">
+<li><p>Identical apertures at distinct positions (e.g. circular apertures with radius of 3 pixels for many sources)</p></li>
+<li><p>Distinct apertures at identical positions (e.g. two circular apertures with radius of 3 pixels and radius of 5 pixels for one source)</p></li>
+</ul>
+<p>Since our elliptical apertures are distinct apertures at distinct positions, we need to do a little more work to get a single table of photometric values.</p>
+<p>(This step will take a while, almost 5 minutes, so hang tight!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The CCDData mask will be automatically applied</span>
+<span class="n">phot_table</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">elliptical_apertures</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">elliptical_apertures</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">phot_row</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">aperture</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">phot_row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+    <span class="n">phot_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">phot_row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at all these apertures we’ve made:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the table</span>
+<span class="n">phot_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There’s only so much you can learn from looking at a table of numbers, so let’s explore alternate ways to examine these data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">phot</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">phot</span> <span class="ow">in</span> <span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum&#39;</span><span class="p">]]</span>
+<span class="n">logbins</span><span class="o">=</span><span class="n">bins</span> <span class="o">=</span> <span class="mf">10.</span><span class="o">**</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">logbins</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Source Photometry&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Sources&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">],</span> <span class="n">values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Count Rate v. Aperture Area&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Aperture Area [pixels$^2$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<h3>Exercise:</h3><br>
+<p>Re-calculate the photometry for these elliptical apertures – or just a subset of them – using the <code>subpixel</code> aperture placement method instead of the default <code>exact</code> method. How does this affect the count sum calculated for those apertures?</p>
+</div></section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="aperture-corrections">
+<h1>Aperture Corrections<a class="headerlink" href="#aperture-corrections" title="Permalink to this headline">#</a></h1>
+<p>We’ve done photometry with some lovely apertures, but unfortunately even using elliptical apertures with unique sizes and orientations does not account for an important source of extraneous flux: the sky background.</p>
+<section id="local-background-subtraction">
+<h2>Local Background Subtraction<a class="headerlink" href="#local-background-subtraction" title="Permalink to this headline">#</a></h2>
+<p>In the <span class="xref myst">background estimation notebook</span>, we explored how to perform global background subtraction of image data with <code class="docutils literal notranslate"><span class="pre">photutils</span></code>. However, you can also use <code class="docutils literal notranslate"><span class="pre">photutils</span></code> to perform local background estimations for aperture corrections.</p>
+<p>To estimate the local background for each aperture, measure the counts within annulus apertures around (but not including!) each source. Since our sources vary quite a bit in size, we should define apertures that are scaled by the size of the source.</p>
+<p>As we did above, the radii defining the annulus are calculated from the 1D standard deviations of a 2D Gaussian fit to
+source. Above, we used a multiplier of 3 to calculate the axes of the elliptical aperture.</p>
+<p>Here we need to construct an annulus around each source to meach the local background. The inner diameter should be
+large enough that it does not include much light from the galaxy on which photometry is being performed. The outer
+diameter should be sufficiently large that there are many pixels in the annulus.</p>
+<p>Below, we set the multiplier for the inner annulus radius to be one more than the aperture multiplier, and the outer
+radius to be 1.5 larer than the inner radius.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_in</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># approximate isophotal extent of inner semimajor axis</span>
+<span class="n">r_out</span> <span class="o">=</span> <span class="n">r_in</span> <span class="o">+</span> <span class="mf">1.5</span>  <span class="c1"># approximate isophotal extent of inner semimajor axis</span>
+
+<span class="c1"># Create the apertures</span>
+<span class="n">elliptical_annuli</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">xcentroid</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">ycentroid</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">a_in</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r_in</span>
+    <span class="n">a_out</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r_out</span>
+    <span class="n">b_out</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semiminor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r_out</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">elliptical_annuli</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EllipticalAnnulus</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">a_in</span><span class="p">,</span> <span class="n">a_out</span><span class="p">,</span> <span class="n">b_out</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span> 
+                      <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">)</span>
+
+<span class="c1"># Plot the apertures</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">elliptical_annuli</span><span class="p">:</span>
+    <span class="n">aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">elliptical_apertures</span><span class="p">:</span>
+    <span class="n">aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># Define the colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> 
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Elliptical Annuli&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crop to show an inset of the data</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that in this approach the annulus of each galaxy is “scaled” to the size of the galaxy. That in turn means that
+the number of pixels in the background annulus differs from galaxy to galaxy. The area of each annulus by photutils
+and the annulus radii increased if needed.</p>
+</section>
+<section id="calculating-aperture-corrections">
+<h2>Calculating Aperture Corrections<a class="headerlink" href="#calculating-aperture-corrections" title="Permalink to this headline">#</a></h2>
+<p>Now that our apertures have been defined, we can do photometry with them to estimate and account for the background. The aperture correction is calculated by:</p>
+<ul class="simple">
+<li><p>Calculating the count rate within each annulus using <code class="docutils literal notranslate"><span class="pre">aperture_photometry</span></code></p></li>
+<li><p>Dividing the count rate of each annulus by the area of each annulus to get the mean background value for each annulus</p></li>
+<li><p>Taking the mean of those annulus means to get a mean background value for the entire image</p></li>
+<li><p>Multiplying the global background mean value by the area of each elliptical photometric aperture, to get the estimated background count rate within each aperture</p></li>
+<li><p>Subtracting the estimated background count rate from the photometric count rate for each aperture</p></li>
+</ul>
+<p>(Just like when we did photometry with the elliptical apertures above, the below step will take almost 5 minutes.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The CCDData mask will be automatically applied</span>
+<span class="n">bkg_phot_table</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">elliptical_annuli</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">elliptical_annuli</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">phot_row</span> <span class="o">=</span> <span class="n">aperture_photometry</span><span class="p">(</span><span class="n">xdf_image</span><span class="p">,</span> <span class="n">aperture</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">phot_row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+    <span class="n">bkg_phot_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">phot_row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display table</span>
+<span class="n">bkg_phot_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean background level (per pixel) in the annuli </span>
+<span class="n">bkg_area</span> <span class="o">=</span> <span class="p">[</span><span class="n">annulus</span><span class="o">.</span><span class="n">area</span> <span class="k">for</span> <span class="n">annulus</span> <span class="ow">in</span> <span class="n">elliptical_annuli</span><span class="p">]</span>
+<span class="n">bkg_mean_per_aperture</span> <span class="o">=</span> <span class="n">bkg_phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">bkg_area</span>
+<span class="n">bkg_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">bkg_mean_per_aperture</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">electron</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Background mean:&#39;</span><span class="p">,</span> <span class="n">bkg_mean</span><span class="p">)</span>
+
+<span class="c1"># Calculate the total background within each elliptical aperture</span>
+<span class="n">bkg_sum</span> <span class="o">=</span> <span class="n">bkg_mean</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+
+<span class="c1"># Subtract the background from the original photometry</span>
+<span class="n">flux_bkgsub</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">bkg_sum</span>
+
+<span class="c1"># Add this as a column to the original photometry table</span>
+<span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum_bkgsub&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flux_bkgsub</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might have noticed that these background count rates are <em>really</em> small. In this case, this is to be expected – since our example XDF data is a high-level science product (HLSP) that already has already been background-subtracted.</p>
+<p>Finally, let’s see the difference between our original count rates and our background-subtracted count rates (it should be small for us!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display table</span>
+<span class="n">phot_table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">phot</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">phot</span> <span class="ow">in</span> <span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum&#39;</span><span class="p">]]</span>
+<span class="n">values_bkgsub</span> <span class="o">=</span> <span class="p">[</span><span class="n">phot</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">phot</span> <span class="ow">in</span> <span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;aperture_sum_bkgsub&#39;</span><span class="p">]]</span>
+<span class="n">logbins</span><span class="o">=</span><span class="n">bins</span> <span class="o">=</span> <span class="mf">10.</span><span class="o">**</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">logbins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original photometry&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">values_bkgsub</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">logbins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Background-subtracted&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Source Photometry&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="conclusions">
+<h1>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">photutils</span></code> package provides a comprehensive toolkit for astronomers to perform aperture photometry, including customizable aperture shapes that allow for more precise photometry and easy photometric correction.</p>
+<p><strong>To continue with this <code class="docutils literal notranslate"><span class="pre">photutils</span></code> tutorial, go on to the <span class="xref myst">PSF photometry notebook</span>.</strong></p>
+<hr class="docutils" />
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">#</a></h2>
+<p>For more examples and details, please visit the <a class="reference external" href="http://photutils.readthedocs.io/en/stable/index.html">photutils</a> documentation.</p>
+</section>
+<hr class="docutils" />
+<section id="about-this-notebook">
+<h2>About this Notebook<a class="headerlink" href="#about-this-notebook" title="Permalink to this headline">#</a></h2>
+<p><strong>Authors:</strong> Lauren Chambers (<a class="reference external" href="mailto:lchambers&#37;&#52;&#48;stsci&#46;edu">lchambers<span>&#64;</span>stsci<span>&#46;</span>edu</a>), Erik Tollerud (<a class="reference external" href="mailto:etollerud&#37;&#52;&#48;stsci&#46;edu">etollerud<span>&#64;</span>stsci<span>&#46;</span>edu</a>), Tom Wilson (<a class="reference external" href="mailto:towilson&#37;&#52;&#48;stsci&#46;edu">towilson<span>&#64;</span>stsci<span>&#46;</span>edu</a>), Clare Shanahan (<a class="reference external" href="mailto:cshanahan&#37;&#52;&#48;stsci&#46;edu">cshanahan<span>&#64;</span>stsci<span>&#46;</span>edu</a>)
+<br><strong>Updated:</strong> May 2019</p>
+<p><a class="reference external" href="#title_ID">Top of Page</a>
+<img style="float: right;" src="https://raw.githubusercontent.com/spacetelescope/notebooks/master/assets/stsci_pri_combo_mark_horizonal_white_bkgd.png" alt="STScI logo" width="200px"/></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/photutils/03_aperture_photometry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew Craig<br/>
+  
+      &copy; Copyright 2020-2023.<br/>
+    <div class="extra_footer">
+      <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
