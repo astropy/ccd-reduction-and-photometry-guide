@@ -77,8 +77,8 @@ var addUtterances = () => {
     script.setAttribute("label", "review-comment");
     script.setAttribute("crossorigin", "anonymous");
 
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
+    sections = document.querySelectorAll("section");
+    if (sections !== null && sections.length > 0) {
         section = sections[sections.length-1];
         section.appendChild(script);
     }
