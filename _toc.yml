@@ -88,6 +88,12 @@ parts:
             title: Handling images that need masking
           - file: notebooks/photometry/01.01.03-Background-estimation-FEDER.ipynb
             title: Removing a gradient
+        - file: notebooks/photometry/01.02-IRAF-like-detection.ipynb
+          title: IRAF-like source detection
+          sections:
+          - file: notebooks/photometry/01.02.01-IRAF-like-detection-simulated-data.ipynb
+            title: Overview with simulated image
+
 
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
 #   title: GitHub repository
