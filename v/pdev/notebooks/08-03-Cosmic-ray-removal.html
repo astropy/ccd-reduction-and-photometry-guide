@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6.3. Cosmic ray removal &#8212; CCD Data Reduction Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "astropy/ccd-reduction-and-photometry-guide");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-dark");
+    script.setAttribute("label", "review-comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("section");
+    if (sections !== null && sections.length > 0) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/08-03-Cosmic-ray-removal';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.4. Incorporating masks into calibrated science images" href="08-05-incorporating-masks-into-calibrated-science-images.html" />
+    <link rel="prev" title="6.2. Creating an image mask" href="08-02-Creating-a-mask.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="00-00-Preface.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CCD Data Reduction Guide - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CCD Data Reduction Guide - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data reduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="01-00-Understanding-an-astronomical-CCD-image.html">1. Astronomical Images</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01-01-astronomical-CCD-image-components.html">1.1. Components of astronomical images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-03-Construction-of-an-artificial-but-realistic-image.html">1.2. An artificial, but realistic, image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-04-Nonuniform-sensitivity.html">1.3. Non-uniform sensitivity in astronomical detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-05-Calibration-overview.html">1.4. Calibration overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-06-Image-combination.html">1.5. Image combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-08-Overscan.html">1.6. Overscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-09-Calibration-choices-you-need-to-make.html">1.7. Calibration choices to make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-11-reading-images.html">1.8. Reading images</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02-00-Handling-overscan-trimming-and-bias-subtraction.html">2. Overscan and bias images</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02-01-overscan-trimming-and-bias-subtraction-background.html">2.1. About bias and overscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-02-Calibrating-bias-images.html">2.2. Calibrating bias images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-04-Combine-bias-images-to-make-master.html">2.3. Combine bias images to make master bias</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="03-00-Dark-current-and-hot-pixels.html">3. Dark current and dark frames</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-01-Dark-current-The-ideal-case.html">3.1. Dark current: the ideal case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-02-Real-dark-current-noise-and-other-artifacts.html">3.2. Real dark current: noise and other artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-04-Handling-overscan-and-bias-for-dark-frames.html">3.3. Handling overscan and bias for dark frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-05-Calibrate-dark-images.html">3.4. Calibrate dark images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-06-Combine-darks-for-use-in-later-calibration-steps.html">3.5. Combine calibrated dark images for use in later reduction steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="05-00-Flat-corrections.html">4. Flat fielding</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="05-01-about-flat-corrections.html">4.1. Calibrating flat frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-03-Calibrating-the-flats.html">4.2. Calibrating flat frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-04-Combining-flats.html">4.3. Combining flat frames</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="06-00-Reducing-science-images.html">5. Calibrating science images</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="06-03-science-images-calibration-examples.html">5.1. Two calibration examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="08-00-Image-masking.html">6. Finding and dealing with bad pixels</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="08-01-Identifying-hot-pixels.html">6.1. Identifying hot pixels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08-02-Creating-a-mask.html">6.2. Identifying bad pixels with ccdmask</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.3. Removing cosmic rays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08-05-incorporating-masks-into-calibrated-science-images.html">6.4. Incorporating masks in science images</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Photometry</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="photometry/00.00-Preface.html">7. Overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="photometry/01.00-Source-detection.html">8. Source detection</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="photometry/01.01-Background-removal.html">8.1. Background estimation</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="photometry/01.01.01-Background-removal-simulated-data.html">8.1.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="photometry/01.01.02-Background-estimation-XDF.html">8.1.2. Handling images that need masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="photometry/01.01.03-Background-estimation-FEDER.html">8.1.3. Removing a gradient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/08-03-Cosmic-ray-removal.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/08-03-Cosmic-ray-removal.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/08-03-Cosmic-ray-removal.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cosmic ray removal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-from-calibration-images">6.3.1. Removal from calibration images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-from-science-images">6.3.2. Removal from science images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#very-important-notes-about-using-lacosmic">6.3.2.1. Very important notes about using LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-image">6.3.2.2. Input image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-and-applying-masks">6.3.2.3. Reading in and applying masks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-lacosmic">6.3.2.4. Running LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-cosmic-rays-identified-by-lacosmic">6.3.2.5. Examining the cosmic rays identified by LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-of-sample-cosmic-rays">6.3.2.6. Discussion of sample cosmic rays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-mask-with-the-image">6.3.2.7. Saving the mask with the image</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-you-do-not-mask">6.3.3. What happens if you do not mask?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-of-these-are-not-cosmic-rays">6.3.3.1. Some of these are not cosmic rays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">6.3.3.2. Discussion</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cosmic-ray-removal">
+<h1><span class="section-number">6.3. </span>Cosmic ray removal<a class="headerlink" href="#cosmic-ray-removal" title="Link to this heading">#</a></h1>
+<p>Almost all images from a CCD will include some number of cosmic rays, charged
+particles which bombard the Earth’s upper atmosphere. Some of those will make it
+through the atmosphere and into your detector (the rate of cosmic rays will be
+much higher for cameras in space). Although the number of cosmic rays is roughly
+proportional to exposure time, there will be cosmic rays even in bias frames in
+which the chip is immediately read out.</p>
+<p>This notebook explains how to remove cosmic rays from calibration images and
+science images.</p>
+<section id="removal-from-calibration-images">
+<h2><span class="section-number">6.3.1. </span>Removal from calibration images<a class="headerlink" href="#removal-from-calibration-images" title="Link to this heading">#</a></h2>
+<p>The most convenient way to remove cosmic rays from calibration images (bias, dark, and
+flat images) is to combine them properly. Cosmic rays are, by their nature,
+random events that will affect different parts of each of the calibration
+images. A pixel affected by a cosmic ray in one of the dark images, for example,
+will almost certainly <em>not</em> be affected by a cosmic ray in any of the other dark
+images.</p>
+<p>Combining those images by averaging (to reduce noise as much as possible) and
+sigma clipping (to exclude extreme pixels in individual images like the one with
+a cosmic ray) will eliminate the cosmic ray from the combined dark image. An
+alternative would be to combine the images using a median. A detailed
+description of each option is discussed in the <a class="reference internal" href="01-06-Image-combination.html"><span class="std std-doc">section on image combination</span></a>.</p>
+<p>The method described below for removing cosmic rays from science images will not
+work well for removing them from calibration images and is unnecessary because
+they can be removed by properly combining the images.</p>
+</section>
+<section id="removal-from-science-images">
+<h2><span class="section-number">6.3.2. </span>Removal from science images<a class="headerlink" href="#removal-from-science-images" title="Link to this heading">#</a></h2>
+<p>One good technique for removing cosmic rays from an image is the
+<a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">LACosmic method</a> originally developed and implemented for IRAF
+by <a class="reference external" href="https://www.pietervandokkum.com/">Pieter G. van Dokkum</a>. The original paper describing the method,
+which uses the sharp edges of cosmic rays to distinguish them from other sources
+in the image, is <a class="reference external" href="http://adsabs.harvard.edu/abs/2001PASP..113.1420V">here</a>.</p>
+<p>The specific implementation of LACosmic used here is the astropy affiliated
+package <a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a>. If you use this code to remove cosmic
+rays you should cite both the original paper and
+<a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a> (citation details are on its web site). The
+code below never directly imports <a class="reference external" href="https://github.com/astropy/astroscrappy">Astro-SCRAPPY</a> because
+<code class="docutils literal notranslate"><span class="pre">ccdproc</span></code> provides a wrapper for it, so we called attention to it here.</p>
+<section id="very-important-notes-about-using-lacosmic">
+<h3><span class="section-number">6.3.2.1. </span>Very important notes about using LACosmic<a class="headerlink" href="#very-important-notes-about-using-lacosmic" title="Link to this heading">#</a></h3>
+<p>There are a few things to be aware of before using the LACosmic technique. These
+are drawn from the advice van Dokkum provides under
+<a class="reference external" href="http://www.astro.yale.edu/dokkum/lacosmic/">Notes for Users</a> and the original paper.</p>
+<ol class="arabic simple">
+<li><p>The images must be bias and dark subtracted.</p></li>
+<li><p>The images should be flat fielded, though the technique can be applied
+without flat fielding.</p></li>
+<li><p>The images should <strong>not</strong> have the sky subtracted before detecting the cosmic
+rays.</p></li>
+<li><p>The noise level in the image needs to be accurately measured.</p></li>
+<li><p>The image and the noise have to be in the same units, typically electrons.</p></li>
+<li><p>If there are pixels that are known to be bad (e.g., hot pixels, pixels
+identified by <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code>) they should be masked out before detecting cosmic rays.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">block_replicate</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
+<span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">detect_sources</span>
+
+<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span><span class="p">,</span> <span class="n">display_cosmic_rays</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use custom style for larger fonts and figures</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;guide.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="input-image">
+<h3><span class="section-number">6.3.2.2. </span>Input image<a class="headerlink" href="#input-image" title="Link to this heading">#</a></h3>
+<p>The image we will use in this notebook is one of the reduced images from Example
+2 in the previous notebooks. It is an image of the field of the exoplanet
+KELT-16 b, taken with a thermoelectrically-cooled CCD with read noise of 10<span class="math notranslate nohighlight">\(e^-\)</span>
+and gain of <span class="math notranslate nohighlight">\(1.5~e^-\)</span>/ADU.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex2_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;example2-reduced&#39;</span><span class="p">)</span>
+
+<span class="n">ccd</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;kelt-16-b-S001-R001-C084-r.fit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_image</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The unit of this image is ADU, so we need to multiply by the gain to convert to
+electrons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">gain_correct</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">electron</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">adu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-in-and-applying-masks">
+<h3><span class="section-number">6.3.2.3. </span>Reading in and applying masks<a class="headerlink" href="#reading-in-and-applying-masks" title="Link to this heading">#</a></h3>
+<p>Two masks were calculated earlier. Hot pixels, whose dark current cannot be
+corrected, were <a class="reference internal" href="08-01-Identifying-hot-pixels.html"><span class="std std-doc">identified by comparing dark frames of different exposure time</span></a>.  The
+<a class="reference internal" href="08-02-Creating-a-mask.html"><span class="doc std std-doc">function <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code> was used</span></a> to identify other bad pixels; one example was a
+column of pixels on the left side of the image.</p>
+<p>We read in both of the masks, which are the same for all images, and combine
+using logical “OR.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dark_mask</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;mask_from_dark_current.fits&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccdmask_mask</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;mask_from_ccdmask.fits&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_mask</span> <span class="o">=</span> <span class="n">dark_mask</span><span class="o">.</span><span class="n">data</span> <span class="o">|</span> <span class="n">ccdmask_mask</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_image</span><span class="p">(</span><span class="n">combined_mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excluding these pixels from cosmic ray detection ensures that only cosmic rays
+are  identified.</p>
+<p>The mask is now applied to the image of KELT-16 b.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccd</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">combined_mask</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-lacosmic">
+<h3><span class="section-number">6.3.2.4. </span>Running LACosmic<a class="headerlink" href="#running-lacosmic" title="Link to this heading">#</a></h3>
+<p>The actual invocation of LACosmic is fairly convenient. The key parameters
+are <code class="docutils literal notranslate"><span class="pre">readnoise</span></code>, the read noise, and <code class="docutils literal notranslate"><span class="pre">sigclip</span></code>, which determines how far above
+the background a pixel needs to be to consider it a cosmic ray. There is no
+hard-and-fast rule for selecting the proper value of <code class="docutils literal notranslate"><span class="pre">sigclip</span></code>. In the original
+paper a value of 5 is recommended, but for this image it finds several thousand
+pixels contaminated by cosmic rays. That is not plausible for an image taken
+with a camera 1,000 feet above sea level.</p>
+<p>Higher values of <code class="docutils literal notranslate"><span class="pre">sigclip</span></code> reduce the number of cosmic rays found. The value
+used below, 7, seemed to work well for this image, finding a total of roughly 70
+pixels that are cosmic rays, and a couple dozen candidate cosmic rays that
+extend across multiple pixels.</p>
+<p>The function <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/api/ccdproc.cosmicray_lacosmic.html#ccdproc.cosmicray_lacosmic"><code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code></a> from <code class="docutils literal notranslate"><span class="pre">ccdproc</span></code> returns a new image in which
+the mask is <code class="docutils literal notranslate"><span class="pre">True</span></code> for pixels in which a cosmic ray was detected and <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise. The data in the new image has values in the pixels in which cosmic
+rays were identified replaced by interpolating the neighboring pixels.</p>
+<p>We will take a look at the cosmic rays identified by LACosmic in a moment.</p>
+<p>Expect the code below to take at least a few tens of seconds to run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">new_ccd</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">cosmicray_lacosmic</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">readnoise</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigclip</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> includes both cosmic rays identified by
+<code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> and the mask we applied to <code class="docutils literal notranslate"><span class="pre">ccd</span></code> above. To get only the
+cosmic rays, we set the mask to <code class="docutils literal notranslate"><span class="pre">False</span></code> for all of those pixels that were masked
+before LACosmic ran.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cr_mask</span> <span class="o">=</span> <span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span>
+<span class="n">cr_mask</span><span class="p">[</span><span class="n">ccd</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The sum of the mask indicates how many pixels have been identified as cosmic
+rays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="examining-the-cosmic-rays-identified-by-lacosmic">
+<h3><span class="section-number">6.3.2.5. </span>Examining the cosmic rays identified by LACosmic<a class="headerlink" href="#examining-the-cosmic-rays-identified-by-lacosmic" title="Link to this heading">#</a></h3>
+<p>There are 70 pixels that have been flagged as cosmic rays. Looking through each
+of them individually would be tedious, at best. It would also presumably be
+difficult to decide visually if a single pixel tagged as a cosmic ray was
+actually a cosmic ray, but it would be helpful to look at the larger cosmic
+rays (i.e., those that span multiple pixels).</p>
+<p>To identify those larger cosmic rays we will use the function <code class="docutils literal notranslate"><span class="pre">detect_sources</span></code>
+from the package <a class="reference external" href="https://photutils.readthedocs.io">photutils</a>, which identifies contiguous
+pixels in an image via image segmentation. Though
+<a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.detect_sources.html#photutils.segmentation.detect_sources"><code class="docutils literal notranslate"><span class="pre">detect_sources</span></code></a> is intended for detecting extended or stellar  sources in an image it happens to work very well for identifying extended cosmic rays in the mask generated by <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/api/ccdproc.cosmicray_lacosmic.html#ccdproc.cosmicray_lacosmic"><code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code></a>.</p>
+<p>The threshold below should be something less than 1 to ensure that only the
+masked pixels (i.e., those whose values are 1) are included as sources. The
+number of pixels is the number which must be adjacent (either by edge or by
+corner) to be considered a source.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">n_pixels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">detect_sources</span><span class="p">(</span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">n_pixels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first check to see how many of the pixels identified by LACosmic are part of
+these extended cosmic rays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span><span class="o">.</span><span class="n">areas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It looks like about 50% of the pixels marked as cosmic rays are extended over
+multiple adjacent pixels.</p>
+<p>In this particular science image there are three things being identified as
+cosmic rays:</p>
+<ul class="simple">
+<li><p>Actual cosmic rays.</p></li>
+<li><p>Single hot pixels (i.e., pixels with unusually high dark current).</p></li>
+</ul>
+<p>These conclusions are not at all clear from what we have discussed in this
+notebook so far. They are based on a detailed examination of the images after
+looking at thumbnail views of the cosmic ray mask, the science image in which
+the cosmic rays were detected and the combined dark frame that was used to
+calibrate this science image.</p>
+<p>That thumbnail view turned out to be a useful enough comparison that a function
+called <code class="docutils literal notranslate"><span class="pre">display_cosmic_rays</span></code> is provided in <code class="docutils literal notranslate"><span class="pre">convenience_functions.py</span></code> that will
+display the cosmic ray mask and as many additional comparison images as you
+would like.</p>
+<p>Since one of the images that turns out to be useful to look at in this example is
+the combined dark used in calibrating the science image, we load it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccd_dark</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;combined_dark_90.000.fit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One note about the argument <code class="docutils literal notranslate"><span class="pre">only_display_rays</span></code> below, which restricts the
+cosmic rays that are displayed to that list. The list was chosen by first
+viewing <em>all</em> of the cosmic rays and choosing a representative sample for
+inclusion in this discussion. Display them all by setting
+<code class="docutils literal notranslate"><span class="pre">only_display_rays=None</span></code> in the call to <code class="docutils literal notranslate"><span class="pre">display_cosmic_rays</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images_to_display</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">ccd_dark</span><span class="p">]</span>
+<span class="n">image_titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mask&#39;</span><span class="p">,</span> <span class="s1">&#39;Science image&#39;</span><span class="p">,</span> <span class="s1">&#39;Combined dark&#39;</span><span class="p">]</span>
+<span class="n">display_cosmic_rays</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">images_to_display</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="n">image_titles</span><span class="p">,</span>
+                    <span class="n">only_display_rays</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion-of-sample-cosmic-rays">
+<h3><span class="section-number">6.3.2.6. </span>Discussion of sample cosmic rays<a class="headerlink" href="#discussion-of-sample-cosmic-rays" title="Link to this heading">#</a></h3>
+<p>The first three examples above, labeled “Cosmic ray 0,” “Cosmic ray 1,” and
+“Cosmic ray 14,” are clear-cut; each is actually a cosmic ray.</p>
+<p>The fourth, “Cosmic ray 18,” is not a cosmic ray, though it does correspond to a
+defect in the CCD. It is caused by a single  hot pixel (dark current around
+2<span class="math notranslate nohighlight">\(e^-\)</span>/sec) that has a  high value in the combined dark frame. When that
+combined dark is subtracted from the science image it causes a large <em>negative</em>
+value in the value of the science image which ends up being identified as a
+cosmic ray.</p>
+</section>
+<section id="saving-the-mask-with-the-image">
+<h3><span class="section-number">6.3.2.7. </span>Saving the mask with the image<a class="headerlink" href="#saving-the-mask-with-the-image" title="Link to this heading">#</a></h3>
+<p>To save the full mask, including cosmic rays, hot pixels, and pixels identified
+by <code class="docutils literal notranslate"><span class="pre">ccdmask</span></code>, set the mask of <code class="docutils literal notranslate"><span class="pre">ccd</span></code> to the mask of <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code>. In some use cases
+you might prefer to save <code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> itself. The difference between the two is
+that the pixel values in which there are cosmic rays have been replaced in
+<code class="docutils literal notranslate"><span class="pre">new_ccd</span></code> by values representative of the surrounding pixels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccd</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span>
+
+<span class="c1"># This saves both the image and the mask</span>
+<span class="n">ccd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;example-with-cosmic-rays.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="what-happens-if-you-do-not-mask">
+<h2><span class="section-number">6.3.3. </span>What happens if you do not mask?<a class="headerlink" href="#what-happens-if-you-do-not-mask" title="Link to this heading">#</a></h2>
+<p>In the example above we masked the pixels known to be bad in all of the images
+before detecting cosmic rays. It is possible to do cosmic ray detection without
+prior masking. The downside of not masking is that many features that are not
+cosmic rays are identified as cosmic rays, and some real cosmic rays are not
+detected.</p>
+<p>We begin with a fresh copy of the input image and run cosmic ray detection with
+the same parameters as above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccd</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;kelt-16-b-S001-R001-C084-r.fit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">new_ccd_no_premask</span> <span class="o">=</span> <span class="n">ccdp</span><span class="o">.</span><span class="n">cosmicray_lacosmic</span><span class="p">(</span><span class="n">ccd</span><span class="p">,</span> <span class="n">readnoise</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigclip</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.</span><span class="se">\n</span><span class="s2">No pre-masking detects </span><span class="si">{}</span><span class="s2"> cosmic ray pixels.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_ccd</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Many of the additional pixels detected as cosmic rays are in the leftmost column
+of the image. The column is actually bad (it is covered on the CCD and receives
+no light).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs_no_premask</span> <span class="o">=</span> <span class="n">detect_sources</span><span class="p">(</span><span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">n_pixels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs_no_premask</span><span class="o">.</span><span class="n">areas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="some-of-these-are-not-cosmic-rays">
+<h3><span class="section-number">6.3.3.1. </span>Some of these are not cosmic rays<a class="headerlink" href="#some-of-these-are-not-cosmic-rays" title="Link to this heading">#</a></h3>
+<p>The display below shows a few examples of areas identified by
+<code class="docutils literal notranslate"><span class="pre">cosmicray_lacosmic</span></code> that are not actually cosmic rays. These false positives
+are harmless because they reflect real problems with the detector and should be
+masked out anyway.</p>
+<p>More problematic are the cosmic rays that are undetected if the image is not
+masked first. As an example, the cosmic ray labeled “Cosmic ray 0” in the
+<a class="reference internal" href="#discussion-of-sample-cosmic-rays"><span class="xref myst">example above in which a mask was applied before detecting cosmic rays</span></a> is not detected at all when no masking is done.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images_to_display</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_ccd_no_premask</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">ccd</span><span class="p">,</span> <span class="n">ccd_dark</span><span class="p">]</span>
+<span class="n">image_titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mask&#39;</span><span class="p">,</span> <span class="s1">&#39;Science image&#39;</span><span class="p">,</span> <span class="s1">&#39;Combined dark&#39;</span><span class="p">]</span>
+<span class="n">display_cosmic_rays</span><span class="p">(</span><span class="n">crs_no_premask</span><span class="p">,</span> <span class="n">images_to_display</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="n">image_titles</span><span class="p">,</span>
+                    <span class="n">only_display_rays</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion">
+<h3><span class="section-number">6.3.3.2. </span>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
+<p>The first example above is the bad column on the left side of the image.</p>
+<p>The one label “Cosmic ray 1” is caused by a single hot pixel with a large count
+in the dark frames, which leads to a large negative value in the calibrated
+science image. LACosmic tags that pixel and many around it as cosmic rays. While
+the individual hot pixel should be masked, the ones around it do not need to be
+masked.</p>
+<p>The final example, “Cosmic ray 2,” looks a lot like a star. It is, in fact, the
+after-image of one of the bright stars in the field of KELT-16 b. Bright stars in
+the field of view can deposit enough charge that it does not dissipate between
+images. Typically the effect can be avoided altogether by “pre-flashing” the
+CCD.</p>
+<p>Since you cannot pre-flash after the images have been taken, we are stuck doing
+the next best thing: masking out this part of the images. The masking should be
+done during the stage at which hot pixels are being identified because all of these
+pixels will be identified as hot.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08-02-Creating-a-mask.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>Creating an image mask</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08-05-incorporating-masks-into-calibrated-science-images.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Incorporating masks into calibrated science images</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-from-calibration-images">6.3.1. Removal from calibration images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-from-science-images">6.3.2. Removal from science images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#very-important-notes-about-using-lacosmic">6.3.2.1. Very important notes about using LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-image">6.3.2.2. Input image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-in-and-applying-masks">6.3.2.3. Reading in and applying masks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-lacosmic">6.3.2.4. Running LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-the-cosmic-rays-identified-by-lacosmic">6.3.2.5. Examining the cosmic rays identified by LACosmic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-of-sample-cosmic-rays">6.3.2.6. Discussion of sample cosmic rays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-mask-with-the-image">6.3.2.7. Saving the mask with the image</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-you-do-not-mask">6.3.3. What happens if you do not mask?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-of-these-are-not-cosmic-rays">6.3.3.1. Some of these are not cosmic rays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">6.3.3.2. Discussion</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matthew Craig
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020-2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
