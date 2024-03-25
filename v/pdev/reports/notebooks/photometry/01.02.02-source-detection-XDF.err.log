@@ -18,7 +18,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-plt.style.use('../photutils_notebook_style.mplstyle')
+plt.style.use('../../photutils_notebook_style.mplstyle')
 ------------------
 
 
@@ -44,13 +44,13 @@ File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotl
 [0;32m--> 843[0m [38;5;28;01mwith[39;00m [38;5;28mopen[39m(fname, encoding[38;5;241m=[39m[38;5;124m'[39m[38;5;124mutf-8[39m[38;5;124m'[39m) [38;5;28;01mas[39;00m f:
 [1;32m    844[0m     [38;5;28;01myield[39;00m f
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../photutils_notebook_style.mplstyle'
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../../photutils_notebook_style.mplstyle'
 
 The above exception was the direct cause of the following exception:
 
 [0;31mOSError[0m                                   Traceback (most recent call last)
 Cell [0;32mIn[2], line 1[0m
-[0;32m----> 1[0m [43mplt[49m[38;5;241;43m.[39;49m[43mstyle[49m[38;5;241;43m.[39;49m[43muse[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m../photutils_notebook_style.mplstyle[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[0;32m----> 1[0m [43mplt[49m[38;5;241;43m.[39;49m[43mstyle[49m[38;5;241;43m.[39;49m[43muse[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m../../photutils_notebook_style.mplstyle[39;49m[38;5;124;43m'[39;49m[43m)[49m
 
 File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/style/core.py:139[0m, in [0;36muse[0;34m(style)[0m
 [1;32m    137[0m         style [38;5;241m=[39m _rc_params_in_file(style)
@@ -62,5 +62,5 @@ File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotl
 [1;32m    143[0m filtered [38;5;241m=[39m {}
 [1;32m    144[0m [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m style:  [38;5;66;03m# don't trigger RcParams.__getitem__('backend')[39;00m
 
-[0;31mOSError[0m: '../photutils_notebook_style.mplstyle' is not a valid package style, path of style file, URL of style file, or library style name (library styles are listed in `style.available`)
+[0;31mOSError[0m: '../../photutils_notebook_style.mplstyle' is not a valid package style, path of style file, URL of style file, or library style name (library styles are listed in `style.available`)
 

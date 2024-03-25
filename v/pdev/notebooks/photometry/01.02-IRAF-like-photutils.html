@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>IRAF-like: photutils &#8212; CCD Data Reduction Guide</title>
+    <title>IRAF-like source detection using photutils &#8212; CCD Data Reduction Guide</title>
   
   
   
@@ -471,9 +471,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -484,19 +482,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>IRAF-like: photutils</h1>
+    <h1>IRAF-like source detection using photutils</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daophot">DAOPHOT</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -506,14 +496,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="iraf-like-photutils">
-<h1>IRAF-like: photutils<a class="headerlink" href="#iraf-like-photutils" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="#"><span class="xref myst">photutils</span></a> provides a couple of options for stellar source detection that will be familiar to users of IRAF. One is DAOFIND and the other is IRAF’s starfind. The recommendation is to use DAOFIND because it is more general than starfind (e.g. it allows elliptical sources) and detects more sources. This notebook will focus on DAOFIND, implemented in photutils by the class <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="iraf-like-source-detection-using-photutils">
+<h1>IRAF-like source detection using photutils<a class="headerlink" href="#iraf-like-source-detection-using-photutils" title="Link to this heading">#</a></h1>
+<p><a class="reference internal" href="#"><span class="xref myst">photutils</span></a> provides a couple of options for stellar source detection that will be familiar to users of IRAF. One is DAOFIND and the other is IRAF’s starfind. The recommendation is to use DAOFIND because it is more general than starfind (e.g. it allows elliptical sources) and detects more sources. There are examples of each method in the notebooks that follow.</p>
 <p>Both methods find sources above a threshold that is specified as a multiple of the background noise level, and both require that the background be subtracted from the image.</p>
-<p>You can use any of the background subtraction methods that you like; often simply subtracting the median will be adequate, which is what we will do in this notebook.</p>
-<section id="daophot">
-<h2>DAOPHOT<a class="headerlink" href="#daophot" title="Link to this heading">#</a></h2>
-</section>
+<p>You can use any of the background subtraction methods that you like; often simply subtracting the median will be adequate.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -553,20 +540,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daophot">DAOPHOT</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
