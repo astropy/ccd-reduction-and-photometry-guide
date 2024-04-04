@@ -97,6 +97,11 @@ parts:
             title: Detecting sources in the XDF
           - file: notebooks/photometry/01.02.03-Source-detection-FEDER.ipynb
             title: Detecting stellar sources in a ground-based image
+        - file: notebooks/photometry/01.03-Local-peak-detection.ipynb
+          title: Local peak detection
+          sections:
+          - file: notebooks/photometry/01.03.02-peak_detection-XDF.ipynb
+            title: Peak detection in the XDF
 
 
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
