@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.2.1. IRAF-like source detection with simulated images &#8212; CCD Data Reduction Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "astropy/ccd-reduction-and-photometry-guide");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-dark");
+    script.setAttribute("label", "review-comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("section");
+    if (sections !== null && sections.length > 0) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/photometry/01.02.01-IRAF-like-simulated-image';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.2.2. Detecting sources in the XDF" href="01.02.02-IRAF-like-source-detection-XDF.html" />
+    <link rel="prev" title="8.2. IRAF-like source detection using photutils" href="01.02-IRAF-like-photutils.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../00-00-Preface.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="CCD Data Reduction Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="CCD Data Reduction Guide - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00-00-Preface.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data reduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-00-Understanding-an-astronomical-CCD-image.html">1. Astronomical Images</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-01-astronomical-CCD-image-components.html">1.1. Components of astronomical images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-03-Construction-of-an-artificial-but-realistic-image.html">1.2. An artificial, but realistic, image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-04-Nonuniform-sensitivity.html">1.3. Non-uniform sensitivity in astronomical detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-05-Calibration-overview.html">1.4. Calibration overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-06-Image-combination.html">1.5. Image combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-08-Overscan.html">1.6. Overscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-09-Calibration-choices-you-need-to-make.html">1.7. Calibration choices to make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-11-reading-images.html">1.8. Reading images</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-00-Handling-overscan-trimming-and-bias-subtraction.html">2. Overscan and bias images</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-01-overscan-trimming-and-bias-subtraction-background.html">2.1. About bias and overscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-02-Calibrating-bias-images.html">2.2. Calibrating bias images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-04-Combine-bias-images-to-make-master.html">2.3. Combine bias images to make master bias</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-00-Dark-current-and-hot-pixels.html">3. Dark current and dark frames</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-01-Dark-current-The-ideal-case.html">3.1. Dark current: the ideal case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-02-Real-dark-current-noise-and-other-artifacts.html">3.2. Real dark current: noise and other artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-04-Handling-overscan-and-bias-for-dark-frames.html">3.3. Handling overscan and bias for dark frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-05-Calibrate-dark-images.html">3.4. Calibrate dark images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-06-Combine-darks-for-use-in-later-calibration-steps.html">3.5. Combine calibrated dark images for use in later reduction steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-00-Flat-corrections.html">4. Flat fielding</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-01-about-flat-corrections.html">4.1. Calibrating flat frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-03-Calibrating-the-flats.html">4.2. Calibrating flat frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-04-Combining-flats.html">4.3. Combining flat frames</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06-00-Reducing-science-images.html">5. Calibrating science images</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-03-science-images-calibration-examples.html">5.1. Two calibration examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08-00-Image-masking.html">6. Finding and dealing with bad pixels</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-01-Identifying-hot-pixels.html">6.1. Identifying hot pixels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-02-Creating-a-mask.html">6.2. Identifying bad pixels with ccdmask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-03-Cosmic-ray-removal.html">6.3. Removing cosmic rays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-05-incorporating-masks-into-calibrated-science-images.html">6.4. Incorporating masks in science images</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Photometry</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00.00-Preface.html">7. Overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01.00-Source-detection.html">8. Source detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.01-Background-removal.html">8.1. Background estimation</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.01.01-Background-removal-simulated-data.html">8.1.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.01.02-Background-estimation-XDF.html">8.1.2. Handling images that need masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.01.03-Background-estimation-FEDER.html">8.1.3. Removing a gradient in a ground-based image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="01.02-IRAF-like-photutils.html">8.2. IRAF-like source detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">8.2.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.02.02-IRAF-like-source-detection-XDF.html">8.2.2. Detecting sources in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.02.03-Source-detection-FEDER.html">8.2.3. Detecting stellar sources in a ground-based image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/astropy/ccd-reduction-and-photometry-guide/main?urlpath=lab/tree/notebooks/notebooks/photometry/01.02.01-IRAF-like-simulated-image.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/edit/main/notebooks/notebooks/photometry/01.02.01-IRAF-like-simulated-image.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy/ccd-reduction-and-photometry-guide/issues/new?title=Issue%20on%20page%20%2Fnotebooks/photometry/01.02.01-IRAF-like-simulated-image.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/photometry/01.02.01-IRAF-like-simulated-image.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>IRAF-like source detection with simulated images</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">8.2.1.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulated-image-of-galaxies-and-stars">8.2.1.2. Simulated image of galaxies and stars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-and-subtract-background">8.2.1.2.1. Estimate and subtract background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-sources">8.2.1.2.2. Detect sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-in-the-image">8.2.1.2.3. Sources in the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2.1.2.4. </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.5. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.2.1.3. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="iraf-like-source-detection-with-simulated-images">
+<h1><span class="section-number">8.2.1. </span>IRAF-like source detection with simulated images<a class="headerlink" href="#iraf-like-source-detection-with-simulated-images" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2><span class="section-number">8.2.1.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>IRAF provided a couple of ways, <code class="docutils literal notranslate"><span class="pre">starfind</span></code> and <code class="docutils literal notranslate"><span class="pre">daofind</span></code>, to detect <em>stellar</em> sources in an image. <a class="reference internal" href="#"><span class="xref myst">photutils</span></a> provides similar functionality via the <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></span></a> and <a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></span></a> objects</p>
+<p>This notebook will focus on <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> to emphasize that these options work well for detecting <em>stars</em> or other objects with a stellar profile. They do not work well for more extended objects.</p>
+<p>The next couple of notebooks will:</p>
+<ul class="simple">
+<li><p>apply these techniques to the Hubble Extreme Deep Field, to illustrate the differences between <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> and <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a>, and to introduce another method of source detection,</p></li>
+<li><p>apply the techniques to an image of stars from a ground-based telescope, and</p></li>
+<li><p>illustrate other source detection techniques that work well for extended sources</p></li>
+</ul>
+</section>
+<section id="simulated-image-of-galaxies-and-stars">
+<h2><span class="section-number">8.2.1.2. </span>Simulated image of galaxies and stars<a class="headerlink" href="#simulated-image-of-galaxies-and-stars" title="Link to this heading">#</a></h2>
+<p>In the first part of this notebook we consider an image that includes 100 sources, all with Gaussian profiles, some of which are fairly elongated. We used this image in the previous section about removing the background prior to source detection.</p>
+<p>As usual, we begin with some imports.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">gaussian_sigma_to_fwhm</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">QTable</span>
+<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">simple_norm</span><span class="p">,</span> <span class="n">SqrtStretch</span>
+<span class="kn">from</span> <span class="nn">astropy.visualization.mpl_normalize</span> <span class="kn">import</span> <span class="n">ImageNormalize</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">CircularAperture</span><span class="p">,</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_100gaussians_image</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
+<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To begin, let’s create and look the the image. We create an image normalization here that we will use for displaying the image throughout the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">make_100gaussians_image</span><span class="p">()</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">ImageNormalize</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="n">SqrtStretch</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+           <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/55672c7cf14468a8bd4cb9b58f6291b63dc13415eef8e7c78ce081e4c8e5891e.png" src="../../_images/55672c7cf14468a8bd4cb9b58f6291b63dc13415eef8e7c78ce081e4c8e5891e.png" />
+</div>
+</div>
+<p>Note that some of these object are star-like – the ones that are darkest are close to circular, for example. Others are very elongated and there are a variety of brightnesses among the objects.</p>
+<section id="estimate-and-subtract-background">
+<h3><span class="section-number">8.2.1.2.1. </span>Estimate and subtract background<a class="headerlink" href="#estimate-and-subtract-background" title="Link to this heading">#</a></h3>
+<p>The background must be subtracted from the image before the sources are detected. For simplicity we estimate the sigma-clipped mean, median and standard deviation of the pixels in the image. As discussed in the section on <a class="reference internal" href="#"><span class="xref myst">background removal for source detection</span></a>, the sigma-clipped median gives a reasonable estimate of the background in many cases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">med</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sigma_clipped_stats</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">data_subtracted</span> <span class="o">=</span> <span class="n">data</span> <span class="o">-</span> <span class="n">med</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="detect-sources">
+<h3><span class="section-number">8.2.1.2.2. </span>Detect sources<a class="headerlink" href="#detect-sources" title="Link to this heading">#</a></h3>
+<p>The source detection itself is a couple of lines of code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detect_fwhm</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">daofind</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">5.</span><span class="o">*</span><span class="n">std</span><span class="p">)</span> 
+<span class="n">sources</span> <span class="o">=</span> <span class="n">daofind</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a variety of options you can select, detailed in the documentation for <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>. We only use two for now, specifying the typical full-width half-max (FWHM) of a source, and the threshold above which to conider something a source.</p>
+<p>A summary of the sources detected shows that <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> detect 41 sources, substantially fewer than the 100 that are in the image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Format the columns to only display two decimal points </span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sources</span><span class="o">.</span><span class="n">colnames</span><span class="p">:</span>  
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;npix&#39;</span><span class="p">):</span>
+        <span class="n">sources</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span>  <span class="c1"># for consistent table output</span>
+<span class="n">sources</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">max_width</span><span class="o">=</span><span class="mi">76</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id xcentroid ycentroid sharpness roundness1 ... npix sky   peak flux  mag 
+--- --------- --------- --------- ---------- ... ---- ---- ----- ---- -----
+  1    495.45      6.43      0.28      -0.14 ...   49 0.00  9.62 1.40 -0.37
+  2    379.35     28.51      0.20      -0.33 ...   49 0.00  9.23 1.02 -0.02
+  3    441.38     31.18      0.39       0.74 ...   49 0.00 23.24 2.76 -1.10
+  4    358.60     35.90      0.56      -0.54 ...   49 0.00 14.62 1.57 -0.49
+  5      1.20     39.95      0.52      -0.36 ...   49 0.00 30.39 4.19 -1.56
+  6    244.65     58.22      0.37       0.50 ...   49 0.00 14.56 1.39 -0.36
+  7     15.36     59.60      0.31      -0.63 ...   49 0.00 13.31 1.33 -0.31
+  8     88.72     58.87      0.55       0.64 ...   49 0.00 36.06 4.94 -1.73
+  9     14.23     61.33      0.58      -0.59 ...   49 0.00 16.40 1.33 -0.31
+ 10    325.35     66.57      0.72      -0.78 ...   49 0.00 19.18 1.63 -0.53
+...       ...       ...       ...        ... ...  ...  ...   ...  ...   ...
+ 31    418.61    215.48      0.48       0.25 ...   49 0.00 12.78 1.22 -0.22
+ 32    305.52    216.42      0.48      -0.13 ...   49 0.00 23.81 2.69 -1.08
+ 33    323.47    217.78      0.58       0.51 ...   49 0.00 18.13 1.79 -0.63
+ 34    256.21    220.46      0.54      -0.84 ...   49 0.00 30.77 3.94 -1.49
+ 35     10.90    224.10      0.57      -0.63 ...   49 0.00 50.61 7.47 -2.18
+ 36    156.48    233.91      0.38       0.70 ...   49 0.00 14.64 1.38 -0.35
+ 37    205.75    239.97      0.61      -0.39 ...   49 0.00 13.83 1.22 -0.22
+ 38    355.71    252.13      0.47      -0.48 ...   49 0.00 30.62 3.77 -1.44
+ 39    477.55    267.68      0.40       0.08 ...   49 0.00 15.57 1.56 -0.48
+ 40    139.74    275.09      0.37      -0.68 ...   49 0.00 21.15 2.48 -0.99
+ 41    433.85    288.63      0.58       0.62 ...   49 0.00 28.26 2.90 -1.16
+Length = 41 rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>A plot showing the location of all of the detected sources helps illustrate why some of sources were missed, To display where sources were detected, we create a a set of photutils circular apertures and use its plot method to add a circle over each detected source.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CircularAperture expects a particular format for input positions...</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">]))</span>
+<span class="n">apertures</span> <span class="o">=</span> <span class="n">CircularAperture</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">detect_fwhm</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+           <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">apertures</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sources detected by DAOStarFinder&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sources detected by DAOStarFinder&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/0994e7963277157b0242b506c8a618e819aecf7523047d2374833fb3727330bf.png" src="../../_images/0994e7963277157b0242b506c8a618e819aecf7523047d2374833fb3727330bf.png" />
+</div>
+</div>
+<p>It looks like the sources that were detected are those that were not too faint and not too elongaetd.</p>
+<p>Let’s look at the properties of the sources in this image, and explore some of the settings in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> to see how you could tune its parameters to detect a different subset of the sources.</p>
+</section>
+<section id="sources-in-the-image">
+<h3><span class="section-number">8.2.1.2.3. </span>Sources in the image<a class="headerlink" href="#sources-in-the-image" title="Link to this heading">#</a></h3>
+<p>The sources in this image are generated using the code below, which was copied from the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image">photutils source code here</a>.</p>
+<p>The sources have a range of orientations, ellipticities, and widths. All of the sources are 2D Gaussians, with a FWHM ranging from roughly 3 to 15 pixels in each direction. The ratio of minor to major axis of the sources varies from 0.2 to 1.0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_sources</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">flux_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">xmean_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">ymean_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>
+<span class="n">xstddev_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">ystddev_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;flux&#39;</span><span class="p">:</span> <span class="n">flux_range</span><span class="p">,</span>
+          <span class="s1">&#39;x_mean&#39;</span><span class="p">:</span> <span class="n">xmean_range</span><span class="p">,</span>
+          <span class="s1">&#39;y_mean&#39;</span><span class="p">:</span> <span class="n">ymean_range</span><span class="p">,</span>
+          <span class="s1">&#39;x_stddev&#39;</span><span class="p">:</span> <span class="n">xstddev_range</span><span class="p">,</span>
+          <span class="s1">&#39;y_stddev&#39;</span><span class="p">:</span> <span class="n">ystddev_range</span><span class="p">,</span>
+          <span class="s1">&#39;theta&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">]}</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">inp_sources</span> <span class="o">=</span> <span class="n">QTable</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">param_name</span><span class="p">,</span> <span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># Generate a column for every item in param_ranges, even if it</span>
+    <span class="c1"># is not in the model (e.g., flux).  However, such columns will</span>
+    <span class="c1"># be ignored when rendering the image.</span>
+    <span class="n">inp_sources</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">n_sources</span><span class="p">)</span>
+<span class="n">xstd</span> <span class="o">=</span> <span class="n">inp_sources</span><span class="p">[</span><span class="s1">&#39;x_stddev&#39;</span><span class="p">]</span>
+<span class="n">ystd</span> <span class="o">=</span> <span class="n">inp_sources</span><span class="p">[</span><span class="s1">&#39;y_stddev&#39;</span><span class="p">]</span>
+<span class="n">inp_sources</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inp_sources</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">xstd</span> <span class="o">*</span> <span class="n">ystd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at the image again, with a marker around each input source. There is quite a bit of information packed into those markers:</p>
+<ul class="simple">
+<li><p>the shape of the marker matches the minor-to-major axis ratio</p></li>
+<li><p>the major axis of the marker is the FWHM of the major axis</p></li>
+<li><p>the thickness of the merker edge indicates the amplitude of the source.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># plot the image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+           <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_input_sources</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        
+    <span class="n">amplitudes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inp_sources</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">])</span>
+    <span class="n">labeled</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">inp_sources</span><span class="p">:</span>
+        <span class="n">minor</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;x_stddev&#39;</span><span class="p">],</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;y_stddev&#39;</span><span class="p">])</span>
+        <span class="n">major</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;x_stddev&#39;</span><span class="p">],</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;y_stddev&#39;</span><span class="p">])</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="n">minor</span> <span class="o">/</span> <span class="n">major</span>
+    
+        <span class="n">major_fwhm</span> <span class="o">=</span> <span class="n">major</span> <span class="o">*</span> <span class="n">gaussian_sigma_to_fwhm</span>
+    
+        <span class="c1"># ap = EllipticalAperture((source[&#39;x_mean&#39;], source[&#39;y_mean&#39;]), major, minor, theta=source[&#39;theta&#39;])</span>
+        <span class="n">ap</span> <span class="o">=</span> <span class="n">EllipticalAperture</span><span class="p">((</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;x_mean&#39;</span><span class="p">],</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;y_mean&#39;</span><span class="p">]),</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;x_stddev&#39;</span><span class="p">],</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;y_stddev&#39;</span><span class="p">],</span> <span class="n">theta</span><span class="o">=</span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">])</span>
+        
+        <span class="c1"># This should give linewidths of 1, 2, or 3 given the input fluxes</span>
+        <span class="n">line_width</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="mi">250</span> <span class="o">-</span> <span class="mi">1</span>
+    
+        <span class="k">if</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">amplitudes</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">amplitudes</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">]:</span>
+            <span class="n">line_width</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">amplitudes</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">amplitudes</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">]:</span>
+            <span class="n">line_width</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line_width</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="c1"># Add a label to only the first aperture plotted, otherwise each aperture will be listed individually </span>
+        <span class="c1"># in the legend.</span>
+        <span class="n">label_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label_text</span><span class="p">}</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">labeled</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="n">labeled</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">ap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">line_width</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">label_kw</span><span class="p">)</span>
+
+<span class="n">plot_input_sources</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;All sources in the image&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ae7d924d54d5d7c38e5a37f38d949a26842f775f2ba8bef53e44a8b514fddf29.png" src="../../_images/ae7d924d54d5d7c38e5a37f38d949a26842f775f2ba8bef53e44a8b514fddf29.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="c1"># plot the image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+           <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">apertures</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ap</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">apertures</span><span class="p">):</span>
+    <span class="n">label_offset</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">),</span> <span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">label_offset</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">positions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">label_offset</span><span class="p">))</span>
+<span class="n">plot_input_sources</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;All sources (green) and detected sources (blue)</span><span class="se">\n</span><span class="s2">labeled by detected source number&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3e46d249c9518c37cb9e4962a3968094a5785660e17e9c5835d53bc1c62f6480.png" src="../../_images/3e46d249c9518c37cb9e4962a3968094a5785660e17e9c5835d53bc1c62f6480.png" />
+</div>
+</div>
+<p>From this plot it seems that the sources detected are those that are:</p>
+<ul class="simple">
+<li><p>about the same size as the FWHM we input to the source finder (5 pixels in this case) – see sources labeled 5 and 22, for example.</p></li>
+<li><p>reasonably round <em>or</em> reasonably concentrated – see source 33 for an example. That source is very elongated but also very compact.</p></li>
+</ul>
+<p>In some cases <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> finds <em>two</em> sources where there is really one. Sources 5 and 6 are a good example of this.</p>
+</section>
+<section id="id1">
+<h3><span class="section-number">8.2.1.2.4. </span><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+</section>
+<section id="an-exploration-of-some-parameters-of-daostarfinder">
+<h3><span class="section-number">8.2.1.2.5. </span>An exploration of some parameters of <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a><a class="headerlink" href="#an-exploration-of-some-parameters-of-daostarfinder" title="Link to this heading">#</a></h3>
+<p>We can test some of the assertions in the previous paragraph. As a couple of example of that, we can try to</p>
+<ol class="arabic simple">
+<li><p>A lowe4r threshold in detection to try to detect the fainter sources in this test image. Below we will try a threshold of 3 times the standard deviation of the background instead of 5 times.</p></li>
+<li><p>A ratio smaller than 1 to detect the more elongated sources. The ratio argument is the ratio of the semiminor to semimajor axis. Below we will try a ratio of 0.33.</p></li>
+</ol>
+<p>The code below begins with a function to do the plotting for this so that we can reuse that code for each plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        
+    <span class="n">daofind</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold_factor</span> <span class="o">*</span> <span class="n">std</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span> 
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">daofind</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">)</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="n">sources</span><span class="p">[</span><span class="s1">&#39;xcentroid&#39;</span><span class="p">],</span> <span class="n">sources</span><span class="p">[</span><span class="s1">&#39;ycentroid&#39;</span><span class="p">]))</span>
+    <span class="n">apertures</span> <span class="o">=</span> <span class="n">CircularAperture</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">detect_fwhm</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Plot the first aperture with a label</span>
+    <span class="n">apertures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label_text</span><span class="p">)</span>
+    <span class="c1"># Plot the rest without a label, otherwise each aperture gets its own label.</span>
+    <span class="n">apertures</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">([[</span><span class="s1">&#39;case 1&#39;</span><span class="p">,</span> <span class="s1">&#39;case 2&#39;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">plot_input_sources</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;input source&quot;</span><span class="p">)</span>
+
+<span class="c1"># The lower threshold case</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 1&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;original parameters&quot;</span><span class="p">)</span>
+<span class="n">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="n">thresh</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 1&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;lower threshold&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source detection with threshold </span><span class="si">{</span><span class="n">thresh</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># The small ratio case</span>
+<span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 2&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;original parameters&quot;</span><span class="p">)</span>
+<span class="n">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data_subtracted</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">detect_fwhm</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 2&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;small ratio&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="s1">&#39;case 2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source detection with ratio </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d7bd0358c83b349a1438af1f9fb16e6e7f2f0e82ff539c9301c09c26b57e55ad.png" src="../../_images/d7bd0358c83b349a1438af1f9fb16e6e7f2f0e82ff539c9301c09c26b57e55ad.png" />
+</div>
+</div>
+<p>The plot on the left shows that lowering the detetion threshold does find more sources, but it also includes erroneous detections. The plot on right demonstrates that we can detect some (but not all) of the highly elongated objects by changing the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> parameter in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>.</p>
+</section>
+</section>
+<section id="summary">
+<h2><span class="section-number">8.2.1.3. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>The takeway from this section should be that the IRAF-like methods implemented in photutils are good at finding star-like sources. As we will see in the next couple of sections, the methods work very well for detecting stars or galaxiues that are small enough to look like stars. After that we will look at a couple of methods, local peak detection and image segmentation, that are better for detecting extended sources.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/photometry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01.02-IRAF-like-photutils.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>IRAF-like source detection using photutils</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01.02.02-IRAF-like-source-detection-XDF.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2.2. </span>Detecting sources in the XDF</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">8.2.1.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulated-image-of-galaxies-and-stars">8.2.1.2. Simulated image of galaxies and stars</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-and-subtract-background">8.2.1.2.1. Estimate and subtract background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-sources">8.2.1.2.2. Detect sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-in-the-image">8.2.1.2.3. Sources in the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2.1.2.4. </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.5. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.2.1.3. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matthew Craig
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020-2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under
+<a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
