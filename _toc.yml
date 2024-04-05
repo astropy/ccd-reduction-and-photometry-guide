@@ -87,12 +87,21 @@ parts:
           - file: notebooks/photometry/01.01.02-Background-estimation-XDF.ipynb
             title: Handling images that need masking
           - file: notebooks/photometry/01.01.03-Background-estimation-FEDER.ipynb
-            title: Removing a gradient
-        - file: notebooks/photometry/01.02-IRAF-like-detection.ipynb
+            title: Removing a gradient in a ground-based image
+        - file: notebooks/photometry/01.02-IRAF-like-photutils.ipynb
           title: IRAF-like source detection
           sections:
-          - file: notebooks/photometry/01.02.01-IRAF-like-detection-simulated-data.ipynb
+          - file: notebooks/photometry/01.02.01-IRAF-like-simulated-image.ipynb
             title: Overview with simulated image
+          - file: notebooks/photometry/01.02.02-IRAF-like-source-detection-XDF.ipynb
+            title: Detecting sources in the XDF
+          - file: notebooks/photometry/01.02.03-Source-detection-FEDER.ipynb
+            title: Detecting stellar sources in a ground-based image
+        - file: notebooks/photometry/01.03-Local-peak-detection.ipynb
+          title: Local peak detection
+          sections:
+          - file: notebooks/photometry/01.03.02-peak_detection-XDF.ipynb
+            title: Peak detection in the XDF
 
 
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
