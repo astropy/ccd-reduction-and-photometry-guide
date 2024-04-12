@@ -100,8 +100,21 @@ parts:
         - file: notebooks/photometry/01.03-Local-peak-detection.ipynb
           title: Local peak detection
           sections:
+          - file: notebooks/photometry/01.03.01-peak_detection-simulated-image.ipynb
+            title: Overview with simulated image
           - file: notebooks/photometry/01.03.02-peak_detection-XDF.ipynb
             title: Peak detection in the XDF
+          - file: notebooks/photometry/01.03.03-peak_detection-Feder.ipynb
+            title: Peak detection in a ground-based stellar image
+        - file: notebooks/photometry/01.04-image-segmentation.ipynb
+          title: Image segmentation
+          sections:
+          - file: notebooks/photometry/01.04.01-image-segmentation-simulated-image.ipynb
+            title: Overview with simulated image
+          - file: notebooks/photometry/01.04.02-image-segmentation-XDF.ipynb
+            title: Image segmentation in the XDF
+          - file: notebooks/photometry/01.04.03-image-segmentation-Feder.ipynb
+            title: Image segmentation in a ground-based stellar image
 
 
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
