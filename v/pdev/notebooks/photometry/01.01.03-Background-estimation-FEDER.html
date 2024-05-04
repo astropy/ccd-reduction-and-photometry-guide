@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -609,7 +617,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c087b345427dae017339b3691ed7c6db96c69d8337a10059d7392911e8469009.png" src="../../_images/c087b345427dae017339b3691ed7c6db96c69d8337a10059d7392911e8469009.png" />
+<img alt="../../_images/cad8aca5d1654a51c5b46009984c87d8375bcf30858ad3a850f43b75c7c8b612.png" src="../../_images/cad8aca5d1654a51c5b46009984c87d8375bcf30858ad3a850f43b75c7c8b612.png" />
 </div>
 </div>
 <p>Unlike the XDF image, there are not any large sectregionsions of the image that contain no data. For consistency with the prior example, we create a mask for this image too.</p>
@@ -623,8 +631,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </section>
 <section id="perform-scalar-background-estimation">
 <h2><span class="section-number">8.1.3.4. </span>Perform scalar background estimation<a class="headerlink" href="#perform-scalar-background-estimation" title="Link to this heading">#</a></h2>
-<p>Now that the data are properly masked, we can calculate some basic statistical values to do a scalar estimation of the image background.</p>
-<p>By “scalar estimation”, we mean the calculation of a single value (such as the mean or median) to represent the value of the background for our entire two-dimensional dataset. This is in contrast to a two-dimensional background, where the estimated background is represented as an array of values that can vary spatially with the dataset. We will calculate a 2D background in the upcoming section.</p>
+<p>Now that the data are properly masked, we can calculate some basic statistical values to do a scalar estimation of the image background, as we did in the previous section.</p>
 <section id="calculate-scalar-background-value">
 <h3><span class="section-number">8.1.3.4.1. </span>Calculate scalar background value<a class="headerlink" href="#calculate-scalar-background-value" title="Link to this heading">#</a></h3>
 <p>Here we will calculate the mean, median, and mode of the dataset using sigma clipping. With sigma clipping, the data is iteratively clipped to exclude data points outside of a certain sigma (standard deviation), thus removing some of the noise from the data before determining statistical values.</p>
@@ -678,7 +685,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 </div>
-<p>But what difference does this sigma clipping make? And how important is masking, anyway? Let’s visualize these statistics to get an idea:</p>
+<p>What difference do sigma clipping and masking make in this case?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
@@ -711,7 +718,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 
 
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">)</span>  <span class="c1"># flux_range)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ccd_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Counts (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ccd_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Median pixel value&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Add legend</span>
@@ -720,10 +727,10 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/94dd5aec16b28f420bd4bc16ce0a8b219be2e780d2cad74f71502c636fdef1bc.png" src="../../_images/94dd5aec16b28f420bd4bc16ce0a8b219be2e780d2cad74f71502c636fdef1bc.png" />
+<img alt="../../_images/898847bf1298e43f220179c6b2d72c519c1dcdc1eff06f4d0a5d5da6903eb8a6.png" src="../../_images/898847bf1298e43f220179c6b2d72c519c1dcdc1eff06f4d0a5d5da6903eb8a6.png" />
 </div>
 </div>
-<p>The contrast with the previous section that used XDF image is striking. In this case msakng makes no difference because there were no non-data areas to mask. Signma clipping makes a much larger difference than in the XDF case because of the presence of a number of relatively bright stars in this image.</p>
+<p>The contrast with the previous section that used XDF image is striking. In this case maskng makes no difference because there were no non-data areas to mask. Sigma clipping makes a much larger difference than in the XDF case because of the presence of a number of relatively bright stars in this image.</p>
 <p>Once sigma clipping has been done it makes little difference whether sources are also masked.</p>
 <p>The median value of the image is essentially the same no matter how it is calculated. Though the stars that are present are bright, they are a small fraction of the image.</p>
 </section>
@@ -766,11 +773,11 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c7f9458978f5ef7fad039ad498a3fb52ef92c7fe5ba4cf1802c0b11459d56922.png" src="../../_images/c7f9458978f5ef7fad039ad498a3fb52ef92c7fe5ba4cf1802c0b11459d56922.png" />
+<img alt="../../_images/5b9c8bd529835eb2132a5ff3bf90cb49e8c5a0d2fcd8e409f8c670acf7b4439a.png" src="../../_images/5b9c8bd529835eb2132a5ff3bf90cb49e8c5a0d2fcd8e409f8c670acf7b4439a.png" />
 </div>
 </div>
 <p>The result here may look surprising at first: background subtraction seems to have made everything much fainter. That is an artifact of using the same image normalization for both images even though the range of their data values is now very different.</p>
-<p>In the image on the left the average data value is roughly <code class="docutils literal notranslate"><span class="pre">165</span> <span class="pre">adu</span></code>. In the image on the right the average value is roughly <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">adu</span></code> by design, since we subtracted the mean of the first image from every pixel.</p>
+<p>In the image on the left, the average data value is roughly <code class="docutils literal notranslate"><span class="pre">165</span> <span class="pre">adu</span></code>. In the image on the right, the average value is roughly <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">adu</span></code> by design, since we subtracted the mean of the first image from every pixel.</p>
 <p>If we redo the plot but use a different image normalization for each it becomes clearer that the scalar background subtraction has one effect: moving the mean pixel value in the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,22 +805,15 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6febc0bd6a2f8a79b8c5e95f65d12460435a08d173d787bae9ed28751d8b2cc5.png" src="../../_images/6febc0bd6a2f8a79b8c5e95f65d12460435a08d173d787bae9ed28751d8b2cc5.png" />
+<img alt="../../_images/3cba0004820a2c01e8480d9a1b8a9f527526f652ba05970b1a5494c356f0cc2c.png" src="../../_images/3cba0004820a2c01e8480d9a1b8a9f527526f652ba05970b1a5494c356f0cc2c.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="perform-2-d-background-estimation">
 <h2><span class="section-number">8.1.3.5. </span>Perform 2-D background estimation<a class="headerlink" href="#perform-2-d-background-estimation" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">Background2D</span></code> class allows users to model 2-dimensional backgrounds, by calculating the mean or median in small boxes, and smoothing these boxes to reconstruct a continuous 2D background. The class includes the following arguments/attributes:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">box_size</span></code></strong> — the size of the boxes used to calculate the background. This should be larger than individual sources, yet still small enough to encompass changes in the background.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">filter_size</span></code></strong> — the size of the median filter used to smooth the final 2D background. The dimension should be odd along both axes.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">filter_threshold</span></code></strong> — threshold below which the smoothing median filter will not be applied.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">sigma_clip</span></code></strong> — an <code class="docutils literal notranslate"> <span class="pre">astropy.stats.SigmaClip</span></code> object that is used to specify the sigma and number of iterations used to sigma-clip the data before background calculations are performed.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">bkg_estimator</span></code></strong> — the method used to perform the background calculation in each box (mean, median, SExtractor algorithm, etc.).</p></li>
-</ul>
-<p>For this example, we will use the <code class="docutils literal notranslate"><span class="pre">MeanBackground</span></code> estimator.</p>
+<p>The <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.Background2D.html#photutils.background.Background2D"><code class="docutils literal notranslate"><span class="pre">Background2D</span></code></a> class in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/index.html"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a> allows users to model 2-dimensional backgrounds, by calculating the mean or median in small boxes, and smoothing these boxes to reconstruct a continuous 2D background. As in the previous notebook, we will use the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.MeanBackground.html#photutils.background.MeanBackground"><code class="docutils literal notranslate"><span class="pre">MeanBackground</span></code></a> estimator.</p>
+<p>Here we expect that the background image will be useful since there is clearly a gradient in the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
@@ -852,9 +852,10 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4e19bb0ccd841c4688a79f8c163d162d931432bb1ac0b4e8d7a1c0821a4fc1dc.png" src="../../_images/4e19bb0ccd841c4688a79f8c163d162d931432bb1ac0b4e8d7a1c0821a4fc1dc.png" />
+<img alt="../../_images/fe524e25b07750ae6463d8dc3717fca351eaee4605efad5d5d2e8bbb59804dee.png" src="../../_images/fe524e25b07750ae6463d8dc3717fca351eaee4605efad5d5d2e8bbb59804dee.png" />
 </div>
 </div>
+<p>As expected, the gradient is clearly visible in the background. Next, we subtract that two-dimensional background and look at the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the 2D background subtraction, maintaining metadata, unit, and mask</span>
@@ -891,10 +892,10 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6d3b7a910df2dca79592aa548438d072e5c0bf8c83adac094c3ca9f4e6677672.png" src="../../_images/6d3b7a910df2dca79592aa548438d072e5c0bf8c83adac094c3ca9f4e6677672.png" />
+<img alt="../../_images/f4890a73c6125e0e2f083db61b93a12e1d5de82eefc427b9dbd6561ba830e19e.png" src="../../_images/f4890a73c6125e0e2f083db61b93a12e1d5de82eefc427b9dbd6561ba830e19e.png" />
 </div>
 </div>
-<p>Note how much more even the 2D background-subtracted image looks; especially the difference between these two images in the bottom left and top right corners. This makes sense, as the background that <code class="docutils literal notranslate"><span class="pre">Background2D</span></code> identified was a gradient from the bottom left corner to the top right corner.</p>
+<p>Note how much more even the 2D background-subtracted image looks; the difference between these two images is especially apparent in the bottom left and top right corners. This makes sense, as the background that <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.Background2D.html#photutils.background.Background2D"><code class="docutils literal notranslate"><span class="pre">Background2D</span></code></a> identified was a gradient from the bottom left corner to the top right corner.</p>
 </section>
 </section>
 

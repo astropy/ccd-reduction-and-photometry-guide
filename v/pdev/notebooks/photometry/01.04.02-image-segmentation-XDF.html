@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating a SegmentationImage &#8212; CCD Data Reduction Guide</title>
+    <title>8.4.2. Application to the XDF &#8212; CCD Data Reduction Guide</title>
   
   
   
@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -95,6 +95,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.4.3. Application to a stellar image" href="01.04.03-image-segmentation-Feder.html" />
+    <link rel="prev" title="8.4.1. Image segmentation with a simulated image" href="01.04.01-image-segmentation-simulated-image.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,8 +157,6 @@ commentsRunWhenDOMLoaded(addUtterances);
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -257,9 +257,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Photometry</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="00.00-Preface.html">7. Overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="01.00-Source-detection.html">8. Source detection</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01.00-Source-detection.html">8. Source detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.01-Background-removal.html">8.1. Background estimation</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="01.01.01-Background-removal-simulated-data.html">8.1.1. Overview with simulated image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="01.01.02-Background-estimation-XDF.html">8.1.2. Handling images that need masking</a></li>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -494,7 +502,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Creating a SegmentationImage</h1>
+    <h1>Application to the XDF</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -504,11 +512,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-source-properties">Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-apertures-from-segmentation-data">Creating apertures from segmentation data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-this-notebook">8.4.2.1. Data for this notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-segmentationimage">8.4.2.2. Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-source-properties">8.4.2.3. Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-apertures-from-segmentation-data">8.4.2.3.1. Creating apertures from segmentation data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-other-detection-methods">8.4.2.4. Comparison with other detection methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.4.2.5. Summary</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -519,12 +531,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Beyond traditional source detection methods, an additional option for identifying sources in image data is a process called <strong>image segmentation</strong>. This method identifies and labels contiguous (connected) objects within an image.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="application-to-the-xdf">
+<h1><span class="section-number">8.4.2. </span>Application to the XDF<a class="headerlink" href="#application-to-the-xdf" title="Link to this heading">#</a></h1>
+<section id="data-for-this-notebook">
+<h2><span class="section-number">8.4.2.1. </span>Data for this notebook<a class="headerlink" href="#data-for-this-notebook" title="Link to this heading">#</a></h2>
+<p>We will be manipulating Hubble eXtreme Deep Field (XDF) data, which was collected using the Advanced Camera for Surveys (ACS) on Hubble between 2002 and 2012. The image we use here is the result of 1.8 million seconds (500 hours!) of exposure time, and includes some of the faintest and most distant galaxies that had ever been observed.</p>
+<p><em>The methods demonstrated here are also available in the <a class="reference external" href="http://photutils.readthedocs.io/en/stable/detection.html"><code class="docutils literal notranslate"><span class="pre">photutils.detection</span></code> documentation</a>.</em></p>
+<p><em>The original authors of this notebook were Lauren Chambers, Erik Tollerud and Tom Wilson.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span>
+<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
+<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
+<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">make_random_cmap</span>
+
+<span class="c1"># Show plots in the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdf_image</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;hlsp_xdf_hst_acswfc-60mas_hudf_f435w_v1_sci.fits&#39;</span><span class="p">)</span>
+<span class="c1"># Define the mask</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sigma_clipped_stats</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beyond traditional source detection methods, an additional option for identifying sources in image data is a process called <strong>image segmentation</strong>. This method identifies and labels contiguous (connected) objects within an image.</p>
 <p>You might have noticed that, in the previous source detection algorithms, large and extended sources are often incorrectly identified as more than one source. Segmentation would label all the pixels within a large galaxy as belonging to the same object, and would allow the user to then measure the photometry, centroid, and morphology of the entire object at once.</p>
+</section>
 <section id="creating-a-segmentationimage">
-<h1>Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code><a class="headerlink" href="#creating-a-segmentationimage" title="Link to this heading">#</a></h1>
-<p>In <code class="docutils literal notranslate"><span class="pre">photutils</span></code>, image segmentation maps are created using the threshold method in the <code class="docutils literal notranslate"><span class="pre">detect_sources()</span></code> function. This method identifies all of the objects in the data that have signals above a determined <strong><code class="docutils literal notranslate"><span class="pre">threshold</span></code></strong> (usually defined as a multiple of the standard deviation) and that have more than a defined number of adjoining pixels, <strong><code class="docutils literal notranslate"><span class="pre">npixels</span></code></strong>. The data can also optionally be smoothed using a kernel, <strong><code class="docutils literal notranslate"><span class="pre">filter_kernel</span></code></strong>, before applying the threshold cut.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">detect_sources()</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code> object: an array in which each object is labeled with an integer. As a simple example, a segmentation map containing two distinct sources might look like this:</p>
+<h2><span class="section-number">8.4.2.2. </span>Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code><a class="headerlink" href="#creating-a-segmentationimage" title="Link to this heading">#</a></h2>
+<p>In <a class="reference external" href="https://photutils.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a>, image segmentation maps are created using the threshold method in the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.detect_sources.html#photutils.segmentation.detect_sources"><code class="docutils literal notranslate"><span class="pre">detect_sources</span></code></a> function. This method identifies all of the objects in the data that have signals above a determined <strong><code class="docutils literal notranslate"><span class="pre">threshold</span></code></strong> (usually defined as a multiple of the standard deviation) and that have more than a defined number of adjoining pixels, <strong><code class="docutils literal notranslate"><span class="pre">npixels</span></code></strong>. The data can also optionally be smoothed using a kernel, <strong><code class="docutils literal notranslate"><span class="pre">filter_kernel</span></code></strong>, before applying the threshold cut.</p>
+<p>The <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.detect_sources.html#photutils.segmentation.detect_sources"><code class="docutils literal notranslate"><span class="pre">detect_sources</span></code></a> function returns a <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SegmentationImage.html#photutils.segmentation.SegmentationImage"><code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a> object: an array in which each object is labeled with an integer. As a simple example, a segmentation map containing two distinct sources might look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span>
@@ -537,136 +609,118 @@ document.write(`
 </pre></div>
 </div>
 <p>where all of the pixels labeled <code class="docutils literal notranslate"><span class="pre">1</span></code> belong to the first source, all those labeled <code class="docutils literal notranslate"><span class="pre">2</span></code> belong to the second, and all null pixels are designated to be background.</p>
-<p>Let’s see what the segmentation map for our XDF data will look like.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">detect_sources</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">make_random_cmap</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3291/2064246763.py:1: DeprecationWarning: `photutils.detect_sources` is a deprecated alias for `photutils.segmentation.detect_sources` and will be removed in the future. Instead, please use `from photutils.segmentation import detect_sources` to silence this warning.
-  from photutils import detect_sources
-</pre></div>
-</div>
-</div>
-</div>
+<p>Let’s see make the segmentation image for the XDF see what that segmentation map looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define threshold and minimum object size</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mf">5.</span> <span class="o">*</span> <span class="n">std</span>
-<span class="n">npixels</span> <span class="o">=</span> <span class="mi">15</span>
-
+<span class="n">npixels</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">fwhm</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">make_2dgaussian_kernel</span><span class="p">(</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">)</span>
+<span class="n">convolved_data</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 <span class="c1"># Create a segmentation image</span>
-<span class="n">segm</span> <span class="o">=</span> <span class="n">detect_sources</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">npixels</span><span class="p">)</span>
+<span class="n">segm</span> <span class="o">=</span> <span class="n">detect_sources</span><span class="p">(</span><span class="n">convolved_data</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">npixels</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found </span><span class="si">{}</span><span class="s1"> sources&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">segm</span><span class="o">.</span><span class="n">max_label</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Define threshold and minimum object size</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">5.</span> <span class="o">*</span> <span class="n">std</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">npixels</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Create a segmentation image</span>
-
-<span class="ne">NameError</span>: name &#39;std&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 1325 sources
 </pre></div>
 </div>
 </div>
 </div>
+<p>The number of sources found with this method is similar to that found with the other methods we have considered. A more detailed comparison is made later in this section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
+<span class="c1"># Plot the data</span>
+<span class="c1"># Set up the normalization and colormap</span>
+<span class="n">norm_image</span> <span class="o">=</span> <span class="n">ImageNormalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">5e-2</span><span class="p">,</span> <span class="n">stretch</span><span class="o">=</span><span class="n">LogStretch</span><span class="p">(),</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_bad</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span> <span class="c1"># Show masked data as white</span>
+
 <span class="c1"># Plot the original data</span>
-<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">),</span>
                       <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original Data&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot the segmentation image</span>
-<span class="n">rand_cmap</span> <span class="o">=</span> <span class="n">make_random_cmap</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
-<span class="n">rand_cmap</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">segplot</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">segm</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">rand_cmap</span><span class="p">)</span>
+<span class="n">segplot</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">segm</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">segm</span><span class="o">.</span><span class="n">cmap</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Segmentation Map&#39;</span><span class="p">)</span>
 
-<span class="c1"># Define the colorbar</span>
-<span class="n">cbar_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.87</span><span class="p">])</span>
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">segplot</span><span class="p">,</span> <span class="n">cbar_ax</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Object Label&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="c1"># # Define the colorbar</span>
+<span class="c1"># cbar_ax = fig.add_axes([1, 0.09, 0.03, 0.87])</span>
+<span class="c1"># cbar = plt.colorbar(segplot, cbar_ax)</span>
+<span class="c1"># cbar.set_label(&#39;Object Label&#39;, rotation=270, labelpad=30)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Segmentation Map&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/718e141a42b35f43e84b52bf587ccdc92c8624f9d12974f9f20c87124e89b082.png" src="../../_images/718e141a42b35f43e84b52bf587ccdc92c8624f9d12974f9f20c87124e89b082.png" />
 </div>
 </div>
 <p>Compare the sources in original data to those in the segmentation image. Each color in the segmentation map denotes a separate source.</p>
 <p>You can easily see that larger galaxies are shown in the segmentation map as contiguous objects of the same color - for example, the two yellow and pink galaxies near (1200, 2500). Each pixel containing light from the same galaxy has been labeled as belonging to the same object.</p>
-<p>For a closer look, let’s see what the sources we found with <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> look like in this segmentation map:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">cutout_size</span> <span class="o">=</span> <span class="mi">20</span>
-
-<span class="n">srcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">)[:</span><span class="n">axs</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">src</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">srcs</span><span class="p">):</span>
-    <span class="n">slc</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;y_peak&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cutout_size</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;y_peak&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cutout_size</span><span class="p">)),</span>
-           <span class="nb">slice</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;x_peak&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cutout_size</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;x_peak&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cutout_size</span><span class="p">)))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segm</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slc</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">rand_cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">))</span>
-    <span class="n">src_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;x_peak&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;x_peak&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
-                      <span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s1">&#39;y_peak&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;y_peak&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">src_id</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<h3>Exercises:</h3><br>
-<p>Recompute the <code>SegmentationImage</code>, but alter the threshold and the minimum number of pixels in a source. How does changing the threshold affect the results? What about changing the number of pixels?</p>
-</div></section>
+</section>
 <section id="analyzing-source-properties">
-<h1>Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code><a class="headerlink" href="#analyzing-source-properties" title="Link to this heading">#</a></h1>
-<p>Once we have a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code> object, <code class="docutils literal notranslate"><span class="pre">photutils</span></code> provides many powerful tools to manipulate and analyze the identified objects.</p>
+<h2><span class="section-number">8.4.2.3. </span>Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code><a class="headerlink" href="#analyzing-source-properties" title="Link to this heading">#</a></h2>
+<p>Once we have a <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SegmentationImage.html#photutils.segmentation.SegmentationImage"><code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a> object, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a> provides many powerful tools to manipulate and analyze the identified objects.</p>
 <p>Individual objects within the segmentation map can be altered using methods such as <code class="docutils literal notranslate"><span class="pre">relabel</span></code> to change the labels of objects, <code class="docutils literal notranslate"><span class="pre">remove_labels</span></code> to remove objects, or <code class="docutils literal notranslate"><span class="pre">deblend_sources</span></code> to separating overlapping sources that were incorrectly labeled as one source.</p>
-<p>However, perhaps the most powerful aspect of the <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code> is the ability to create a catalog using <code class="docutils literal notranslate"><span class="pre">source_properties</span></code> to measure the centroids, photometry, and morphology of the detected objects:</p>
+<p>However, perhaps the most powerful aspect of the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SegmentationImage.html#photutils.segmentation.SegmentationImage"><code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a> is the ability to create a catalog using <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SourceCatalog.html#photutils.segmentation.SourceCatalog"><code class="docutils literal notranslate"><span class="pre">SourceCatalog</span></code></a> to measure the centroids, photometry, and morphology of the detected objects:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">source_properties</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">source_properties</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">segm</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">SourceCatalog</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">segm</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">to_table</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">colnames</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="creating-apertures-from-segmentation-data">
-<h1>Creating apertures from segmentation data<a class="headerlink" href="#creating-apertures-from-segmentation-data" title="Link to this heading">#</a></h1>
-<p>We can use this information to create isophotal ellipses for each identified source. These ellipses can also later be used as photometric apertures!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label     xcentroid          ycentroid      ...      kron_flux      kron_fluxerr
+                                            ...                                 
+----- ------------------ ------------------ ... ------------------- ------------
+    1 2465.7386366359437 400.20823876076145 ...   3.786962750366322          nan
+    2 2509.6568703244993 389.49620068710044 ... 0.16299322050344217          nan
+    3  2525.699589429596 393.73426523584817 ...   1.236078180507074          nan
+    4  2552.324164878554  458.6506964037056 ...    0.53740330791435          nan
+    5  2613.722439123769 463.56403761707145 ... 0.23589840050346006          nan
+    6 2634.6926896288364 492.74771005940875 ...  0.4048265965503719          nan
+    7 2678.0402364491715 496.13420772248094 ... 0.23127518888263288          nan
+    8 2585.5976310775773 507.32125399722963 ...  0.3348800151373088          nan
+    9 2325.5275032287905  553.6827394979126 ... 0.17353760980104416          nan
+   10 2615.9535020700296  559.8257429321684 ...  0.9311240475173768          nan
+  ...                ...                ... ...                 ...          ...
+ 1316  2452.133550261183  4710.038077384896 ... 0.35094793112418704          nan
+ 1317 2630.7479686391625  4712.105110099765 ...  0.5244500489085997          nan
+ 1318   2676.29647008758  4732.968757310911 ... 0.11435139689102855          nan
+ 1319 2878.4136666933023   4736.32279556149 ...  0.6443531394233689          nan
+ 1320 2549.8004897409874  4735.490047108536 ...  0.1739662639656022          nan
+ 1321   2505.04369005797   4750.25154033696 ...   1.175406402745871          nan
+ 1322 2515.5577522110757   4755.66229816978 ...   1.299899376790302          nan
+ 1323  2606.917351752249   4758.01416049386 ... 0.22313752225793876          nan
+ 1324  2717.996758340226  4776.535815969104 ... 0.25433285433797137          nan
+ 1325 2783.4952592029003   4789.55106336388 ...  0.1603409271870089          nan
+Length = 1325 rows
+[&#39;label&#39;, &#39;xcentroid&#39;, &#39;ycentroid&#39;, &#39;sky_centroid&#39;, &#39;bbox_xmin&#39;, &#39;bbox_xmax&#39;, &#39;bbox_ymin&#39;, &#39;bbox_ymax&#39;, &#39;area&#39;, &#39;semimajor_sigma&#39;, &#39;semiminor_sigma&#39;, &#39;orientation&#39;, &#39;eccentricity&#39;, &#39;min_value&#39;, &#39;max_value&#39;, &#39;local_background&#39;, &#39;segment_flux&#39;, &#39;segment_fluxerr&#39;, &#39;kron_flux&#39;, &#39;kron_fluxerr&#39;]
 </pre></div>
 </div>
 </div>
 </div>
+<section id="creating-apertures-from-segmentation-data">
+<h3><span class="section-number">8.4.2.3.1. </span>Creating apertures from segmentation data<a class="headerlink" href="#creating-apertures-from-segmentation-data" title="Link to this heading">#</a></h3>
+<p>We can use this information to create isophotal ellipses for each identified source. These ellipses can also later be used as photometric apertures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the approximate isophotal extent</span>
@@ -675,10 +729,10 @@ document.write(`
 <span class="c1"># Create the apertures</span>
 <span class="n">apertures</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">catalog</span><span class="p">:</span>
-    <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">xcentroid</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">ycentroid</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semiminor_axis_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>
-    <span class="n">theta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">xcentroid</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">ycentroid</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semimajor_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">semiminor_sigma</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">orientation</span>
     <span class="n">apertures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EllipticalAperture</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -690,7 +744,7 @@ document.write(`
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># Plot the data</span>
-<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image_clipped</span><span class="p">),</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">),</span>
                       <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 
 <span class="c1"># Plot the apertures</span>
@@ -698,20 +752,176 @@ document.write(`
     <span class="n">aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
 
 <span class="c1"># Define the colorbar</span>
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$10^{-4}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-3}$&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">]</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+    <span class="c1"># Add minor tickmarks</span>
+    <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+
+    <span class="c1"># Force the labels to be displayed as powers of ten and only at exact powers of ten</span>
+    <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">])</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;$10^</span><span class="se">{{</span><span class="si">{</span><span class="nb">pow</span><span class="si">:</span><span class="s1">.0f</span><span class="se">}}</span><span class="si">}</span><span class="s1">$&#39;</span> <span class="k">for</span> <span class="nb">pow</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">())]</span>
+    <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="n">format_colorbar</span><span class="p">(</span><span class="n">cbar</span><span class="p">)</span>
 
 <span class="c1"># Define labels</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span>
                <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Segmentation Image Apertures&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Segmentation Image Apertures&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a5965e1dc9ec4ee13131a604dedd8167e3002410d25ead855646d4b81d864799.png" src="../../_images/a5965e1dc9ec4ee13131a604dedd8167e3002410d25ead855646d4b81d864799.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="comparison-with-other-detection-methods">
+<h2><span class="section-number">8.4.2.4. </span>Comparison with other detection methods<a class="headerlink" href="#comparison-with-other-detection-methods" title="Link to this heading">#</a></h2>
+<p>We begin by finding sources using <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> and <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.find_peaks.html#photutils.detection.find_peaks"><code class="docutils literal notranslate"><span class="pre">find_peaks</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+    <span class="n">sources_findpeaks</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">median</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span>
+                                   <span class="n">threshold</span><span class="o">=</span><span class="mf">20.</span> <span class="o">*</span> <span class="n">std</span><span class="p">,</span> <span class="n">box_size</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span>
+                                   <span class="n">centroid_func</span><span class="o">=</span><span class="n">centroid_2dg</span><span class="p">)</span>
+
+<span class="c1"># Add an ID column to the find_peaks result</span>
+<span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;source_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daofind</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+<span class="n">sources_dao</span> <span class="o">=</span> <span class="n">daofind</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A plot of a random subset of sources highlights the differences between the methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+<span class="n">sub_figs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subfigures</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">cutout_size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">8675309</span><span class="p">)</span>
+<span class="n">srcs</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">)[:</span><span class="nb">len</span><span class="p">(</span><span class="n">sub_figs</span><span class="o">.</span><span class="n">flatten</span><span class="p">())]</span>
+<span class="k">for</span> <span class="n">a_fig</span><span class="p">,</span> <span class="n">src</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sub_figs</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">srcs</span><span class="p">):</span>
+    <span class="n">sub_axs</span> <span class="o">=</span> <span class="n">a_fig</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">([[</span><span class="s2">&quot;orig&quot;</span><span class="p">,</span> <span class="s2">&quot;segm&quot;</span><span class="p">]],</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;x_peak&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cutout_size</span><span class="p">)</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;y_peak&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cutout_size</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cutout_size</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">bottom</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cutout_size</span>
+    <span class="n">slc</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span>
+    <span class="n">sources_in_cutout_fp</span> <span class="o">=</span> <span class="p">((</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;x_centroid&quot;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;x_centroid&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span> <span class="o">&amp;</span>
+                             <span class="p">(</span><span class="n">bottom</span> <span class="o">&lt;</span> <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;y_centroid&quot;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;y_centroid&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">))</span>
+    <span class="n">sources_in_cutout_dao</span> <span class="o">=</span> <span class="p">((</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;xcentroid&quot;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;xcentroid&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span> <span class="o">&amp;</span>
+                             <span class="p">(</span><span class="n">bottom</span> <span class="o">&lt;</span> <span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;ycentroid&quot;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;ycentroid&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">))</span>
+    <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slc</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+    <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;x_centroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_fp</span><span class="p">]</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> 
+                            <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;y_centroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_fp</span><span class="p">]</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">,</span> 
+                            <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Find peaks&quot;</span><span class="p">)</span>
+    <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;xcentroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_dao</span><span class="p">]</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> 
+                            <span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;ycentroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_dao</span><span class="p">]</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">,</span> 
+                            <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+                            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DAOFind&quot;</span><span class="p">)</span>
+
+    <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;segm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segm</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slc</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">rand_cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+    <span class="n">src_id</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="s2">&quot;source_id&quot;</span><span class="p">]</span>
+    <span class="c1"># ax.text(2, 2, str(src_id), color=&#39;w&#39;, va=&#39;top&#39;)</span>
+    <span class="n">a_fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source </span><span class="si">{</span><span class="n">src_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">sub_axs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;&#39;Source detection method comparison&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">a_fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">27</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;x_centroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_fp</span><span class="p">]</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">20</span>                         <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;y_centroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_fp</span><span class="p">]</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">21</span>                         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Find peaks&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;xcentroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_dao</span><span class="p">]</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">23</span>                         <span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;ycentroid&quot;</span><span class="p">][</span><span class="n">sources_in_cutout_dao</span><span class="p">]</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">24</span>                         <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">25</span>                         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DAOFind&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="n">sub_axs</span><span class="p">[</span><span class="s2">&quot;segm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segm</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">slc</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">rand_cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">),</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">src_id</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="s2">&quot;source_id&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="c1"># ax.text(2, 2, str(src_id), color=&#39;w&#39;, va=&#39;top&#39;)</span>
+
+<span class="ne">NameError</span>: name &#39;rand_cmap&#39; is not defined
+</pre></div>
+</div>
+<img alt="../../_images/f1775852be560b6ff50206a2a9e1ada49ea547c3e2c26774bf49e271ca541161.png" src="../../_images/f1775852be560b6ff50206a2a9e1ada49ea547c3e2c26774bf49e271ca541161.png" />
+</div>
+</div>
+<p>Star finding finds almost all of the point-like sources in these cutouts, but also identifies many sources in each extended object. Peak finding misses many of the star-like objects and sometimes assigns multiple objects to a single extended source. Image segmentation identifies extended sources as single objects but misses most of the small star-like objects. Adjusting the image segmentation parameters to allow smaller sources would improve detection of those objects.</p>
+<p>We now look at the large galaxy near the top center of the XDF. Image segmentation is the only method that correctly identifies that large galaxy as a single object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">fitsplot</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">),</span>
+                      <span class="n">norm</span><span class="o">=</span><span class="n">norm_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="c1"># Plot the apertures</span>
+<span class="n">apertures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Image segmentation&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">aperture</span> <span class="ow">in</span> <span class="n">apertures</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">aperture</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># Add find_peaks sources</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;x_centroid&quot;</span><span class="p">],</span> <span class="n">sources_findpeaks</span><span class="p">[</span><span class="s2">&quot;y_centroid&quot;</span><span class="p">],</span> 
+            <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;find_peaks&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add DAOStarFinder sources</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;xcentroid&quot;</span><span class="p">],</span> <span class="n">sources_dao</span><span class="p">[</span><span class="s2">&quot;ycentroid&quot;</span><span class="p">],</span> 
+            <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;DAOFind&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define the colorbar</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
+
+<span class="n">format_colorbar</span><span class="p">(</span><span class="n">cbar</span><span class="p">)</span>
+
+<span class="c1"># Define labels</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux Count Rate (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)),</span>
+               <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (pixels)&#39;</span><span class="p">)</span>
+
+<span class="n">top</span> <span class="o">=</span> <span class="mi">1125</span>
+<span class="n">left</span> <span class="o">=</span> <span class="mi">2350</span>
+<span class="n">cutout_size</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">left</span> <span class="o">+</span> <span class="n">cutout_size</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">top</span> <span class="o">+</span> <span class="n">cutout_size</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Source detection method comparison&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary">
+<h2><span class="section-number">8.4.2.5. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>The image above nicely captures the differences between the source detection methods we have discussed. <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> does an excellent job detecting the star-like sources in the image but not the more extended sources. <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.find_peaks.html#photutils.detection.find_peaks"><code class="docutils literal notranslate"><span class="pre">find_peaks</span></code></a> detects both extended and point-like sources, but misses several sources. Image segmentation does an excellent job detecting sources, and could detect the smaller sources in this image if we reduced the minimum number of pixels in each source.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -744,6 +954,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="01.04.01-image-segmentation-simulated-image.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.4.1. </span>Image segmentation with a simulated image</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01.04.03-image-segmentation-Feder.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.4.3. </span>Application to a stellar image</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -760,11 +988,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-source-properties">Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-apertures-from-segmentation-data">Creating apertures from segmentation data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-this-notebook">8.4.2.1. Data for this notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-segmentationimage">8.4.2.2. Creating a <code class="docutils literal notranslate"><span class="pre">SegmentationImage</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-source-properties">8.4.2.3. Analyzing <code class="docutils literal notranslate"><span class="pre">source_properties</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-apertures-from-segmentation-data">8.4.2.3.1. Creating apertures from segmentation data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-other-detection-methods">8.4.2.4. Comparison with other detection methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.4.2.5. Summary</a></li>
+</ul>
   </nav></div>
 
 </div></div>

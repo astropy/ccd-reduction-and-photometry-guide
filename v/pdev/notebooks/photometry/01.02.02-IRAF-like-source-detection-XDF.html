@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -525,7 +533,7 @@ document.write(`
 <h1><span class="section-number">8.2.2. </span>Detecting sources in the XDF<a class="headerlink" href="#detecting-sources-in-the-xdf" title="Link to this heading">#</a></h1>
 <section id="data-for-this-notebook">
 <h2><span class="section-number">8.2.2.1. </span>Data for this notebook<a class="headerlink" href="#data-for-this-notebook" title="Link to this heading">#</a></h2>
-<p>We will be manipulating Hubble eXtreme Deep Field (XDF) data, which was collected using the Advanced Camera for Surveys (ACS) on Hubble between 2002 and 2012. The image we use here is the result of 1.8 million seconds (500 hours!) of exposure time, and includes some of the faintest and most distant galaxies that had ever been observed.</p>
+<p>We will again be manipulating Hubble eXtreme Deep Field (XDF) data, which was collected using the Advanced Camera for Surveys (ACS) on Hubble between 2002 and 2012. The image we use here is the result of 1.8 million seconds (500 hours!) of exposure time, and includes some of the faintest and most distant galaxies that had ever been observed.</p>
 <p><em>The methods demonstrated here are also available in narrative from within the <a class="reference external" href="http://photutils.readthedocs.io/en/stable/detection.html"><code class="docutils literal notranslate"><span class="pre">photutils.detection</span></code> documentation</a>.</em></p>
 <p><em>The original authors of this notebook were Lauren Chambers, Erik Tollerud and Tom Wilson.</em></p>
 </section>
@@ -626,11 +634,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/db83cb6f1135dd8496c25551660e9ac0446733d4ae99633383d99cd50337504b.png" src="../../_images/db83cb6f1135dd8496c25551660e9ac0446733d4ae99633383d99cd50337504b.png" />
+<img alt="../../_images/b3e146140c383b947e8652c140b20a10a2bc0fbff35aef1163ba2ef662fe1529.png" src="../../_images/b3e146140c383b947e8652c140b20a10a2bc0fbff35aef1163ba2ef662fe1529.png" />
 </div>
 </div>
 <p><em>Tip: Double-click on any inline plot to zoom in.</em></p>
-<p>With the <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code> <a class="reference external" href="http://photutils.readthedocs.io/en/stable/api/photutils.DAOStarFinder.html">class</a>, <code class="docutils literal notranslate"><span class="pre">photutils</span></code> provides users with an easy application of the popular <a class="reference external" href="http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?daofind">DAOFIND</a> algorithm (<a class="reference external" href="http://adsabs.harvard.edu/abs/1987PASP...99..191S">Stetson 1987, PASP 99, 191</a>), originally developed at the Dominion Astrophysical Observatory.</p>
+<p>With the <a class="reference external" href="http://photutils.readthedocs.io/en/stable/api/photutils.DAOStarFinder.html"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code> class</a>, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a> provides users with an easy application of the popular <a class="reference external" href="http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?daofind">DAOFIND</a> algorithm (<a class="reference external" href="http://adsabs.harvard.edu/abs/1987PASP...99..191S">Stetson 1987, PASP 99, 191</a>), originally developed at the Dominion Astrophysical Observatory.</p>
 <p>This algorithm detects sources by:</p>
 <ul class="simple">
 <li><p>Searching for local maxima</p></li>
@@ -689,6 +697,7 @@ Length = 1470 rows
 </div>
 </div>
 </div>
+<p>There are almost 1,500 sources detected in the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
@@ -716,10 +725,10 @@ Length = 1470 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7822fcca5e7392d66cac85cc9f1943b0991d63ed084ae0aadede688c828d4634.png" src="../../_images/7822fcca5e7392d66cac85cc9f1943b0991d63ed084ae0aadede688c828d4634.png" />
+<img alt="../../_images/4ad1f3c7d9a0e133a81fd1179e0e6530eda971ec244f580355a7518dfb6ce75a.png" src="../../_images/4ad1f3c7d9a0e133a81fd1179e0e6530eda971ec244f580355a7518dfb6ce75a.png" />
 </div>
 </div>
-<p>Looking at a cutout around the relatively large galaxy in the top center of the image is instructive. As you can see below, the large galaxy is identified by <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> as several overlapping sources. Some of the smaller galaxies in the image are identified as sources, but manye are not. The parameters could be tuned to detect more of the sources, but it turns out there are source detection methods better suited to extended sources that will be discussed in <a class="reference internal" href="#"><span class="xref myst">XX BROKEN LINK XX</span></a>.</p>
+<p>Looking at a cutout around the relatively large galaxy in the top center of the image is instructive. As you can see below, the large galaxy is identified by <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> as several overlapping sources. Some of the smaller galaxies in the image are identified as sources, but many are not. The parameters could be tuned to detect more of the sources, but it turns out there are source detection methods better suited to extended sources that will be discussed in <a class="reference internal" href="#"><span class="xref myst">XX BROKEN LINK XX</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -756,19 +765,19 @@ Length = 1470 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c4c4444c6765ccfdcf20bddd2e2e71ccca675fc4a14bda8d7c445f30a7bda42d.png" src="../../_images/c4c4444c6765ccfdcf20bddd2e2e71ccca675fc4a14bda8d7c445f30a7bda42d.png" />
+<img alt="../../_images/fb0ef4d95d944ba9a7cdeacbd4036798abf7b9bd3aa931355383b73f48d57e82.png" src="../../_images/fb0ef4d95d944ba9a7cdeacbd4036798abf7b9bd3aa931355383b73f48d57e82.png" />
 </div>
 </div>
 </section>
 <section id="source-detection-with-irafstarfinder">
 <h2><span class="section-number">8.2.2.4. </span>Source Detection with <code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code><a class="headerlink" href="#source-detection-with-irafstarfinder" title="Link to this heading">#</a></h2>
-<p>Similarly to <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code>, <code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code> is a class that implements a pre-existing algorithm that is widely used within the astronomical community. This class uses the <code class="docutils literal notranslate"><span class="pre">starfind</span></code> <a class="reference external" href="http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?starfind">algorithm</a>  that was originally part of IRAF.</p>
-<p><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code> is fundamentally similar to <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code> in that it detects sources by finding local maxima above a certain threshold that match a Gaussian kernel. However, <code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code> differs in the following ways:</p>
+<p>Similarly to <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a> is a class that implements a pre-existing algorithm that is widely used within the astronomical community. This class uses the <code class="docutils literal notranslate"><span class="pre">starfind</span></code> <a class="reference external" href="http://stsdas.stsci.edu/cgi-bin/gethelp.cgi?starfind">algorithm</a>  that was originally part of IRAF.</p>
+<p><a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a> is fundamentally similar to <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> in that it detects sources by finding local maxima above a certain threshold that match a Gaussian kernel. However, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a> differs in the following ways:</p>
 <ul class="simple">
 <li><p>Does not allow users to specify an elliptical Gaussian kernel</p></li>
 <li><p>Uses image moments to calculate the centroids, roundness, and sharpness of objects</p></li>
 </ul>
-<p>Let’s run the <code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code> algorithm on our data, with the same FWHM and threshold, and see how its results differ from <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code>:</p>
+<p>Let’s run the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a> algorithm on our data, with the same FWHM and threshold, and see how its results differ from <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iraffind</span> <span class="o">=</span> <span class="n">IRAFStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">20.</span> <span class="o">*</span> <span class="n">std</span><span class="p">)</span>
@@ -807,6 +816,7 @@ Length = 211 rows
 </div>
 </div>
 </div>
+<p>There are many fewer sources detected this time – only 211 compared to the almost 1500 detected by <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
@@ -834,7 +844,7 @@ Length = 211 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/03b71cc43ff7043a78c985214105003bba39903df1684f6d1564ce5b5358b40e.png" src="../../_images/03b71cc43ff7043a78c985214105003bba39903df1684f6d1564ce5b5358b40e.png" />
+<img alt="../../_images/4aabd3343a74aa57164eaf8bdf43e35a54032514e8def1d8769a2016ece3cb1f.png" src="../../_images/4aabd3343a74aa57164eaf8bdf43e35a54032514e8def1d8769a2016ece3cb1f.png" />
 </div>
 </div>
 <p>Looking at a cutout around the relatively large galaxy in the top center of the image is again instructive and gives a hint as to some of the differences between <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> and <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a>.</p>
@@ -875,7 +885,7 @@ Length = 211 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bec011740b7aa07d2b784911c3dadca45c6c3ccc16d4cc7c6977d2e0e811d1fd.png" src="../../_images/bec011740b7aa07d2b784911c3dadca45c6c3ccc16d4cc7c6977d2e0e811d1fd.png" />
+<img alt="../../_images/170b1f0f3c874fa1521ae09b7400e1bcc6b434e6263b6ede942c22cafc1c14a7.png" src="../../_images/170b1f0f3c874fa1521ae09b7400e1bcc6b434e6263b6ede942c22cafc1c14a7.png" />
 </div>
 </div>
 </section>
@@ -993,7 +1003,7 @@ Length = 1415 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6deb19781709d5c4803b9cc0028ed923f508e9b7b3cca08d79188d26a3713922.png" src="../../_images/6deb19781709d5c4803b9cc0028ed923f508e9b7b3cca08d79188d26a3713922.png" />
+<img alt="../../_images/9336b492642f6f4d9cf06de1f87f066d9db967ab47aa8c43df583225ed566b22.png" src="../../_images/9336b492642f6f4d9cf06de1f87f066d9db967ab47aa8c43df583225ed566b22.png" />
 </div>
 </div>
 <p>Take this example as reminder to be mindful when selecting a source detection algorithm, and when defining algorithm parameters! Don’t be afraid to play around with the parameters and investigate how that affects your results.</p>
@@ -1038,7 +1048,7 @@ Length = 1415 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b33ce36d0c74f57e2dc27d9754fbc0ba1df486503ce551af41bc598db5520d54.png" src="../../_images/b33ce36d0c74f57e2dc27d9754fbc0ba1df486503ce551af41bc598db5520d54.png" />
+<img alt="../../_images/360c6f064428a92537e6507a999f0b4b910b3c1514bd6a2f43b1813bc1a17635.png" src="../../_images/360c6f064428a92537e6507a999f0b4b910b3c1514bd6a2f43b1813bc1a17635.png" />
 </div>
 </div>
 </section>

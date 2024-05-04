@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -509,8 +517,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-and-subtract-background">8.2.1.2.1. Estimate and subtract background</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-sources">8.2.1.2.2. Detect sources</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-in-the-image">8.2.1.2.3. Sources in the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2.1.2.4. </a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.5. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.4. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.2.1.3. Summary</a></li>
@@ -567,14 +574,14 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">make_100gaussians_image</span><span class="p">()</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">ImageNormalize</span><span class="p">(</span><span class="n">stretch</span><span class="o">=</span><span class="n">SqrtStretch</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys_r&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
            <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/55672c7cf14468a8bd4cb9b58f6291b63dc13415eef8e7c78ce081e4c8e5891e.png" src="../../_images/55672c7cf14468a8bd4cb9b58f6291b63dc13415eef8e7c78ce081e4c8e5891e.png" />
+<img alt="../../_images/73d65aa2bb3e273eff5fb4b289eb6b8bed4580924021d182aafb8ddbdd79a0c5.png" src="../../_images/73d65aa2bb3e273eff5fb4b289eb6b8bed4580924021d182aafb8ddbdd79a0c5.png" />
 </div>
 </div>
 <p>Note that some of these object are star-like – the ones that are darkest are close to circular, for example. Others are very elongated and there are a variety of brightnesses among the objects.</p>
@@ -644,7 +651,7 @@ Length = 41 rows
 </div>
 </div>
 </div>
-<p>A plot showing the location of all of the detected sources helps illustrate why some of sources were missed, To display where sources were detected, we create a a set of photutils circular apertures and use its plot method to add a circle over each detected source.</p>
+<p>A plot showing the location of all of the detected sources helps illustrate why some of sources were missed. To display where sources were detected, we create a a set of <a class="reference external" href="https://photutils.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a> circular apertures and use its plot method to add a circle over each detected source.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CircularAperture expects a particular format for input positions...</span>
@@ -663,7 +670,7 @@ Length = 41 rows
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sources detected by DAOStarFinder&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/0994e7963277157b0242b506c8a618e819aecf7523047d2374833fb3727330bf.png" src="../../_images/0994e7963277157b0242b506c8a618e819aecf7523047d2374833fb3727330bf.png" />
+<img alt="../../_images/12c9b0e813c0d17009b2a0c35f67e207d7950bea5a9ae096d8370ca39d667694.png" src="../../_images/12c9b0e813c0d17009b2a0c35f67e207d7950bea5a9ae096d8370ca39d667694.png" />
 </div>
 </div>
 <p>It looks like the sources that were detected are those that were not too faint and not too elongaetd.</p>
@@ -706,8 +713,9 @@ Length = 41 rows
 <ul class="simple">
 <li><p>the shape of the marker matches the minor-to-major axis ratio</p></li>
 <li><p>the major axis of the marker is the FWHM of the major axis</p></li>
-<li><p>the thickness of the merker edge indicates the amplitude of the source.</p></li>
+<li><p>the thickness of the marker edge indicates the amplitude of the source.</p></li>
 </ul>
+<p>Next, we overlay the sources that were detected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -753,7 +761,7 @@ Length = 41 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ae7d924d54d5d7c38e5a37f38d949a26842f775f2ba8bef53e44a8b514fddf29.png" src="../../_images/ae7d924d54d5d7c38e5a37f38d949a26842f775f2ba8bef53e44a8b514fddf29.png" />
+<img alt="../../_images/54d1a95475ab66fdb9ae3c42f2e68f7cc8d770970d862326cd152c75a011d8dc.png" src="../../_images/54d1a95475ab66fdb9ae3c42f2e68f7cc8d770970d862326cd152c75a011d8dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -772,7 +780,7 @@ Length = 41 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3e46d249c9518c37cb9e4962a3968094a5785660e17e9c5835d53bc1c62f6480.png" src="../../_images/3e46d249c9518c37cb9e4962a3968094a5785660e17e9c5835d53bc1c62f6480.png" />
+<img alt="../../_images/67d822926ef070b254382ecb371a68fb5cca898452cabc1a2e2cce224fdbbefa.png" src="../../_images/67d822926ef070b254382ecb371a68fb5cca898452cabc1a2e2cce224fdbbefa.png" />
 </div>
 </div>
 <p>From this plot it seems that the sources detected are those that are:</p>
@@ -782,14 +790,11 @@ Length = 41 rows
 </ul>
 <p>In some cases <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> finds <em>two</em> sources where there is really one. Sources 5 and 6 are a good example of this.</p>
 </section>
-<section id="id1">
-<h3><span class="section-number">8.2.1.2.4. </span><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-</section>
 <section id="an-exploration-of-some-parameters-of-daostarfinder">
-<h3><span class="section-number">8.2.1.2.5. </span>An exploration of some parameters of <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a><a class="headerlink" href="#an-exploration-of-some-parameters-of-daostarfinder" title="Link to this heading">#</a></h3>
-<p>We can test some of the assertions in the previous paragraph. As a couple of example of that, we can try to</p>
+<h3><span class="section-number">8.2.1.2.4. </span>An exploration of some parameters of <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a><a class="headerlink" href="#an-exploration-of-some-parameters-of-daostarfinder" title="Link to this heading">#</a></h3>
+<p>We can test some of the assertions in the previous paragraph. A couple of examples of that are to try</p>
 <ol class="arabic simple">
-<li><p>A lowe4r threshold in detection to try to detect the fainter sources in this test image. Below we will try a threshold of 3 times the standard deviation of the background instead of 5 times.</p></li>
+<li><p>A lower threshold in detection to try to detect the fainter sources in this test image. Below we will try a threshold of 3 times the standard deviation of the background instead of 5 times.</p></li>
 <li><p>A ratio smaller than 1 to detect the more elongated sources. The ratio argument is the ratio of the semiminor to semimajor axis. Below we will try a ratio of 0.33.</p></li>
 </ol>
 <p>The code below begins with a function to do the plotting for this so that we can reuse that code for each plot.</p>
@@ -833,15 +838,15 @@ Length = 41 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d7bd0358c83b349a1438af1f9fb16e6e7f2f0e82ff539c9301c09c26b57e55ad.png" src="../../_images/d7bd0358c83b349a1438af1f9fb16e6e7f2f0e82ff539c9301c09c26b57e55ad.png" />
+<img alt="../../_images/c5c71241ea36f4a8645178d346196a3b0e413516cc3a8a999be1ae66218d200f.png" src="../../_images/c5c71241ea36f4a8645178d346196a3b0e413516cc3a8a999be1ae66218d200f.png" />
 </div>
 </div>
-<p>The plot on the left shows that lowering the detetion threshold does find more sources, but it also includes erroneous detections. The plot on right demonstrates that we can detect some (but not all) of the highly elongated objects by changing the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> parameter in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>.</p>
+<p>The plot on the left shows that lowering the detetion threshold does find more sources, but it also includes erroneous detections. The plot on right demonstrates that we can detect some (but not all) of the highly elongated objects by changing the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> parameter in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>. The reason that we don’t pick up more of the elongated sources is that the orientation of the source matters too. The default value for the orientation is zero, i.e. aligned with the horizontal axis.</p>
 </section>
 </section>
 <section id="summary">
 <h2><span class="section-number">8.2.1.3. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>The takeway from this section should be that the IRAF-like methods implemented in photutils are good at finding star-like sources. As we will see in the next couple of sections, the methods work very well for detecting stars or galaxiues that are small enough to look like stars. After that we will look at a couple of methods, local peak detection and image segmentation, that are better for detecting extended sources.</p>
+<p>The takeway from this section should be that the IRAF-like methods implemented in photutils are good at finding star-like sources. As we will see in the next couple of sections, the methods work very well for detecting stars or galaxies that are small enough to look like stars. After that we will look at a couple of methods, local peak detection and image segmentation, that are better for detecting extended sources.</p>
 </section>
 </section>
 
@@ -914,8 +919,7 @@ Length = 41 rows
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-and-subtract-background">8.2.1.2.1. Estimate and subtract background</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-sources">8.2.1.2.2. Detect sources</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-in-the-image">8.2.1.2.3. Sources in the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.2.1.2.4. </a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.5. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exploration-of-some-parameters-of-daostarfinder">8.2.1.2.4. An exploration of some parameters of <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.2.1.3. Summary</a></li>

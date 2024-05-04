@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda/envs/test/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Set up the figure with subplots
+fig, [ax1, ax2, ax3] = plt.subplots(3, 1, figsize=(6, 12))
+plt.tight_layout()
+
+# Plot the data
+# Set up the normalization and colormap
+norm_image = ImageNormalize(stretch=SqrtStretch())
+
+# Plot the original data
+fitsplot = ax1.imshow(data_subtracted,
+                      norm=norm_image, cmap='Greys_r')
+ax1.set_ylabel('Y (pixels)')
+ax1.set_title('Original Data')
+
+# Plot to convolved data
+convolved_plot = ax2.imshow(convolved_data, cmap="Greys_r", norm=norm_image)
+ax2.set_ylabel("Y (pixel)")
+ax2.set_title("Convolved image")
+
+# Plot the segmentation image
+rand_cmap = make_random_cmap(seed=12345)
+rand_cmap.set_under('black')
+segplot = ax3.imshow(segm, vmin=1, cmap=segm.cmap)
+ax3.set_ylabel("Y (pixel)")
+ax3.set_xlabel('X (pixels)')
+ax3.set_title('Segmentation Map')
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[8], line 21[0m
+[1;32m     18[0m ax2[38;5;241m.[39mset_title([38;5;124m"[39m[38;5;124mConvolved image[39m[38;5;124m"[39m)
+[1;32m     20[0m [38;5;66;03m# Plot the segmentation image[39;00m
+[0;32m---> 21[0m rand_cmap [38;5;241m=[39m [43mmake_random_cmap[49m(seed[38;5;241m=[39m[38;5;241m12345[39m)
+[1;32m     22[0m rand_cmap[38;5;241m.[39mset_under([38;5;124m'[39m[38;5;124mblack[39m[38;5;124m'[39m)
+[1;32m     23[0m segplot [38;5;241m=[39m ax3[38;5;241m.[39mimshow(segm, vmin[38;5;241m=[39m[38;5;241m1[39m, cmap[38;5;241m=[39msegm[38;5;241m.[39mcmap)
+
+[0;31mNameError[0m: name 'make_random_cmap' is not defined
+

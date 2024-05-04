@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -587,7 +595,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Let’s look at the data, including the background we’ve added. The cell below sets up an image normaliztaion we will use for all of our later views of the image. It also defines a small function, <code class="docutils literal notranslate"><span class="pre">format_colorbar</span></code> that is used to set up the colorbar in the subsequent plots.</p>
+<p>Let’s look at the data, including the background we’ve added. The cell below sets up an image normaliztaion we will use for all of our later views of the image. It also defines a small function, <code class="docutils literal notranslate"><span class="pre">format_colorbar</span></code>, that is used to set up the colorbar in the subsequent plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the figure with subplots</span>
@@ -624,7 +632,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a2a99a5e6caf5bcf52a9fa60bde4b47e10130daebd6a9da7cd2821a0a8c066b1.png" src="../../_images/a2a99a5e6caf5bcf52a9fa60bde4b47e10130daebd6a9da7cd2821a0a8c066b1.png" />
+<img alt="../../_images/8a25a9228d71cd9124168be282d57cf30bfa2363cca4f0bc4b21dc0efbcec84a.png" src="../../_images/8a25a9228d71cd9124168be282d57cf30bfa2363cca4f0bc4b21dc0efbcec84a.png" />
 </div>
 </div>
 </section>
@@ -671,7 +679,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dce4a1f9b85ed64dbec16d35c27a5b696f7e6f3b54b4bb68fabc68c4c14b9481.png" src="../../_images/dce4a1f9b85ed64dbec16d35c27a5b696f7e6f3b54b4bb68fabc68c4c14b9481.png" />
+<img alt="../../_images/1b5296d8591f31083220d2f8ade1aeab19e90e97d13dc9c72e040c4e8bdb813c.png" src="../../_images/1b5296d8591f31083220d2f8ade1aeab19e90e97d13dc9c72e040c4e8bdb813c.png" />
 </div>
 </div>
 <p>On the left we have plotted this mask, which has a value of 1 (or True) shown in black where the data is bad, and 0 (or False) shown in white where the data is good.</p>
@@ -716,7 +724,7 @@ document.write(`
 </section>
 <section id="mask-sources-then-calculate-scalar-background">
 <h3><span class="section-number">8.1.2.4.3. </span>Mask sources, then calculate scalar background<a class="headerlink" href="#mask-sources-then-calculate-scalar-background" title="Link to this heading">#</a></h3>
-<p>As discussed in [FILL IN LINK](FILL IN LINK), the most accurate estimate of the scalar background is obtained when the sources are masked first. The cell below does that procedure.</p>
+<p>As discussed in <a class="reference internal" href="01.01.01-Background-removal-simulated-data.html"><span class="std std-doc">the section on background estimation with a simulated image</span></a>, the most accurate estimate of the scalar background is obtained when the sources are masked first. The cell below does that procedure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up sigma clipping</span>
@@ -783,7 +791,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4bf025b836ce7a0889d8d71d5c873da4cc3a6811d9ee95978e3fbe5a1455a120.png" src="../../_images/4bf025b836ce7a0889d8d71d5c873da4cc3a6811d9ee95978e3fbe5a1455a120.png" />
+<img alt="../../_images/a8f022cd456ee1b4f86442de4936a8770aed5ac3e42ac833353b1e313b73c6eb.png" src="../../_images/a8f022cd456ee1b4f86442de4936a8770aed5ac3e42ac833353b1e313b73c6eb.png" />
 </div>
 </div>
 <p>Masking makes a big difference to the mean in this case because so many of the pixels in the original image contain no data. Sigma clipping also makes some difference, moving the mean value closer to zero. Masking out the sources moves the mean below zero, which is not surprising in this case. The distribution of pixels is clearly near zero, and masking out the sources means removing the largest positive values.</p>
@@ -830,7 +838,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/be493213701176ec8baafa3e66be96f731376845939a8a275cd4c26fb7f6f628.png" src="../../_images/be493213701176ec8baafa3e66be96f731376845939a8a275cd4c26fb7f6f628.png" />
+<img alt="../../_images/f8e9627c2ab785375448972f0cf0366d41323d906497b3cda676ad93eb8e1b27.png" src="../../_images/f8e9627c2ab785375448972f0cf0366d41323d906497b3cda676ad93eb8e1b27.png" />
 </div>
 </div>
 <p>Note that both plots above use the same normalization scheme, represented by the colorbar on the right. That is to say, if two pixels have the same color in both arrays, they have the same value.</p>
@@ -840,15 +848,15 @@ document.write(`
 </section>
 <section id="perform-2-d-background-estimation">
 <h2><span class="section-number">8.1.2.5. </span>Perform 2-D background estimation<a class="headerlink" href="#perform-2-d-background-estimation" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">Background2D</span></code> class in <code class="docutils literal notranslate"><span class="pre">photutils</span></code> allows users to model 2-dimensional backgrounds, by calculating the mean or median in small boxes, and smoothing these boxes to reconstruct a continuous 2D background. The class includes the following arguments/attributes:</p>
+<p>The <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.Background2D.html#photutils.background.Background2D"><code class="docutils literal notranslate"><span class="pre">Background2D</span></code></a> class in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/index.html"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a> allows users to model 2-dimensional backgrounds, by calculating the mean or median in small boxes, and smoothing these boxes to reconstruct a continuous 2D background. The class includes the following arguments/attributes:</p>
 <ul class="simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">box_size</span></code></strong> — the size of the boxes used to calculate the background. This should be larger than individual sources, yet still small enough to encompass changes in the background.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">filter_size</span></code></strong> — the size of the median filter used to smooth the final 2D background. The dimension should be odd along both axes.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">filter_threshold</span></code></strong> — threshold below which the smoothing median filter will not be applied.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">sigma_clip</span></code></strong> — an <code class="docutils literal notranslate"> <span class="pre">astropy.stats.SigmaClip</span></code> object that is used to specify the sigma and number of iterations used to sigma-clip the data before background calculations are performed.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sigma_clip</span></code></strong> — an <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.stats.SigmaClip.html#astropy.stats.SigmaClip"><code class="docutils literal notranslate"><span class="pre">astropy.stats.SigmaClip</span></code></a> object that is used to specify the sigma and number of iterations used to sigma-clip the data before background calculations are performed.</p></li>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">bkg_estimator</span></code></strong> — the method used to perform the background calculation in each box (mean, median, SExtractor algorithm, etc.).</p></li>
 </ul>
-<p>For this example, we will use the <code class="docutils literal notranslate"><span class="pre">MeanBackground</span></code> estimator. Note though, that there is little or no spatial variation apparent in the background of this image.</p>
+<p>For this example, we will use the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.MeanBackground.html#photutils.background.MeanBackground"><code class="docutils literal notranslate"><span class="pre">MeanBackground</span></code></a> estimator. Note though, that there is little or no spatial variation apparent in the background of this image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
@@ -893,7 +901,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f127c162753db5b75918948d7ad87d6eca2a643f4225e6e3f8b302fbc6ac0364.png" src="../../_images/f127c162753db5b75918948d7ad87d6eca2a643f4225e6e3f8b302fbc6ac0364.png" />
+<img alt="../../_images/bcd5c5e4dcc205be6e4840eb043915d10d598131ce77e439e02a0089024cc3bf.png" src="../../_images/bcd5c5e4dcc205be6e4840eb043915d10d598131ce77e439e02a0089024cc3bf.png" />
 </div>
 </div>
 <p>You might notice that not all areas of the background array have mesh boxes over them (look for those boxes that do not have a <code class="docutils literal notranslate"><span class="pre">+</span></code>). If you compare this background array with the original data, you’ll see that these un-boxed areas contain particularly bright sources, and thus are not being included in the background estimate.</p>
@@ -943,7 +951,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dde15cffdc02fccde621fa200fe0bd0649b580de836521c6d1a9617525384f64.png" src="../../_images/dde15cffdc02fccde621fa200fe0bd0649b580de836521c6d1a9617525384f64.png" />
+<img alt="../../_images/ec1b3b30ed6fd235660cd3eeb712ed33e5b56557d62d265e32333475d419638f.png" src="../../_images/ec1b3b30ed6fd235660cd3eeb712ed33e5b56557d62d265e32333475d419638f.png" />
 </div>
 </div>
 <p>In this case 2D background subtraction was not necessary, as you might expect from an image like the XDF that has already been processed.</p>

@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="01.03-Local-peak-detection.html">8.3. Local peak detection</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -530,7 +538,7 @@ document.write(`
 <section id="which-data-are-used-in-this-notebook">
 <h2><span class="section-number">8.2.3.1. </span>Which data are used in this notebook?<a class="headerlink" href="#which-data-are-used-in-this-notebook" title="Link to this heading">#</a></h2>
 <p>The image in this notebook is of the field of the star <a class="reference external" href="https://exofop.ipac.caltech.edu/tess/target.php?id=125489084">TIC 125489084</a> on a night when the moon was nearly full. The moonlight caused a smooth gradient across the background of the image.</p>
-<p>As discussed in NOTEBOOK ABOUT BACKGROUND SUBTRACTION, the best way to remove the background in this case is to use photutils to construct a 2D model of the background.</p>
+<p>As discussed in the section about <a class="reference internal" href="01.01.03-Background-estimation-FEDER.html"><span class="std std-doc">background subtraction with this image</span></a>, the best way to remove the background in this case is to use photutils to construct a 2D model of the background.</p>
 <p>As we will see in a moment, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> does a good job identifying most of the sources in the image, since all of the sources are stars.</p>
 </section>
 <section id="import-necessary-packages">
@@ -587,18 +595,10 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the normalization and colormap</span>
-<span class="n">norm_image</span> <span class="o">=</span> <span class="n">ImageNormalize</span><span class="p">(</span><span class="n">ccd_image</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="n">AsymmetricPercentileInterval</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="perform-2-d-background-estimation-and-subtraction">
 <h2><span class="section-number">8.2.3.4. </span>Perform 2-D background estimation and subtraction<a class="headerlink" href="#perform-2-d-background-estimation-and-subtraction" title="Link to this heading">#</a></h2>
-<p>For more discussion of the choices here, see XXXXX. The next couple of cells calculate the background and subtract it, and then display the background-subtracted data.</p>
+<p>For more discussion of the choices here, see <a class="reference internal" href="01.01.03-Background-estimation-FEDER.html"><span class="std std-doc">background subtraction with this image</span></a>. The next couple of cells calculate the background and subtract it, and then display the background-subtracted data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_clip</span> <span class="o">=</span> <span class="n">SigmaClip</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -638,14 +638,14 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8b5d03c3631b615826a599c3c5aecc8c4d69c99a41bfa5d2ceecaa4f8474de7e.png" src="../../_images/8b5d03c3631b615826a599c3c5aecc8c4d69c99a41bfa5d2ceecaa4f8474de7e.png" />
+<img alt="../../_images/9588c6c791bd2e2a82cac8814d51971d180e7aedd8acf7b8b3b891d8eb0eb619.png" src="../../_images/9588c6c791bd2e2a82cac8814d51971d180e7aedd8acf7b8b3b891d8eb0eb619.png" />
 </div>
 </div>
-<p>Note how much more even the 2D background-subtracted image looks; especially the difference between these two images in the bottom left and top right corners. This makes sense, as the background that <code class="docutils literal notranslate"><span class="pre">Background2D</span></code> identified was a gradient from the bottom left corner to the top right corner.</p>
+<p>Note that after subtraction the background of the image looks fairly uniform.</p>
 </section>
 <section id="source-detection">
 <h2><span class="section-number">8.2.3.5. </span>Source detection<a class="headerlink" href="#source-detection" title="Link to this heading">#</a></h2>
-<p>We will use the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> to detect the sources in this image. The typical FWHM of the stars in the image is about 6.2 pixels. For the detection threshold, we will use 5 times the standard deviation of the sigma-clipped image.</p>
+<p>We will use the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> to detect the sources in this image. The typical full width half maximum (FWHM) of the stars in the image is about 6.2 pixels. For the detection threshold, we will use 5 times the standard deviation of the sigma-clipped image.</p>
 <p>In addition, we’ll mask out the area within 50 pixels of the edge of the image, where the stars are often elongated on this camera.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +694,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7cd3d68a2635ed4f632de5baf6c0f66efd1f931ccf19928e79a763fab504839c.png" src="../../_images/7cd3d68a2635ed4f632de5baf6c0f66efd1f931ccf19928e79a763fab504839c.png" />
+<img alt="../../_images/6f538d40f862a247f21369d099768bd15c4f1ed35c8e80b3319bf59fa2130929.png" src="../../_images/6f538d40f862a247f21369d099768bd15c4f1ed35c8e80b3319bf59fa2130929.png" />
 </div>
 </div>
 <p>This seems to have a reasonably good job finding stars in the image. Many of the fainter stars were not detected, though.</p>
@@ -702,7 +702,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 <section id="improving-the-accuracy-of-source-detection">
 <h3><span class="section-number">8.2.3.5.2. </span>Improving the accuracy of source detection<a class="headerlink" href="#improving-the-accuracy-of-source-detection" title="Link to this heading">#</a></h3>
 <p>You might at first be tempted to lower the threshold for detection. It turns out that that will report many more detections, but many of them will not actually be stars. A more effective approach is to increase the FWHM used by <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> instead, to something like 1.5 or 2 × the FWHM of the stars in the image.</p>
-<p>A comparison of these three approaches is below.</p>
+<p>Below is a comparison of these two approaches with the source detection we did above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daofinder_fainter</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">std</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="n">fwhm</span><span class="p">)</span>
@@ -742,7 +742,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/acdd4a590b0a45f24f4dfae07aa48ba79b2c0a08e3fc6a84b59ca5cd1611d01f.png" src="../../_images/acdd4a590b0a45f24f4dfae07aa48ba79b2c0a08e3fc6a84b59ca5cd1611d01f.png" />
+<img alt="../../_images/0331a33f9bb80205e639aa1afe77f270521b37b704b7ff499c20657cbd8aeaec.png" src="../../_images/0331a33f9bb80205e639aa1afe77f270521b37b704b7ff499c20657cbd8aeaec.png" />
 </div>
 </div>
 </section>

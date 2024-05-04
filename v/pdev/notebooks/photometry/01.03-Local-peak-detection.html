@@ -42,7 +42,7 @@
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -95,7 +95,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.3.1. Peak finding" href="01.03.02-peak_detection-XDF.html" />
+    <link rel="next" title="8.3.1. Peak finding" href="01.03.01-peak_detection-simulated-image.html" />
     <link rel="prev" title="8.2.3. Source detection in a stellar image" href="01.02.03-Source-detection-FEDER.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -273,7 +273,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">8.3. Local peak detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.1. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.01-peak_detection-simulated-image.html">8.3.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.02-peak_detection-XDF.html">8.3.2. Peak detection in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.03.03-peak_detection-Feder.html">8.3.3. Peak detection in a ground-based stellar image</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="01.04-image-segmentation.html">8.4. Image segmentation</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="01.04.01-image-segmentation-simulated-image.html">8.4.1. Overview with simulated image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.02-image-segmentation-XDF.html">8.4.2. Image segmentation in the XDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01.04.03-image-segmentation-Feder.html">8.4.3. Image segmentation in a ground-based stellar image</a></li>
 </ul>
 </li>
 </ul>
@@ -508,6 +516,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="local-peak-detection">
 <h1><span class="section-number">8.3. </span>Local peak detection<a class="headerlink" href="#local-peak-detection" title="Link to this heading">#</a></h1>
+<p>Peak detection finds sources by identifying local maxima above a given threshold and separated by a given distance, rather than trying to fit data to a given model like a Gaussian. It can be particularly useful for identifying non-stellar sources or heavily distorted sources in image data.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -552,7 +561,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="01.03.02-peak_detection-XDF.html"
+       href="01.03.01-peak_detection-simulated-image.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
