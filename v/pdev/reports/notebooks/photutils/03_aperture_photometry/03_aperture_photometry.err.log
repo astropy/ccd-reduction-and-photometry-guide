@@ -7,7 +7,7 @@ Traceback (most recent call last):
   File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/share/miniconda/envs/test/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/usr/share/miniconda/envs/test/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
   File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
@@ -29,20 +29,20 @@ File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotl
 [0;32m--> 137[0m     style [38;5;241m=[39m [43m_rc_params_in_file[49m[43m([49m[43mstyle[49m[43m)[49m
 [1;32m    138[0m [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m [38;5;28;01mas[39;00m err:
 
-File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:866[0m, in [0;36m_rc_params_in_file[0;34m(fname, transform, fail_on_error)[0m
-[1;32m    865[0m rc_temp [38;5;241m=[39m {}
-[0;32m--> 866[0m [43m[49m[38;5;28;43;01mwith[39;49;00m[43m [49m[43m_open_file_or_url[49m[43m([49m[43mfname[49m[43m)[49m[43m [49m[38;5;28;43;01mas[39;49;00m[43m [49m[43mfd[49m[43m:[49m
-[1;32m    867[0m [43m    [49m[38;5;28;43;01mtry[39;49;00m[43m:[49m
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:870[0m, in [0;36m_rc_params_in_file[0;34m(fname, transform, fail_on_error)[0m
+[1;32m    869[0m rc_temp [38;5;241m=[39m {}
+[0;32m--> 870[0m [43m[49m[38;5;28;43;01mwith[39;49;00m[43m [49m[43m_open_file_or_url[49m[43m([49m[43mfname[49m[43m)[49m[43m [49m[38;5;28;43;01mas[39;49;00m[43m [49m[43mfd[49m[43m:[49m
+[1;32m    871[0m [43m    [49m[38;5;28;43;01mtry[39;49;00m[43m:[49m
 
 File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/contextlib.py:137[0m, in [0;36m_GeneratorContextManager.__enter__[0;34m(self)[0m
 [1;32m    136[0m [38;5;28;01mtry[39;00m:
 [0;32m--> 137[0m     [38;5;28;01mreturn[39;00m [38;5;28mnext[39m([38;5;28mself[39m[38;5;241m.[39mgen)
 [1;32m    138[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
 
-File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:843[0m, in [0;36m_open_file_or_url[0;34m(fname)[0m
-[1;32m    842[0m fname [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mexpanduser(fname)
-[0;32m--> 843[0m [38;5;28;01mwith[39;00m [38;5;28mopen[39m(fname, encoding[38;5;241m=[39m[38;5;124m'[39m[38;5;124mutf-8[39m[38;5;124m'[39m) [38;5;28;01mas[39;00m f:
-[1;32m    844[0m     [38;5;28;01myield[39;00m f
+File [0;32m/usr/share/miniconda/envs/test/lib/python3.11/site-packages/matplotlib/__init__.py:847[0m, in [0;36m_open_file_or_url[0;34m(fname)[0m
+[1;32m    846[0m fname [38;5;241m=[39m os[38;5;241m.[39mpath[38;5;241m.[39mexpanduser(fname)
+[0;32m--> 847[0m [38;5;28;01mwith[39;00m [38;5;28mopen[39m(fname, encoding[38;5;241m=[39m[38;5;124m'[39m[38;5;124mutf-8[39m[38;5;124m'[39m) [38;5;28;01mas[39;00m f:
+[1;32m    848[0m     [38;5;28;01myield[39;00m f
 
 [0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../photutils_notebook_style.mplstyle'
 
