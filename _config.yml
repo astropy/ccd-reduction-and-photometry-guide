@@ -105,3 +105,15 @@ sphinx:
   extra_extensions          :   # A list of extra extensions to load by Sphinx.
   local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
   recursive_update          : true # A boolean indicating whether to overwrite the Sphinx config (true) or recursively update (false)
+  config:
+    html_sidebars:
+        # Added version-switcher and the default primary sidebar
+        "**": ["navbar-logo.html",
+               "icon-links.html",
+               "search-button-field.html",
+               "version-switcher.html",
+               "sbt-sidebar-nav.html"]
+    html_theme_options:
+      switcher:
+        json_url: "https://gist.githubusercontent.com/mwcraig/8c8bf204fdff0a972c170f377d154cc7/raw/df52df0b14549341eb721eab7f479380b3c246d1/switcher.json"
+        version_match: 'dev'
