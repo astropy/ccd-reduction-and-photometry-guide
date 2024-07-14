@@ -115,5 +115,5 @@ sphinx:
                "sbt-sidebar-nav.html"]
     html_theme_options:
       switcher:
-        json_url: "https://gist.githubusercontent.com/mwcraig/8c8bf204fdff0a972c170f377d154cc7/raw/df52df0b14549341eb721eab7f479380b3c246d1/switcher.json"
+        json_url: "https://raw.githubusercontent.com/astropy/ccd-reduction-and-photometry-guide/photometry-dev/switcher.json"
         version_match: 'dev'
