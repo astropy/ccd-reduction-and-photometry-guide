@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -709,7 +707,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table140553763098192" class="table-striped table-bordered table-condensed">
+<table id="table140159399437840" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str14</th><th>str7</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-16</td><td>ccd.037.0.fits</td><td>vv124_1</td><td>g&apos;</td><td>300.062</td></tr>
@@ -726,7 +724,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table140553762944720" class="table-striped table-bordered table-condensed">
+<table id="table140159399262544" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str27</th><th>str9</th><th>str6</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-15</td><td>combined_bias.fit</td><td>BIAS</td><td>bias</td><td>i&apos;</td><td>0.0</td></tr>
@@ -800,7 +798,7 @@ stage. Identification of cosmic rays will be discussed in <a class="reference in
   result = super().__array_ufunc__(function, method, *arrays, **kwargs)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/nddata/nduncertainty.py:883: RuntimeWarning: invalid value encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/nddata/nduncertainty.py:881: RuntimeWarning: invalid value encountered in divide
   (left + right + correlation_sign * corr)
 </pre></div>
 </div>
@@ -877,7 +875,7 @@ the science images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table140555199751376" class="table-striped table-bordered table-condensed">
+<table id="table140158292619280" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>object</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T09:00:21</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
@@ -896,7 +894,7 @@ exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=3</i>
-<table id="table140552656656464" class="table-striped table-bordered table-condensed">
+<table id="table140159399191248" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>str4</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T11:20:07</td><td>combined_bias.fit</td><td>BIAS</td><td>--</td><td>0.0</td></tr>

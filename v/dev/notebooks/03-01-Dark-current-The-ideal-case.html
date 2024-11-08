@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -669,6 +667,27 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">image_sim</span> <span class="kn">import</span> <span class="n">dark_current</span><span class="p">,</span> <span class="n">read_noise</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">image_sim</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">astropy.modeling.models</span> <span class="kn">import</span> <span class="n">Gaussian2D</span><span class="p">,</span> <span class="n">RickerWavelet2D</span><span class="p">,</span> <span class="n">Const2D</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">make_random_gaussians_table</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>                                 <span class="n">make_gaussian_sources_image</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># To use a seed, set it in the environment. Useful for minimizing changes when</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># publishing the book.</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,9 +925,6 @@ to the expected value.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_13_0.png" src="../_images/03-01-Dark-current-The-ideal-case_13_0.png" />
-</div>
 </div>
 </section>
 <section id="dark-counts-follow-a-poisson-distribution">
@@ -937,9 +953,6 @@ Overlaid on the histogram is a Poisson distribution with a mean of <span class="
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_15_0.png" src="../_images/03-01-Dark-current-The-ideal-case_15_0.png" />
 </div>
 </div>
 </section>
@@ -998,9 +1011,6 @@ under these circumstances.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_20_0.png" src="../_images/03-01-Dark-current-The-ideal-case_20_0.png" />
-</div>
 </div>
 <p><strong>This dark frame measures noise, not dark current</strong></p>
 <p>The pixel distribution is clearly a Gaussian distribution with a width
@@ -1028,9 +1038,6 @@ distribution up by the same factor so that the distribution remains normalized.<
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of counts for the average of 20 dark images, high noise case&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_24_0.png" src="../_images/03-01-Dark-current-The-ideal-case_24_0.png" />
 </div>
 </div>
 <p>Even the combination of 20 dark frames doesn’t lead to a Poisson distribution;
@@ -1069,9 +1076,6 @@ enough read noise you can recover the Poisson distribution of the dark current.<
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_28_0.png" src="../_images/03-01-Dark-current-The-ideal-case_28_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1086,9 +1090,6 @@ enough read noise you can recover the Poisson distribution of the dark current.<
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of counts for the average of 20 dark images, low noise case&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03-01-Dark-current-The-ideal-case_29_0.png" src="../_images/03-01-Dark-current-The-ideal-case_29_0.png" />
 </div>
 </div>
 <p><strong>Dark frame is measuring dark current</strong></p>

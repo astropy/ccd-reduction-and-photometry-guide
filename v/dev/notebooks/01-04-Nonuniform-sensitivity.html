@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -616,6 +614,27 @@ enough that is not included in this notebook. We load it instead from
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">image_sim</span> <span class="k">as</span> <span class="nn">isim</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">image_sim</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">astropy.modeling.models</span> <span class="kn">import</span> <span class="n">Gaussian2D</span><span class="p">,</span> <span class="n">RickerWavelet2D</span><span class="p">,</span> <span class="n">Const2D</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">make_random_gaussians_table</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>                                 <span class="n">make_gaussian_sources_image</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># To use a seed, set it in the environment. Useful for minimizing changes when</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># publishing the book.</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="a-sample-flat-image">
@@ -635,9 +654,6 @@ previous notebook.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_image</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/01-04-Nonuniform-sensitivity_5_0.png" src="../_images/01-04-Nonuniform-sensitivity_5_0.png" />
 </div>
 </div>
 <p>The “donuts” in the image are dust on elements like filters in the optical path.
@@ -698,9 +714,6 @@ images.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/01-04-Nonuniform-sensitivity_13_0.png" src="../_images/01-04-Nonuniform-sensitivity_13_0.png" />
-</div>
 </div>
 <p>Visually, this does not look any different than the final image in the previous
 notebook; the effects of sensitivity variations are typically not evident in raw
@@ -712,9 +725,6 @@ images unless the sky background is large.</p>
 <span class="n">show_image</span><span class="p">(</span><span class="n">final_image2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">percu</span><span class="o">=</span><span class="mf">99.9</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/01-04-Nonuniform-sensitivity_15_0.png" src="../_images/01-04-Nonuniform-sensitivity_15_0.png" />
 </div>
 </div>
 </section>

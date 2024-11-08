@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -849,19 +847,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.79035741,  0.2618999 , -1.18237628, ..., -0.47607159,
-        -0.86274585,  0.46902812],
-       [ 0.86631153,  0.12348657,  0.77861946, ..., -2.13993625,
-         0.30563157, -0.10366543],
-       [ 0.22561347,  0.36272137,  0.41716996, ..., -0.23324676,
-         1.22295997, -1.45198102],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.93231885, -0.20554953,  1.11382749, ..., -0.48266713,
+         0.62491939,  0.32332385],
+       [-0.62965729,  0.25235816,  0.42799246, ...,  0.21027981,
+        -0.02531951, -0.03524356],
+       [-0.07380972, -1.30615523,  0.08721875, ..., -1.87320596,
+        -1.29376234, -0.24861751],
        ...,
-       [-0.10498512, -1.95444731,  0.44066611, ..., -1.55667508,
-        -0.842927  ,  0.68214896],
-       [ 0.66747171,  0.25293923,  0.04482725, ...,  0.01967659,
-         0.81585114, -0.34085213],
-       [ 0.16576502,  0.63981455,  0.28354497, ...,  0.45147066,
-         0.31543141,  0.97099841]], dtype=&#39;&gt;f8&#39;)
+       [ 1.50038478, -2.74012182,  1.15403477, ...,  0.78683255,
+        -1.00991427,  0.26186583],
+       [ 0.43151481,  0.1382379 ,  0.38706353, ...,  1.15553082,
+        -1.96669301,  0.11551855],
+       [ 1.23072078, -1.51645142, -0.26927057, ...,  1.10289169,
+        -0.85284388,  1.12601521]], dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -911,19 +909,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.79035741,  0.2618999 , -1.18237628, ..., -0.47607159,
-        -0.86274585,  0.46902812],
-       [ 0.86631153,  0.12348657,  0.77861946, ..., -2.13993625,
-         0.30563157, -0.10366543],
-       [ 0.22561347,  0.36272137,  0.41716996, ..., -0.23324676,
-         1.22295997, -1.45198102],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.93231885, -0.20554953,  1.11382749, ..., -0.48266713,
+         0.62491939,  0.32332385],
+       [-0.62965729,  0.25235816,  0.42799246, ...,  0.21027981,
+        -0.02531951, -0.03524356],
+       [-0.07380972, -1.30615523,  0.08721875, ..., -1.87320596,
+        -1.29376234, -0.24861751],
        ...,
-       [-0.10498512, -1.95444731,  0.44066611, ..., -1.55667508,
-        -0.842927  ,  0.68214896],
-       [ 0.66747171,  0.25293923,  0.04482725, ...,  0.01967659,
-         0.81585114, -0.34085213],
-       [ 0.16576502,  0.63981455,  0.28354497, ...,  0.45147066,
-         0.31543141,  0.97099841]], dtype=&#39;&gt;f8&#39;)
+       [ 1.50038478, -2.74012182,  1.15403477, ...,  0.78683255,
+        -1.00991427,  0.26186583],
+       [ 0.43151481,  0.1382379 ,  0.38706353, ...,  1.15553082,
+        -1.96669301,  0.11551855],
+       [ 1.23072078, -1.51645142, -0.26927057, ...,  1.10289169,
+        -0.85284388,  1.12601521]], dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -960,7 +958,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table139890306968528" class="table-striped table-bordered table-condensed">
+<table id="table140292043304784" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -972,7 +970,6 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 <tr><td>img-0006.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>DARK</td><td>30.0</td><td>adu</td><td>--</td><td>--</td></tr>
 <tr><td>img-0007.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>DARK</td><td>5.0</td><td>adu</td><td>--</td><td>--</td></tr>
 <tr><td>img-0008.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>DARK</td><td>30.0</td><td>adu</td><td>--</td><td>--</td></tr>
-<tr><td>img-0009.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>DARK</td><td>5.0</td><td>adu</td><td>--</td><td>--</td></tr>
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
 <tr><td>img-0018.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>LIGHT</td><td>30.0</td><td>adu</td><td>V</td><td>m82</td></tr>
 <tr><td>img-0019.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>LIGHT</td><td>30.0</td><td>adu</td><td>V</td><td>xx cyg</td></tr>
@@ -1019,11 +1016,13 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0032587402130029
-In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9944338492856929
-In file img-0022.fits the exposure is: 30.0 with standard deviation  0.999255085223536
-In file img-0024.fits the exposure is: 30.0 with standard deviation  1.0010736788734644
-In file img-0026.fits the exposure is: 30.0 with standard deviation  0.9982112620006653
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0006305082274918
+In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9951272812922944
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0022.fits the exposure is: 30.0 with standard deviation  1.0013181677514156
+In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9987948739214904
+In file img-0026.fits the exposure is: 30.0 with standard deviation  1.0047132884527286
 </pre></div>
 </div>
 </div>
