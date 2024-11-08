@@ -47,6 +47,7 @@ jobs:
         conda install -c conda-forge mamba
         mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
         conda list
+        python -m pip install lxml_html_clean
         conda info -e
         # python -m pip install jupyter-book==0.12.1
     - name: Cache
