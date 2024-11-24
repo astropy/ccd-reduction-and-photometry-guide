@@ -3,9 +3,16 @@ import os
 import numpy as np
 
 from astropy.modeling.models import Gaussian2D, RickerWavelet2D, Const2D
-from photutils.datasets import (make_random_gaussians_table,
-                                make_gaussian_sources_image)
+
 from photutils.aperture import EllipticalAperture
+
+NEW_PHOTUTILS = False
+try:
+    from photutils.datasets import (make_random_gaussians_table,
+                                    make_gaussian_sources_image)
+except ImportError:
+    NEW_PHOTUTILS = True
+    from photutils.datasets import make_model_image, make_model_params
 
 # To use a seed, set it in the environment. Useful for minimizing changes when
 # publishing the book.
@@ -13,7 +20,7 @@ seed = os.getenv('GUIDE_RANDOM_SEED', None)
 
 if seed is not None:
     seed = int(seed)
-    
+
 default_rng = np.random.default_rng(seed)
 
 
@@ -168,18 +175,32 @@ def stars(image, number, max_counts=10000, gain=1, fwhm=4):
     ymean_range = [0.1 * y_max, 0.9 * y_max]
     xstddev_range = [fwhm, fwhm]
     ystddev_range = [fwhm, fwhm]
-    params = dict([('amplitude', flux_range),
-                   ('x_mean', xmean_range),
-                   ('y_mean', ymean_range),
-                   ('x_stddev', xstddev_range),
-                   ('y_stddev', ystddev_range),
-                   ('theta', [0, 2 * np.pi])])
 
-    sources = make_random_gaussians_table(number, params,
-                                          seed=12345)
+    input_values = dict(
+        amplitude=flux_range,
+        x_mean=xmean_range,
+        y_mean=ymean_range,
+        x_stddev=xstddev_range,
+        y_stddev=ystddev_range,
+        theta=[0, 2 * np.pi]
+    )
 
-    star_im = make_gaussian_sources_image(image.shape, sources)
+    if NEW_PHOTUTILS:
+        model = Gaussian2D()
+        params = make_model_params(image.shape, number, x_name='x_mean',
+                                y_name='y_mean',
+                                **input_values)
 
+
+        star_im = make_model_image(image.shape, model, params,
+                                x_name='x_mean', y_name='y_mean')
+    else:
+        sources = make_random_gaussians_table(
+            number,
+            input_values,
+            seed=12345
+        )
+        star_im = make_gaussian_sources_image(image.shape, sources)
     return star_im
 
 
