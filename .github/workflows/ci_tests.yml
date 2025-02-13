@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main  # GitHub now defaults to 'main' as the name of the primary branch. Change this as needed.
+      - update-workflow-channel
     tags: # run CI if specific tags are pushed
       - '[0-9]+.[0-9]+.[0-9]+[a-z0-9]*'  # pre-releases -- note that brackets only
                                          # match single character, and that * does
@@ -40,11 +41,13 @@ jobs:
       uses: conda-incubator/setup-miniconda@d2e6a045a86077fb6cad6f5adf368e9076ddaa8d  # v3.1.0
       with:
         python-version: ${{ matrix.python }}
+        mamba-version: "*"
+        channels: astropy, conda-forge, defaults
+        channel-priority: true
         auto-update-conda: true
     - name: Install base dependencies
       shell: bash -l {0}
       run: |
-        conda install -c conda-forge mamba
         mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
         conda list
         python -m pip install lxml_html_clean
