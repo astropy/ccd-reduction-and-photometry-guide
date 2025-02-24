@@ -52,7 +52,7 @@ jobs:
         # python -m pip install jupyter-book==0.12.1
     - name: Cache
       id: cache
-      uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a  # v4.1.2
+      uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f  # v4.2.1
       with:
         path: |
           notebooks/*.fit*.bz
