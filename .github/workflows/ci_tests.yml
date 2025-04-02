@@ -54,7 +54,7 @@ jobs:
     - name: Install base dependencies
       shell: bash -l {0}
       run: |
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils=2 sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
         conda list
         python -m pip install lxml_html_clean
         conda info -e
