@@ -38,7 +38,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup Miniconda
-      uses: conda-incubator/setup-miniconda@d2e6a045a86077fb6cad6f5adf368e9076ddaa8d  # v3.1.0
+      uses: conda-incubator/setup-miniconda@505e6394dae86d6a5c7fbb6e3fb8938e3e863830  # v3.1.1
       with:
         miniforge-version: latest
         use-mamba: true
@@ -81,7 +81,7 @@ jobs:
         jb build .
 
     - name: Upload HTML
-      uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882  # v4.4.3
+      uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1  # v4.6.1
       with:
         name: rendered-book-sha-${{ github.sha }}
         path: |
@@ -100,7 +100,7 @@ jobs:
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
 
       - name: Download artifact
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e  # v4.2.1
         with:
           name: rendered-book-sha-${{ github.sha }}
           path: dev
