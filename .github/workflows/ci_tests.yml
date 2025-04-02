@@ -18,6 +18,10 @@ on:
     branches: # only build on PRs against 'main'
        - main
 
+concurrency:  # Cancel workflow run if a newer commit on the same branch is pushed
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # Github Actions supports ubuntu, windows, and macos virtual environments:
   # https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners
@@ -38,7 +42,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup Miniconda
-      uses: conda-incubator/setup-miniconda@d2e6a045a86077fb6cad6f5adf368e9076ddaa8d  # v3.1.0
+      uses: conda-incubator/setup-miniconda@505e6394dae86d6a5c7fbb6e3fb8938e3e863830  # v3.1.1
       with:
         miniforge-version: latest
         use-mamba: true
@@ -50,7 +54,7 @@ jobs:
     - name: Install base dependencies
       shell: bash -l {0}
       run: |
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils=2 sphinx sphinxcontrib-bibtex jupyter-book=0.13.2
         conda list
         python -m pip install lxml_html_clean
         conda info -e
@@ -61,11 +65,11 @@ jobs:
       uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
       with:
         path: |
-          notebooks/*.fit*.bz
+          notebooks/*.fit*.bz2
           notebooks/example-cryo-LFC
           notebooks/example-thermo-electric
           notebooks/download_data.py
-        key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
+        key: ${{ hashFiles('notebooks/*.fit*.bz2', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
 
     - name: Download data
       if: steps.cache.outputs.cache-hit != 'true'
@@ -74,6 +78,13 @@ jobs:
         cd notebooks
         python download_data.py
 
+
+    - name: list directories
+      shell: bash -l {0}
+      run: |
+        ls -l
+        ls -l notebooks/
+
     - name: Build book
       shell: bash -l {0}
       run: |
@@ -81,7 +92,7 @@ jobs:
         jb build .
 
     - name: Upload HTML
-      uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882  # v4.4.3
+      uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1  # v4.6.1
       with:
         name: rendered-book-sha-${{ github.sha }}
         path: |
@@ -100,7 +111,7 @@ jobs:
           echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
 
       - name: Download artifact
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e  # v4.2.1
         with:
           name: rendered-book-sha-${{ github.sha }}
           path: dev

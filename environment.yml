@@ -19,4 +19,4 @@ dependencies:
 - scikit-image
 - dask
 - ginga
-- photutils >=1
+- photutils >=2.0

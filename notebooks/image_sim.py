@@ -3,9 +3,9 @@ import os
 import numpy as np
 
 from astropy.modeling.models import Gaussian2D, RickerWavelet2D, Const2D
-from photutils.datasets import (make_random_gaussians_table,
-                                make_gaussian_sources_image)
 from photutils.aperture import EllipticalAperture
+from photutils.datasets import make_model_image, make_model_params
+from photutils.psf import CircularGaussianPSF
 
 # To use a seed, set it in the environment. Useful for minimizing changes when
 # publishing the book.
@@ -13,7 +13,7 @@ seed = os.getenv('GUIDE_RANDOM_SEED', None)
 
 if seed is not None:
     seed = int(seed)
-    
+
 default_rng = np.random.default_rng(seed)
 
 
@@ -158,29 +158,15 @@ def stars(image, number, max_counts=10000, gain=1, fwhm=4):
     """
     Add some stars to the image.
     """
-    # Most of the code below is a direct copy/paste from
-    # https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image
+    psf_model = CircularGaussianPSF(fwhm=fwhm)
+    max_counts *= 100  # approx. peak amplitude to flux
+    params = make_model_params(image.shape, n_sources=number,
+                               flux=(max_counts / 10, max_counts),
+                               min_separation=20,
+                               border_size=20, seed=12345)
 
-    flux_range = [max_counts / 10, max_counts]
-
-    y_max, x_max = image.shape
-    xmean_range = [0.1 * x_max, 0.9 * x_max]
-    ymean_range = [0.1 * y_max, 0.9 * y_max]
-    xstddev_range = [fwhm, fwhm]
-    ystddev_range = [fwhm, fwhm]
-    params = dict([('amplitude', flux_range),
-                   ('x_mean', xmean_range),
-                   ('y_mean', ymean_range),
-                   ('x_stddev', xstddev_range),
-                   ('y_stddev', ystddev_range),
-                   ('theta', [0, 2 * np.pi])])
-
-    sources = make_random_gaussians_table(number, params,
-                                          seed=12345)
-
-    star_im = make_gaussian_sources_image(image.shape, sources)
-
-    return star_im
+    return make_model_image(image.shape, psf_model, params,
+                            progress_bar=True)
 
 
 def make_cosmic_rays(image, number, strength=10000):
