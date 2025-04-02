@@ -74,6 +74,13 @@ jobs:
         cd notebooks
         python download_data.py
 
+
+    - name: list directories
+      shell: bash -l {0}
+      run: |
+        ls -l
+        ls -l notebooks/
+
     - name: Build book
       shell: bash -l {0}
       run: |
