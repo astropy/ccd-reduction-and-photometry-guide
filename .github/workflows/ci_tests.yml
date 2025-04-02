@@ -61,11 +61,11 @@ jobs:
       uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
       with:
         path: |
-          notebooks/*.fit*.bz
+          notebooks/*.fit*.bz2
           notebooks/example-cryo-LFC
           notebooks/example-thermo-electric
           notebooks/download_data.py
-        key: ${{ hashFiles('notebooks/*.fit*.bz', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
+        key: ${{ hashFiles('notebooks/*.fit*.bz2', 'notebooks/example-cryo-LFC', 'notebooks/example-thermo-electric', 'notebooks/download_data.py') }}
 
     - name: Download data
       if: steps.cache.outputs.cache-hit != 'true'
