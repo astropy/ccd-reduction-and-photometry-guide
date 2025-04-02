@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -635,7 +637,7 @@ title="Print to PDF"
 <p>Want to try to get all of the processing steps in going from notebooks to book in one place.</p>
 <section id="remove-old-outputs-in-python">
 <h2>Remove old outputs (in python)<a class="headerlink" href="#remove-old-outputs-in-python" title="Permalink to this headline">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">process_for_book</span> <span class="kn">import</span> <span class="n">clean</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">process_for_book</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean</span>
 <span class="n">clean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -670,10 +672,10 @@ python process_for_book.py
 <section id="replace-links-to-notebooks-with-links-to-html">
 <h2>Replace links to notebooks with links to html<a class="headerlink" href="#replace-links-to-notebooks-with-links-to-html" title="Permalink to this headline">#</a></h2>
 <p><strong>Modifies notebooks in the directory with the <em>converted</em> notebooks</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">process_for_book</span> <span class="kn">import</span> <span class="n">replace_links_in_notebook</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">process_for_book</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace_links_in_notebook</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;converted&#39;</span><span class="p">)</span>
 
@@ -696,7 +698,7 @@ python process_for_book.py
 <section id="clean-up-old-review-rounds-on-github-if-any">
 <h2>Clean up old review rounds on GitHub, if any<a class="headerlink" href="#clean-up-old-review-rounds-on-github-if-any" title="Permalink to this headline">#</a></h2>
 <p><strong>Set <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> first</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_github_links</span> <span class="kn">import</span> <span class="n">delete_branches_prs</span><span class="p">,</span> <span class="n">get_github_repo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">add_github_links</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_branches_prs</span><span class="p">,</span> <span class="n">get_github_repo</span>
 <span class="n">repo</span> <span class="o">=</span> <span class="n">get_github_repo</span><span class="p">(</span><span class="s1">&#39;astropy&#39;</span><span class="p">,</span> <span class="s1">&#39;ccd-reduction-and-photometry-guide&#39;</span><span class="p">)</span>
 <span class="c1"># Replace the name review-8e187b6 with the actual name you want</span>
 <span class="c1"># to eliminate, of course.</span>
@@ -715,7 +717,7 @@ the logic in the link-adding code below is a little janky.</p>
 <section id="add-links-for-commenting-on-each-section">
 <h2>Add links for commenting on each section<a class="headerlink" href="#add-links-for-commenting-on-each-section" title="Permalink to this headline">#</a></h2>
 <p><strong>Set <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> first</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_github_links</span> <span class="kn">import</span> <span class="n">commentify_all_notebooks</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">add_github_links</span><span class="w"> </span><span class="kn">import</span> <span class="n">commentify_all_notebooks</span>
 <span class="n">converted_for_book</span> <span class="o">=</span> <span class="s1">&#39;/Users/mattcraig/development/ccd-as-book/content/&#39;</span>
 <span class="n">path_to_original</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
 <span class="n">commentify_all_notebooks</span><span class="p">(</span><span class="n">converted_for_book</span><span class="p">,</span>

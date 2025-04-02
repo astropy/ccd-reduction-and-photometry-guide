@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -696,7 +698,7 @@ finding a dark exposure time close to the time of the image. Disregarding the
 tolerance is useful if the intent is to scale the dark frames anyway.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nearest_dark_exposure</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dark_exposure_times</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_nearest_dark_exposure</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dark_exposure_times</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the nearest exposure time of a dark frame to the exposure time of the image,</span>
 <span class="sd">    raising an error if the difference in exposure time is more than tolerance.</span>
@@ -739,15 +741,15 @@ tolerance is useful if the intent is to scale the dark frames anyway.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">convenience_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_image</span>
 </pre></div>
 </div>
 </div>
@@ -881,7 +883,7 @@ image stretch changed; the lowest pixel values are now around 18000 instead of
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{7.0, 70.001, 70.011}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{np.float64(7.0), np.float64(70.001), np.float64(70.011)}
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1100,12 @@ sec. The flat images have the exposure times listed below:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1.0, 1.02, 1.06, 1.11, 1.16, 1.21}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{np.float64(1.0),
+ np.float64(1.02),
+ np.float64(1.06),
+ np.float64(1.11),
+ np.float64(1.16),
+ np.float64(1.21)}
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1171,7 @@ is the exposure time, so we set that up below.</p>
           [  2.7,   5.9,   9.4, ...,  -1.8,   7.5,   2.7],
           [  0.4,  13.4,   7.4, ...,  -0.7,  12. ,  -3.3],
           [  0.1, -11.7,   3.1, ...,  -0.9,   2.6,   4.5]],
-         dtype=&#39;&gt;f8&#39;, unit=&#39;adu&#39;)}
+         shape=(4096, 4096), dtype=&#39;&gt;f8&#39;, unit=&#39;adu&#39;)}
 </pre></div>
 </div>
 </div>
@@ -1179,7 +1186,11 @@ is the exposure time, so we set that up below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05-03-Calibrating-the-flats_53_0.png" src="../_images/05-03-Calibrating-the-flats_53_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit [astropy.nddata.decorators]
+WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit
+</pre></div>
+</div>
+<img alt="../_images/05-03-Calibrating-the-flats_53_1.png" src="../_images/05-03-Calibrating-the-flats_53_1.png" />
 </div>
 </div>
 <p>There is not much change here; that is not surprising since the dark current in
@@ -1207,6 +1218,14 @@ grabbing the correct combined dark for each flat.</p>
 
     <span class="c1"># Save the result</span>
     <span class="n">ccd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">reduced_path</span> <span class="o">/</span> <span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
+the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
+the RADECSYS keyword is deprecated, use RADESYSa.
 </pre></div>
 </div>
 </div>

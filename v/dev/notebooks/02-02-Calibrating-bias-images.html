@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -726,16 +728,16 @@ effects the reduction step had on that image and then demonstrate how to
 calibrate a folder containing several images of that type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">hist</span>
-<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">hist</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">convenience_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_image</span>
 </pre></div>
 </div>
 </div>
@@ -785,7 +787,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=14</i>
-<table id="table140664133470224" class="table-striped table-bordered table-condensed">
+<table id="table140415493546000" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str2</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>i&apos;</td><td>0.0</td><td>2080</td><td>4128</td></tr>
@@ -813,7 +815,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table140664126233936" class="table-striped table-bordered table-condensed">
+<table id="table140415488859344" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td></tr>
@@ -858,7 +860,7 @@ for the camera you are using.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140664126087824">
+<table id="table140415488686800">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>ccdsec</th><th>datasec</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>str18</th><th>str15</th><th>str15</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>[2049:2080,1:4127]</td><td>[1:2048,1:4128]</td><td>[1:2048,1:4128]</td></tr>
@@ -1014,7 +1016,7 @@ will be the same number of reduced bias images as input bias images (six).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table140664125723664" class="table-striped table-bordered table-condensed">
+<table id="table140415486922384" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>2048</td><td>4128</td></tr>
@@ -1053,7 +1055,7 @@ the calibrated data and create it if it doesn’t exist.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=32</i>
-<table id="table140664120309072" class="table-striped table-bordered table-condensed">
+<table id="table140415488843472" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>filter</th><th>exptime</th><th>naxis1</th><th>naxis2</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>object</th><th>float64</th><th>int64</th><th>int64</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>r</td><td>1.0</td><td>4109</td><td>4096</td></tr>
@@ -1095,7 +1097,7 @@ science region of the chip.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140664141539344">
+<table id="table140415486319248">
 <thead><tr><th>file</th><th>imagetyp</th><th>biassec</th><th>trimsec</th></tr></thead>
 <thead><tr><th>str31</th><th>str5</th><th>str11</th><th>str11</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>[4096:4109]</td><td>[1:4096, :]</td></tr>
@@ -1189,7 +1191,7 @@ your reduced images. The code below does that.</p>
 
 <span class="n">biases</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">files_filtered</span><span class="p">(</span><span class="n">imagetyp</span><span class="o">=</span><span class="s1">&#39;BIAS&#39;</span><span class="p">,</span> <span class="n">include_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 
 <span class="k">for</span> <span class="n">bias</span> <span class="ow">in</span> <span class="n">biases</span><span class="p">:</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="n">calibrated_data</span><span class="p">)</span>

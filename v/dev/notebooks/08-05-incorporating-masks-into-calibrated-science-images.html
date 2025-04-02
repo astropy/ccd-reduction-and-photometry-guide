@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -604,12 +606,12 @@ and there is no particular advantage to introducing it earlier.</p>
 <p>We begin, as usual, with a couple of imports.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
 
-<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +633,7 @@ the masks.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=36</i>
-<table id="table139817635021712" class="table-striped table-bordered table-condensed">
+<table id="table139982453806928" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th></tr></thead>
 <thead><tr><th>str31</th><th>str9</th></tr></thead>
 <tr><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td></tr>
@@ -675,11 +677,11 @@ the masks.</p>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mask_ccdmask</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">mask_ccdmask</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">mask_hot_pix</span> <span class="o">=</span> <span class="n">CCDData</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">ex2_path</span> <span class="o">/</span> <span class="s1">&#39;mask_from_dark_current.fits&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
 
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/nddata/mixins/ndio.py:59,</span> in <span class="ni">NDDataRead.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/nddata/mixins/ndio.py:59,</span> in <span class="ni">NDDataRead.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/io/registry/core.py:200,</span> in <span class="ni">UnifiedInputRegistry.read</span><span class="nt">(self, cls, format, cache, *args, **kwargs)</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/io/registry/core.py:200,</span> in <span class="ni">UnifiedInputRegistry.read</span><span class="nt">(self, cls, format, cache, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="k">try</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="n">ctx</span> <span class="o">=</span> <span class="n">get_readable_fileobj</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span>
@@ -688,24 +690,23 @@ the masks.</p>
 <span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="k">raise</span>
 
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
 <span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
 
-<span class="nn">File /usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/utils/data.py:366,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers, use_fsspec, fsspec_kwargs, close_files)</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span>         <span class="n">name_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>         <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">366</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span>     <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/utils/data.py:365,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers, use_fsspec, fsspec_kwargs, close_files)</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span>         <span class="n">name_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>         <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">363</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">365</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span>     <span class="n">delete_fds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;example2-reduced/mask_from_ccdmask.fits&#39;
 </pre></div>

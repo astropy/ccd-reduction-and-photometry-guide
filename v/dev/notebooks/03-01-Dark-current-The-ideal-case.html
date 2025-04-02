@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -657,13 +659,13 @@ title="Print to PDF"
 <h1><span class="section-number">3.1. </span>Dark current: the ideal case<a class="headerlink" href="#dark-current-the-ideal-case" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<span class="kn">from</span> <span class="nn">image_sim</span> <span class="kn">import</span> <span class="n">dark_current</span><span class="p">,</span> <span class="n">read_noise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">image_sim</span><span class="w"> </span><span class="kn">import</span> <span class="n">dark_current</span><span class="p">,</span> <span class="n">read_noise</span>
 </pre></div>
 </div>
 </div>
@@ -672,19 +674,19 @@ title="Print to PDF"
 <span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">image_sim</span> <span class="kn">import</span> <span class="n">dark_current</span><span class="p">,</span> <span class="n">read_noise</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">image_sim</span><span class="w"> </span><span class="kn">import</span> <span class="n">dark_current</span><span class="p">,</span> <span class="n">read_noise</span>
 
 <span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">image_sim</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">astropy.modeling.models</span> <span class="kn">import</span> <span class="n">Gaussian2D</span><span class="p">,</span> <span class="n">RickerWavelet2D</span><span class="p">,</span> <span class="n">Const2D</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="p">(</span><span class="n">make_random_gaussians_table</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian2D</span><span class="p">,</span> <span class="n">RickerWavelet2D</span><span class="p">,</span> <span class="n">Const2D</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">make_random_gaussians_table</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>                                 <span class="n">make_gaussian_sources_image</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># To use a seed, set it in the environment. Useful for minimizing changes when</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># publishing the book.</span>
 
-<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/photutils/datasets/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -722,7 +724,7 @@ defined below.</p>
 below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_dark_frames</span><span class="p">(</span><span class="n">n_frames</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generate_dark_frames</span><span class="p">(</span><span class="n">n_frames</span><span class="p">,</span> 
                          <span class="n">dark_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
                          <span class="n">noise</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                          <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -746,7 +748,7 @@ below.</p>
 <p>The function below plots the:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dark_with_distributions</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rn</span><span class="p">,</span> <span class="n">dark_rate</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_dark_with_distributions</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rn</span><span class="p">,</span> <span class="n">dark_rate</span><span class="p">,</span> 
                                  <span class="n">n_images</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                  <span class="n">exposure</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                                  <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>

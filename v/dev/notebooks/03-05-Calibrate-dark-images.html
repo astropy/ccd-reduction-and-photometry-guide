@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -680,11 +682,11 @@ exposure time).</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">ccdproc</span> <span class="kn">import</span> <span class="n">ImageFileCollection</span>
-<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageFileCollection</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
 </pre></div>
 </div>
 </div>
@@ -720,7 +722,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=14</i>
-<table id="table140703863379280" class="table-striped table-bordered table-condensed">
+<table id="table139838177572368" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -750,7 +752,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table140703859439952" class="table-striped table-bordered table-condensed">
+<table id="table139838174253200" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -832,7 +834,7 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=16</i>
-<table id="table140704041739536" class="table-striped table-bordered table-condensed">
+<table id="table139838169133904" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -878,93 +880,9 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: show_in_notebook() is deprecated as of 6.1 and to create
-         interactive tables it is recommended to use dedicated tools like:
-         - https://github.com/bloomberg/ipydatagrid
-         - https://docs.bokeh.org/en/latest/docs/user_guide/interaction/widgets.html#datatable
-         - https://dash.plotly.com/datatable [warnings]
-WARNING:astropy:AstropyDeprecationWarning: show_in_notebook() is deprecated as of 6.1 and to create
-         interactive tables it is recommended to use dedicated tools like:
-         - https://github.com/bloomberg/ipydatagrid
-         - https://docs.bokeh.org/en/latest/docs/user_guide/interaction/widgets.html#datatable
-         - https://dash.plotly.com/datatable
-</pre></div>
-</div>
-<div class="output text_html"><i>Table length=32</i>
-<table id="table140703857431120-203430" class="table-striped table-bordered table-condensed">
-<thead><tr><th>idx</th><th>file</th><th>imagetyp</th><th>exposure</th></tr></thead>
-<tr><td>0</td><td>AutoFlat-PANoRot-r-Bin1-001.fit</td><td>FLAT</td><td>1.0</td></tr>
-<tr><td>1</td><td>AutoFlat-PANoRot-r-Bin1-002.fit</td><td>FLAT</td><td>1.0</td></tr>
-<tr><td>2</td><td>AutoFlat-PANoRot-r-Bin1-003.fit</td><td>FLAT</td><td>1.0</td></tr>
-<tr><td>3</td><td>AutoFlat-PANoRot-r-Bin1-004.fit</td><td>FLAT</td><td>1.0</td></tr>
-<tr><td>4</td><td>AutoFlat-PANoRot-r-Bin1-005.fit</td><td>FLAT</td><td>1.0</td></tr>
-<tr><td>5</td><td>AutoFlat-PANoRot-r-Bin1-006.fit</td><td>FLAT</td><td>1.02</td></tr>
-<tr><td>6</td><td>AutoFlat-PANoRot-r-Bin1-007.fit</td><td>FLAT</td><td>1.06</td></tr>
-<tr><td>7</td><td>AutoFlat-PANoRot-r-Bin1-008.fit</td><td>FLAT</td><td>1.11</td></tr>
-<tr><td>8</td><td>AutoFlat-PANoRot-r-Bin1-009.fit</td><td>FLAT</td><td>1.16</td></tr>
-<tr><td>9</td><td>AutoFlat-PANoRot-r-Bin1-010.fit</td><td>FLAT</td><td>1.21</td></tr>
-<tr><td>10</td><td>Bias-S001-R001-C001-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>11</td><td>Bias-S001-R001-C002-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>12</td><td>Bias-S001-R001-C003-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>13</td><td>Bias-S001-R001-C004-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>14</td><td>Bias-S001-R001-C005-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>15</td><td>Bias-S001-R001-C006-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>16</td><td>Bias-S001-R001-C007-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>17</td><td>Bias-S001-R001-C008-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>18</td><td>Bias-S001-R001-C009-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>19</td><td>Bias-S001-R001-C020-NoFilt.fit</td><td>BIAS</td><td>0.0</td></tr>
-<tr><td>20</td><td>Dark-S001-R001-C001-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>21</td><td>Dark-S001-R001-C002-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>22</td><td>Dark-S001-R001-C003-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>23</td><td>Dark-S001-R001-C004-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>24</td><td>Dark-S001-R001-C005-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>25</td><td>Dark-S001-R001-C006-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>26</td><td>Dark-S001-R001-C007-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>27</td><td>Dark-S001-R001-C008-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>28</td><td>Dark-S001-R001-C009-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>29</td><td>Dark-S001-R001-C020-NoFilt.fit</td><td>DARK</td><td>90.0</td></tr>
-<tr><td>30</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>LIGHT</td><td>90.0</td></tr>
-<tr><td>31</td><td>kelt-16-b-S001-R001-C125-r.fit</td><td>LIGHT</td><td>90.0</td></tr>
-</table><style>table.dataTable {clear: both; width: auto !important; margin: 0 !important;}
-.dataTables_info, .dataTables_length, .dataTables_filter, .dataTables_paginate{
-display: inline-block; margin-right: 1em; }
-.paginate_button { margin-right: 5px; }
-</style>
-<script>
-
-var astropy_sort_num = function(a, b) {
-    var a_num = parseFloat(a);
-    var b_num = parseFloat(b);
-
-    if (isNaN(a_num) && isNaN(b_num))
-        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-    else if (!isNaN(a_num) && !isNaN(b_num))
-        return ((a_num < b_num) ? -1 : ((a_num > b_num) ? 1 : 0));
-    else
-        return isNaN(a_num) ? -1 : 1;
-}
-
-require.config({paths: {
-    datatables: 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min'
-}});
-require(["datatables"], function(){
-    console.log("$('#table140703857431120-203430').dataTable()");
-
-jQuery.extend( jQuery.fn.dataTableExt.oSort, {
-    "optionalnum-asc": astropy_sort_num,
-    "optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
-});
-
-    $('#table140703857431120-203430').dataTable({
-        order: [],
-        pageLength: 50,
-        lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
-        pagingType: "full_numbers",
-        columnDefs: [{targets: [0, 3], type: "optionalnum"}]
-    });
-});
-</script>
-</div></div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "37362e7c415b410fb552016166f7c416"}
+</script></div>
 </div>
 <section id="decide-what-steps-to-take-next">
 <h3><span class="section-number">3.4.2.1. </span>Decide what steps to take next<a class="headerlink" href="#decide-what-steps-to-take-next" title="Permalink to this headline">#</a></h3>
@@ -1017,6 +935,12 @@ to errors.</p>
 </section>
 </section>
 </section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"2d2184f6d57240b398c59928ca002310": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "00ebe94ae94c4941b2276dd1b6468155": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "f37a24b1d4594955a23330f3408e1bb2": {"model_name": "TextRendererModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "TextRendererModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "TextRendererView", "background_color": "IPY_MODEL_2d2184f6d57240b398c59928ca002310", "font": "12px sans-serif", "format": null, "format_type": "number", "horizontal_alignment": "left", "missing": "", "text_color": "IPY_MODEL_00ebe94ae94c4941b2276dd1b6468155", "text_elide_direction": "right", "text_value": null, "text_wrap": false, "vertical_alignment": "center"}}, "536fbd0ac0ff4e7089d6aaadfdd8ebbf": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "37362e7c415b410fb552016166f7c416": {"model_name": "DataGridModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_data": {"data": {"key": {"dtype": "int32", "shape": [32], "type": null}, "file": ["AutoFlat-PANoRot-r-Bin1-001.fit", "AutoFlat-PANoRot-r-Bin1-002.fit", "AutoFlat-PANoRot-r-Bin1-003.fit", "AutoFlat-PANoRot-r-Bin1-004.fit", "AutoFlat-PANoRot-r-Bin1-005.fit", "AutoFlat-PANoRot-r-Bin1-006.fit", "AutoFlat-PANoRot-r-Bin1-007.fit", "AutoFlat-PANoRot-r-Bin1-008.fit", "AutoFlat-PANoRot-r-Bin1-009.fit", "AutoFlat-PANoRot-r-Bin1-010.fit", "Bias-S001-R001-C001-NoFilt.fit", "Bias-S001-R001-C002-NoFilt.fit", "Bias-S001-R001-C003-NoFilt.fit", "Bias-S001-R001-C004-NoFilt.fit", "Bias-S001-R001-C005-NoFilt.fit", "Bias-S001-R001-C006-NoFilt.fit", "Bias-S001-R001-C007-NoFilt.fit", "Bias-S001-R001-C008-NoFilt.fit", "Bias-S001-R001-C009-NoFilt.fit", "Bias-S001-R001-C020-NoFilt.fit", "Dark-S001-R001-C001-NoFilt.fit", "Dark-S001-R001-C002-NoFilt.fit", "Dark-S001-R001-C003-NoFilt.fit", "Dark-S001-R001-C004-NoFilt.fit", "Dark-S001-R001-C005-NoFilt.fit", "Dark-S001-R001-C006-NoFilt.fit", "Dark-S001-R001-C007-NoFilt.fit", "Dark-S001-R001-C008-NoFilt.fit", "Dark-S001-R001-C009-NoFilt.fit", "Dark-S001-R001-C020-NoFilt.fit", "kelt-16-b-S001-R001-C084-r.fit", "kelt-16-b-S001-R001-C125-r.fit"], "imagetyp": ["FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "FLAT", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "BIAS", "DARK", "DARK", "DARK", "DARK", "DARK", "DARK", "DARK", "DARK", "DARK", "DARK", "LIGHT", "LIGHT"], "exposure": {"dtype": "float64", "shape": [32], "type": null}, "ipydguuid": {"dtype": "int32", "shape": [32], "type": null}}, "schema": {"fields": [{"name": "key", "type": "integer"}, {"name": "file", "type": "string"}, {"name": "imagetyp", "type": "string"}, {"name": "exposure", "type": "number"}, {"name": "ipydguuid", "type": "integer"}], "primaryKey": ["key", "ipydguuid"], "pandas_version": "1.4.0", "primaryKeyUuid": "ipydguuid"}, "fields": [{"key": "$NaN$"}, {"file": "$NaN$"}, {"imagetyp": "$NaN$"}, {"exposure": "$NaN$"}, {"ipydguuid": "$NaN$"}]}, "_dom_classes": [], "_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "DataGridModel", "_transforms": [], "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "DataGridView", "_visible_rows": [], "auto_fit_columns": false, "auto_fit_params": {"area": "all", "padding": 30, "numCols": null}, "base_column_header_size": 20, "base_column_size": 64, "base_row_header_size": 64, "base_row_size": 20, "column_widths": {}, "corner_renderer": null, "default_renderer": "IPY_MODEL_f37a24b1d4594955a23330f3408e1bb2", "editable": false, "grid_style": {}, "header_renderer": null, "header_visibility": "all", "horizontal_stripes": false, "layout": "IPY_MODEL_536fbd0ac0ff4e7089d6aaadfdd8ebbf", "renderers": {}, "selection_mode": "none", "selections": [], "vertical_stripes": false}, "buffers": [{"data": "AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAA=", "encoding": "base64", "path": ["_data", "data", "key", "value"]}, {"data": "AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwP1K4HoXrUfA/9ihcj8L18D/D9Shcj8LxP4/C9Shcj/I/XI/C9Shc8z8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgFZAAAAAAACAVkAAAAAAAIBWQAAAAAAAgFZAAAAAAACAVkAAAAAAAIBWQAAAAAAAgFZAAAAAAACAVkAAAAAAAIBWQAAAAAAAgFZAAAAAAACAVkAAAAAAAIBWQA==", "encoding": "base64", "path": ["_data", "data", "exposure", "value"]}, {"data": "AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAA=", "encoding": "base64", "path": ["_data", "data", "ipydguuid", "value"]}]}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {

@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
@@ -683,12 +685,12 @@ Python packages needed for that notebook. The lines below set up
 <a class="reference external" href="https://matplotlib.org/">matplotlib</a>, a widely used plotting package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
 </pre></div>
 </div>
 </div>
@@ -733,7 +735,7 @@ at <a class="reference external" href="https://github.com/astropy/ccd-reduction-
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">convenience_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_image</span>
 </pre></div>
 </div>
 </div>
@@ -773,7 +775,7 @@ almost always given in electrons.</p>
 so that it behaves like real noise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_noise</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_noise</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate simulated read noise.</span>
 <span class="sd">    </span>
@@ -838,7 +840,7 @@ bias exposure is a zero-second exposure in which the camera simply reads the
 chip out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bias</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">realistic</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bias</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">realistic</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate simulated bias image.</span>
 <span class="sd">    </span>
@@ -930,7 +932,7 @@ read noise. This is because the number of electrons generated obey a Poisson
 distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dark_current</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">exposure_time</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">hot_pixels</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dark_current</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">exposure_time</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">hot_pixels</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Simulate dark current in a CCD, optionally including hot pixels.</span>
 <span class="sd">    </span>
@@ -1028,7 +1030,7 @@ the function below however, you input the desired number of sky counts.</p>
 effect is not simulated here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sky_background</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sky_counts</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sky_background</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sky_counts</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate sky background, optionally including a gradient across the image (because</span>
 <span class="sd">    some times Moons happen).</span>
@@ -1101,12 +1103,12 @@ read noise and other parameters to see the effect that changing them has on the
 resulting image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">interact</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">interact</span>
 
 <span class="c1"># @interact(bias_level=(1000,1200,10), dark=(0.01,1,0.01), sky_counts=(0, 300, 10),</span>
 <span class="c1">#           gain=(0.5, 3.0, 0.1), read=(0, 50, 2.0),</span>
 <span class="c1">#           exposure=(0, 300, 10))</span>
-<span class="k">def</span> <span class="nf">complete_image</span><span class="p">(</span><span class="n">bias_level</span><span class="o">=</span><span class="mi">1100</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">complete_image</span><span class="p">(</span><span class="n">bias_level</span><span class="o">=</span><span class="mi">1100</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dark</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
                    <span class="n">exposure</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">hot_pixels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sky_counts</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
     <span class="n">synthetic_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
     <span class="n">show_image</span><span class="p">(</span><span class="n">synthetic_image</span> <span class="o">+</span> 
@@ -1140,11 +1142,11 @@ function that does most of the work is from <a class="reference external" href="
 which we’ll return to later for doing photometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stars</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">max_counts</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stars</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">max_counts</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add some stars to the image.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_random_gaussians_table</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_random_gaussians_table</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
     <span class="c1"># Most of the code below is a direct copy/paste from</span>
     <span class="c1"># https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image</span>
     
@@ -1189,16 +1191,16 @@ which we’ll return to later for doing photometry.</p>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Stars only&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stars_only</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="nn">Cell In[19], line 5,</span> in <span class="ni">stars</span><span class="nt">(image, number, max_counts, gain)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">stars</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">max_counts</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">stars</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">max_counts</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd">     Add some stars to the image.</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_random_gaussians_table</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_random_gaussians_table</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># Most of the code below is a direct copy/paste from</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1"># https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">flux_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">max_counts</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_counts</span><span class="p">]</span>
 
-<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/photutils/datasets/__init__.py)
 </pre></div>
 </div>
 </div>

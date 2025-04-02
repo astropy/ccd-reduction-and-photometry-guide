@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -662,9 +664,9 @@ others in affiliated packages.</p>
 <p>Before exploring those, we’ll create a set of (fake) images to work with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
 </pre></div>
 </div>
 </div>
@@ -695,10 +697,10 @@ about this.</p>
 <p>The cells below generate some fake images to use later in the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cycle</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_directory</span><span class="p">)</span>
 
@@ -847,19 +849,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.54487421,  0.76808966,  0.21920845, ..., -0.38031744,
-         1.17510154,  0.14459389],
-       [ 2.37587882, -0.82938666, -0.81597743, ..., -0.06160528,
-        -0.95200455, -0.89961624],
-       [ 0.38413189, -0.66785988,  0.183782  , ...,  1.01122754,
-         1.41196834,  1.64378311],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.54597619, -0.8319092 , -0.05580541, ..., -1.58717328,
+         0.91815385, -1.19841472],
+       [ 0.58571485, -0.32139449,  0.96729697, ...,  1.28094971,
+         1.01112739,  0.60659198],
+       [ 0.56100988,  0.34634597,  1.61416761, ...,  0.24622792,
+         0.53424265,  1.30851472],
        ...,
-       [-0.81612892, -0.82107779,  1.64774695, ..., -1.72105948,
-         1.98838105, -0.12945693],
-       [ 2.42187675, -0.29792489,  1.37400454, ..., -0.72257452,
-        -1.25705913, -0.03888599],
-       [-0.47195421, -0.47891524,  0.19368888, ...,  0.60253057,
-        -0.60459558, -1.11509268]], dtype=&#39;&gt;f8&#39;)
+       [ 0.13560378,  0.72896315,  0.92864643, ...,  1.73584706,
+        -2.02902772, -0.15868215],
+       [ 0.1275009 , -0.08141917,  1.68773962, ...,  1.03399401,
+         0.59889163, -0.12732952],
+       [ 0.20816258,  2.63752538, -1.90662885, ...,  1.08630475,
+        -2.20931904,  0.1038317 ]], shape=(300, 200), dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -909,19 +911,19 @@ BUNIT   = &#39;adu     &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.54487421,  0.76808966,  0.21920845, ..., -0.38031744,
-         1.17510154,  0.14459389],
-       [ 2.37587882, -0.82938666, -0.81597743, ..., -0.06160528,
-        -0.95200455, -0.89961624],
-       [ 0.38413189, -0.66785988,  0.183782  , ...,  1.01122754,
-         1.41196834,  1.64378311],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.54597619, -0.8319092 , -0.05580541, ..., -1.58717328,
+         0.91815385, -1.19841472],
+       [ 0.58571485, -0.32139449,  0.96729697, ...,  1.28094971,
+         1.01112739,  0.60659198],
+       [ 0.56100988,  0.34634597,  1.61416761, ...,  0.24622792,
+         0.53424265,  1.30851472],
        ...,
-       [-0.81612892, -0.82107779,  1.64774695, ..., -1.72105948,
-         1.98838105, -0.12945693],
-       [ 2.42187675, -0.29792489,  1.37400454, ..., -0.72257452,
-        -1.25705913, -0.03888599],
-       [-0.47195421, -0.47891524,  0.19368888, ...,  0.60253057,
-        -0.60459558, -1.11509268]], dtype=&#39;&gt;f8&#39;)
+       [ 0.13560378,  0.72896315,  0.92864643, ...,  1.73584706,
+        -2.02902772, -0.15868215],
+       [ 0.1275009 , -0.08141917,  1.68773962, ...,  1.03399401,
+         0.59889163, -0.12732952],
+       [ 0.20816258,  2.63752538, -1.90662885, ...,  1.08630475,
+        -2.20931904,  0.1038317 ]], shape=(300, 200), dtype=&#39;&gt;f8&#39;)
 </pre></div>
 </div>
 </div>
@@ -938,7 +940,7 @@ to work with collections of images in a directory: an <code class="docutils lite
 the images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ccdproc</span> <span class="kn">import</span> <span class="n">ImageFileCollection</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageFileCollection</span>
 <span class="n">im_collection</span> <span class="o">=</span> <span class="n">ImageFileCollection</span><span class="p">(</span><span class="n">data_directory</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -958,7 +960,7 @@ an astropy <code class="docutils literal notranslate"><span class="pre">Table</s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=28</i>
-<table id="table140359973784208" class="table-striped table-bordered table-condensed">
+<table id="table140121429824336" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>imagetyp</th><th>exposure</th><th>bunit</th><th>filter</th><th>object</th></tr></thead>
 <thead><tr><th>str13</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str5</th><th>float64</th><th>str3</th><th>object</th><th>object</th></tr></thead>
 <tr><td>img-0000.fits</td><td>True</td><td>-64</td><td>2</td><td>200</td><td>300</td><td>BIAS</td><td>0.0</td><td>adu</td><td>--</td><td>--</td></tr>
@@ -1016,11 +1018,11 @@ In addition, you can return the file name while also iterating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  0.9975014488490141
-In file img-0020.fits the exposure is: 30.0 with standard deviation  1.001381120255342
-In file img-0022.fits the exposure is: 30.0 with standard deviation  1.001120887792127
-In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9978417134798288
-In file img-0026.fits the exposure is: 30.0 with standard deviation  0.999453684064105
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In file img-0018.fits the exposure is: 30.0 with standard deviation  1.0034824864985854
+In file img-0020.fits the exposure is: 30.0 with standard deviation  0.9998501460763094
+In file img-0022.fits the exposure is: 30.0 with standard deviation  0.9997193104466444
+In file img-0024.fits the exposure is: 30.0 with standard deviation  0.9974917556217308
+In file img-0026.fits the exposure is: 30.0 with standard deviation  0.9972966839944947
 </pre></div>
 </div>
 </div>

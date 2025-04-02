@@ -1,23 +1,23 @@
 Traceback (most recent call last):
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
     return loop.run_until_complete(coro)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/share/miniconda/envs/test/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/usr/share/miniconda/envs/test/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -26,23 +26,23 @@ show_image(stars_only, cmap='gray', percu=99.9)
 plt.title('Stars only'.format(stars_only), fontsize=20)
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mImportError[0m                               Traceback (most recent call last)
-Cell [0;32mIn[20], line 1[0m
-[0;32m----> 1[0m stars_only [38;5;241m=[39m [43mstars[49m[43m([49m[43msynthetic_image[49m[43m,[49m[43m [49m[38;5;241;43m50[39;49m[43m,[49m[43m [49m[43mmax_counts[49m[38;5;241;43m=[39;49m[38;5;241;43m2000[39;49m[43m)[49m
-[1;32m      2[0m show_image(stars_only, cmap[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgray[39m[38;5;124m'[39m, percu[38;5;241m=[39m[38;5;241m99.9[39m)
-[1;32m      3[0m plt[38;5;241m.[39mtitle([38;5;124m'[39m[38;5;124mStars only[39m[38;5;124m'[39m[38;5;241m.[39mformat(stars_only), fontsize[38;5;241m=[39m[38;5;241m20[39m)
+[31m---------------------------------------------------------------------------[39m
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[20][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m stars_only = [43mstars[49m[43m([49m[43msynthetic_image[49m[43m,[49m[43m [49m[32;43m50[39;49m[43m,[49m[43m [49m[43mmax_counts[49m[43m=[49m[32;43m2000[39;49m[43m)[49m
+[32m      2[39m show_image(stars_only, cmap=[33m'[39m[33mgray[39m[33m'[39m, percu=[32m99.9[39m)
+[32m      3[39m plt.title([33m'[39m[33mStars only[39m[33m'[39m.format(stars_only), fontsize=[32m20[39m)
 
-Cell [0;32mIn[19], line 5[0m, in [0;36mstars[0;34m(image, number, max_counts, gain)[0m
-[1;32m      1[0m [38;5;28;01mdef[39;00m [38;5;21mstars[39m(image, number, max_counts[38;5;241m=[39m[38;5;241m10000[39m, gain[38;5;241m=[39m[38;5;241m1[39m):
-[1;32m      2[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
-[1;32m      3[0m [38;5;124;03m    Add some stars to the image.[39;00m
-[1;32m      4[0m [38;5;124;03m    """[39;00m
-[0;32m----> 5[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mphotutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m make_random_gaussians_table, make_gaussian_sources_image
-[1;32m      6[0m     [38;5;66;03m# Most of the code below is a direct copy/paste from[39;00m
-[1;32m      7[0m     [38;5;66;03m# https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image[39;00m
-[1;32m      9[0m     flux_range [38;5;241m=[39m [max_counts[38;5;241m/[39m[38;5;241m10[39m, max_counts]
+[36mCell[39m[36m [39m[32mIn[19][39m[32m, line 5[39m, in [36mstars[39m[34m(image, number, max_counts, gain)[39m
+[32m      1[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mstars[39m(image, number, max_counts=[32m10000[39m, gain=[32m1[39m):
+[32m      2[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m      3[39m [33;03m    Add some stars to the image.[39;00m
+[32m      4[39m [33;03m    """[39;00m
+[32m----> [39m[32m5[39m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mphotutils[39;00m[34;01m.[39;00m[34;01mdatasets[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m make_random_gaussians_table, make_gaussian_sources_image
+[32m      6[39m     [38;5;66;03m# Most of the code below is a direct copy/paste from[39;00m
+[32m      7[39m     [38;5;66;03m# https://photutils.readthedocs.io/en/stable/_modules/photutils/datasets/make.html#make_100gaussians_image[39;00m
+[32m      9[39m     flux_range = [max_counts/[32m10[39m, max_counts]
 
-[0;31mImportError[0m: cannot import name 'make_random_gaussians_table' from 'photutils.datasets' (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
-ImportError: cannot import name 'make_random_gaussians_table' from 'photutils.datasets' (/usr/share/miniconda/envs/test/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+[31mImportError[39m: cannot import name 'make_random_gaussians_table' from 'photutils.datasets' (/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/photutils/datasets/__init__.py)
+ImportError: cannot import name 'make_random_gaussians_table' from 'photutils.datasets' (/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/photutils/datasets/__init__.py)
 

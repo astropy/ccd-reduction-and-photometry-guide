@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -597,15 +599,15 @@ title="Print to PDF"
 <h1><span class="section-number">5.1. </span>Two science image calibration examples<a class="headerlink" href="#two-science-image-calibration-examples" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="kn">import</span> <span class="nn">ccdproc</span> <span class="k">as</span> <span class="nn">ccdp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
 
-<span class="kn">from</span> <span class="nn">convenience_functions</span> <span class="kn">import</span> <span class="n">show_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">convenience_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_image</span>
 </pre></div>
 </div>
 </div>
@@ -630,7 +632,7 @@ calibration of the science images:</p>
 <p>This notebook will do each of these in separate sections below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nearest_dark_exposure</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dark_exposure_times</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_nearest_dark_exposure</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dark_exposure_times</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the nearest exposure time of a dark frame to the exposure time of the image,</span>
 <span class="sd">    raising an error if the difference in exposure time is more than tolerance.</span>
@@ -707,7 +709,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139920821014224" class="table-striped table-bordered table-condensed">
+<table id="table140697328893648" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str14</th><th>str7</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-16</td><td>ccd.037.0.fits</td><td>vv124_1</td><td>g&apos;</td><td>300.062</td></tr>
@@ -724,7 +726,7 @@ images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table139920820947344" class="table-striped table-bordered table-condensed">
+<table id="table140697329072528" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>object</th><th>filter</th><th>exptime</th></tr></thead>
 <thead><tr><th>str10</th><th>str27</th><th>str9</th><th>str6</th><th>str2</th><th>float64</th></tr></thead>
 <tr><td>2016-01-15</td><td>combined_bias.fit</td><td>BIAS</td><td>bias</td><td>i&apos;</td><td>0.0</td></tr>
@@ -794,11 +796,11 @@ stage. Identification of cosmic rays will be discussed in <a class="reference in
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/units/quantity.py:671: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/units/quantity.py:658: RuntimeWarning: divide by zero encountered in divide
   result = super().__array_ufunc__(function, method, *arrays, **kwargs)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/astropy/nddata/nduncertainty.py:881: RuntimeWarning: invalid value encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/nddata/nduncertainty.py:881: RuntimeWarning: invalid value encountered in divide
   (left + right + correlation_sign * corr)
 </pre></div>
 </div>
@@ -875,7 +877,7 @@ the science images (there are, unfortunately, no standard names for these).</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=2</i>
-<table id="table139919714486864" class="table-striped table-bordered table-condensed">
+<table id="table140696958064528" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>object</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>object</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T09:00:21</td><td>kelt-16-b-S001-R001-C084-r.fit</td><td>kelt-16b</td><td>r</td><td>90.0</td></tr>
@@ -894,7 +896,7 @@ exposure time.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=3</i>
-<table id="table139919713272080" class="table-striped table-bordered table-condensed">
+<table id="table140696733587664" class="table-striped table-bordered table-condensed">
 <thead><tr><th>date-obs</th><th>file</th><th>imagetyp</th><th>filter</th><th>exposure</th></tr></thead>
 <thead><tr><th>str19</th><th>str31</th><th>str4</th><th>object</th><th>float64</th></tr></thead>
 <tr><td>2018-08-23T11:20:07</td><td>combined_bias.fit</td><td>BIAS</td><td>--</td><td>0.0</td></tr>
