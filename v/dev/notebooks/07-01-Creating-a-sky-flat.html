@@ -610,7 +610,7 @@ must be combined to generate a flat with low noise.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mad_std</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">photutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">source_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">SourceCatalog</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">ccdproc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccdp</span>
 </pre></div>
@@ -751,13 +751,6 @@ value of one is chosen as the common value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">photutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">source_properties</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">detect_threshold</span><span class="p">(</span><span class="n">an_im</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -786,7 +779,7 @@ value of one is chosen as the common value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moo</span> <span class="o">=</span> <span class="n">source_properties</span><span class="p">(</span><span class="n">an_im</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">arf</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moo</span> <span class="o">=</span> <span class="n">SourceCatalog</span><span class="p">(</span><span class="n">an_im</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">arf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

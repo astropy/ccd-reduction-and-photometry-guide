@@ -616,27 +616,6 @@ enough that is not included in this notebook. We load it instead from
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">convenience_functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_image</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">image_sim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">isim</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">ccd</span><span class="o">-</span><span class="n">reduction</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">photometry</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">image_sim</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian2D</span><span class="p">,</span> <span class="n">RickerWavelet2D</span><span class="p">,</span> <span class="n">Const2D</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">make_random_gaussians_table</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>                                 <span class="n">make_gaussian_sources_image</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># To use a seed, set it in the environment. Useful for minimizing changes when</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># publishing the book.</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;make_random_gaussians_table&#39; from &#39;photutils.datasets&#39; (/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/photutils/datasets/__init__.py)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="a-sample-flat-image">
@@ -656,6 +635,9 @@ previous notebook.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_image</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-04-Nonuniform-sensitivity_5_0.png" src="../_images/01-04-Nonuniform-sensitivity_5_0.png" />
 </div>
 </div>
 <p>The “donuts” in the image are dust on elements like filters in the optical path.
@@ -699,6 +681,10 @@ electron/pix/sec, bias level of 1100, and sky background of 20 counts.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "116709e4c8db424ea370fba0c7fc1b67"}
+</script></div>
 </div>
 <p>The individual pieces of the image are assembled below; it is the inclusion of
 the flat that makes this the closest of the simulated images to a realistic
@@ -716,6 +702,9 @@ images.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-04-Nonuniform-sensitivity_13_0.png" src="../_images/01-04-Nonuniform-sensitivity_13_0.png" />
+</div>
 </div>
 <p>Visually, this does not look any different than the final image in the previous
 notebook; the effects of sensitivity variations are typically not evident in raw
@@ -728,9 +717,18 @@ images unless the sky background is large.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/01-04-Nonuniform-sensitivity_15_0.png" src="../_images/01-04-Nonuniform-sensitivity_15_0.png" />
+</div>
 </div>
 </section>
 </section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"260e419624fe4d9c8f2bad2618d019a2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "05c7a80908a44ad6869318904ded513f": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "82aa20cad7654fd0822b6fe1d3e46672": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_260e419624fe4d9c8f2bad2618d019a2", "max": 50.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_05c7a80908a44ad6869318904ded513f", "value": 50.0}}, "8f1a0a16365648c89cfe0daecdfdcdd0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e12dfdd924114b1ba00f75200d2ee8a6": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e5d98a2412cb4c1ab917af6e7ff55d54": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_8f1a0a16365648c89cfe0daecdfdcdd0", "placeholder": "\u200b", "style": "IPY_MODEL_e12dfdd924114b1ba00f75200d2ee8a6", "value": "Add\u2007model\u2007sources:\u2007100%"}}, "c337ca9fe3b04c1ba410fd2132de842e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0c72bfea18d541aaaad2a4cca31afa13": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "79f80e5b742d462781a0a5598497301b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_c337ca9fe3b04c1ba410fd2132de842e", "placeholder": "\u200b", "style": "IPY_MODEL_0c72bfea18d541aaaad2a4cca31afa13", "value": "\u200750/50\u2007[00:00&lt;00:00,\u20072708.76it/s]"}}, "939a91b9e5b748f8b53737b6651116be": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "116709e4c8db424ea370fba0c7fc1b67": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_e5d98a2412cb4c1ab917af6e7ff55d54", "IPY_MODEL_82aa20cad7654fd0822b6fe1d3e46672", "IPY_MODEL_79f80e5b742d462781a0a5598497301b"], "layout": "IPY_MODEL_939a91b9e5b748f8b53737b6651116be"}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
