@@ -1027,6 +1027,20 @@ this example.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">expected_exposure_times</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">90</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">if</span> <span class="n">n_combined_dark</span> <span class="o">&lt;</span> <span class="n">n_dark_expected</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;One or more combined dark is missing. Please re-run the dark notebook.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">elif</span> <span class="n">n_combined_dark</span> <span class="o">&gt;</span> <span class="n">n_dark_expected</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;There are more combined dark frames than expected.&#39;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: One or more combined dark is missing. Please re-run the dark notebook.
+</pre></div>
+</div>
+</div>
 </div>
 <p>First, get one of the flat frames as a <code class="docutils literal notranslate"><span class="pre">CCDData</span></code> object and display it.</p>
 <div class="cell docutils container">
@@ -1036,25 +1050,6 @@ this example.</p>
 <span class="n">show_image</span><span class="p">(</span><span class="n">a_flat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:using the unit adu passed to the FITS reader instead of the unit adu in the FITS file.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
-the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
-WARNING:astropy:FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
-the RADECSYS keyword is deprecated, use RADESYSa.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: meta, unit [astropy.nddata.decorators]
-WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: meta, unit
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: using the unit adu passed to the FITS reader instead of the unit adu in the FITS file. [astropy.nddata.ccddata]
-</pre></div>
-</div>
-<img alt="../_images/05-03-Calibrating-the-flats_37_4.png" src="../_images/05-03-Calibrating-the-flats_37_4.png" />
 </div>
 </div>
 <p>There is a much different pattern of variation across the sensor in this case
@@ -1076,12 +1071,6 @@ trimming is the Python slice <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Single flat frame, overscan trimmed&#39;)
-</pre></div>
-</div>
-<img alt="../_images/05-03-Calibrating-the-flats_40_1.png" src="../_images/05-03-Calibrating-the-flats_40_1.png" />
-</div>
 </div>
 <p>Trimming off the overscan did not make a big difference primarily because the
 overscan region of this camera is not useful. A useful overscan would have had
@@ -1096,16 +1085,6 @@ sec. The flat images have the exposure times listed below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">ifc_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;exptime&#39;</span><span class="p">][</span><span class="n">ifc_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;imagetyp&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;FLAT&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{np.float64(1.0),
- np.float64(1.02),
- np.float64(1.06),
- np.float64(1.11),
- np.float64(1.16),
- np.float64(1.21)}
 </pre></div>
 </div>
 </div>
@@ -1130,13 +1109,6 @@ dark.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Single flat frame, overscan trimmed and bias subtracted&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit [astropy.nddata.decorators]
-WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit
-</pre></div>
-</div>
-<img alt="../_images/05-03-Calibrating-the-flats_46_1.png" src="../_images/05-03-Calibrating-the-flats_46_1.png" />
 </div>
 </div>
 <p>Except for a change in the image scale shown on the color bar there isn’t much
@@ -1163,18 +1135,6 @@ is the exposure time, so we set that up below.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{90.0: CCDData([[  6.8,  49.7,  39.4, ...,   5.6,   6. ,   1.9],
-          [  3. ,  55.3,  33.3, ...,   7.9,  -3.3,   4.6],
-          [ -2.4,  49.5,  36.5, ...,   8.4,   4.5,   8.7],
-          ...,
-          [  2.7,   5.9,   9.4, ...,  -1.8,   7.5,   2.7],
-          [  0.4,  13.4,   7.4, ...,  -0.7,  12. ,  -3.3],
-          [  0.1, -11.7,   3.1, ...,  -0.9,   2.6,   4.5]],
-         shape=(4096, 4096), dtype=&#39;&gt;f8&#39;, unit=&#39;adu&#39;)}
-</pre></div>
-</div>
-</div>
 </div>
 <p>Next, we subtract the dark from the flat and display the result.</p>
 <div class="cell docutils container">
@@ -1184,13 +1144,6 @@ is the exposure time, so we set that up below.</p>
 <span class="n">show_image</span><span class="p">(</span><span class="n">a_flat_reduced</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit [astropy.nddata.decorators]
-WARNING:astropy:The following attributes were set on the data object, but will be ignored by the function: uncertainty, mask, meta, unit
-</pre></div>
-</div>
-<img alt="../_images/05-03-Calibrating-the-flats_53_1.png" src="../_images/05-03-Calibrating-the-flats_53_1.png" />
 </div>
 </div>
 <p>There is not much change here; that is not surprising since the dark current in
@@ -1218,14 +1171,6 @@ grabbing the correct combined dark for each flat.</p>
 
     <span class="c1"># Save the result</span>
     <span class="n">ccd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">reduced_path</span> <span class="o">/</span> <span class="n">file_name</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
-the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
-WARNING:astropy:FITSFixedWarning: RADECSYS= &#39;FK5 &#39; / Equatorial coordinate system 
-the RADECSYS keyword is deprecated, use RADESYSa.
 </pre></div>
 </div>
 </div>

@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/miniconda3/envs/mamba/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+combo_calibs = ifc_reduced.summary[ifc_reduced.summary['combined'].filled(False).astype('bool')]
+combo_calibs['date-obs', 'file', 'imagetyp', 'filter', exposure]
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mKeyError[39m                                  Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[12][39m[32m, line 2[39m
+[32m      1[39m combo_calibs = ifc_reduced.summary[ifc_reduced.summary[[33m'[39m[33mcombined[39m[33m'[39m].filled([38;5;28;01mFalse[39;00m).astype([33m'[39m[33mbool[39m[33m'[39m)]
+[32m----> [39m[32m2[39m [43mcombo_calibs[49m[43m[[49m[33;43m'[39;49m[33;43mdate-obs[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mfile[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mimagetyp[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mfilter[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[43mexposure[49m[43m][49m
+
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:2102[39m, in [36mTable.__getitem__[39m[34m(self, item)[39m
+[32m   2099[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m.Row([38;5;28mself[39m, item.item())
+[32m   2100[39m [38;5;28;01melif[39;00m [38;5;28mself[39m._is_list_or_tuple_of_str(item):
+[32m   2101[39m     out = [38;5;28mself[39m.[34m__class__[39m(
+[32m-> [39m[32m2102[39m         [43m[[49m[38;5;28;43mself[39;49m[43m[[49m[43mx[49m[43m][49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mx[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mitem[49m[43m][49m, copy_indices=[38;5;28mself[39m._copy_indices
+[32m   2103[39m     )
+[32m   2104[39m     out._groups = groups.TableGroups(
+[32m   2105[39m         out, indices=[38;5;28mself[39m.groups._indices, keys=[38;5;28mself[39m.groups._keys
+[32m   2106[39m     )
+[32m   2107[39m     out.meta = [38;5;28mself[39m.meta.copy()  [38;5;66;03m# Shallow copy for meta[39;00m
+
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:2102[39m, in [36m<listcomp>[39m[34m(.0)[39m
+[32m   2099[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m.Row([38;5;28mself[39m, item.item())
+[32m   2100[39m [38;5;28;01melif[39;00m [38;5;28mself[39m._is_list_or_tuple_of_str(item):
+[32m   2101[39m     out = [38;5;28mself[39m.[34m__class__[39m(
+[32m-> [39m[32m2102[39m         [[38;5;28;43mself[39;49m[43m[[49m[43mx[49m[43m][49m [38;5;28;01mfor[39;00m x [38;5;129;01min[39;00m item], copy_indices=[38;5;28mself[39m._copy_indices
+[32m   2103[39m     )
+[32m   2104[39m     out._groups = groups.TableGroups(
+[32m   2105[39m         out, indices=[38;5;28mself[39m.groups._indices, keys=[38;5;28mself[39m.groups._keys
+[32m   2106[39m     )
+[32m   2107[39m     out.meta = [38;5;28mself[39m.meta.copy()  [38;5;66;03m# Shallow copy for meta[39;00m
+
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:2093[39m, in [36mTable.__getitem__[39m[34m(self, item)[39m
+[32m   2091[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m__getitem__[39m([38;5;28mself[39m, item):
+[32m   2092[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(item, [38;5;28mstr[39m):
+[32m-> [39m[32m2093[39m         [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mcolumns[49m[43m[[49m[43mitem[49m[43m][49m
+[32m   2094[39m     [38;5;28;01melif[39;00m [38;5;28misinstance[39m(item, ([38;5;28mint[39m, np.integer)):
+[32m   2095[39m         [38;5;28;01mreturn[39;00m [38;5;28mself[39m.Row([38;5;28mself[39m, item)
+
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:264[39m, in [36mTableColumns.__getitem__[39m[34m(self, item)[39m
+[32m    253[39m [38;5;250m[39m[33;03m"""Get items from a TableColumns object.[39;00m
+[32m    254[39m 
+[32m    255[39m [33;03m::[39;00m
+[32m   (...)[39m[32m    261[39m [33;03m  tc[1:3] # <TableColumns names=('b', 'c')>[39;00m
+[32m    262[39m [33;03m"""[39;00m
+[32m    263[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(item, [38;5;28mstr[39m):
+[32m--> [39m[32m264[39m     [38;5;28;01mreturn[39;00m [43mOrderedDict[49m[43m.[49m[34;43m__getitem__[39;49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mitem[49m[43m)[49m
+[32m    265[39m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(item, ([38;5;28mint[39m, np.integer)):
+[32m    266[39m     [38;5;28;01mreturn[39;00m [38;5;28mlist[39m([38;5;28mself[39m.values())[item]
+
+[31mKeyError[39m: 'filter'
+KeyError: 'filter'
+

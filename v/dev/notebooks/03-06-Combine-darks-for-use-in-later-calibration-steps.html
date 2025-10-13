@@ -877,7 +877,7 @@ only difference is the directory that contains the calibrated bias frames.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{np.float64(90.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set()
 </pre></div>
 </div>
 </div>
@@ -904,14 +904,6 @@ the code from above.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:astropy:splitting each image into 22 chunks to limit memory usage to 350000000.0 bytes.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: splitting each image into 22 chunks to limit memory usage to 350000000.0 bytes. [ccdproc.combiner]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="result-for-example-2">
@@ -930,10 +922,14 @@ image is much clearer in this case.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;10 dark images combined&#39;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 57460.000000 from DATE-OBS&#39;.
 </pre></div>
 </div>
-<img alt="../_images/03-06-Combine-darks-for-use-in-later-calibration-steps_25_1.png" src="../_images/03-06-Combine-darks-for-use-in-later-calibration-steps_25_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;3 dark images combined&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03-06-Combine-darks-for-use-in-later-calibration-steps_25_2.png" src="../_images/03-06-Combine-darks-for-use-in-later-calibration-steps_25_2.png" />
 </div>
 </div>
 </section>
