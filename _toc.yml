@@ -1,74 +1,74 @@
 format: jb-book
 root: notebooks/00-00-Preface.ipynb
-title: Home
+title: Главная
 defaults:
   numbered: true
 chapters:
   - file: notebooks/01-00-Understanding-an-astronomical-CCD-image
-    title: Astronomical Images
+    title: Астрономические изображения
     sections:
     - file: notebooks/01-01-astronomical-CCD-image-components
-      title: Components of astronomical images
+      title: Компоненты астрономических изображений
     - file: notebooks/01-03-Construction-of-an-artificial-but-realistic-image
-      title: An artificial, but realistic, image
+      title: Искусственное, но реалистичное изображение
     - file: notebooks/01-04-Nonuniform-sensitivity
-      title: Non-uniform sensitivity in astronomical detectors
+      title: Неравномерная чувствительность астрономических детекторов
     - file: notebooks/01-05-Calibration-overview
-      title: Calibration overview
+      title: Обзор калибровки
     - file: notebooks/01-06-Image-combination
-      title: Image combination
+      title: Комбинирование изображений
     - file: notebooks/01-08-Overscan
-      title: Overscan
+      title: Зона overscan
     - file: notebooks/01-09-Calibration-choices-you-need-to-make
-      title: Calibration choices to make
+      title: Выбор параметров калибровки
     - file: notebooks/01-11-reading-images
-      title: Reading images
+      title: Чтение изображений
   - file: notebooks/02-00-Handling-overscan-trimming-and-bias-subtraction
-    title: Overscan and bias images
+    title: Overscan и bias изображения
     sections:
     - file: notebooks/02-01-overscan-trimming-and-bias-subtraction-background
-      title: About bias and overscan
+      title: О bias и overscan
     - file: notebooks/02-02-Calibrating-bias-images
-      title: Calibrating bias images
+      title: Калибровка bias изображений
     - file: notebooks/02-04-Combine-bias-images-to-make-master
-      title: Combine bias images to make master bias
+      title: Объединение bias изображений для создания мастер-bias
   - file: notebooks/03-00-Dark-current-and-hot-pixels
-    title: Dark current and dark frames
+    title: Тёмновой ток и кадры темновых снимков
     sections:
     - file: notebooks/03-01-Dark-current-The-ideal-case
-      title: 'Dark current: the ideal case'
+      title: 'Тёмновой ток: идеальный случай'
     - file: notebooks/03-02-Real-dark-current-noise-and-other-artifacts
-      title: 'Real dark current: noise and other artifacts'
+      title: 'Реальный тёмновой ток: шум и другие артефакты'
     - file: notebooks/03-04-Handling-overscan-and-bias-for-dark-frames
-      title: Handling overscan and bias for dark frames
+      title: Обработка overscan и bias для тёмновых кадров
     - file: notebooks/03-05-Calibrate-dark-images
-      title: Calibrate dark images
+      title: Калибровка тёмновых изображений
     - file: notebooks/03-06-Combine-darks-for-use-in-later-calibration-steps
-      title: Combine calibrated dark images for use in later reduction steps
+      title: Объединение калиброванных тёмновых изображений для последующих шагов обработки
   - file: notebooks/05-00-Flat-corrections
-    title: Flat fielding
+    title: Коррекция flat
     sections:
     - file: notebooks/05-01-about-flat-corrections
-      title: Calibrating flat frames
+      title: Калибровка flat кадров
     - file: notebooks/05-03-Calibrating-the-flats
-      title: Calibrating flat frames
+      title: Калибровка flat кадров
     - file: notebooks/05-04-Combining-flats
-      title: Combining flat frames
+      title: Объединение flat кадров
   - file: notebooks/06-00-Reducing-science-images
-    title: Calibrating science images
+    title: Калибровка научных изображений
     sections:
     - file: notebooks/06-03-science-images-calibration-examples
-      title: Two calibration examples
+      title: Два примера калибровки
   - file: notebooks/08-00-Image-masking
-    title: Finding and dealing with bad pixels
+    title: Поиск и обработка дефектных пикселей
     sections:
     - file: notebooks/08-01-Identifying-hot-pixels
-      title: Identifying hot pixels
+      title: Идентификация горячих пикселей
     - file: notebooks/08-02-Creating-a-mask
-      title: Identifying bad pixels with ccdmask
+      title: Идентификация дефектных пикселей с помощью ccdmask
     - file: notebooks/08-03-Cosmic-ray-removal
-      title: Removing cosmic rays
+      title: Удаление космических лучей
     - file: notebooks/08-05-incorporating-masks-into-calibrated-science-images
-      title: Incorporating masks in science images
+      title: Включение масок в научные изображения
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
 #   title: GitHub repository
