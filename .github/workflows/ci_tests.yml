@@ -57,12 +57,10 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge mamba
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex jupyter-book=1
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex "jupyter-book>=1.04,<2"
         conda list
         python -m pip install lxml_html_clean
         conda info -e
-        # python -m pip install jupyter-book==0.12.1
-
     - name: Cache
       id: cache
       uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830  # v4.3.0
