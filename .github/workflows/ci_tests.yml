@@ -57,7 +57,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install -c conda-forge mamba
-        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex "jupyter-book>=1.04,<2"
+        mamba install --quiet -c conda-forge astroquery ccdproc photutils sphinx sphinxcontrib-bibtex "jupyter-book>=1.0.4,<2"
         conda list
         python -m pip install lxml_html_clean
         conda info -e
