@@ -65,10 +65,11 @@ html:
     <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
     <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
     <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
-  google_analytics_id       : ""  # A GA id that can be used to track book views.
+
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
   analytics:
+    google_analytics_id     : ""  # A GA id that can be used to track book views.
 
   comments:
     hypothesis              : false
