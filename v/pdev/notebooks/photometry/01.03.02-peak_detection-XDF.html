@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -570,24 +570,28 @@ document.write(`
 <p>We begin with imports.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLocator</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
-<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.centroids</span><span class="w"> </span><span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -637,27 +641,27 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id  x_peak y_peak  peak_value     x_centroid         y_centroid    
 ---- ------ ------ ----------- ------------------ ------------------
-   1   2525    393  0.13548362 2525.7825499490064 393.88055503239474
-   2   2466    400 0.029366337 2465.7798479347243 398.05573502870715
-   3   2552    459 0.018309232  2553.144113059114  458.5071866239441
-   4   2614    463 0.018226365 2612.9628856780873 463.90212782823716
-   5   2635    471 0.021132588 2635.6120154601685 473.07924452934066
-   6   2635    493  0.08027035 2634.6718726918175  492.2803943395769
-   7   2678    496 0.026410304 2677.4804921300647  496.9715217867422
-   8   2586    507 0.037171733  2585.462527787139  507.3101665735999
-   9   2326    554 0.018130405  2325.528858931348  553.6418835727972
-  10   2616    560 0.021488318  2615.938885064026  559.9740345848103
+   1   2525    393  0.13548362 2525.2638351925307  393.5230142340348
+   2   2466    400 0.029366337 2465.7794876867047  398.0882182348223
+   3   2552    459 0.018309232 2552.3204177968846  458.6844587413049
+   4   2614    463 0.018226365  2613.696821445592  463.5852290435177
+   5   2635    471 0.021132588 2634.9506869966285   470.852313325472
+   6   2635    493  0.08027035  2634.698262120866 492.74156732271086
+   7   2678    496 0.026410304 2678.0084903839647  496.1040600259339
+   8   2586    507 0.037171733   2585.55599627237 507.28929756148386
+   9   2326    554 0.018130405 2325.6087131616714  553.7163829723077
+  10   2616    560 0.021488318 2615.8901508382683  559.9725510423972
  ...    ...    ...         ...                ...                ...
-1024   2836   4662  0.01867783  2828.840372102822  4661.979368247575
-1025   2956   4663 0.030241651   2957.43798265238  4664.380775142155
-1026   2814   4664 0.016782979  2818.781489666815  4662.160254025871
-1027   2452   4711  0.04217213 2449.2187375121634  4711.273878402247
-1028   2631   4712 0.015904581  2630.494634031711  4712.276375599891
-1029   2676   4733 0.014843852 2676.3994552743634  4733.100046176483
-1030   2549   4736 0.015206217 2551.5624408418103  4733.959834146592
-1031   2878   4736  0.03463787 2879.7315243346816  4737.664616308867
-1032   2607   4758 0.019089993  2603.851675357389   4761.25199341925
-1033   2515   4764  0.02098297 2499.6013132419002  4716.863606119463
+1024   2836   4662  0.01867783 2830.3008798451337  4661.935181452578
+1025   2956   4663 0.030241651  2964.252603631164  4674.885767813661
+1026   2814   4664 0.016782979 2819.2817804462084  4662.642078791232
+1027   2452   4711  0.04217213 2447.9707139936795  4711.675663583937
+1028   2631   4712 0.015904581 2630.6709245585253  4712.120264143285
+1029   2676   4733 0.014843852  2676.388570263104  4732.936940615365
+1030   2549   4736 0.015206217 2549.7437365709357 4735.4953896959005
+1031   2878   4736  0.03463787 2878.4600336054477  4736.309990671324
+1032   2607   4758 0.019089993  2604.235506454086   4761.45266752181
+1033   2515   4764  0.02098297  2509.098251214166  4736.424331999257
 Length = 1033 rows
 </pre></div>
 </div>
@@ -682,7 +686,7 @@ Length = 1033 rows
 <span class="c1"># Define the colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
     <span class="c1"># Add minor tickmarks</span>
     <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 
@@ -703,7 +707,7 @@ Length = 1033 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/af42b0504f042afa83b6d10ee688705b5648dce7138be121059a40ccb3f062aa.png" src="../../_images/af42b0504f042afa83b6d10ee688705b5648dce7138be121059a40ccb3f062aa.png" />
+<img alt="../../_images/d7930aa7416f6ab24ccb991dbdc9f7a7eed7a06eabba70615ff956c60381f1fa.png" src="../../_images/d7930aa7416f6ab24ccb991dbdc9f7a7eed7a06eabba70615ff956c60381f1fa.png" />
 </div>
 </div>
 <p>We once again look at region around the large galaxy. A comparison of this approach with the star-finding approaches appears later in this section.</p>
@@ -743,7 +747,7 @@ Length = 1033 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1caa1574b562cc739a437e55b72210efc41e88eaf21dfcad7403bcfecc19f77a.png" src="../../_images/1caa1574b562cc739a437e55b72210efc41e88eaf21dfcad7403bcfecc19f77a.png" />
+<img alt="../../_images/9cf517e4a8e8f3772fb2883dbd1be5b894e6384f0f9c919ffd30ec4fcc96404b.png" src="../../_images/9cf517e4a8e8f3772fb2883dbd1be5b894e6384f0f9c919ffd30ec4fcc96404b.png" />
 </div>
 </div>
 </section>
@@ -810,10 +814,10 @@ find_peaks: 1033 sources
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matching sources found by:
-    All methods: 172
+    All methods: 477
     DAOStarFinder &amp; IRAFStarFinder: 975
-    DAOStarFinder &amp; find_peaks: 191
-    IRAFStarFinder &amp; find_peaks: 213
+    DAOStarFinder &amp; find_peaks: 537
+    IRAFStarFinder &amp; find_peaks: 573
 </pre></div>
 </div>
 </div>
@@ -850,7 +854,7 @@ find_peaks: 1033 sources
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/145ddf78319aab406171c233f6c63dd4c4147db4de8e212232786955524c1ae9.png" src="../../_images/145ddf78319aab406171c233f6c63dd4c4147db4de8e212232786955524c1ae9.png" />
+<img alt="../../_images/d8797e0ca31d856587f7fb9bb78d5da33840c34b2ad41558e196851cfcd8ed7c.png" src="../../_images/d8797e0ca31d856587f7fb9bb78d5da33840c34b2ad41558e196851cfcd8ed7c.png" />
 </div>
 </div>
 <p>This is pretty cluttered, so we once again look at the region around the large galaxy in the image.</p>
@@ -887,7 +891,7 @@ find_peaks: 1033 sources
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/044c376268ea2c19e1bc8a1b6dfae70f9f06b1abdf93dc8c26cb01b577081e3c.png" src="../../_images/044c376268ea2c19e1bc8a1b6dfae70f9f06b1abdf93dc8c26cb01b577081e3c.png" />
+<img alt="../../_images/28dc905f1e31519e9f79f4075f82aa4adfe6f250943a3a0dade025b2ac48b7ce.png" src="../../_images/28dc905f1e31519e9f79f4075f82aa4adfe6f250943a3a0dade025b2ac48b7ce.png" />
 </div>
 </div>
 <p>There is only one actual source in this cutout that was found by one of the star-finding techniques that were not also found by peak finding. Several sources ideintified as separate by star-finding sources in the large galaxy at the center are not actually separate. Peak finding suffers from this too but to a lesser extent.</p>

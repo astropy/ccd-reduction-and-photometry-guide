@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -579,20 +579,26 @@ document.write(`
 <p>The imports for this notebook are in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span><span class="p">,</span> <span class="n">MADStdBackgroundRMS</span>
-<span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_100gaussians_image</span>
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">circular_footprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.background</span><span class="w"> </span><span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span><span class="p">,</span> <span class="n">MADStdBackgroundRMS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_100gaussians_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">circular_footprint</span>
 
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">SqrtStretch</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization.mpl_normalize</span> <span class="kn">import</span> <span class="n">ImageNormalize</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">hist</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqrtStretch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization.mpl_normalize</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">hist</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -628,7 +634,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Simulated image with 100 Gaussian sources&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/ad5acf37e61753f59b1966e97682d74c600feb6cf51c05c326e3baa8157dc5fe.png" src="../../_images/ad5acf37e61753f59b1966e97682d74c600feb6cf51c05c326e3baa8157dc5fe.png" />
+<img alt="../../_images/8466f9e83b441f72ad7470332ab45d3aa183fa02bf663603eace7cc7d55ea0db.png" src="../../_images/8466f9e83b441f72ad7470332ab45d3aa183fa02bf663603eace7cc7d55ea0db.png" />
 </div>
 </div>
 <p>Next we plot a histogram of the pixel values in the image. As suggested at the beginning of this section, the distribution is not symmetric.</p>
@@ -650,7 +656,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7c30ab8238931390f6ff7c99de1b4abd1873a736c53d03e01910692c4decebf6.png" src="../../_images/7c30ab8238931390f6ff7c99de1b4abd1873a736c53d03e01910692c4decebf6.png" />
+<img alt="../../_images/91e49e88031a6968aad82cc02d4bef694d73d0d230fbf3443b6ea3280bba8ed5.png" src="../../_images/91e49e88031a6968aad82cc02d4bef694d73d0d230fbf3443b6ea3280bba8ed5.png" />
 </div>
 </div>
 <p>There are a couple of things to note about this distribution.</p>
@@ -692,7 +698,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/86a5c6d1decd7e3dab060b4878211f1ddff793c4ee1c10d62fd24e63dbbebdb2.png" src="../../_images/86a5c6d1decd7e3dab060b4878211f1ddff793c4ee1c10d62fd24e63dbbebdb2.png" />
+<img alt="../../_images/719efe0167de81208f11fded6bd467af4a8ca3e53df0171081c59da500136cff.png" src="../../_images/719efe0167de81208f11fded6bd467af4a8ca3e53df0171081c59da500136cff.png" />
 </div>
 </div>
 <p>None of the estimates above do a particularly good job of estimating the true background level. They also do not do a great job of estimating the error or noise in that background; the input value was 2, but the value produced by sigma clipping is 5% larger:</p>
@@ -703,7 +709,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.094237385960309
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.094237385993817)
 </pre></div>
 </div>
 </div>
@@ -769,7 +775,7 @@ creates a segmentation image, in which only connected sets of <code class="docut
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/57da80f914f23f58ef292845a46b9a89109dbe7659a86c8b5f8ee9b37e6156b6.png" src="../../_images/57da80f914f23f58ef292845a46b9a89109dbe7659a86c8b5f8ee9b37e6156b6.png" />
+<img alt="../../_images/ddd3f65e43dfeea83181ffdb7f118c576828e0099ade8aa69afe41f40a1dbfb9.png" src="../../_images/ddd3f65e43dfeea83181ffdb7f118c576828e0099ade8aa69afe41f40a1dbfb9.png" />
 </div>
 </div>
 </section>
@@ -808,7 +814,7 @@ creates a segmentation image, in which only connected sets of <code class="docut
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cf1d33b50cadca6b3e2c9066f9f74dc04d6d3e66269835fae8588be98734e60a.png" src="../../_images/cf1d33b50cadca6b3e2c9066f9f74dc04d6d3e66269835fae8588be98734e60a.png" />
+<img alt="../../_images/e6bd082a4e1fe37c7cd04ad54602c688059404309d433ed51ab60b9db509e1ef.png" src="../../_images/e6bd082a4e1fe37c7cd04ad54602c688059404309d433ed51ab60b9db509e1ef.png" />
 </div>
 </div>
 </section>
@@ -866,7 +872,7 @@ creates a segmentation image, in which only connected sets of <code class="docut
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/694a2cf55227bf5488a3c6d500dce0b6e077da834b38405c349f268ff8b6e1f5.png" src="../../_images/694a2cf55227bf5488a3c6d500dce0b6e077da834b38405c349f268ff8b6e1f5.png" />
+<img alt="../../_images/1fa27e1a77214794774f8df98a3bff8db27ed1db8eb03589e4fed6988e45622d.png" src="../../_images/1fa27e1a77214794774f8df98a3bff8db27ed1db8eb03589e4fed6988e45622d.png" />
 </div>
 </div>
 </section>
@@ -884,7 +890,7 @@ creates a segmentation image, in which only connected sets of <code class="docut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 0.007930618914160865, Median: -0.036326299505641924, Standard deviation: 2.115990478902112
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 0.007930618956872013, Median: -0.03632630035915119, Standard deviation: 2.1159904789280395
 </pre></div>
 </div>
 </div>
@@ -905,7 +911,7 @@ creates a segmentation image, in which only connected sets of <code class="docut
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Background subtracted data&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/5e45b76f28993c29d433e4a0ad6ba5c2731254274f9d719fb6e30b28c1dafac0.png" src="../../_images/5e45b76f28993c29d433e4a0ad6ba5c2731254274f9d719fb6e30b28c1dafac0.png" />
+<img alt="../../_images/8de16d97b47b77263184ce47cedfe413f4c8814f9a6c6e519cdfb469d22a0e39.png" src="../../_images/8de16d97b47b77263184ce47cedfe413f4c8814f9a6c6e519cdfb469d22a0e39.png" />
 </div>
 </div>
 </section>

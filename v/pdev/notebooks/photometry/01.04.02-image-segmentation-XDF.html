@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -572,28 +572,32 @@ document.write(`
 <p><em>The original authors of this notebook were Lauren Chambers, Erik Tollerud and Tom Wilson.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.convolution</span><span class="w"> </span><span class="kn">import</span> <span class="n">convolve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLocator</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
-<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">make_random_cmap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.centroids</span><span class="w"> </span><span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_random_cmap</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -699,7 +703,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Segmentation Map&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/42ef9a0a21cfb0af6ee50da7c56046c4a0bd9a11cbf565f03a7ed572b7a11828.png" src="../../_images/42ef9a0a21cfb0af6ee50da7c56046c4a0bd9a11cbf565f03a7ed572b7a11828.png" />
+<img alt="../../_images/e77015e4ff0dc2d1dca2de42731ff433efd4a52e9cbca7dc000dd35f73f881d7.png" src="../../_images/e77015e4ff0dc2d1dca2de42731ff433efd4a52e9cbca7dc000dd35f73f881d7.png" />
 </div>
 </div>
 <p>Compare the sources in original data to those in the segmentation image. Each color in the segmentation map denotes a separate source.</p>
@@ -785,7 +789,7 @@ Length = 1325 rows
 <span class="c1"># Define the colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
     <span class="c1"># Add minor tickmarks</span>
     <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 
@@ -806,7 +810,7 @@ Length = 1325 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cc002dc18d8c362b35b4d797e5d118ac0d76c9d5206b372c9effe56753c7b3f9.png" src="../../_images/cc002dc18d8c362b35b4d797e5d118ac0d76c9d5206b372c9effe56753c7b3f9.png" />
+<img alt="../../_images/6c8d22a0841139633b70f4c64aa98d97b7ee346a5b805f82fbe7b5343609bc87.png" src="../../_images/6c8d22a0841139633b70f4c64aa98d97b7ee346a5b805f82fbe7b5343609bc87.png" />
 </div>
 </div>
 </section>
@@ -881,7 +885,7 @@ Length = 1325 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3f5594815be9b8088c6bc71d2c5f8ac8202eb757327d101252097148cc67ffcf.png" src="../../_images/3f5594815be9b8088c6bc71d2c5f8ac8202eb757327d101252097148cc67ffcf.png" />
+<img alt="../../_images/c98328ca43a6450a176072fc9a2bc4128349e97c30bef0d5f11bf34cf3710dc5.png" src="../../_images/c98328ca43a6450a176072fc9a2bc4128349e97c30bef0d5f11bf34cf3710dc5.png" />
 </div>
 </div>
 <p>Star finding finds almost all of the point-like sources in these cutouts, but also identifies many sources in each extended object. Peak finding misses many of the star-like objects and sometimes assigns multiple objects to a single extended source. Image segmentation identifies extended sources as single objects but misses most of the small star-like objects. Adjusting the image segmentation parameters to allow smaller sources would improve detection of those objects.</p>
@@ -933,7 +937,7 @@ Length = 1325 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e39faeacc2c01119dc08dd6cf0c742c98526003aae3c30d464b800d9441293cc.png" src="../../_images/e39faeacc2c01119dc08dd6cf0c742c98526003aae3c30d464b800d9441293cc.png" />
+<img alt="../../_images/31e023f5ddd98306d1fe1b5390c02db044f789ffa0304ef9588f387c7220dafa.png" src="../../_images/31e023f5ddd98306d1fe1b5390c02db044f789ffa0304ef9588f387c7220dafa.png" />
 </div>
 </div>
 </section>

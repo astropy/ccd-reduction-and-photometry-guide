@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -569,27 +569,32 @@ document.write(`
 <p>As we will see shortly, image segmentation doesn’t significantly improve source detection in this case, since all of the sources are stars.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span><span class="p">,</span> <span class="n">AsymmetricPercentileInterval</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.convolution</span><span class="w"> </span><span class="kn">import</span> <span class="n">convolve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">AsymmetricPercentileInterval</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLocator</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">EllipticalAperture</span>
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
-<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.background</span><span class="w"> </span><span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.centroids</span><span class="w"> </span><span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -700,7 +705,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Segmentation Map&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/a9fd791f511e9f17f49c3950951b99ff5b415b2c653e1d0dfdca3b06a6d83da6.png" src="../../_images/a9fd791f511e9f17f49c3950951b99ff5b415b2c653e1d0dfdca3b06a6d83da6.png" />
+<img alt="../../_images/1a17c1ae6449278764248b076f272103ac5d282e12711ae03c9b37a28f200ee3.png" src="../../_images/1a17c1ae6449278764248b076f272103ac5d282e12711ae03c9b37a28f200ee3.png" />
 </div>
 </div>
 <p>As in the previous notebook, we construct a <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SourceCatalog.html#photutils.segmentation.SourceCatalog">SourceCatalog</a> to obtain more information about the sources detected by segmentation.</p>
@@ -749,7 +754,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 <span class="c1"># Define the colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
     <span class="c1"># Add minor tickmarks</span>
     <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 
@@ -770,7 +775,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3578878d27f5d077290ef4f0fbccf18730fbe3e89a9f203350b910790b722f23.png" src="../../_images/3578878d27f5d077290ef4f0fbccf18730fbe3e89a9f203350b910790b722f23.png" />
+<img alt="../../_images/f137773bd8d729f5237eb7dab7f49e29b2d10806a039aefea3426e101eebcbaa.png" src="../../_images/f137773bd8d729f5237eb7dab7f49e29b2d10806a039aefea3426e101eebcbaa.png" />
 </div>
 </div>
 </section>
@@ -835,7 +840,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4c66ea638570135b2bfa9a12be1d145379aa7a138790f6e590361220794148de.png" src="../../_images/4c66ea638570135b2bfa9a12be1d145379aa7a138790f6e590361220794148de.png" />
+<img alt="../../_images/76ca5b9d3f3f9ec130faa52ac485c729883a746b2baa4e2a582082379efb6077.png" src="../../_images/76ca5b9d3f3f9ec130faa52ac485c729883a746b2baa4e2a582082379efb6077.png" />
 </div>
 </div>
 </section>

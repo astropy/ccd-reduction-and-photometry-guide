@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -542,7 +542,7 @@ document.write(`
 <p>Want to try to get all of the processing steps in going from notebooks to book in one place.</p>
 <section id="remove-old-outputs-in-python">
 <h2>Remove old outputs (in python)<a class="headerlink" href="#remove-old-outputs-in-python" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">process_for_book</span> <span class="kn">import</span> <span class="n">clean</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">process_for_book</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean</span>
 <span class="n">clean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -577,10 +577,10 @@ python process_for_book.py
 <section id="replace-links-to-notebooks-with-links-to-html">
 <h2>Replace links to notebooks with links to html<a class="headerlink" href="#replace-links-to-notebooks-with-links-to-html" title="Link to this heading">#</a></h2>
 <p><strong>Modifies notebooks in the directory with the <em>converted</em> notebooks</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">process_for_book</span> <span class="kn">import</span> <span class="n">replace_links_in_notebook</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">process_for_book</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace_links_in_notebook</span>
 
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;converted&#39;</span><span class="p">)</span>
 
@@ -603,7 +603,7 @@ python process_for_book.py
 <section id="clean-up-old-review-rounds-on-github-if-any">
 <h2>Clean up old review rounds on GitHub, if any<a class="headerlink" href="#clean-up-old-review-rounds-on-github-if-any" title="Link to this heading">#</a></h2>
 <p><strong>Set <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> first</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_github_links</span> <span class="kn">import</span> <span class="n">delete_branches_prs</span><span class="p">,</span> <span class="n">get_github_repo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">add_github_links</span><span class="w"> </span><span class="kn">import</span> <span class="n">delete_branches_prs</span><span class="p">,</span> <span class="n">get_github_repo</span>
 <span class="n">repo</span> <span class="o">=</span> <span class="n">get_github_repo</span><span class="p">(</span><span class="s1">&#39;astropy&#39;</span><span class="p">,</span> <span class="s1">&#39;ccd-reduction-and-photometry-guide&#39;</span><span class="p">)</span>
 <span class="c1"># Replace the name review-8e187b6 with the actual name you want</span>
 <span class="c1"># to eliminate, of course.</span>
@@ -622,7 +622,7 @@ the logic in the link-adding code below is a little janky.</p>
 <section id="add-links-for-commenting-on-each-section">
 <h2>Add links for commenting on each section<a class="headerlink" href="#add-links-for-commenting-on-each-section" title="Link to this heading">#</a></h2>
 <p><strong>Set <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> first</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_github_links</span> <span class="kn">import</span> <span class="n">commentify_all_notebooks</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">add_github_links</span><span class="w"> </span><span class="kn">import</span> <span class="n">commentify_all_notebooks</span>
 <span class="n">converted_for_book</span> <span class="o">=</span> <span class="s1">&#39;/Users/mattcraig/development/ccd-as-book/content/&#39;</span>
 <span class="n">path_to_original</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
 <span class="n">commentify_all_notebooks</span><span class="p">(</span><span class="n">converted_for_book</span><span class="p">,</span>

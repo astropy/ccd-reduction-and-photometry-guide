@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -571,24 +571,26 @@ document.write(`
 <p>As we will see in a moment, <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> does a good job identifying most of the sources in the image, since all of the sources are stars.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">gaussian_sigma_to_fwhm</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">QTable</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">simple_norm</span><span class="p">,</span> <span class="n">SqrtStretch</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization.mpl_normalize</span> <span class="kn">import</span> <span class="n">AsymmetricPercentileInterval</span><span class="p">,</span> <span class="n">ImageNormalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization.mpl_normalize</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsymmetricPercentileInterval</span><span class="p">,</span> <span class="n">ImageNormalize</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">CircularAperture</span><span class="p">,</span> <span class="n">EllipticalAperture</span>
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
-<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
-<span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_100gaussians_image</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.background</span><span class="w"> </span><span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.centroids</span><span class="w"> </span><span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -639,29 +641,29 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id x_peak y_peak     peak_value         x_centroid         y_centroid    
---- ------ ------ ------------------ ------------------ ------------------
-  1    594      9  75.48432203308093  589.0952756642187  8.118290769552006
-  2      0     11 1198758.7748060143   8.77598977676826 12.176195213387953
-  3    351     11 246.65855271165825 353.70687383993516  7.443245887904401
-  4   2437     19 145.94909280988685  2436.400192873056  19.06115030572174
-  5    114     25  75.18232329013745 112.02970821066799  28.48959187723852
-  6    820     58 287.01603957515306  820.2761073463196 57.617455777410086
-  7   2950     83 136.11548539236028  2938.301322736696  82.35932871516538
-  8   3582     91 13919.254779455989 3581.7150437134924  91.02785627934037
-  9      0     97 407317.19684704806  7.252263374091754 101.53312061481788
- 10   1066    103 398.52729216961643   1068.65832037505 124.94316408227596
-...    ...    ...                ...                ...                ...
-543    674   4023 240.61123785548745  672.8391203918304 4024.0354373236714
-544      0   4029 176856.29746557667  8.696875311378543  4029.007264941508
-545    905   4038  77.64652344995051  912.1633119304082   3971.38481059316
-546   2093   4049 170.61674009204864 2091.7194224694895 4050.0541157416196
-547   1640   4056 198.92298484050536  1640.011594256438 4055.5841322456877
-548      0   4060 1242276.4335966578   7.61684134636393  4069.146720573554
-549   2214   4071  78.92570788169812  2210.933634915861  4074.336715526592
-550    623   4073 155.93380587902922  622.7529605095823 4074.5111686743962
-551      0   4079  401068.7122964189  4.013596319533449  4084.810795390543
-552   3994   4080  74.31587924706832  3990.967572055417  4082.849626388253
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id x_peak y_peak   peak_value        x_centroid           y_centroid    
+--- ------ ------ ------------- --------------------- -------------------
+  1    594      9     75.484314     603.3703872401995 -49.574109694658816
+  2      0     11 1.1987588e+06   -138.81731672630772   43.45733947806261
+  3    351     11     246.65854    351.35681571228605  11.195530916361045
+  4   2437     19     145.94908     2436.787838335382  18.997759494071353
+  5    114     25      75.18233    113.54243542523396  26.724869786122554
+  6    820     58     287.01605     820.2714101000864   57.61873898452343
+  7   2950     83     136.11548     2944.737283463667    84.3801659191927
+  8   3582     91     13919.255    3581.7095598877872   91.03616705939224
+  9      0     97      407317.2     680.8898185712477   675.8954457901926
+ 10   1066    103     398.52728    1054.6981876617374   80.43008655935569
+...    ...    ...           ...                   ...                 ...
+543    674   4023     240.61124     672.8288347709151  4024.0451993829365
+544      0   4029      176856.3     3550.346826110882    9130.63407583919
+545    905   4038      77.64653     865.4867169098237  4020.5455655186383
+546   2093   4049     170.61674    2092.3829693205507  4049.6421876307954
+547   1640   4056     198.92299    1640.0074527423876   4055.604347909178
+548      0   4060 1.2422764e+06 -0.011927489313353051  4060.1534315514295
+549   2214   4071     78.925705    2212.4367632453677  4072.6693006756855
+550    623   4073      155.9338      622.893406969961  4073.8168815566223
+551      0   4079     401068.72 -0.019912592828290627  4076.5176931361716
+552   3994   4080      74.31587    3992.0851518324234    4081.83552062658
 Length = 552 rows
 </pre></div>
 </div>
@@ -689,7 +691,7 @@ Length = 552 rows
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;find_peaks, no masking&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/723909bd23a5e2f68d69155b2b5780b5536fa70bd64ccc79c3458f5d23a6aab1.png" src="../../_images/723909bd23a5e2f68d69155b2b5780b5536fa70bd64ccc79c3458f5d23a6aab1.png" />
+<img alt="../../_images/4132f0052f3a31618f17817acec45184f065a5605f8230fac75f8b519b7d18d1.png" src="../../_images/4132f0052f3a31618f17817acec45184f065a5605f8230fac75f8b519b7d18d1.png" />
 </div>
 </div>
 <section id="mask-bad-regions-of-the-cccd">
@@ -729,7 +731,7 @@ Length = 552 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/08084d196be706a9d7e767b3dc7850c636ce62dd47d932736b6a9ed3c257ca12.png" src="../../_images/08084d196be706a9d7e767b3dc7850c636ce62dd47d932736b6a9ed3c257ca12.png" />
+<img alt="../../_images/82b47ccb64fe08abf5fcfafb1c378fb35eb7b0d7688a839bf94654045815005e.png" src="../../_images/82b47ccb64fe08abf5fcfafb1c378fb35eb7b0d7688a839bf94654045815005e.png" />
 </div>
 </div>
 <p>This looks quite a bit more reasonable.</p>
@@ -787,7 +789,7 @@ find_peaks: 389 sources
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/49494be3e017e8bc427e01c9245c0e407a887db8b95472048df134cbba07b875.png" src="../../_images/49494be3e017e8bc427e01c9245c0e407a887db8b95472048df134cbba07b875.png" />
+<img alt="../../_images/e71e1820ffdf039816c5e81ca79245d2927577d91f1d16a4b6a9d6340551e45a.png" src="../../_images/e71e1820ffdf039816c5e81ca79245d2927577d91f1d16a4b6a9d6340551e45a.png" />
 </div>
 </div>
 </section>

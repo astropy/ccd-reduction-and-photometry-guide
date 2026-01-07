@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -577,21 +577,25 @@ document.write(`
 <p>First, let’s import packages that we will use to perform arithmetic functions and visualize data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span><span class="p">,</span> <span class="n">AsymmetricPercentileInterval</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">AsymmetricPercentileInterval</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">circular_footprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">circular_footprint</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -649,7 +653,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1f90d92061e46088f1b8822511d9c615bb2a0793d58b7466a7ac5583a7784c0b.png" src="../../_images/1f90d92061e46088f1b8822511d9c615bb2a0793d58b7466a7ac5583a7784c0b.png" />
+<img alt="../../_images/dd833f89584768380245c643b2c92207dbd53236809917657f87d1b8d870d906.png" src="../../_images/dd833f89584768380245c643b2c92207dbd53236809917657f87d1b8d870d906.png" />
 </div>
 </div>
 <p>Unlike the XDF image, there are not any large sectregionsions of the image that contain no data. For consistency with the prior example, we create a mask for this image too.</p>
@@ -759,7 +763,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4811b20ecfde4b03a5f5b638b92b05add71004c75dfb7a60eb378d723493c263.png" src="../../_images/4811b20ecfde4b03a5f5b638b92b05add71004c75dfb7a60eb378d723493c263.png" />
+<img alt="../../_images/c86d180d5dd47d80df76e4fb4868a6b11379f0d68d6aab9013e2e99fdf041932.png" src="../../_images/c86d180d5dd47d80df76e4fb4868a6b11379f0d68d6aab9013e2e99fdf041932.png" />
 </div>
 </div>
 <p>The contrast with the previous section that used XDF image is striking. In this case maskng makes no difference because there were no non-data areas to mask. Sigma clipping makes a much larger difference than in the XDF case because of the presence of a number of relatively bright stars in this image.</p>
@@ -805,7 +809,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4e1201180072cda54158f28c20199748766102ed7448b1f8b69685cb3317c6fb.png" src="../../_images/4e1201180072cda54158f28c20199748766102ed7448b1f8b69685cb3317c6fb.png" />
+<img alt="../../_images/6e339491f2999981ec63206416ced95055322c77b5013b7d31d643038c540a25.png" src="../../_images/6e339491f2999981ec63206416ced95055322c77b5013b7d31d643038c540a25.png" />
 </div>
 </div>
 <p>The result here may look surprising at first: background subtraction seems to have made everything much fainter. That is an artifact of using the same image normalization for both images even though the range of their data values is now very different.</p>
@@ -837,7 +841,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ec7155cb19427ebaaa4e18983ec558dbe75b201cd6f32636c2aad25d416f1889.png" src="../../_images/ec7155cb19427ebaaa4e18983ec558dbe75b201cd6f32636c2aad25d416f1889.png" />
+<img alt="../../_images/9980c1d3707d8a24a6a0bffee1dc93ad93aacd591febd6b5d8da5f823caecb9a.png" src="../../_images/9980c1d3707d8a24a6a0bffee1dc93ad93aacd591febd6b5d8da5f823caecb9a.png" />
 </div>
 </div>
 </section>
@@ -848,7 +852,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 <p>Here we expect that the background image will be useful since there is clearly a gradient in the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">photutils.background</span><span class="w"> </span><span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
 </pre></div>
 </div>
 </div>
@@ -884,7 +888,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d4d294ad1a5effb94657335a867ad4bc21fc5952421d54a2ddd5f499f4b2e296.png" src="../../_images/d4d294ad1a5effb94657335a867ad4bc21fc5952421d54a2ddd5f499f4b2e296.png" />
+<img alt="../../_images/70a4b9cf358742c565839ce830e84b2fdc59ef11d477ab6c00fdf607beb855e7.png" src="../../_images/70a4b9cf358742c565839ce830e84b2fdc59ef11d477ab6c00fdf607beb855e7.png" />
 </div>
 </div>
 <p>As expected, the gradient is clearly visible in the background. Next, we subtract that two-dimensional background and look at the result.</p>
@@ -924,7 +928,7 @@ the RADECSYS keyword is deprecated, use RADESYSa. [astropy.wcs.wcs]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/782478fd7ac911e1b0221e85cfea1337c658c5e28d104bbc393a99b3c7a9d6d8.png" src="../../_images/782478fd7ac911e1b0221e85cfea1337c658c5e28d104bbc393a99b3c7a9d6d8.png" />
+<img alt="../../_images/645f0a7d9b70ca19a5b10aea4f39956255274952f22e71ea6b6b13726f69bee1.png" src="../../_images/645f0a7d9b70ca19a5b10aea4f39956255274952f22e71ea6b6b13726f69bee1.png" />
 </div>
 </div>
 <p>Note how much more even the 2D background-subtracted image looks; the difference between these two images is especially apparent in the bottom left and top right corners. This makes sense, as the background that <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.Background2D.html#photutils.background.Background2D"><code class="docutils literal notranslate"><span class="pre">Background2D</span></code></a> identified was a gradient from the bottom left corner to the top right corner.</p>

@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -584,21 +584,26 @@ document.write(`
 <p>First, let’s import packages that we will use to perform arithmetic functions and visualize data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLocator</span>
 
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">circular_footprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_threshold</span><span class="p">,</span> <span class="n">detect_sources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">circular_footprint</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -644,7 +649,7 @@ document.write(`
 <span class="c1"># Define the colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
     <span class="c1"># Add minor tickmarks</span>
     <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 
@@ -664,7 +669,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2d550f31852927b6254d7d1805ef6d8319ca395ff00e11458bcee9fe2ccf4a0e.png" src="../../_images/2d550f31852927b6254d7d1805ef6d8319ca395ff00e11458bcee9fe2ccf4a0e.png" />
+<img alt="../../_images/f64ce1a8d14cf844df75fb54cd912bdd338fee467678d924c99dbec78af71f0b.png" src="../../_images/f64ce1a8d14cf844df75fb54cd912bdd338fee467678d924c99dbec78af71f0b.png" />
 </div>
 </div>
 </section>
@@ -711,7 +716,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7cd7a10ceaa58cb1b1a72fffd7439607e921e3baed0a2ae5a505e0db9dd1eeab.png" src="../../_images/7cd7a10ceaa58cb1b1a72fffd7439607e921e3baed0a2ae5a505e0db9dd1eeab.png" />
+<img alt="../../_images/5a05b427eca53400ec0f9ce502588f83b365460e43b39127a29752682e900b91.png" src="../../_images/5a05b427eca53400ec0f9ce502588f83b365460e43b39127a29752682e900b91.png" />
 </div>
 </div>
 <p>On the left we have plotted this mask, which has a value of 1 (or True) shown in black where the data is bad, and 0 (or False) shown in white where the data is good.</p>
@@ -823,7 +828,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/818235e5859d169f395d9583b134768c835bea471f729e708ecdcd9cd355a989.png" src="../../_images/818235e5859d169f395d9583b134768c835bea471f729e708ecdcd9cd355a989.png" />
+<img alt="../../_images/b81c43f116b9424da08983e314df53e171e6f95bfce75fdbd05f544a1903e600.png" src="../../_images/b81c43f116b9424da08983e314df53e171e6f95bfce75fdbd05f544a1903e600.png" />
 </div>
 </div>
 <p>Masking makes a big difference to the mean in this case because so many of the pixels in the original image contain no data. Sigma clipping also makes some difference, moving the mean value closer to zero. Masking out the sources moves the mean below zero, which is not surprising in this case. The distribution of pixels is clearly near zero, and masking out the sources means removing the largest positive values.</p>
@@ -870,7 +875,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b982d4a06c80349c5fda302a3921988c456351130705a3576d198b0aaf6954ca.png" src="../../_images/b982d4a06c80349c5fda302a3921988c456351130705a3576d198b0aaf6954ca.png" />
+<img alt="../../_images/b0846019e5ce0687e9b71c0d1f07efa6473a4e7f226e9024fe595c9d2663876d.png" src="../../_images/b0846019e5ce0687e9b71c0d1f07efa6473a4e7f226e9024fe595c9d2663876d.png" />
 </div>
 </div>
 <p>Note that both plots above use the same normalization scheme, represented by the colorbar on the right. That is to say, if two pixels have the same color in both arrays, they have the same value.</p>
@@ -891,7 +896,7 @@ document.write(`
 <p>For this example, we will use the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.background.MeanBackground.html#photutils.background.MeanBackground"><code class="docutils literal notranslate"><span class="pre">MeanBackground</span></code></a> estimator. Note though, that there is little or no spatial variation apparent in the background of this image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">photutils.background</span><span class="w"> </span><span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
 </pre></div>
 </div>
 </div>
@@ -933,7 +938,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/069529457ddfc6a437d736d15bf4f8b72c2cbabe70ddfadfeaec9d8592c39071.png" src="../../_images/069529457ddfc6a437d736d15bf4f8b72c2cbabe70ddfadfeaec9d8592c39071.png" />
+<img alt="../../_images/ac808cad5880650261c95e662e4090bad596473c9f86390985923c14d279ed64.png" src="../../_images/ac808cad5880650261c95e662e4090bad596473c9f86390985923c14d279ed64.png" />
 </div>
 </div>
 <p>You might notice that not all areas of the background array have mesh boxes over them (look for those boxes that do not have a <code class="docutils literal notranslate"><span class="pre">+</span></code>). If you compare this background array with the original data, you’ll see that these un-boxed areas contain particularly bright sources, and thus are not being included in the background estimate.</p>
@@ -983,7 +988,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/19695d4adbdb8ef6e5d0a20d13c62c53ea173d629ce72545f88e49d6828849ae.png" src="../../_images/19695d4adbdb8ef6e5d0a20d13c62c53ea173d629ce72545f88e49d6828849ae.png" />
+<img alt="../../_images/0fa8f436d64cc45fa23699d675fdd27e129f2d9c519578af166c25e35d77d325.png" src="../../_images/0fa8f436d64cc45fa23699d675fdd27e129f2d9c519578af166c25e35d77d325.png" />
 </div>
 </div>
 <p>In this case 2D background subtraction was not necessary, as you might expect from an image like the XDF that has already been processed.</p>

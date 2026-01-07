@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -568,25 +568,30 @@ document.write(`
 <p>As usual, we begin with some imports.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">gaussian_sigma_to_fwhm</span>
-<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">QTable</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">simple_norm</span><span class="p">,</span> <span class="n">SqrtStretch</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization.mpl_normalize</span> <span class="kn">import</span> <span class="n">ImageNormalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.convolution</span><span class="w"> </span><span class="kn">import</span> <span class="n">convolve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqrtStretch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization.mpl_normalize</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">CircularAperture</span><span class="p">,</span> <span class="n">EllipticalAperture</span>
-<span class="kn">from</span> <span class="nn">photutils.centroids</span> <span class="kn">import</span> <span class="n">centroid_2dg</span>
-<span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_100gaussians_image</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span><span class="p">,</span> <span class="n">make_noise_image</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
-<span class="kn">from</span> <span class="nn">photutils.segmentation</span> <span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
-<span class="kn">from</span> <span class="nn">photutils.utils</span> <span class="kn">import</span> <span class="n">make_random_cmap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.centroids</span><span class="w"> </span><span class="kn">import</span> <span class="n">centroid_2dg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_100gaussians_image</span><span class="p">,</span> <span class="n">make_noise_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_sources</span><span class="p">,</span> <span class="n">make_2dgaussian_kernel</span><span class="p">,</span> <span class="n">SourceCatalog</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_random_cmap</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -634,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7d6daa6cf466ec3f9b95ee6b6a2567c9e0f3f8cb6839b112c529e31501b9d6a0.png" src="../../_images/7d6daa6cf466ec3f9b95ee6b6a2567c9e0f3f8cb6839b112c529e31501b9d6a0.png" />
+<img alt="../../_images/8e5dcdb451512dd4325189f21f41b7d3ea54117a2876f92994792415421d149b.png" src="../../_images/8e5dcdb451512dd4325189f21f41b7d3ea54117a2876f92994792415421d149b.png" />
 </div>
 </div>
 <p>Now we create a detection image, called <code class="docutils literal notranslate"><span class="pre">detected_image</span></code> below, in which all pixels with value larger than 3 times the standard deviation are set to one, and the rest set to zero. In this example, the detect pixels fall into one of two connected groups, by construction.</p>
@@ -665,7 +670,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8a91c7f003ad630bf7f5012ae786f9845395a9ea862ca206531ceb7f42b67837.png" src="../../_images/8a91c7f003ad630bf7f5012ae786f9845395a9ea862ca206531ceb7f42b67837.png" />
+<img alt="../../_images/c3a4dabf7fd280ea7f6c94577993f04833955e3ba734c9724d51062feb0cfc6e.png" src="../../_images/c3a4dabf7fd280ea7f6c94577993f04833955e3ba734c9724d51062feb0cfc6e.png" />
 </div>
 </div>
 <p>That, in a nutshell, is image segmentation. The implementation is more complicated than what is done above, and the image is typically convolved with a filter before doing the segmentation, but the gist of the method is straightforward.</p>
@@ -771,7 +776,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Segmentation Map&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/c9bc76c60464f9dc9eec12441bd179baf7f8d33bd2030718ebecde2bb808a5d0.png" src="../../_images/c9bc76c60464f9dc9eec12441bd179baf7f8d33bd2030718ebecde2bb808a5d0.png" />
+<img alt="../../_images/0c1cdc81df650e2efec77cb91381809b23a0670bf22bb8febf904158e4bcb2aa.png" src="../../_images/0c1cdc81df650e2efec77cb91381809b23a0670bf22bb8febf904158e4bcb2aa.png" />
 </div>
 </div>
 <p>Much more information about the segmentation sources can be calculated using the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.segmentation.SourceCatalog.html#photutils.segmentation.SourceCatalog">SourceCatalog</a> from <a class="reference external" href="https://photutils.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">photutils</span></code></a>. This object will be discussed in more detail in the next notebook. For now we use it to construct apertures for source in the segmentation image that will be used when we compare image segmentation to the other source detection methods we have discussed.</p>
@@ -868,7 +873,7 @@ segmentation: 83 sources
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a95dff619d591cd3143293325da82b334dc57bbbdd957d3a5d90dfc1ef452a12.png" src="../../_images/a95dff619d591cd3143293325da82b334dc57bbbdd957d3a5d90dfc1ef452a12.png" />
+<img alt="../../_images/57bdb6b674e7d16288f39613ef23bd10ec58cc487568146e14200d25961b56e9.png" src="../../_images/57bdb6b674e7d16288f39613ef23bd10ec58cc487568146e14200d25961b56e9.png" />
 </div>
 </div>
 </section>

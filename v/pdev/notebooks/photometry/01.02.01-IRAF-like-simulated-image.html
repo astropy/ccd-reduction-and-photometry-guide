@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -583,19 +583,25 @@ document.write(`
 <p>As usual, we begin with some imports.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">gaussian_sigma_to_fwhm</span>
-<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">QTable</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">simple_norm</span><span class="p">,</span> <span class="n">SqrtStretch</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization.mpl_normalize</span> <span class="kn">import</span> <span class="n">ImageNormalize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">gaussian_sigma_to_fwhm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqrtStretch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization.mpl_normalize</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.aperture</span> <span class="kn">import</span> <span class="n">CircularAperture</span><span class="p">,</span> <span class="n">EllipticalAperture</span>
-<span class="kn">from</span> <span class="nn">photutils.datasets</span> <span class="kn">import</span> <span class="n">make_100gaussians_image</span><span class="p">,</span> <span class="n">make_gaussian_sources_image</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">find_peaks</span><span class="p">,</span> <span class="n">DAOStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.aperture</span><span class="w"> </span><span class="kn">import</span> <span class="n">CircularAperture</span><span class="p">,</span> <span class="n">EllipticalAperture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_100gaussians_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">DAOStarFinder</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;../photutils_notebook_style.mplstyle&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -613,7 +619,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/55088379b6d44b8320485cbb257c3b9d9281ed4d597b23e461497b4f5d6cb599.png" src="../../_images/55088379b6d44b8320485cbb257c3b9d9281ed4d597b23e461497b4f5d6cb599.png" />
+<img alt="../../_images/3666391dd0844f9971523f04815a7fbb7bf63472edfecdfa2a5f55d9558fbc0e.png" src="../../_images/3666391dd0844f9971523f04815a7fbb7bf63472edfecdfa2a5f55d9558fbc0e.png" />
 </div>
 </div>
 <p>Note that some of these object are star-like – the ones that are darkest are close to circular, for example. Others are very elongated and there are a variety of brightnesses among the objects.</p>
@@ -654,29 +660,29 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id xcentroid ycentroid sharpness roundness1 ... npix sky   peak flux  mag 
---- --------- --------- --------- ---------- ... ---- ---- ----- ---- -----
-  1    493.85      5.95      0.57       0.61 ...   49 0.00 13.20 1.26 -0.25
-  2    364.90     11.11      0.56       0.85 ...   49 0.00 12.64 1.02 -0.03
-  3    441.28     31.09      0.30       0.71 ...   49 0.00 20.52 2.79 -1.11
-  4    358.95     35.16      0.21      -0.00 ...   49 0.00  7.83 1.14 -0.14
-  5    471.35     37.74      0.28      -0.87 ...   49 0.00 13.28 1.55 -0.48
-  6    470.01     38.61      0.23      -0.90 ...   49 0.00 12.85 1.52 -0.46
-  7      1.17     39.91      0.52      -0.33 ...   49 0.00 30.97 4.37 -1.60
-  8    388.51     55.53      0.39       0.93 ...   49 0.00 10.42 1.01 -0.01
-  9     88.64     58.82      0.47       0.55 ...   49 0.00 31.92 4.80 -1.70
- 10    244.71     58.39      0.41       0.18 ...   49 0.00 17.48 1.81 -0.64
-...       ...       ...       ...        ... ...  ...  ...   ...  ...   ...
- 39     10.89    224.11      0.60      -0.63 ...   49 0.00 54.39 7.74 -2.22
- 40    155.95    233.29      0.52       0.54 ...   49 0.00 14.74 1.19 -0.19
- 41    292.63    244.96      0.54      -0.97 ...   49 0.00 38.70 5.13 -1.78
- 42    397.32    246.87      0.41       0.25 ...   49 0.00 18.12 1.94 -0.72
- 43    446.77    247.83      0.50      -0.22 ...   49 0.00 12.19 1.05 -0.05
- 44    355.57    252.12      0.44      -0.58 ...   49 0.00 30.01 3.59 -1.39
- 45     98.08    253.92      0.23       0.02 ...   49 0.00 11.16 1.31 -0.30
- 46    477.97    267.93      0.36       0.12 ...   49 0.00 14.82 1.55 -0.47
- 47    139.81    275.06      0.37      -0.60 ...   49 0.00 21.49 2.25 -0.88
- 48    434.09    288.98      0.50       0.80 ...   49 0.00 26.73 2.85 -1.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id xcentroid ycentroid sharpness ...  peak  flux   mag  daofind_mag
+--- --------- --------- --------- ... ----- ------ ----- -----------
+  1    493.85      5.95      0.57 ... 13.20 312.51 -6.24       -0.25
+  2    364.90     11.11      0.56 ... 12.64 347.53 -6.35       -0.03
+  3    441.28     31.09      0.30 ... 20.52 572.64 -6.89       -1.11
+  4    358.95     35.16      0.21 ...  7.83 247.37 -5.98       -0.14
+  5    471.35     37.74      0.28 ... 13.28 428.37 -6.58       -0.48
+  6    470.01     38.61      0.23 ... 12.85 446.12 -6.62       -0.46
+  7      1.17     39.91      0.52 ... 30.97 492.09 -6.73       -1.60
+  8    388.51     55.53      0.39 ... 10.42 325.38 -6.28       -0.01
+  9     88.64     58.82      0.47 ... 31.92 540.14 -6.83       -1.70
+ 10    244.71     58.39      0.41 ... 17.48 507.23 -6.76       -0.64
+...       ...       ...       ... ...   ...    ...   ...         ...
+ 39     10.89    224.11      0.60 ... 54.39 638.21 -7.01       -2.22
+ 40    155.95    233.29      0.52 ... 14.74 425.97 -6.57       -0.19
+ 41    292.63    244.96      0.54 ... 38.70 662.38 -7.05       -1.78
+ 42    397.32    246.87      0.41 ... 18.12 504.83 -6.76       -0.72
+ 43    446.77    247.83      0.50 ... 12.19 364.52 -6.40       -0.05
+ 44    355.57    252.12      0.44 ... 30.01 704.40 -7.12       -1.39
+ 45     98.08    253.92      0.23 ... 11.16 395.38 -6.49       -0.30
+ 46    477.97    267.93      0.36 ... 14.82 452.27 -6.64       -0.47
+ 47    139.81    275.06      0.37 ... 21.49 624.89 -6.99       -0.88
+ 48    434.09    288.98      0.50 ... 26.73 649.28 -7.03       -1.14
 Length = 48 rows
 </pre></div>
 </div>
@@ -701,7 +707,7 @@ Length = 48 rows
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sources detected by DAOStarFinder&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/cd7ff9c25c1ee84288484b350eba4b73e59abe419330524a5f08ae54612c0f41.png" src="../../_images/cd7ff9c25c1ee84288484b350eba4b73e59abe419330524a5f08ae54612c0f41.png" />
+<img alt="../../_images/c8cc2bec7c7d151c022e8288d91b6b81e1643403769ce4113030b9d2d6019816.png" src="../../_images/c8cc2bec7c7d151c022e8288d91b6b81e1643403769ce4113030b9d2d6019816.png" />
 </div>
 </div>
 <p>It looks like the sources that were detected are those that were not too faint and not too elongaetd.</p>
@@ -755,7 +761,7 @@ Length = 48 rows
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span>
            <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">plot_input_sources</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_input_sources</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         
@@ -792,7 +798,7 @@ Length = 48 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ca02725abfe9d8592a33841f011f79b02f29baa8fadac2aafd23a3769a52dadb.png" src="../../_images/ca02725abfe9d8592a33841f011f79b02f29baa8fadac2aafd23a3769a52dadb.png" />
+<img alt="../../_images/309937ad5fd9b54fe9347b45cf1102ed9996ac7404ec516317b9e95d5cb8dfae.png" src="../../_images/309937ad5fd9b54fe9347b45cf1102ed9996ac7404ec516317b9e95d5cb8dfae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -811,7 +817,7 @@ Length = 48 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3f07e5134c54d5368000dbaf459940739f3e2c302493b876321252f51718c8ca.png" src="../../_images/3f07e5134c54d5368000dbaf459940739f3e2c302493b876321252f51718c8ca.png" />
+<img alt="../../_images/1a5d2849425c9e3190604de92b4a52789b14e6b05abf3fdba88a3a48f985a21a.png" src="../../_images/1a5d2849425c9e3190604de92b4a52789b14e6b05abf3fdba88a3a48f985a21a.png" />
 </div>
 </div>
 <p>From this plot it seems that the sources detected are those that are:</p>
@@ -831,7 +837,7 @@ Length = 48 rows
 <p>The code below begins with a function to do the plotting for this so that we can reuse that code for each plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">detect_sources_and_plot_apertures</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">threshold_factor</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         
@@ -869,7 +875,7 @@ Length = 48 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4a5602d78eb00e27be8cfb4aeca471e0eda21f6484d32b06e458d70a9b7268f0.png" src="../../_images/4a5602d78eb00e27be8cfb4aeca471e0eda21f6484d32b06e458d70a9b7268f0.png" />
+<img alt="../../_images/c5c89fca4c3834b12f18f3dd0f5399ff54b668ec4a82a65f30d2987926587cda.png" src="../../_images/c5c89fca4c3834b12f18f3dd0f5399ff54b668ec4a82a65f30d2987926587cda.png" />
 </div>
 </div>
 <p>The plot on the left shows that lowering the detetion threshold does find more sources, but it also includes erroneous detections. The plot on right demonstrates that we can detect some (but not all) of the highly elongated objects by changing the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> parameter in <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a>. The reason that we don’t pick up more of the elongated sources is that the orientation of the source matters too. The default value for the orientation is zero, i.e. aligned with the horizontal axis.</p>

@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -574,20 +574,22 @@ document.write(`
 <p>First, let’s import packages that we will use to perform arithmetic functions and visualize data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
-<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
-<span class="kn">from</span> <span class="nn">astropy.nddata</span> <span class="kn">import</span> <span class="n">CCDData</span>
-<span class="kn">from</span> <span class="nn">astropy.stats</span> <span class="kn">import</span> <span class="n">sigma_clipped_stats</span><span class="p">,</span> <span class="n">SigmaClip</span>
-<span class="kn">from</span> <span class="nn">astropy.visualization</span> <span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.nddata</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCDData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageNormalize</span><span class="p">,</span> <span class="n">LogStretch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogLocator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">photutils.background</span> <span class="kn">import</span> <span class="n">Background2D</span><span class="p">,</span> <span class="n">MeanBackground</span>
-<span class="kn">from</span> <span class="nn">photutils.detection</span> <span class="kn">import</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">photutils.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">DAOStarFinder</span><span class="p">,</span> <span class="n">IRAFStarFinder</span>
 
 <span class="c1"># Show plots in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/test/lib/python3.11/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
 </div>
@@ -645,7 +647,7 @@ document.write(`
 <span class="c1"># Define the colorbar</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">fitsplot</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">LogLocator</span><span class="p">())</span>
 
-<span class="k">def</span> <span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_colorbar</span><span class="p">(</span><span class="n">bar</span><span class="p">):</span>
     <span class="c1"># Add minor tickmarks</span>
     <span class="n">bar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">LogLocator</span><span class="p">(</span><span class="n">subs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
 
@@ -666,7 +668,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f65e2198d3650d33a95fc116f6a8fd884c0d262c00bff951f1e5cab72b267bd.png" src="../../_images/5f65e2198d3650d33a95fc116f6a8fd884c0d262c00bff951f1e5cab72b267bd.png" />
+<img alt="../../_images/fa25e76c6f0779790cdc55adc82d20b886e2a2bf1a03e999cad90a75ca77939b.png" src="../../_images/fa25e76c6f0779790cdc55adc82d20b886e2a2bf1a03e999cad90a75ca77939b.png" />
 </div>
 </div>
 <p><em>Tip: Double-click on any inline plot to zoom in.</em></p>
@@ -689,6 +691,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sigma_clipped_stats</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sigma_clipped_stats&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, let’s run the <code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code> algorithm on our data and see what it finds.</p>
 <div class="cell docutils container">
@@ -696,34 +708,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daofind</span> <span class="o">=</span> <span class="n">DAOStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">20.</span> <span class="o">*</span> <span class="n">std</span><span class="p">)</span>
 <span class="n">sources_dao</span> <span class="o">=</span> <span class="n">daofind</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sources_dao</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id      xcentroid      ...        flux                 mag         
----- ------------------ ... ------------------ ---------------------
-   1  2466.854970610095 ... 1.0288840532302856  -0.03091609026012894
-   2 2509.7383250920184 ... 1.5627723932266235    -0.484739326743976
-   3   2465.51286379057 ... 1.9257498979568481   -0.7114997088012577
-   4 2525.2552128830876 ... 11.329010963439941    -2.635479992692634
-   5 2465.2203887755345 ... 1.1178830862045288  -0.12099096309942062
-   6 2551.7160997488236 ... 1.2884687185287476  -0.27518469801035816
-   7   2613.70434435853 ... 1.8613871335983276   -0.6745917690713554
-   8  2677.991255036429 ... 2.1094906330108643   -0.8104440031988435
-   9 2585.5858708243118 ... 3.5341360569000244    -1.370708162320959
-  10 2325.6447511340125 ...  1.514251947402954  -0.45049535214974534
- ...                ... ...                ...                   ...
-1461 2814.0691684793956 ... 1.4545104503631592  -0.40679211478057165
-1462 2452.1151453100597 ...  3.013660192489624   -1.1977357038496481
-1463 2630.6208922286264 ...  1.357964277267456  -0.33222086376091386
-1464 2676.3738336329197 ... 1.2891004085540771   -0.2757168651109099
-1465  2549.531985289118 ... 1.3755886554718018  -0.34622146380705604
-1466  2878.448681768306 ...   2.99257755279541   -1.1901135349682006
-1467 2516.4156892210945 ... 1.0459871292114258  -0.04881585151254138
-1468 2514.8031440763284 ...  1.731210470199585   -0.5958746750174272
-1469 2718.2891658337066 ... 1.1487256288528442  -0.15054077645439984
-1470  2783.582260375173 ... 1.0245482921600342 -0.026331084306021015
-Length = 1470 rows
 </pre></div>
 </div>
 </div>
@@ -754,9 +738,6 @@ Length = 1470 rows
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;DAOFind Sources&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/2ceb7d29331d5531ee899fcb3dcac03425df85ab6c9e2d0839bf5894c917a59c.png" src="../../_images/2ceb7d29331d5531ee899fcb3dcac03425df85ab6c9e2d0839bf5894c917a59c.png" />
 </div>
 </div>
 <p>Looking at a cutout around the relatively large galaxy in the top center of the image is instructive. As you can see below, the large galaxy is identified by <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> as several overlapping sources. Some of the smaller galaxies in the image are identified as sources, but many are not. The parameters could be tuned to detect more of the sources, but it turns out there are source detection methods better suited to extended sources that will be discussed in <a class="reference internal" href="#"><span class="xref myst">XX BROKEN LINK XX</span></a>.</p>
@@ -795,9 +776,6 @@ Length = 1470 rows
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/72df53f28c8d721b5b99ec761ab41d5f8d68941d2bb0ba491354daf2d16f7f03.png" src="../../_images/72df53f28c8d721b5b99ec761ab41d5f8d68941d2bb0ba491354daf2d16f7f03.png" />
-</div>
 </div>
 </section>
 <section id="source-detection-with-irafstarfinder">
@@ -814,34 +792,6 @@ Length = 1470 rows
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iraffind</span> <span class="o">=</span> <span class="n">IRAFStarFinder</span><span class="p">(</span><span class="n">fwhm</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">20.</span> <span class="o">*</span> <span class="n">std</span><span class="p">)</span>
 <span class="n">sources_iraf</span> <span class="o">=</span> <span class="n">iraffind</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">xdf_image</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">xdf_image</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sources_iraf</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id     xcentroid      ...         flux                mag         
---- ------------------ ... ------------------- --------------------
-  1 2509.7190284925837 ... 0.14511650687200017    2.095707960365292
-  2  2613.694107545662 ... 0.19381765997968614    1.781516635262892
-  3  2635.000214262164 ... 0.10974624977097847   2.3990257786621534
-  4  2585.635146488398 ...  0.2907299152575433   1.3412756957473753
-  5 2297.1310169615317 ... 0.16760808671824634   1.9392625786380697
-  6 2806.3919192581743 ... 0.12026738276472315   2.2996303498965296
-  7  2506.104118124536 ...  0.2897530668415129   1.3449298965619323
-  8 2326.4076700341316 ... 0.22564100101590157   1.6164549556816468
-  9   2516.95367865115 ... 0.12704244733322412   2.2401278715754076
- 10 2702.4927638179342 ... 0.11358246637973934    2.361721762720908
-...                ... ...                 ...                  ...
-202 2677.4075490936834 ...   1.142329734750092 -0.14447870397939355
-203   2568.16614546712 ...  0.1637192026246339   1.9647509480061578
-204 2060.2947886661673 ... 0.24417303601512685   1.5307557420138815
-205 3163.7916559714276 ...   0.240644340403378   1.5465608695654134
-206  2349.238879210583 ... 0.13923865760443732   2.1406004309678597
-207 2348.7062258479177 ... 0.27708356245420873   1.3934730932237431
-208 2878.2765247763396 ... 0.14217845676466823   2.1179155100181206
-209  2475.923527971974 ... 0.17424126411788166    1.897122466941524
-210  2676.314814458915 ... 0.10654794920992572   2.4311372624667555
-211  2514.790677543236 ... 0.13224901584908366    2.196518877870933
-Length = 211 rows
 </pre></div>
 </div>
 </div>
@@ -872,9 +822,6 @@ Length = 211 rows
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;IRAFFind Sources&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1817d54efd19f4e3101ea832c813e419b63862db6c5c17abd50ade80b625edcd.png" src="../../_images/1817d54efd19f4e3101ea832c813e419b63862db6c5c17abd50ade80b625edcd.png" />
 </div>
 </div>
 <p>Looking at a cutout around the relatively large galaxy in the top center of the image is again instructive and gives a hint as to some of the differences between <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.DAOStarFinder.html#photutils.detection.DAOStarFinder"><code class="docutils literal notranslate"><span class="pre">DAOStarFinder</span></code></a> and <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.detection.IRAFStarFinder.html#photutils.detection.IRAFStarFinder"><code class="docutils literal notranslate"><span class="pre">IRAFStarFinder</span></code></a>.</p>
@@ -913,9 +860,6 @@ Length = 211 rows
             <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/12f038b10cc35f2dcc0ff92a6026e679e28c8a94d1408cbff84026f13456a4e2.png" src="../../_images/12f038b10cc35f2dcc0ff92a6026e679e28c8a94d1408cbff84026f13456a4e2.png" />
 </div>
 </div>
 </section>
@@ -967,34 +911,6 @@ Length = 211 rows
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id      xcentroid      ...         flux               mag        
----- ------------------ ... ------------------- ------------------
-   1 2509.7190284925837 ... 0.14511650687200017  2.095707960365292
-   2  2465.397953856956 ... 0.28363753808662295 1.3680907321616993
-   3 2525.2784415133956 ...  0.8550870837643743 0.1699741340204049
-   4 2465.9310085123957 ... 0.25824849400669336 1.4699055060454422
-   5 2551.3794078445167 ... 0.15369679452851415 2.0333379749249216
-   6  2613.694107545662 ... 0.19381765997968614  1.781516635262892
-   7  2635.000214262164 ... 0.10974624977097847 2.3990257786621534
-   8 2634.7190390648143 ... 0.38626047875732183 1.0327993138708345
-   9  2678.027532333543 ...  0.1929994365782477  1.786109897057187
-  10  2585.635146488398 ...  0.2907299152575433 1.3412756957473753
- ...                ... ...                 ...                ...
-1406  2834.398111328477 ... 0.17723897472023964  1.878601927274589
-1407 2955.8080014098355 ...  0.1022638701251708 2.4756944391009212
-1408 2814.1086320053128 ...  0.1684430947061628 1.9338669703518374
-1409 2452.1215084611995 ... 0.25968281202949584 1.4638919866099898
-1410 2630.6803848992295 ... 0.16099105565808713  1.982995629582518
-1411  2676.314814458915 ... 0.10654794920992572 2.4311372624667555
-1412 2549.5763711845707 ... 0.12295090791303664  2.275670649823001
-1413  2878.609142842793 ...  0.3203331842087209  1.235995173070129
-1414 2606.8588280290196 ... 0.11837350379209965 2.3168637432861736
-1415  2514.790677543236 ... 0.13224901584908366  2.196518877870933
-Length = 1415 rows
-</pre></div>
-</div>
-</div>
 </div>
 <p>The number of detected sources are in much better agreement now – 1415 versus 1470 – but the improved agreement can also be seen by plotting the location of these sources:</p>
 <div class="cell docutils container">
@@ -1031,9 +947,6 @@ Length = 1415 rows
                <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/b1efcffc50dd0a2e923dac514b97345c10a87a1bd9c6014a5099438cb8e47e5a.png" src="../../_images/b1efcffc50dd0a2e923dac514b97345c10a87a1bd9c6014a5099438cb8e47e5a.png" />
 </div>
 </div>
 <p>Take this example as reminder to be mindful when selecting a source detection algorithm, and when defining algorithm parameters! Don’t be afraid to play around with the parameters and investigate how that affects your results.</p>
@@ -1076,9 +989,6 @@ Length = 1415 rows
                <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/9981562abd6f289f55b824676a962b1e2e34f176a2694481f7fce6c6789ee767.png" src="../../_images/9981562abd6f289f55b824676a962b1e2e34f176a2694481f7fce6c6789ee767.png" />
 </div>
 </div>
 </section>
