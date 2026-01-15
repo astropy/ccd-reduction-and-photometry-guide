@@ -29,13 +29,13 @@ ex2_images_raw.summary['file', 'imagetyp', 'exposure'].show_in_notebook()
 [36mCell[39m[36m [39m[32mIn[8][39m[32m, line 1[39m
 [32m----> [39m[32m1[39m [43mex2_images_raw[49m[43m.[49m[43msummary[49m[43m[[49m[33;43m'[39;49m[33;43mfile[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mimagetyp[39;49m[33;43m'[39;49m[43m,[49m[43m [49m[33;43m'[39;49m[33;43mexposure[39;49m[33;43m'[39;49m[43m][49m[43m.[49m[43mshow_in_notebook[49m[43m([49m[43m)[49m
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:1852[39m, in [36mTable.show_in_notebook[39m[34m(self, backend, **kwargs)[39m
-[32m   1846[39m [38;5;28;01melse[39;00m:
-[32m   1847[39m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m(
-[32m   1848[39m         [33mf[39m[33m'[39m[33m"[39m[38;5;132;01m{[39;00mbackend[38;5;132;01m}[39;00m[33m"[39m[33m backend is not supported for rendering Astropy table [39m[33m'[39m
-[32m   1849[39m         [33m"[39m[33min Jupyter notebook.[39m[33m"[39m
-[32m   1850[39m     )
-[32m-> [39m[32m1852[39m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:1864[39m, in [36mTable.show_in_notebook[39m[34m(self, backend, **kwargs)[39m
+[32m   1858[39m [38;5;28;01melse[39;00m:
+[32m   1859[39m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m(
+[32m   1860[39m         [33mf[39m[33m'[39m[33m"[39m[38;5;132;01m{[39;00mbackend[38;5;132;01m}[39;00m[33m"[39m[33m backend is not supported for rendering Astropy table [39m[33m'[39m
+[32m   1861[39m         [33m"[39m[33min Jupyter notebook.[39m[33m"[39m
+[32m   1862[39m     )
+[32m-> [39m[32m1864[39m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
 
 [36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/notebook_backends.py:129[39m, in [36mipydatagrid[39m[34m(table, **kwargs)[39m
 [32m    103[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mipydatagrid[39m(table, **kwargs):

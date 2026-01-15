@@ -722,7 +722,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=14</i>
-<table id="table140237060772880" class="table-striped table-bordered table-condensed">
+<table id="table140093315045200" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str9</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td></tr>
@@ -752,7 +752,7 @@ each.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table140237699037776" class="table-striped table-bordered table-condensed">
+<table id="table140092848826128" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th></tr></thead>
 <thead><tr><th>str14</th><th>str4</th><th>float64</th><th>str2</th></tr></thead>
 <tr><td>ccd.002.0.fits</td><td>BIAS</td><td>0.0</td><td>r&apos;</td></tr>
@@ -834,7 +834,7 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=16</i>
-<table id="table140237664299664" class="table-striped table-bordered table-condensed">
+<table id="table140093313579344" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>imagetyp</th><th>exptime</th><th>filter</th><th>combined</th></tr></thead>
 <thead><tr><th>str17</th><th>str4</th><th>float64</th><th>str2</th><th>object</th></tr></thead>
 <tr><td>ccd.001.0.fits</td><td>BIAS</td><td>0.0</td><td>i&apos;</td><td>--</td></tr>
@@ -885,13 +885,13 @@ WARNING:astropy:FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ex2_images_raw</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="s1">&#39;imagetyp&#39;</span><span class="p">,</span> <span class="s1">&#39;exposure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">show_in_notebook</span><span class="p">()</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:1852,</span> in <span class="ni">Table.show_in_notebook</span><span class="nt">(self, backend, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1846</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1847</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1848</span>         <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s1">&quot; backend is not supported for rendering Astropy table &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1849</span>         <span class="s2">&quot;in Jupyter notebook.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1850</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1852</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/table.py:1864,</span> in <span class="ni">Table.show_in_notebook</span><span class="nt">(self, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1858</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1859</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1860</span>         <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s1">&quot; backend is not supported for rendering Astropy table &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1861</span>         <span class="s2">&quot;in Jupyter notebook.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1862</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1864</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/notebook_backends.py:129,</span> in <span class="ni">ipydatagrid</span><span class="nt">(table, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">def</span><span class="w"> </span><span class="nf">ipydatagrid</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

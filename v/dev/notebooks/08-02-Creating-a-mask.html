@@ -677,7 +677,7 @@ calibrated, uncombined, flat images.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=0</i>
-<table id="table140038554775632" class="table-striped table-bordered table-condensed">
+<table id="table140043290142480" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>simple</th><th>bitpix</th><th>naxis</th><th>naxis1</th><th>naxis2</th><th>date-obs</th><th>exptime</th><th>exposure</th><th>set-temp</th><th>ccd-temp</th><th>xpixsz</th><th>ypixsz</th><th>xbinning</th><th>ybinning</th><th>xorgsubf</th><th>yorgsubf</th><th>readoutm</th><th>imagetyp</th><th>focallen</th><th>aptdia</th><th>aptarea</th><th>swcreate</th><th>swserial</th><th>sitelat</th><th>sitelong</th><th>telescop</th><th>instrume</th><th>notes</th><th>flipstat</th><th>cstretch</th><th>cblack</th><th>cwhite</th><th>pedestal</th><th>swowner</th><th>purged</th><th>latitude</th><th>longitud</th><th>altitude</th><th>lst</th><th>jd-obs</th><th>mjd-obs</th><th>biassec</th><th>trimsec</th><th>bunit</th><th>trim_image</th><th>trimim</th><th>bscale</th><th>bzero</th><th>extend</th><th>combined</th></tr></thead>
 <thead><tr><th>str30</th><th>bool</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str19</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>int64</th><th>int64</th><th>int64</th><th>int64</th><th>str10</th><th>str4</th><th>float64</th><th>float64</th><th>float64</th><th>str34</th><th>str32</th><th>str13</th><th>str14</th><th>str1</th><th>str9</th><th>str1</th><th>str1</th><th>str6</th><th>int64</th><th>int64</th><th>int64</th><th>str10</th><th>bool</th><th>str13</th><th>str14</th><th>float64</th><th>str13</th><th>float64</th><th>float64</th><th>str11</th><th>str11</th><th>str3</th><th>str6</th><th>str13</th><th>object</th><th>object</th><th>object</th><th>object</th></tr></thead>
 </table></div></div></div>
@@ -698,41 +698,41 @@ listed above.</p>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">first</span> <span class="o">=</span> <span class="n">ifc</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">][</span><span class="n">flats</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">last</span> <span class="o">=</span> <span class="n">ifc</span><span class="o">.</span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">][</span><span class="n">flats</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:92,</span> in <span class="ni">astropy.table._column_mixins._MaskedColumnGetitemShim.__getitem__</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:89,</span> in <span class="ni">astropy.table._column_mixins._MaskedColumnGetitemShim.__getitem__</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:62,</span> in <span class="ni">astropy.table._column_mixins.base_getitem</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:59,</span> in <span class="ni">astropy.table._column_mixins.base_getitem</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:86,</span> in <span class="ni">astropy.table._column_mixins.masked_column_getitem</span><span class="nt">()</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:83,</span> in <span class="ni">astropy.table._column_mixins.masked_column_getitem</span><span class="nt">()</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3305,</span> in <span class="ni">MaskedArray.__getitem__</span><span class="nt">(self, indx)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3295</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3296</span><span class="sd"> x.__getitem__(y) &lt;==&gt; x[y]</span>
-<span class="g g-Whitespace">   </span><span class="mi">3297</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3298</span><span class="sd"> Return the item described by i, as a masked array.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3299</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3300</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3301</span> <span class="c1"># We could directly use ndarray.__getitem__ on self.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3302</span> <span class="c1"># But then we would have to modify __array_finalize__ to prevent the</span>
-<span class="g g-Whitespace">   </span><span class="mi">3303</span> <span class="c1"># mask of being reshaped if it hasn&#39;t been set up properly yet</span>
-<span class="g g-Whitespace">   </span><span class="mi">3304</span> <span class="c1"># So it&#39;s easier to stick to the current version</span>
-<span class="ne">-&gt; </span><span class="mi">3305</span> <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">3306</span> <span class="n">_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mask</span>
-<span class="g g-Whitespace">   </span><span class="mi">3308</span> <span class="k">def</span><span class="w"> </span><span class="nf">_is_scalar</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3294,</span> in <span class="ni">MaskedArray.__getitem__</span><span class="nt">(self, indx)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3284</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3285</span><span class="sd"> x.__getitem__(y) &lt;==&gt; x[y]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3286</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3287</span><span class="sd"> Return the item described by i, as a masked array.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3288</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3289</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3290</span> <span class="c1"># We could directly use ndarray.__getitem__ on self.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3291</span> <span class="c1"># But then we would have to modify __array_finalize__ to prevent the</span>
+<span class="g g-Whitespace">   </span><span class="mi">3292</span> <span class="c1"># mask of being reshaped if it hasn&#39;t been set up properly yet</span>
+<span class="g g-Whitespace">   </span><span class="mi">3293</span> <span class="c1"># So it&#39;s easier to stick to the current version</span>
+<span class="ne">-&gt; </span><span class="mi">3294</span> <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3295</span> <span class="n">_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mask</span>
+<span class="g g-Whitespace">   </span><span class="mi">3297</span> <span class="k">def</span><span class="w"> </span><span class="nf">_is_scalar</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
 
-<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3305,</span> in <span class="ni">MaskedArray.__getitem__</span><span class="nt">(self, indx)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3295</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3296</span><span class="sd"> x.__getitem__(y) &lt;==&gt; x[y]</span>
-<span class="g g-Whitespace">   </span><span class="mi">3297</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3298</span><span class="sd"> Return the item described by i, as a masked array.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3299</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3300</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3301</span> <span class="c1"># We could directly use ndarray.__getitem__ on self.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3302</span> <span class="c1"># But then we would have to modify __array_finalize__ to prevent the</span>
-<span class="g g-Whitespace">   </span><span class="mi">3303</span> <span class="c1"># mask of being reshaped if it hasn&#39;t been set up properly yet</span>
-<span class="g g-Whitespace">   </span><span class="mi">3304</span> <span class="c1"># So it&#39;s easier to stick to the current version</span>
-<span class="ne">-&gt; </span><span class="mi">3305</span> <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">3306</span> <span class="n">_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mask</span>
-<span class="g g-Whitespace">   </span><span class="mi">3308</span> <span class="k">def</span><span class="w"> </span><span class="nf">_is_scalar</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="nn">File ~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3294,</span> in <span class="ni">MaskedArray.__getitem__</span><span class="nt">(self, indx)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3284</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3285</span><span class="sd"> x.__getitem__(y) &lt;==&gt; x[y]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3286</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3287</span><span class="sd"> Return the item described by i, as a masked array.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3288</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3289</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3290</span> <span class="c1"># We could directly use ndarray.__getitem__ on self.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3291</span> <span class="c1"># But then we would have to modify __array_finalize__ to prevent the</span>
+<span class="g g-Whitespace">   </span><span class="mi">3292</span> <span class="c1"># mask of being reshaped if it hasn&#39;t been set up properly yet</span>
+<span class="g g-Whitespace">   </span><span class="mi">3293</span> <span class="c1"># So it&#39;s easier to stick to the current version</span>
+<span class="ne">-&gt; </span><span class="mi">3294</span> <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3295</span> <span class="n">_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mask</span>
+<span class="g g-Whitespace">   </span><span class="mi">3297</span> <span class="k">def</span><span class="w"> </span><span class="nf">_is_scalar</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
 
 <span class="ne">IndexError</span>: index 0 is out of bounds for axis 0 with size 0
 </pre></div>

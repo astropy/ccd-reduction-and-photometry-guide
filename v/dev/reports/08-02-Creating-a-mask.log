@@ -31,41 +31,41 @@ last = ifc.summary['file'][flats][-1]
 [32m----> [39m[32m1[39m first = [43mifc[49m[43m.[49m[43msummary[49m[43m[[49m[33;43m'[39;49m[33;43mfile[39;49m[33;43m'[39;49m[43m][49m[43m[[49m[43mflats[49m[43m][49m[43m[[49m[32;43m0[39;49m[43m][49m
 [32m      2[39m last = ifc.summary[[33m'[39m[33mfile[39m[33m'[39m][flats][-[32m1[39m]
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:92[39m, in [36mastropy.table._column_mixins._MaskedColumnGetitemShim.__getitem__[39m[34m()[39m
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:89[39m, in [36mastropy.table._column_mixins._MaskedColumnGetitemShim.__getitem__[39m[34m()[39m
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:62[39m, in [36mastropy.table._column_mixins.base_getitem[39m[34m()[39m
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:59[39m, in [36mastropy.table._column_mixins.base_getitem[39m[34m()[39m
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:86[39m, in [36mastropy.table._column_mixins.masked_column_getitem[39m[34m()[39m
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/astropy/table/_column_mixins.pyx:83[39m, in [36mastropy.table._column_mixins.masked_column_getitem[39m[34m()[39m
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3305[39m, in [36mMaskedArray.__getitem__[39m[34m(self, indx)[39m
-[32m   3295[39m [38;5;250m[39m[33;03m"""[39;00m
-[32m   3296[39m [33;03mx.__getitem__(y) <==> x[y][39;00m
-[32m   3297[39m 
-[32m   3298[39m [33;03mReturn the item described by i, as a masked array.[39;00m
-[32m   3299[39m 
-[32m   3300[39m [33;03m"""[39;00m
-[32m   3301[39m [38;5;66;03m# We could directly use ndarray.__getitem__ on self.[39;00m
-[32m   3302[39m [38;5;66;03m# But then we would have to modify __array_finalize__ to prevent the[39;00m
-[32m   3303[39m [38;5;66;03m# mask of being reshaped if it hasn't been set up properly yet[39;00m
-[32m   3304[39m [38;5;66;03m# So it's easier to stick to the current version[39;00m
-[32m-> [39m[32m3305[39m dout = [38;5;28;43mself[39;49m[43m.[49m[43mdata[49m[43m[[49m[43mindx[49m[43m][49m
-[32m   3306[39m _mask = [38;5;28mself[39m._mask
-[32m   3308[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_is_scalar[39m(m):
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3294[39m, in [36mMaskedArray.__getitem__[39m[34m(self, indx)[39m
+[32m   3284[39m [38;5;250m[39m[33;03m"""[39;00m
+[32m   3285[39m [33;03mx.__getitem__(y) <==> x[y][39;00m
+[32m   3286[39m 
+[32m   3287[39m [33;03mReturn the item described by i, as a masked array.[39;00m
+[32m   3288[39m 
+[32m   3289[39m [33;03m"""[39;00m
+[32m   3290[39m [38;5;66;03m# We could directly use ndarray.__getitem__ on self.[39;00m
+[32m   3291[39m [38;5;66;03m# But then we would have to modify __array_finalize__ to prevent the[39;00m
+[32m   3292[39m [38;5;66;03m# mask of being reshaped if it hasn't been set up properly yet[39;00m
+[32m   3293[39m [38;5;66;03m# So it's easier to stick to the current version[39;00m
+[32m-> [39m[32m3294[39m dout = [38;5;28;43mself[39;49m[43m.[49m[43mdata[49m[43m[[49m[43mindx[49m[43m][49m
+[32m   3295[39m _mask = [38;5;28mself[39m._mask
+[32m   3297[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_is_scalar[39m(m):
 
-[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3305[39m, in [36mMaskedArray.__getitem__[39m[34m(self, indx)[39m
-[32m   3295[39m [38;5;250m[39m[33;03m"""[39;00m
-[32m   3296[39m [33;03mx.__getitem__(y) <==> x[y][39;00m
-[32m   3297[39m 
-[32m   3298[39m [33;03mReturn the item described by i, as a masked array.[39;00m
-[32m   3299[39m 
-[32m   3300[39m [33;03m"""[39;00m
-[32m   3301[39m [38;5;66;03m# We could directly use ndarray.__getitem__ on self.[39;00m
-[32m   3302[39m [38;5;66;03m# But then we would have to modify __array_finalize__ to prevent the[39;00m
-[32m   3303[39m [38;5;66;03m# mask of being reshaped if it hasn't been set up properly yet[39;00m
-[32m   3304[39m [38;5;66;03m# So it's easier to stick to the current version[39;00m
-[32m-> [39m[32m3305[39m dout = [38;5;28;43mself[39;49m[43m.[49m[43mdata[49m[43m[[49m[43mindx[49m[43m][49m
-[32m   3306[39m _mask = [38;5;28mself[39m._mask
-[32m   3308[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_is_scalar[39m(m):
+[36mFile [39m[32m~/miniconda3/envs/mamba/lib/python3.11/site-packages/numpy/ma/core.py:3294[39m, in [36mMaskedArray.__getitem__[39m[34m(self, indx)[39m
+[32m   3284[39m [38;5;250m[39m[33;03m"""[39;00m
+[32m   3285[39m [33;03mx.__getitem__(y) <==> x[y][39;00m
+[32m   3286[39m 
+[32m   3287[39m [33;03mReturn the item described by i, as a masked array.[39;00m
+[32m   3288[39m 
+[32m   3289[39m [33;03m"""[39;00m
+[32m   3290[39m [38;5;66;03m# We could directly use ndarray.__getitem__ on self.[39;00m
+[32m   3291[39m [38;5;66;03m# But then we would have to modify __array_finalize__ to prevent the[39;00m
+[32m   3292[39m [38;5;66;03m# mask of being reshaped if it hasn't been set up properly yet[39;00m
+[32m   3293[39m [38;5;66;03m# So it's easier to stick to the current version[39;00m
+[32m-> [39m[32m3294[39m dout = [38;5;28;43mself[39;49m[43m.[49m[43mdata[49m[43m[[49m[43mindx[49m[43m][49m
+[32m   3295[39m _mask = [38;5;28mself[39m._mask
+[32m   3297[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_is_scalar[39m(m):
 
 [31mIndexError[39m: index 0 is out of bounds for axis 0 with size 0
 IndexError: index 0 is out of bounds for axis 0 with size 0
