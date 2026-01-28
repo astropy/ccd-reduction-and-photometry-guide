@@ -122,7 +122,7 @@ parts:
           title: All about apertures
           sections:
           - file: notebooks/photometry/02.01.01-Aperture-shapes.ipynb
-            title: Overview with simulated image
+            title: Aperture shapes
         - file: notebooks/photometry/02.02-Performing-aperture-photometry.ipynb
           title: Performing aperture photometry
           sections:
