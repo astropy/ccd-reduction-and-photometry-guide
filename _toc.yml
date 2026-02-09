@@ -125,6 +125,8 @@ parts:
             title: Aperture shapes
           - file: notebooks/photometry/02.01.02-Aperture-partial-pixels.ipynb
             title: Handling of partial pixels
+          - file: notebooks/photometry/02.01.03-Finding-the-centroid.ipynb
+            title: Finding the centroid
         - file: notebooks/photometry/02.02-Performing-aperture-photometry.ipynb
           title: Performing aperture photometry
           sections:
