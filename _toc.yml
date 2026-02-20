@@ -115,7 +115,22 @@ parts:
             title: Image segmentation in the XDF
           - file: notebooks/photometry/01.04.03-image-segmentation-Feder.ipynb
             title: Image segmentation in a ground-based stellar image
-
-
+      - file: notebooks/photometry/02.00-Aperture-photometry.ipynb
+        title: Aperture photometry
+        sections:
+        - file: notebooks/photometry/02.01-All-about-apertures.ipynb
+          title: All about apertures
+          sections:
+          - file: notebooks/photometry/02.01.01-Aperture-shapes.ipynb
+            title: Aperture shapes
+          - file: notebooks/photometry/02.01.02-Aperture-partial-pixels.ipynb
+            title: Handling of partial pixels
+          - file: notebooks/photometry/02.01.03-Finding-the-centroid.ipynb
+            title: Finding the centroid
+        - file: notebooks/photometry/02.02-Performing-aperture-photometry.ipynb
+          title: Performing aperture photometry
+          sections:
+          - file: notebooks/photometry/02.02.02-aperture-photometry-xdf.ipynb
+            title: Aperture photometry in the XDF
 # - url: https://github.com/mwcraig/ccd-reduction-and-photometry-guide
 #   title: GitHub repository
